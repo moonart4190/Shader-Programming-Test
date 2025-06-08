@@ -19,8 +19,8 @@
      Tags
              {
  //Render type과 Render Queue를 여기서 결정합니다.
-        "RenderPipeline"="UniversalPipeline"
-                 "RenderType"="Opaque"          
+                 "RenderPipeline"="UniversalPipeline"
+                 "RenderType"="Opaque"     
                  "Queue"="Geometry"
              }
          Pass
@@ -39,6 +39,7 @@
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"        	
    
  //vertex buffer에서 읽어올 정보를 선언합니다. 	
+ 
               struct VertexInput
               {
                  float4 vertex : POSITION;
@@ -71,6 +72,8 @@
              { 
                float2 uv = i.uv.xy * _MainTex_ST.xy + _MainTex_ST.zw;
                float4 color = tex2D(_MainTex, uv) * _TintColor * _Intensity;
+               
+               
 
                return color;
              }

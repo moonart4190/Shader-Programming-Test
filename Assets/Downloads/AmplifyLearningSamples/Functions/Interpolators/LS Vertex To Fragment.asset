@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Vertex To Fragment
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;262;-1280,-624;Inherit;False;1525.675;692.4728;;10;259;258;256;255;253;254;252;260;261;263;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;261;-608,-576;Inherit;False;227;271;Light
+    Diffusion per Vertex;1;257;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;195;-1280,-1088;Inherit;False;1522.168;445.407;;7;189;191;196;190;188;200;199;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;25;-1278,-1472;Inherit;False;1030;350;Vertex
+    To Fragment Node;4;264;250;251;249;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.SwizzleNode;199;-1040,-912;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;200;-880,-864;Inherit;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;188;-688,-1040;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;190;-864,-1040;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;196;-1232,-864;Inherit;False;Constant;_TillingOffset;Tilling
+    Offset;1;0;Create;True;0;0;0;False;0;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;191;-1232,-1040;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;249;-704,-1424;Inherit;False;368;120;;;0,0,0,1;The
+    Vertex To Fragment node allows data to be calculated on the vertex function and
+    transferred to the surface/fragment via interpolators.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;251;-1248,-1312;Inherit;False;284;139;No
+    Interpolation;;0,0,0,1;When active, makes sure it uses an interpolator with the
+    nointerpolation flag used, which prevents the values assigned to it to be interpolated
+    on the rasterization process;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;260;-832,-256;Inherit;False;444.0393;127.7833;NOTE
+    1;;0,0,0,1;No Interpolation cannot be used over the Standard Surface type as
+    we must be able to directly control interpolators registry, which does't happen
+    over this shader type.;0;0\nNode;AmplifyShaderEditor.WorldNormalVector;252;-1200,-512;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;254;-1232,-352;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.PowerNode;255;-832,-512;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;1.18;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;256;-32,-512;Inherit;True;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;263;-832,-112;Inherit;False;444.0393;127.7833;NOTE
+    2;;0,0,0,1;No Interpolation will not work across all API's and can even throw
+    compilation errors on some of them ( p.e. Metal and GLES 2.0 ).;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;264;-1248,-1424;Inherit;False;277;101;(VS)
+    In;;0,0,0,1;Value to be transferred to surface/fragment function;0;0\nNode;AmplifyShaderEditor.VertexToFragmentNode;250;-928,-1424;Inherit;False;False;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.VertexToFragmentNode;189;-528,-1040;Inherit;True;False;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.VertexToFragmentNode;257;-592,-512;Inherit;True;False;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;253;-976,-512;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LightAttenuation;258;-336,-448;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.LightColorNode;259;-272,-368;Inherit;False;0;3;COLOR;0;FLOAT3;1;FLOAT;2\nNode;AmplifyShaderEditor.FunctionOutput;0;-1280,-1600;Inherit;False;True;-1;Output;0;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nWireConnection;199;0;196;0\nWireConnection;200;0;196;0\nWireConnection;188;0;190;0\nWireConnection;188;1;200;0\nWireConnection;190;0;191;0\nWireConnection;190;1;199;0\nWireConnection;255;0;253;0\nWireConnection;256;0;257;0\nWireConnection;256;1;258;0\nWireConnection;256;2;259;1\nWireConnection;189;0;188;0\nWireConnection;257;0;255;0\nWireConnection;253;0;252;0\nWireConnection;253;1;254;0\nASEEND*/\n//CHKSM=4BFFF6178E055948C691038CC032A8B84C180BD3"
+  m_functionName: 
+  m_description: 'Vertex To Fragment Node
+
+
+    Learning Sample'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6627451, g: 0.4392157, b: 0, a: 1}
+  m_customNodeCategory: LS Interpolators
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

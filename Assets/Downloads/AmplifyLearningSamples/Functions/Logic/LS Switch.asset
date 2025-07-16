@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Switch
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19901\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;144;128,1040;Inherit;False;1064.068;520.1936;SG
+    Branch;13;154;153;152;143;141;139;142;150;148;145;147;169;170;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;126;1168,-896;Inherit;False;535.5513;433.1232;Reference
+    Mode;2;129;133;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;147;432,1088;Inherit;False;126.4911;130.496;Predicate;1;146;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;133;1200,-736;Inherit;False;468.5;261;Uses
+    keyword created by another Switch node.;4;131;130;134;135;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;123;128,64;Inherit;False;825.3188;528;Mode
+    = Reference;5;118;117;121;122;119;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;115;-1008,1040;Inherit;False;1040.7;675.7;Shadow
+    on Transparent Objects (Surface) ;4;113;112;116;114;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;106;-1008,400;Inherit;False;1038.229;611;Dynamic
+    Branch: (2022.1 and Higher);8;97;96;99;98;95;109;111;110;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;87;-1008,64;Inherit;False;1042.875;322.3766;Toggle
+    Per Vertex Calculation;3;83;85;86;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;81;-1008,-1232;Inherit;False;1780.724;1234.85;Static
+    Switch Node;8;92;91;90;89;88;84;82;171;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;148;432,1232;Inherit;False;126.4911;130.496;False;1;149;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;150;432,1376;Inherit;False;126.4911;130.496;True;1;151;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;82;-96,-1184;Inherit;False;551.17;184.8273;;;0,0,0,1;The
+    Static Switch node creates and/or uses shader keywords through #if #elif/#else
+    #endif directives. $$Its input True will be used inside the #if directive body
+    while the False input will be used on the #else directive. $$If multiple keywords
+    are defined on the Type then an #elif directive will be created to each one of
+    the middle items.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;84;-96,-976;Inherit;False;551.7499;207.653;NOTE: 
+    Keywords;;0,0,0,1;We recommend setting the keyword to local when working on Unity
+    2019.1 or newer. $$Unity has a limit of 384 global keywords which can be consumed
+    very quickly across all shaders, including Unity native ones$$The amount of local
+    keywords is 64 so its always best use more local keywords and less global keywords
+    in order to reduce total keyword count per shader$$;0;0\nNode;AmplifyShaderEditor.VertexToFragmentNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;86;-752,240;Inherit;False;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;88;-960,-1184;Inherit;False;577.8188;242.3901;Mode;;0,0,0,1;Specify
+    if node creates the specified keyword or uses an already defined one$$Create:
+    $Creates specified keywords$$Fetch: $Doesn't create keywords. The #if/#elif directives
+    makes use of keywords assuming they're already created elsewhere.$$Reference:
+    $Uses keyword created by another Switch node.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;89;-960,-928;Inherit;False;581.9887;312.2513;Keyword
+    Type;;0,0,0,1;Type of keyword to be specified$$$Shader Feature: $Unused variants
+    wont be included into game build. Useful for keywords that will be set on the
+    materials.$$$Multi Compile: $All variants will be included into game build regardless
+    of its usage. Useful for keywords that will be set from code globally.$$$Dynamic
+    Branch: (2022.1 and Higher);0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;90;-960,-608;Inherit;False;581.8287;228.3407;Type;;0,0,0,1;Defines
+    the amount of variants and toggle default behavior when it's checked on$$Toggle:
+    $Two variants are created and toggle is on when checked on$$Toggle Off: $Two
+    variants are created and toggle is off when checked on$$Keyword Enum: $Up to
+    10 variants ( 9 keywords ) can be created.;0;0\nNode;AmplifyShaderEditor.WorldNormalVector,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;85;-960,144;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;91;-96,-752;Inherit;False;552.4055;334.1253;Keyword;;0,0,0,1;Allows
+    to select already existing Unity keywords or select a new custom new one. This
+    list will continuously grow according to community needs/feedback.$$Custom: $Define
+    a custom keyword to be used$$ETC1_EXTERNAL_ALPHA$PIXELSNAP_ON$UNITY_PASS_FORWARDBASE$UNITY_PASS_FORWARDADD$UNITY_PASS_DEFERRED$UNITY_PASS_SHADOWCASTER$UNITY_INSTANCING_ENABLED$DIRECTIONAL_COOKIE$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;99;-576,688;Inherit;False;566.1976;169.5394;;;0,0,0,1;Dynamic
+    Branching allows you to use conditionals at runtime without increasing the number
+    of shader variants in your project$$$See Unity docs for more info https://docs.unity3d.com/Manual/shader-branching.html#dynamic-branching;0;0\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;97;-896,624;Inherit;False;Constant;_Green;Green;2;0;Create;True;0;0;0;False;0;False;0.1050644,1,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;96;-896,800;Inherit;False;Constant;_Blue;Blue;2;0;Create;True;0;0;0;False;0;False;0.004716992,0.1282271,1,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;95;-896,448;Inherit;False;Constant;_Red;Red;2;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;109;-672,544;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;110;-640,592;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;111;-640,800;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;83;-512,144;Inherit;True;Property;_PerVertex;Per
+    Vertex;0;0;Create;True;0;0;0;False;0;False;0;1;1;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;FLOAT3;0,0,0;False;0;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;114;-818.0546,1424;Inherit;False;736.6546;204.0103;UNITY_PASS_SHADOWCASTER;;0,0,0,1;surface
+    shader adds a custom shadow caster when on transparent blend mode which uses
+    the alpha value on the shadow itself.$$$In order for transparency not affect
+    shadows, simply place a Static Switch using the UNITY_PASS_SHADOWCASTER keyword
+    over the Opacity port and set its True port to 1.$$This way it forces always
+    Alpha to 1 on the shadow caster pass.;0;0\nNode;AmplifyShaderEditor.SamplerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;116;-944,1120;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;6;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;112;-816,1328;Inherit;False;Property;_True1;True1;3;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;118;704,336;Inherit;False;223.3188;104.8901;;;0,0,0,1;Uses
+    keyword created by another Static Switch node.$;0;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;98;-576,448;Inherit;True;Property;_MyKeyword;My
+    Keyword;2;0;Create;True;0;0;0;False;0;False;2;0;0;True;;KeywordEnum;3;Red;Green;Blue;Create;True;True;All;9;1;COLOR;0,0,0,0;False;0;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;4;COLOR;0,0,0,0;False;5;COLOR;0,0,0,0;False;6;COLOR;0,0,0,0;False;7;COLOR;0,0,0,0;False;8;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;117;448,112;Inherit;True;Property;_MyKeyword1;My
+    Keyword 1;5;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;FLOAT3;0,0,0;False;0;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;121;176,112;Inherit;False;Constant;_Color0;Color
+    0;7;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;119;448,336;Inherit;True;Property;_MyKeyword2;My
+    Keyword 1;4;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Reference;117;True;True;All;9;1;FLOAT3;0,0,0;False;0;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;122;176,352;Inherit;False;Constant;_Color1;Color
+    1;7;0;Create;True;0;0;0;False;0;False;0,0.1530399,1,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;145;800,1104;Inherit;False;303.3175;139.7083;Branch
+    node;;0,0,0,1;The Branch Node selects between two different inputs.  If the Predicate
+    input is true, output Out returns the value of the True input. If it's false,
+    return the value of the input False.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;152;176,1088;Inherit;False;226.5;111.5;Predicate;;0,0,0,1;Determines
+    which input to return;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;153;176,1232;Inherit;False;226.5;111.5;False;;0,0,0,1;Returned
+    if Predicate is true;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;154;176,1376;Inherit;False;226.5;111.5;True;;0,0,0,1;Returned
+    if Predicate is false;0;0\nNode;AmplifyShaderEditor.OneMinusNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;142;608,1136;Inherit;False;1;0;OBJECT;0;False;1;OBJECT;0\nNode;AmplifyShaderEditor.RelayNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;146;448,1136;Inherit;False;1;0;OBJECT;;False;1;OBJECT;0\nNode;AmplifyShaderEditor.RelayNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;149;448,1280;Inherit;False;1;0;OBJECT;;False;1;OBJECT;0\nNode;AmplifyShaderEditor.RelayNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;151;448,1424;Inherit;False;1;0;OBJECT;;False;1;OBJECT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;141;976,1376;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;143;784,1264;Inherit;False;2;2;0;OBJECT;0;False;1;OBJECT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;139;624,1408;Inherit;False;2;2;0;OBJECT;0;False;1;OBJECT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;169;560,1408;Inherit;False;1;0;OBJECT;;False;1;OBJECT;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;170;560,1200;Inherit;False;1;0;OBJECT;;False;1;OBJECT;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;131;1424,-688;Inherit;False;Property;_Keyword2;Keyword
+    2;8;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Reference;129;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;134;1216,-592;Inherit;False;Property;_Keyword3;Keyword
+    3;8;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Reference;129;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;135;1424,-592;Inherit;False;Property;_Keyword4;Keyword
+    4;8;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Reference;129;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;129;1200,-848;Inherit;False;Property;_MyToggle;My
+    Toggle;7;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;130;1216,-688;Inherit;False;Property;_Keyword0;Keyword
+    0;8;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Reference;129;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;171;-960,-352;Inherit;False;582.256;194.7727;Is
+    Local;;0,0,0,1;#pragma shader_feature_local _XXXXX$$$;0;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;92;-352,-1184;Inherit;True;Property;_Keyword1;Keyword
+    1;4;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;113;-624,1312;Inherit;False;Property;_UNITY_PASS_SHADOWCASTER;UNITY_PASS_SHADOWCASTER;1;0;Create;True;0;0;0;False;0;False;0;0;0;True;UNITY_PASS_SHADOWCASTER;Toggle;2;Key0;Key1;Fetch;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;4;-1024,-1344;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;86;0;85;0\nWireConnection;109;0;97;0\nWireConnection;110;0;111;0\nWireConnection;111;0;96;0\nWireConnection;83;1;85;0\nWireConnection;83;0;86;0\nWireConnection;98;1;95;0\nWireConnection;98;0;109;0\nWireConnection;98;2;110;0\nWireConnection;117;1;121;0\nWireConnection;117;0;122;0\nWireConnection;119;1;121;0\nWireConnection;119;0;122;0\nWireConnection;142;0;146;0\nWireConnection;141;0;143;0\nWireConnection;141;1;139;0\nWireConnection;143;0;142;0\nWireConnection;143;1;149;0\nWireConnection;139;0;169;0\nWireConnection;139;1;151;0\nWireConnection;169;0;170;0\nWireConnection;170;0;146;0\nWireConnection;113;1;116;4\nWireConnection;113;0;112;0\nASEEND*/\n//CHKSM=3F6A72C416C6398835BEE078685004C927478203"
+  m_functionName: 
+  m_description: 'Switch Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

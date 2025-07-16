@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Projector Clip Matrix
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;19;-1024,-800;Inherit;False;1156.291;374.438;Projector
+    Clip Matrix Node;4;55;44;36;7;;0.03773582,0.03773582,0.03773582,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;56;-1024,176;Inherit;False;1956;660;Exsample
+    Projection Matrix Node;21;90;77;76;75;74;73;72;71;70;69;68;67;66;65;64;63;62;61;60;59;92;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;57;-1024,-336;Inherit;False;1958.769;471.7187;Exsample
+    Projector Clip Matrix Node;14;91;89;88;87;86;85;84;83;82;81;80;79;78;58;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-976,-736;Inherit;False;484.028;159;;;0,0,0,1;The
+    Projector Clip Matrix node outputs a matrix that contains projection information
+    on the projector used by the current object. $$This node is typically used to
+    create texture coordinates from Vertex Position and sample custom falloff color
+    values from 1D textures;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;-272,-736;Inherit;False;379.7067;100;Out;;0,0,0,1;unity_ProjectorClip$Returns
+    projector clip matrix value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;44;-976,-560;Inherit;False;487.028;101;NOTE;;0,0,0,1;This
+    node should only be used when working with Unity Projectors;0;0\nNode;AmplifyShaderEditor.UnityProjectorClipMatrixNode;55;-464,-736;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.StickyNoteNode;58;592,-80;Inherit;False;204.0877;100;Matrix;;0.02830189,0.02830189,0.02830189,1;Use
+    Projector Clip Matrix for Falloff textures;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;176,672;Inherit;False;196;101;Frames;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;60;-80,672;Inherit;False;193;100;FPS;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.PosVertexDataNode;61;-976,320;Inherit;False;1;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;62;-784,240;Inherit;False;2;2;0;FLOAT4x4;0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;63;-208,240;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;64;272,240;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;65;448,240;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;66;304,352;Inherit;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;67;112,304;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;68;-96,352;Inherit;False;Property;_MainUVs;Main
+    UVs;1;0;Create;False;0;0;0;False;0;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.VertexToFragmentNode;70;-624,240;Inherit;False;False;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SwizzleNode;71;-384,240;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;72;-384,320;Inherit;False;FLOAT;3;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;73;96,496;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleRemainderNode;74;368,496;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;75;176,592;Inherit;False;Constant;_Frames;Frames;0;0;Create;True;0;0;0;False;0;False;16;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;77;-80,592;Inherit;False;Constant;_FPS;FPS;0;0;Create;True;0;0;0;False;0;False;16;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.PosVertexDataNode;78;-976,-192;Inherit;False;1;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;79;-784,-272;Inherit;False;2;2;0;FLOAT4x4;0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;80;-208,-272;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;81;272,-272;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;82;448,-272;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;83;304,-160;Inherit;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;84;112,-208;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;85;-96,-160;Inherit;False;Property;_MainUVs1;Main
+    UVs;2;0;Create;False;0;0;0;False;0;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.VertexToFragmentNode;86;-624,-272;Inherit;False;False;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SwizzleNode;87;-384,-272;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;88;-384,-192;Inherit;False;FLOAT;3;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.UnityProjectorClipMatrixNode;89;-976,-272;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.SamplerNode;90;592,224;Inherit;True;Property;_TextureArray;Array
+    Texture;0;1;[NoScaleOffset];Create;False;0;0;0;False;1;Header(CAUSTIC ARRAY);False;-1;None;None;True;0;False;white;LockedToTexture2DArray;False;Object;-1;Auto;Texture2DArray;8;0;SAMPLER2DARRAY;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;91;592,-288;Inherit;True;Property;_FalloffTexture;Falloff
+    Texture;3;1;[NoScaleOffset];Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.StickyNoteNode;92;-768,368;Inherit;False;251.5948;101;;;1,0,0,1;See
+    TS  Projection Matrix Node$unity_Projector;0;0\nNode;AmplifyShaderEditor.UnityProjectorMatrixNode;69;-976,240;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.TimeNode;76;-336,496;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;0;-1024,-896;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;62;0;69;0\nWireConnection;62;1;61;0\nWireConnection;63;0;71;0\nWireConnection;63;1;72;0\nWireConnection;64;0;63;0\nWireConnection;64;1;67;0\nWireConnection;65;0;64;0\nWireConnection;65;1;66;0\nWireConnection;66;0;68;0\nWireConnection;67;0;68;0\nWireConnection;70;0;62;0\nWireConnection;71;0;70;0\nWireConnection;72;0;70;0\nWireConnection;73;0;76;2\nWireConnection;73;1;77;0\nWireConnection;74;0;73;0\nWireConnection;74;1;75;0\nWireConnection;79;0;89;0\nWireConnection;79;1;78;0\nWireConnection;80;0;87;0\nWireConnection;80;1;88;0\nWireConnection;81;0;80;0\nWireConnection;81;1;84;0\nWireConnection;82;0;81;0\nWireConnection;82;1;83;0\nWireConnection;83;0;85;0\nWireConnection;84;0;85;0\nWireConnection;86;0;79;0\nWireConnection;87;0;86;0\nWireConnection;88;0;86;0\nWireConnection;90;1;65;0\nWireConnection;90;6;74;0\nWireConnection;91;1;82;0\nASEEND*/\n//CHKSM=09B5B81E6304C93B7E9C26BF918C237756F2B48C"
+  m_functionName: 
+  m_description: 'Projector Clip Matrix Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.3529412, g: 0.7019608, b: 0.15686275, a: 1}
+  m_customNodeCategory: LS Matrix Transform
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

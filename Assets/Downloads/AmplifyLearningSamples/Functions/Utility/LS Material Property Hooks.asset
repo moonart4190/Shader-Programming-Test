@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Material Property Hooks
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;193;-2048,-1152;Inherit;False;3071.939;1148.847;;9;74;75;76;77;78;81;84;88;92;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;92;224,-1104;Inherit;False;735.4502;529.1403;Depth;8;48;35;38;67;95;94;93;64;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;88;-576,-592;Inherit;False;763.2805;512.7705;Stencil;8;57;33;41;51;91;89;63;90;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;84;-576,-1104;Inherit;False;765.2416;483.5762;Stencil;6;43;52;47;87;86;85;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;81;-1280,-1104;Inherit;False;639.2722;460.653;Blend
+    Alpha;6;53;46;56;83;82;62;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;78;-2016,-1104;Inherit;False;644.5515;467.855;Blend
+    RGB;6;34;45;36;80;79;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;77;-1280,-384;Inherit;False;640.2357;188.8371;Color
+    Mask;2;42;66;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;76;-1280,-608;Inherit;False;641.7314;180.4176;Mask
+    Clip Value;2;68;71;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;75;-2016,-384;Inherit;False;640.4723;196.8703;Alpha
+    to Coverage;2;50;65;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;74;-2016,-608;Inherit;False;639.5391;193.8164;Render
+    Face;2;69;70;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;64;544,-704;Inherit;False;359.8342;100;_DepthOffsetUnits;;0,0,0,1;_DepthOffsetUnits;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;61;-1728,-1040;Inherit;False;316.5269;103;_SourceBlendRGB;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.BlendMode$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;66;-992,-336;Inherit;False;322.8113;100;_ColorMask;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.ColorWriteMask;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;65;-1728,-336;Inherit;False;267.303;100;_AlphatoCoverage;;0,0,0,1;Unity.Engine
+    Enum Class$Off,0,On,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;70;-1728,-560;Inherit;False;307.4241;100;_Cull;;0,0,0,1;Unity.Engine
+    Enum Class$Front,2,Back,1,Both,0;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;71;-992,-544;Inherit;False;277.7985;109;Mask
+    Clip Value;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;63;-256,-208;Inherit;False;391.59;100;_StencilBufferZFailFront;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.StencilOp;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;62;-992,-1056;Inherit;False;315.1002;102;_SourceBlendAlpha;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.BlendMode$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;79;-1728,-912;Inherit;False;289.5269;100;_DestinationBlendRGB;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.BlendMode$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;80;-1728,-784;Inherit;False;285.5269;109.007;_BlendOpRGB;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.BlendOp$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;82;-992,-928;Inherit;False;314.2911;100;_DestinationBlendAlpha;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.BlendMode$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;83;-992,-800;Inherit;False;312.37;100;_BlendOpAlpha;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.BlendOp$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;85;-224,-1056;Inherit;False;288.1788;101.1804;_StencilBufferReference;;0,0,0,1;_StencilBufferReference;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;86;-224,-928;Inherit;False;292.9004;100;_StencilBufferReadMask;;0,0,0,1;_StencilBufferReadMask;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;87;-224,-800;Inherit;False;289.3591;100;_StencilBufferWriteMask;;0,0,0,1;_StencilBufferWriteMask;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;89;-256,-320;Inherit;False;392.1897;101.1986;_StencilBufferFailFront;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.StencilOp;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;90;-256,-416;Inherit;False;388.594;100;_StencilBufferPassFront;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.CompareFunction;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;91;-256,-528;Inherit;False;390.9911;100;_StencilBufferComparison;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.CompareFunction;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;93;544,-944;Inherit;False;356.9634;101.4987;_ZTestMode;;0,0,0,1;Unity.Engine
+    Enum Class$UnityEngine.Rendering.CompareFunction$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;94;544,-816;Inherit;False;356.7666;100;_DepthOffsetFactor;;0,0,0,1;_DepthOffsetFactor;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;95;544,-1056;Inherit;False;350.2935;100;_ZWriteMode;;0,0,0,1;Unity.Engine
+    Enum Class$Off,0,On,1;0;0\nNode;AmplifyShaderEditor.RangedFloatNode;45;-1952,-1040;Inherit;False;Property;_SourceBlendRGB;Source
+    Blend RGB;17;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;57;-512,-432;Inherit;False;Property;_StencilBufferPassFront;Stencil
+    Buffer Pass Front;15;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.StencilOp;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;41;-496,-320;Inherit;False;Property;_StencilBufferFailFront;Stencil
+    Buffer Fail Front;11;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.StencilOp;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;33;-512,-208;Inherit;False;Property;_StencilBufferZFailFront;Stencil
+    Buffer ZFail Front;12;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.StencilOp;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;51;-512,-528;Inherit;False;Property;_StencilBufferComparison;Stencil
+    Buffer Comparison;13;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.CompareFunction;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;34;-1984,-912;Inherit;False;Property;_DestinationBlendRGB;Destination
+    Blend RGB;5;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;10;10;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;36;-1920,-784;Inherit;False;Property;_BlendOpRGB;Blend
+    Op RGB;4;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.BlendOp;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.IntNode;69;-1920,-560;Inherit;False;Property;_Cull;Render
+    Face;1;1;[Enum];Create;False;0;0;1;Front,2,Back,1,Both,0;True;0;False;2;2;False;0;1;INT;0\nNode;AmplifyShaderEditor.RangedFloatNode;50;-1952,-336;Inherit;False;Property;_AlphatoCoverage;Alpha
+    to Coverage;18;1;[Enum];Create;False;0;0;1;Off,0,On,1;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;56;-1216,-1040;Inherit;False;Property;_SourceBlendAlpha;Source
+    Blend Alpha;16;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;46;-1248,-928;Inherit;False;Property;_DestinationBlendAlpha;Destination
+    Blend Alpha;3;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;10;10;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;53;-1184,-800;Inherit;False;Property;_BlendOpAlpha;Blend
+    Op Alpha;2;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.BlendOp;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;68;-1184,-544;Inherit;False;Constant;_MaskClipValue2;Mask
+    Clip Value;19;1;[HideInInspector];Create;True;1;;0;0;True;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;47;-512,-1056;Inherit;False;Property;_StencilBufferReference;Stencil
+    Buffer Reference;10;0;Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;0;0;0;255;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;52;-512,-800;Inherit;False;Property;_StencilBufferWriteMask;Stencil
+    Buffer Write Mask;6;0;Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;255;255;0;255;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;43;-512,-928;Inherit;False;Property;_StencilBufferReadMask;Stencil
+    Buffer Read Mask;7;0;Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;255;255;0;255;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;38;320,-704;Inherit;False;Property;_DepthOffsetUnits;Depth
+    Offset Units;9;0;Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;35;320,-816;Inherit;False;Property;_DepthOffsetFactor;Depth
+    Offset Factor;8;0;Create;False;0;0;1;UnityEngine.Rendering.BlendMode;True;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;48;352,-944;Inherit;False;Property;_ZTestMode;ZTest
+    Mode;14;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.CompareFunction;True;0;False;4;4;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;42;-1184,-336;Inherit;False;Property;_ColorMask;Color
+    Mask;19;1;[Enum];Create;False;0;0;1;UnityEngine.Rendering.ColorWriteMask;True;0;False;15;15;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;194;-2048,-1440;Inherit;False;639.0591;222.2648;Material
+    Property Hooks;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.IntNode;67;352,-1056;Inherit;False;Property;_ZWriteMode;ZWrite
+    Mode;0;1;[Enum];Create;False;0;0;1;Off,0,On,1;True;0;False;1;1;False;0;1;INT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-2048,-1536;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nASEEND*/\n//CHKSM=D370A7B19BE6E6377568F4EBBEA6D5073A16ADF0"
+  m_functionName: 
+  m_description: 'Material Property Hooks
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7647059, g: 0.30588236, b: 0, a: 1}
+  m_customNodeCategory: LS Utility
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

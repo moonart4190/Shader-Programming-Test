@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Shape Stripes
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;447;-1168,-3584;Inherit;False;2404.867;508.2986;Math;22;456;459;457;433;434;458;435;430;439;431;436;455;454;453;452;432;440;450;438;441;437;451;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;451;960,-3520;Inherit;False;216;281.6667;Fill;1;449;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;429;-1152,-3968;Inherit;False;771.7314;327.3838;Stripes
+    Node;2;446;448;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;446;-832,-3904;Inherit;False;387.766;155.8022;;;0,0,0,1;Creates
+    a stripes pattern.;0;0\nNode;AmplifyShaderEditor.FunctionNode;448;-1104,-3904;Inherit;True;Stripes;-1;;44994;8e73a71cdf24db740864b4c3f3357e7f;0;4;5;FLOAT;6;False;4;FLOAT;0;False;3;FLOAT;0.5;False;12;FLOAT;45;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;437;448,-3472;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.ScaleAndOffsetNode;441;208,-3472;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;1,0;False;2;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionNode;438;608,-3472;Inherit;False;Rectangle;-1;;44996;6b23e0c975270fb4084c354b2c83366a;0;3;1;FLOAT2;0,0;False;2;FLOAT;0.5;False;3;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;449;992,-3472;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;440;16,-3408;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;432;16,-3296;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;452;-368,-3408;Inherit;False;174;100;Frequency;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;453;-368,-3296;Inherit;False;174;100;Offset;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;454;384,-3280;Inherit;False;174;100;Thickness;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;455;-1120,-3232;Inherit;False;174;100;Rotation;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionInput;436;-160,-3408;Inherit;False;Frequency;1;1;False;1;0;FLOAT;6.48;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;431;-160,-3296;Inherit;False;Offset;1;2;False;1;0;FLOAT;4.1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RotatorNode;430;-576,-3472;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0.5,0.5;False;2;FLOAT;1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;435;-912,-3472;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;458;-1120,-3344;Inherit;False;174;100;Anchor;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RadiansOpNode;434;-768,-3232;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;457;-656,-3360;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;459;-672,-3328;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;439;432,-3360;Inherit;False;Thickness;1;3;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSubtitle;450;800,-3472;Inherit;False;Stripes;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;456;-912,-3344;Inherit;False;Anchor;2;0;False;1;0;FLOAT2;0.5,0.5;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;433;-912,-3232;Inherit;False;Rotation;1;4;False;1;0;FLOAT;45;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;461;-624,-3360;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;460;-624,-3232;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;442;-1152,-4096;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;437;0;441;0\nWireConnection;441;0;430;0\nWireConnection;441;1;440;0\nWireConnection;441;2;432;0\nWireConnection;438;1;437;0\nWireConnection;438;2;439;0\nWireConnection;449;0;450;0\nWireConnection;440;0;436;0\nWireConnection;432;0;431;0\nWireConnection;430;0;435;0\nWireConnection;430;1;457;0\nWireConnection;430;2;461;0\nWireConnection;434;0;433;0\nWireConnection;457;0;459;0\nWireConnection;459;0;456;0\nWireConnection;450;0;438;0\nWireConnection;461;0;460;0\nWireConnection;460;0;434;0\nASEEND*/\n//CHKSM=A7AC593E37EF560DA0E8900360492D88109F3DDD"
+  m_functionName: 
+  m_description: 'Stripes Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS Shape
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

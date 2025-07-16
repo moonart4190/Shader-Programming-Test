@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Hyperbolic Cosine
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;16;-256,-768;Inherit;False;615.2999;304;Hyperbolic
+    Cosine Node;2;15;14;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;14;0,-704;Inherit;False;314.2999;119.7;;;0,0,0,1;The
+    Cosh node calculates the hyperbolic cosine of the value specified on its Input.
+    The input value must be in radians unit system;0;0\nNode;AmplifyShaderEditor.CosOpNode;15;-176,-704;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;-784,-768;Inherit;False;456.4648;201.3411;Reference
+    Implementation;;0,0,0,1;cosh for a scalar float could be implemented like this.$$float
+    cosh(float x)${$  return 0.5 * (exp(x)+exp(-x))@$};0;0\nNode;AmplifyShaderEditor.FunctionOutput;6;-256,-864;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nASEEND*/\n//CHKSM=00A9E7326E55169CC060489CE0AA2D854C13BB7B"
+  m_functionName: 
+  m_description: 'Hyperbolic Cosine Node
+
+    Cosh
+
+
+    Learning Sample
+
+
+    GPU
+    Cycles:
+
+    32-63'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Trigonometry
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS DDX
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;31;-640,-64;Inherit;False;1229.294;442.7413;Generating
+    Face Normals;9;29;26;25;24;23;22;30;28;27;;0.1226415,0.1226415,0.1226415,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;19;-640,-576;Inherit;False;1239.979;475.0113;DDX;3;16;20;11;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;11;-400,-384;Inherit;False;943.3171;231.1232;Derivative;;0,0,0,1;The
+    FWidth, DDXY and the DDX & DDY functions give you information about how much
+    a value change between one pixel and the next.$$--- DDY returns the horizontal
+    change in left pixel value from the left subtracted from the right $--- DDX returns
+    the vertical change in top pixels value from the top subtracted from the bottom
+    $--- FWidth returns the abs value of DDY and DDX added together and is native
+    to the HLSL compiler$--- DDXY does the same as FWidth however skips the abs value
+    and Unity simply adds the results of DDY and DDX together$$ Note Unity shader
+    graph does not have a FWidth node $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;20;-400,-528;Inherit;False;944.1564;117.0006;DDX
+    Node;;0,0,0,1;The DDX Node allows you to find the difference (the partial derivative)
+    between data in the current pixel and data in the next pixel over to the right
+    in screen space.$$This node only works in the fragment stage.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-576,144;Inherit;False;306;118;;;0,0,0,1;DDX
+    and DDY find the difference between the position of the current pixel and the
+    one next to it - horizontally (for DDX), and vertically (for DDY). ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-192,176;Inherit;False;362;154;;;0,0,0,1;Doing
+    a cross product between those two slope vectors creates a surface normal.  Notice
+    that it's faceted.  This is because we're not using the smoothed vertex normals,
+    but instead, we're generating the normals purely from the shape of the geometry.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;30;208,208;Inherit;False;235;142;;;0,0,0,1;The
+    results are in World space, so we have to transform to Tangent space if we want
+    to plug the result into the Master Stack.;0;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;22;-576,-16;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DdxOpNode;23;-368,-16;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DdyOpNode;24;-368,64;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CrossProductOpNode;25;-224,-16;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;26;-48,-16;Inherit;True;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformDirectionNode;29;224,-16;Inherit;True;World;Tangent;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DdxOpNode;16;-592,-528;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-640,-688;Inherit;False;True;-1;Output;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;23;0;22;0\nWireConnection;24;0;22;0\nWireConnection;25;0;23;0\nWireConnection;25;1;24;0\nWireConnection;26;0;25;0\nWireConnection;29;0;26;0\nASEEND*/\n//CHKSM=15A06E557BDAFE7F36826C349769D05379E38C3D"
+  m_functionName: 
+  m_description: 'DDX Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Derivative
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

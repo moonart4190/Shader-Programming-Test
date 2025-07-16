@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Length
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;85;-384,1632;Inherit;False;1695.58;1310.132;Length
+    and Distance;12;55;53;52;56;89;49;50;58;51;47;46;81;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;124;1376,1648;Inherit;False;1729.308;445.6453;AntiAliasing;15;118;117;119;123;122;121;120;116;115;114;113;112;111;125;110;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;109;1120,928;Inherit;False;1140;651;Particle
+    SoftEdge Node;11;105;98;97;96;95;108;99;102;103;104;93;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;92;-384,-64;Inherit;False;832.8718;304;Length
+    Node (This is also known as magnitude);2;59;22;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;91;-384,272;Inherit;False;1075.862;430;Math;10;17;21;20;19;14;16;15;11;24;23;;0.0471698,0.0471698,0.0471698,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;81;-336,2080;Inherit;False;1011;809;View
+    Vector Node;18;86;63;66;75;74;62;73;65;70;61;69;64;60;80;79;78;77;76;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;23;-336,320;Inherit;False;249.8335;100;Input;;0,0,0,1;Vector
+    for which the length will be calculated;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;24;288,464;Inherit;False;270.8622;127.5015;Output;;0.1226415,0.1226415,0.1226415,1;Outputs
+    the euclidean length of the Input vector which can be seen as the following operation
+    Sqrt( Dot( Input, Input )).;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;25;-384,736;Inherit;False;700.6785;382.2398;Radius
+    of the Offset;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;30;96,1008;Inherit;False;149.4757;100;;;0,0,0,1;Gets
+    the radius of the offset;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;31;-384,1136;Inherit;False;704.1948;452.7341;Distance
+    to pixel;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;64,1392;Inherit;False;203.6;135;;;0,0,0,1;Using
+    the Length Node, we can measure how far away from the camera each pixel is. 
+    This is same as scene depth.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;38;-304,1264;Inherit;False;238.6;125;;;0,0,0,1;The
+    View Vector is a line that goes from the camera to the current pixel being rendered.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;39;336,1136;Inherit;False;708.9528;450.6514;Distance
+    to pixel;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;41;368,1376;Inherit;False;402.5428;193.1495;;;0,0,0,1;You
+    can normalize any vector (make it's lenth 1) by dividing the vector by its length. 
+    Here we find the length of the vector and then divide the vector by its length. 
+    This results in a normalized vector.$$(Usually it's easier to just use the Normalize
+    node - but this is an example of what you can do with the Length node.);0;0\nNode;AmplifyShaderEditor.StickyNoteNode;46;288,1696;Inherit;False;224.0823;100;;;0,0,0,1;The
+    Length node and Distance node are very similar.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;47;448,1808;Inherit;False;197.8402;100;;;0,0,0,1;The
+    Distance node measures the distance between two points.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;51;448,1936;Inherit;False;197.8402;100;;;0,0,0,1;The
+    Length node tells us how long a vector is.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;58;720,2112;Inherit;False;280.1716;131.103;;;0,0,0,1;Mesauring
+    the length of the View Vector or finding the distance between the camera position
+    and the world space position should give us the same result.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;-160,-16;Inherit;False;556.8718;151.4179;;;0,0,0,1;The
+    Length Node is used to measure the length of a vector.$$The Length node and Distance
+    node are very similar.$--- The Distance node measures the distance between two
+    points.$--- The Length node tells us how long a vector is.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;76;-256,2160;Inherit;False;291.9719;117.7235;;;0.1320755,0.1320755,0.1320755,1;The
+    View Vector is a line between the camera and the current vertex or pixel being
+    rendered.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;77;432,2144;Inherit;False;150;100;Object
+    Space;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;78;432,2304;Inherit;False;150;100;View
+    Space;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;79;240,2528;Inherit;False;150;100;World
+    Space;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;80;432,2672;Inherit;False;150;100;Tangent
+    Space;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;90;-848,-64;Inherit;False;437.1189;196.2595;Reference
+    Implementation;;0,0,0,1;length for a float3 vector could be implemented like
+    this.$$float length(float3 v)${$  return sqrt(dot(v,v))@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode;93;1920,1248;Inherit;False;240.1558;100;;;0,0,0,1;Fades
+    out the particles where intersect with scene meshes ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;105;1456,1344;Inherit;False;248.7773;125.0941;;;0,0,0,1;You
+    can create the same vector as the View Vector node by subtracting the Position
+    in World Space from the Camera Position. $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;110;2560,1824;Inherit;False;223.0548;130.1145;;;0.1226415,0.1226415,0.1226415,1;Outputs
+    the euclidean length of the Input vector which can be seen as the following operation
+    Sqrt( Dot( Input, Input )).;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;125;2880,1920;Inherit;False;200.3906;122.7958;;;0,0,0,1;Results
+    in a sharper AntiAliasing edge regardless of resolution or camera distance;0;0\nNode;AmplifyShaderEditor.FunctionInput;11;-336,432;Inherit;False;In;3;0;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LengthOpNode;22;-336,-16;Inherit;True;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-16,464;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;16;-16,560;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;14;-16,368;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;19;144,368;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;20;288,368;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SqrtOpNode;21;416,368;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;17;-176,432;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.LengthOpNode;32;64,1184;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;60;128,2432;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;64;160,2528;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformDirectionNode;69;224,2304;Inherit;False;World;View;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WireNode;61;128,2208;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformDirectionNode;70;224,2144;Inherit;False;World;Object;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WireNode;62;160,2352;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;74;-288,2448;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;75;-224,2592;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;66;-16,2448;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;63;160,2432;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;65;160,2672;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformDirectionNode;73;224,2672;Inherit;False;World;Tangent;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RegisterLocalVarNode;86;224,2448;Inherit;False;View
+    Vector Node WS;-1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GetLocalVarNode;89;704,2032;Inherit;False;86;View
+    Vector Node WS;1;0;OBJECT;;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;56;704,1872;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;52;752,1728;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DistanceOpNode;53;1024,1728;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LengthOpNode;55;1024,2032;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DistanceOpNode;50;288,1808;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LengthOpNode;49;288,1936;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LengthOpNode;40;640,1264;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;44;816,1184;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.PosVertexDataNode;26;-288,784;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleAddOpNode;29;-48,784;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;27;-320,928;Inherit;False;Constant;_CustomOffset;Custom
+    Offset;0;0;Create;True;0;0;0;False;0;False;-0.59,-0.06,0.87;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.LengthOpNode;28;96,784;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScreenDepthNode;98;1552,1168;Inherit;False;2;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;97;1776,1168;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;96;1920,1168;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;108;1648,976;Inherit;True;Property;_MainTex1;BaseColor
+    Map;0;0;Create;False;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.LengthOpNode;99;1616,1248;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;102;1456,1248;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;103;1168,1248;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;104;1232,1392;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;111;1952,1696;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DdxOpNode;112;2128,1760;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DdyOpNode;113;2128,1840;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;114;2256,1760;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.LengthOpNode;115;2400,1760;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;116;2576,1696;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;120;1680,1776;Inherit;True;Polygon;-1;;2;6906ef7087298c94c853d6753e182169;0;4;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;121;1424,1776;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RangedFloatNode;122;1424,1904;Inherit;False;Constant;_NumberofSides;Number
+    of Sides;1;0;Create;True;0;0;0;False;0;False;6;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;123;1488,1984;Inherit;False;Constant;_ShapeSize;Shape
+    Size;1;0;Create;True;0;0;0;False;0;False;0.6;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;119;1648,1696;Inherit;False;Constant;_AntiAliasingCutoff;AntiAliasing
+    Cutoff;2;0;Create;True;0;0;0;False;0;False;0.6919443;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;95;2080,1088;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;87;-288,1184;Inherit;False;86;View
+    Vector Node WS;1;0;OBJECT;;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GetLocalVarNode;88;368,1184;Inherit;True;86;View
+    Vector Node WS;1;0;OBJECT;;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;117;2736,1696;Inherit;False;2;0;FLOAT;0.5;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;118;2896,1696;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;7;-384,-192;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;15;0;17;1\nWireConnection;15;1;17;1\nWireConnection;16;0;17;2\nWireConnection;16;1;17;2\nWireConnection;14;0;17;0\nWireConnection;14;1;17;0\nWireConnection;19;0;14;0\nWireConnection;19;1;15;0\nWireConnection;20;0;19;0\nWireConnection;20;1;16;0\nWireConnection;21;0;20;0\nWireConnection;17;0;11;0\nWireConnection;32;0;87;0\nWireConnection;60;0;66;0\nWireConnection;64;0;66;0\nWireConnection;69;0;62;0\nWireConnection;61;0;60;0\nWireConnection;70;0;61;0\nWireConnection;62;0;63;0\nWireConnection;66;0;74;0\nWireConnection;66;1;75;0\nWireConnection;63;0;66;0\nWireConnection;65;0;64;0\nWireConnection;73;0;65;0\nWireConnection;86;0;66;0\nWireConnection;53;0;52;0\nWireConnection;53;1;56;0\nWireConnection;55;0;89;0\nWireConnection;40;0;88;0\nWireConnection;44;0;88;0\nWireConnection;44;1;40;0\nWireConnection;29;0;26;0\nWireConnection;29;1;27;0\nWireConnection;28;0;29;0\nWireConnection;97;0;98;0\nWireConnection;97;1;99;0\nWireConnection;96;0;97;0\nWireConnection;99;0;102;0\nWireConnection;102;0;103;0\nWireConnection;102;1;104;0\nWireConnection;111;0;119;0\nWireConnection;111;1;120;0\nWireConnection;112;0;111;0\nWireConnection;113;0;111;0\nWireConnection;114;0;112;0\nWireConnection;114;1;113;0\nWireConnection;115;0;114;0\nWireConnection;116;0;111;0\nWireConnection;116;1;115;0\nWireConnection;120;1;121;0\nWireConnection;120;2;122;0\nWireConnection;120;3;123;0\nWireConnection;120;4;123;0\nWireConnection;95;0;108;4\nWireConnection;95;1;96;0\nWireConnection;117;1;116;0\nWireConnection;118;0;117;0\nASEEND*/\n//CHKSM=E6E135F380B4013F40A2A62082907571757F0762"
+  m_functionName: 
+  m_description: 'Length Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.21960784, g: 0.19607843, b: 0.44705883, a: 1}
+  m_customNodeCategory: LS Vector Operators
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Reciprocal
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;76;-256,0;Inherit;False;2453.544;892.8986;;31;63;67;69;74;73;72;40;70;71;59;56;55;54;52;64;66;65;53;51;48;46;45;43;42;41;38;33;32;31;29;75;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;75;112,352;Inherit;False;228;163;Reciprocal;1;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;23;-256,-352;Inherit;False;385.5922;263.3784;Math;3;24;18;3;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;22;-256,-688;Inherit;False;500.605;301.321;Reciprocal
+    Node;2;21;19;;0.06603771,0.06603771,0.06603771,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;29;432,80;Inherit;False;129.9832;127.791;UV;1;39;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;31;-48,352;Inherit;False;129.9832;127.791;Scale;1;49;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;32;752,688;Inherit;False;129.9832;127.791;Anchor;1;57;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;33;752,496;Inherit;False;129.9832;127.791;Offset;1;58;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-48,-624;Inherit;False;221.8521;134.2655;;;0,0,0,1;The
+    Reciprocal Node divides one by the input value.;0;0\nNode;AmplifyShaderEditor.FunctionInput;3;-224,-304;Inherit;False;In;1;0;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;24;-128,-208;Inherit;False;178.5045;100;;;0,0,0,1;Reciprocal
+    SG Default;0;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;18;-48,-304;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ReciprocalOpNode;21;-208,-624;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;38;384,256;Inherit;False;243.5157;112.3247;;;0,0,0,1;Use
+    Max Node after Reciprocal set to near zero (1e-37) to insure scale does not go
+    below zero;0;0\nNode;AmplifyShaderEditor.WireNode;41;704,208;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;42;768,128;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;43;992,128;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;45;1344,224;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;46;1392,128;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;48;912,224;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;51;944,512;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;53;1136,496;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;65;992,400;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;66;704,384;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;64;544,400;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;52;944,704;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;54;1136,704;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;55;1344,688;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;56;1200,720;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;57;768,736;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;58;768,544;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;59;912,528;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector2Node;71;528,736;Inherit;False;Constant;_Anchor;Anchor;0;0;Create;True;0;0;0;False;0;False;0.5,0.5;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.Vector2Node;70;544,544;Inherit;False;Constant;_Offset;Offset;0;0;Create;True;0;0;0;False;0;False;0,0;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.RelayNode;39;448,128;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;40;192,128;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;72;1600,128;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;2,2;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;73;1760,128;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;1,1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DotProductOpNode;74;1936,128;Inherit;True;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;49;-32,400;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector2Node;69;-208,400;Inherit;False;Constant;_Scale;Scale;0;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.ReciprocalOpNode;61;160,400;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode;67;368,528;Inherit;False;Constant;_Float12;Float
+    0;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;63;384,400;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;1E-37,1E-37;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-256,-800;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;18;1;3;0\nWireConnection;41;0;66;0\nWireConnection;42;0;39;0\nWireConnection;42;1;41;0\nWireConnection;43;0;42;0\nWireConnection;43;1;48;0\nWireConnection;45;0;55;0\nWireConnection;46;0;43;0\nWireConnection;46;1;45;0\nWireConnection;48;0;59;0\nWireConnection;51;0;52;0\nWireConnection;53;0;65;0\nWireConnection;65;0;64;0\nWireConnection;65;1;51;0\nWireConnection;66;0;64;0\nWireConnection;64;0;63;0\nWireConnection;64;1;67;0\nWireConnection;52;0;57;0\nWireConnection;54;0;53;0\nWireConnection;55;0;56;0\nWireConnection;56;0;54;0\nWireConnection;56;1;57;0\nWireConnection;57;0;71;0\nWireConnection;58;0;70;0\nWireConnection;59;0;58;0\nWireConnection;39;0;40;0\nWireConnection;72;0;46;0\nWireConnection;73;0;72;0\nWireConnection;74;0;73;0\nWireConnection;74;1;73;0\nWireConnection;49;0;69;0\nWireConnection;61;0;49;0\nWireConnection;63;0;61;0\nASEEND*/\n//CHKSM=987E47889B69F0DCE6EB1447791357C8214E5154"
+  m_functionName: 
+  m_description: 'Reciprocal Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

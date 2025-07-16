@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Screen Position Stereo
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;10;-512,-192;Inherit;False;1216.194;506.2838;Math;6;1;4;2;3;11;6;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;9;-514,-546;Inherit;False;645.9104;296.6791;Screen
+    Position Stereo Node;2;14;7;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;6;-240,-144;Inherit;False;227;108;Screen
+    Position;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-208,-480;Inherit;False;268.4924;130.6791;;;0,0,0,1;Transforms
+    a screen position value from non Stereo to VR Stereo;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;11;160,64;Inherit;False;494.8958;152.8732;;;0,0,0,1;#if
+    defined(UNITY_SINGLE_PASS_STEREO)$    float4 scaleOffset = unity_StereoScaleOffset[unity_StereoEyeIndex]@$
+    return UV.xy * scaleOffset.xy + scaleOffset.zw@$#else$\treturn UV@$#endif\t;0;0\nNode;AmplifyShaderEditor.FunctionNode;14;-464,-480;Inherit;True;Stereo
+    Screen Pos;-1;;4;855e05b95c44ab9408194955b1347bed;0;1;2;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;3;0,-16;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;2;-240,-16;Inherit;False;Screen
+    Position;4;0;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.ScreenPosInputsNode;4;-464,-16;Inherit;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.CustomExpressionNode;1;160,-16;Inherit;False;#if
+    defined(UNITY_SINGLE_PASS_STEREO)$    float4 scaleOffset = unity_StereoScaleOffset[unity_StereoEyeIndex]@$
+    return UV.xy * scaleOffset.xy + scaleOffset.zw@$#else$\treturn UV@$#endif\t;2;Create;1;True;UV;FLOAT2;0,0;In;;Inherit;False;ASETransformStereoScreenSpaceTex;True;False;0;;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;5;-512,-640;Inherit;False;True;-1;Out;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;3;0;2;0\nWireConnection;2;0;4;0\nWireConnection;1;0;3;0\nASEEND*/\n//CHKSM=855F1659C647256457702D9AD7568851891937BA"
+  m_functionName: 
+  m_description: 'Screen Position Stereo Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

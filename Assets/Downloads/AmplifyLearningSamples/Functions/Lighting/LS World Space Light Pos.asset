@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS World Space Light Pos
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;138;-384,-928;Inherit;False;770.7363;342.9673;Behaves
+    differently according to Light Type;4;137;136;135;47;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;133;-384,-544;Inherit;False;2503;955;Shadow;34;92;91;89;60;62;69;70;71;129;115;106;119;118;117;122;116;56;58;87;57;93;88;132;82;72;124;126;73;130;127;128;94;131;125;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;32;-384,-1376;Inherit;False;773.886;351.5931;World
+    Space Light Pos Node;2;46;33;;0.01886791,0.01886791,0.01886791,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-64,-1328;Inherit;False;417.4183;234.6043;;;0,0,0,1;The
+    World Space Light Pos node outputs either a normalized light direction vector
+    or a light position in world space coordinates, according to the current light
+    type.$$$For directional lights the Dir/Pos output will specify a world space
+    direction and Type will be set to 0. $$For other light types the Dir/Pos output
+    will specify a world space position and Type will be set to 1.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;129;-112,-416;Inherit;False;265.5647;101.2283;Implicit
+    GSF;;0,0,0,1;The Implicit GSF is the basis of logic behind Geometric Shadowing.;0;0\nNode;AmplifyShaderEditor.SwizzleNode;92;656,-496;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LerpOp;91;848,-432;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LerpOp;89;1040,-304;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;60;1232,-304;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LerpOp;62;1856,-304;Inherit;True;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SaturateNode;69;624,-304;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;70;496,-304;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.01;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;71;352,-304;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;106;704,0;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;119;496,-80;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DotProductOpNode;118;1040,-80;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;117;464,80;Inherit;False;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DotProductOpNode;122;704,112;Inherit;False;2;0;FLOAT3;1,1,1;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;56;1280,48;Inherit;False;4;0;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;58;1520,-80;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;87;1680,-80;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;57;1216,-80;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;132;1664,-384;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;72;32,-176;Half;False;Property;_ShadowOffset;Shadow
+    Offset;2;0;Create;False;1;;0;0;False;0;False;0.01236161;0.295;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;124;32,-304;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;126;-112,-304;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;73;144,-96;Half;False;Property;_ShadowSharpness;Shadow
+    Sharpness;1;0;Create;False;1;;0;0;False;0;False;0.05610443;0.426;0.01;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;127;-336,-304;Inherit;True;131;NdotL;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;128;-336,-112;Inherit;True;130;NdotH;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;125;-112,-112;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldSpaceLightPos;47;-336,-880;Inherit;False;0;3;FLOAT4;0;FLOAT3;1;FLOAT;2\nNode;AmplifyShaderEditor.WorldNormalVector;136;-272,-768;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightPos;46;-320,-1328;Inherit;True;0;3;FLOAT4;0;FLOAT3;1;FLOAT;2\nNode;AmplifyShaderEditor.DotProductOpNode;135;-48,-880;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;137;128,-880;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;88;800,-224;Inherit;False;Property;_ShadowColorEnable;Enable
+    Shadow Color;3;1;[ToggleUI];Create;False;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;82;1376,-384;Half;False;Property;_ShadowStrength;Shadow
+    Strength;0;1;[Header];Create;False;1;SHADOWS;0;0;False;0;False;0.8384115;0.239;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;93;432,-496;Inherit;False;Property;_ShadowColor;Shadow
+    Color;4;1;[HDR];Create;True;0;0;0;False;0;False;4.298144,0.1360131,0,0;1,1,1,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WorldSpaceLightPos;94;1024,48;Inherit;False;0;3;FLOAT4;0;FLOAT3;1;FLOAT;2\nNode;AmplifyShaderEditor.WorldNormalVector;116;496,224;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.NormalizeNode;115;848,0;Inherit;False;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;130;1200,-160;Inherit;False;NdotH;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;131;832,192;Inherit;False;NdotL;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-1472;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;92;0;93;0\nWireConnection;91;0;92;0\nWireConnection;91;1;69;0\nWireConnection;91;2;69;0\nWireConnection;89;0;69;0\nWireConnection;89;1;91;0\nWireConnection;89;2;88;0\nWireConnection;60;0;89;0\nWireConnection;60;1;118;0\nWireConnection;62;0;60;0\nWireConnection;62;1;87;0\nWireConnection;62;2;132;0\nWireConnection;69;0;70;0\nWireConnection;70;0;71;0\nWireConnection;70;1;73;0\nWireConnection;71;0;124;0\nWireConnection;71;1;72;0\nWireConnection;106;0;119;0\nWireConnection;106;1;117;0\nWireConnection;118;0;119;0\nWireConnection;118;1;115;0\nWireConnection;122;0;116;0\nWireConnection;122;1;117;0\nWireConnection;56;0;94;2\nWireConnection;56;3;94;2\nWireConnection;56;1;94;2\nWireConnection;56;2;122;0\nWireConnection;58;0;57;0\nWireConnection;58;1;56;0\nWireConnection;87;0;58;0\nWireConnection;57;0;118;0\nWireConnection;132;0;82;0\nWireConnection;124;0;126;0\nWireConnection;124;1;125;0\nWireConnection;126;0;127;0\nWireConnection;125;0;128;0\nWireConnection;135;0;47;1\nWireConnection;135;1;136;0\nWireConnection;137;0;135;0\nWireConnection;115;0;106;0\nWireConnection;130;0;118;0\nWireConnection;131;0;122;0\nASEEND*/\n//CHKSM=19EAE28BB531F8B60A8AB8D8A54AE1084F8EBABC"
+  m_functionName: 
+  m_description: 'World Space Light Pos Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

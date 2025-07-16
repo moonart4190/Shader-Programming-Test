@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Divide
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;103;-1280,-160;Inherit;False;899.9803;509.8602;Dividing
+    two textures (Non-commutative);5;104;102;101;100;99;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;98;-1280,400;Inherit;False;1142.034;443;Divide
+    Is Used To Normalize;10;85;86;87;88;89;90;91;93;95;97;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;79;336,-160;Inherit;False;315.5323;501.6888;Don't
+    Divide By Zero;2;80;78;;1,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;40;-368,-160;Inherit;False;668.7901;505.7831;Animated
+    UV Scaling;6;77;76;75;74;73;72;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-1280,-512;Inherit;False;577.6412;283.7895;Divide
+    Node;2;19;71;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-1040,-448;Inherit;False;314.6904;113.6009;;;0,0,0,1;Returns
+    the result of input A (dividend) divided by input B (divisor);0;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;71;-1248,-448;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;77;-160,128;Inherit;False;219.9599;103.3314;;;0,0,0,1;The
+    Divide Node can be used to scales UV Coordinates up and down.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;80;352,112;Inherit;False;289.637;145.1352;;;0,0,0,1;Dividing
+    by zero returns a NaN or Not A Number. This can cause bad rendering artifacts
+    and should be avoided. Avoiding this can sometimes be tricky because some nodes,
+    such as Normalize, use divide internally.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;97;-560,608;Inherit;False;370.0341;166.2923;;;0,0,0,1;The
+    Normalize Node uses Divide internally. Normalize is the original input divided
+    the square root of the squared sum of the input components.$$Note that the result
+    with be NaN if you try to normalize a vector with a zero length - so don't give
+    Normalize a value of 0,0,0.;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;88;-848,704;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;104;-640,16;Inherit;False;203.2961;136.5459;;;0,0,0,1;Division
+    is not commutative so value's order is important.;0;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;72;-352,-80;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleDivideOpNode;73;-32,-80;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SinOpNode;74;-160,48;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;75;-336,48;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;76;112,-80;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;78;384,-112;Inherit;True;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;85;-1024,512;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;86;-848,512;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;87;-848,608;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;89;-688,512;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;90;-560,512;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SqrtOpNode;91;-432,512;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;93;-288,448;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;95;-1232,448;Inherit;False;Constant;_In;In;0;0;Create;True;0;0;0;False;0;False;0.7,0.4,0.3;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SamplerNode;99;-1232,-112;Inherit;True;Property;_TextureA;Texture
+    A;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;100;-1232,112;Inherit;True;Property;_TextureB;Texture
+    B;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleDivideOpNode;101;-848,-112;Inherit;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;102;-848,112;Inherit;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1280,-640;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;88;0;85;2\nWireConnection;88;1;85;2\nWireConnection;73;0;72;0\nWireConnection;73;1;74;0\nWireConnection;74;0;75;0\nWireConnection;76;0;73;0\nWireConnection;85;0;95;0\nWireConnection;86;0;85;0\nWireConnection;86;1;85;0\nWireConnection;87;0;85;1\nWireConnection;87;1;85;1\nWireConnection;89;0;86;0\nWireConnection;89;1;87;0\nWireConnection;90;0;89;0\nWireConnection;90;1;88;0\nWireConnection;91;0;90;0\nWireConnection;93;0;95;0\nWireConnection;93;1;91;0\nWireConnection;101;0;99;0\nWireConnection;101;1;100;0\nWireConnection;102;0;100;0\nWireConnection;102;1;99;0\nASEEND*/\n//CHKSM=02B44F71CACD292F642DFFC908DEBE9E33DDBA82"
+  m_functionName: 
+  m_description: 'Divide Node
+
+
+    Learning Sample
+
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

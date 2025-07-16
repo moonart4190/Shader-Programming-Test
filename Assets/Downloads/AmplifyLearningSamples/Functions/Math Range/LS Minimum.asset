@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Minimum
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;36;-512,496;Inherit;False;725.1925;429.6224;Blending
+    Occlusion from two sources;7;32;35;29;28;27;38;37;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;14;-512,0;Inherit;False;1020.926;438.3554;Minimum
+    Node;5;11;10;9;12;7;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;21;-512,-384;Inherit;False;868.7399;339.4077;Minimum
+    Node;2;25;22;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;48,48;Inherit;False;321.0692;189;;;0,0,0,1;Upper
+    limit$$Returning the maximum of the two input values, in this example set 0.25
+    as max it is clamping the values to anything bellow 0.25;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;12;-144,272;Inherit;False;508.4626;129.0219;;;0,0,0,1;A
+    - First value of the minimum operation$$B - Second value of the minimum operation,
+    Fully outputted when Alpha = 1$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;22;-384,-336;Inherit;False;371;194;Minimum
+    Node;;0,0,0,1;The Min node compares two values A and B and outputs the minimum
+    value between them$$$Min between multi-channel data types are done per-channel.
+    If A and B have different channel amounts a cast is done to match the one with
+    the most amount of channels$$;0;0\nNode;AmplifyShaderEditor.SimpleMinOpNode;9;-144,48;Inherit;True;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ColorNode;10;-400,48;Inherit;False;Constant;_Color1;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;11;-368,224;Inherit;False;Constant;_Minimum;Minimum;0;0;Create;True;0;0;0;False;0;False;0.25;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMinOpNode;25;0,-336;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;26;-960,-384;Inherit;False;419;206;Reference
+    Implementation;;0,0,0,1;min for float3 vectors could be implemented this way:$$float3
+    min(float3 a, float3 b)${$  return float3(a.x < b.x ? a.x : b.x,$               
+    a.y < b.y ? a.y : b.y,$                a.z < b.z ? a.z : b.z)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-128,656;Inherit;False;314.1416;120.3112;;;0,0,0,1;Use
+    Min Node instead of Multiply so result is whichever result is darker. This will
+    help prevent AO from getting too dark in blending. ;0;0\nNode;AmplifyShaderEditor.SaturateNode;29;16,560;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SamplerNode;35;-464,560;Inherit;True;Property;_OcclusionMap1;Occlusion
+    Map;0;0;Create;False;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.VertexColorNode;32;-368,752;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMinOpNode;28;-128,560;Inherit;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;37;-157.5296,649.6299;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;38;-160,848;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-512,-480;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;9;0;10;0\nWireConnection;9;1;11;0\nWireConnection;29;0;28;0\nWireConnection;28;0;35;0\nWireConnection;28;1;37;0\nWireConnection;37;0;38;0\nWireConnection;38;0;32;4\nASEEND*/\n//CHKSM=FC97C0872500BAFBBF020DD5EA469BA1A430794D"
+  m_functionName: 
+  m_description: 'Minimum Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Range
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

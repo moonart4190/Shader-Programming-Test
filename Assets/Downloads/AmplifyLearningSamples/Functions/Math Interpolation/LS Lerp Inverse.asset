@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Lerp Inverse
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;25;-384,-352;Inherit;False;1779.254;670.1914;Math;23;21;22;39;48;46;4;45;44;43;42;5;6;38;36;35;34;33;32;31;30;29;9;8;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;24;-384,-672;Inherit;False;866.5306;287.7185;Lerp
+    Inverse Node;2;7;28;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;18;-384,384;Inherit;False;1085.578;502.8735;Example
+    Case Use Sharpen;9;17;16;15;14;12;20;11;10;19;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;30;240,-224;Inherit;False;130.4764;134.8022;A;1;37;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;31;240,-32;Inherit;False;130.4764;134.8022;B;1;40;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;32;240,160;Inherit;False;130.4764;134.8022;Alpha;1;41;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;46;1168,-240;Inherit;False;179;275;Out;1;47;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-96,-624;Inherit;False;513.8601;183.9877;;;0,0,0,1;Returns
+    the linear parameter that produces the interpolant specified by input Alpha within
+    the range of input A to input B.$ Inverse Lerp is the inverse operation of the
+    Lerp Node. It can be used to determine what the input to a Lerp was based on
+    its output. $$cheap replacement of smoothstep;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;8;-352,-288;Inherit;False;228.0191;101.8633;;;0.03773582,0.03773582,0.03773582,1;Out
+    = (Alpha - A)/(B - A)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;9;-352,-160;Inherit;False;232.7254;172.1974;Lerp
+    vs Inverse Lerp;;0,0,0,1;**Lerp**$the value  between 0 and 2 with a Alpha value
+    of 0.5 is 1. $$**Inverse Lerp**$the value  between 0 and 2 with a Alpha value
+    of 1 is 0.5.$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-320,480;Inherit;False;164.8985;134.7631;;;0,0,0,1;You
+    can control the placement and width of the gradient with the A and B inputs.;0;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;10;64,464;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;11;64,560;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;20;64,704;Inherit;False;582.1588;117.5501;;;0,0,0,1;The
+    Inverse Lerp node can be used to control the spread of a gradient. A and B values
+    of 0 and 1 will just give you the original gradient, but moving the values closer
+    together will tighten up the gradient and give you a sharper line - with the
+    size of the gradient being controlled by the distance between A and B.;0;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;12;240,464;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;14;-144,464;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.45;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;15;-128,544;Inherit;False;Constant;_Float1;Float
+    1;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;16;-192,624;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;29;944,-96;Inherit;False;166.5986;103.499;Saturate;;0,0,0,1;Saturate
+    is commonly used after inverse lerp;0;0\nNode;AmplifyShaderEditor.FunctionNode;28;-336,-624;Inherit;True;Inverse
+    Lerp;-1;;4;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-32,-288;Inherit;False;190.1061;100;A;;0,0,0,1;A
+    is the input for the first value of the interpolator operation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;-32,-96;Inherit;False;194.3051;100;B;;0,0,0,1;B
+    is the input for the last value of the interpolator operation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;-16,96;Inherit;False;180.13;103.7266;Alpha;;0,0,0,1;Alpha
+    is the input for Interpolator value$expected range is [0-1];0;0\nNode;AmplifyShaderEditor.RelayNode;37;256,-176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;40;256,16;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;41;256,208;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;36;32,-176;Inherit;False;A;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;38;32,16;Inherit;False;B;1;2;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;6;464,16;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;5;656,-192;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;42;400,192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;43;400,-112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;44;384,-96;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;45;384,16;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;4;464,-192;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;47;1184,-192;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;48;1168,48;Inherit;False;182.9615;108.4408;Out;;0.01886791,0.01886791,0.01886791,1;Results
+    for Interpolator values for Inverse Lerp;0;0\nNode;AmplifyShaderEditor.FunctionInput;39;32,208;Inherit;False;Alpha;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;22;784,-112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch;21;944,-192;Inherit;False;Saturate;True;0;2;-1;In
+    0;In 1;Object;-1;10;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;17;496,464;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-768;Inherit;False;True;-1;Output;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;10;0;16;2\nWireConnection;10;1;14;0\nWireConnection;11;0;15;0\nWireConnection;11;1;14;0\nWireConnection;12;0;10;0\nWireConnection;12;1;11;0\nWireConnection;37;0;36;0\nWireConnection;40;0;38;0\nWireConnection;41;0;39;0\nWireConnection;6;0;40;0\nWireConnection;6;1;45;0\nWireConnection;5;0;4;0\nWireConnection;5;1;6;0\nWireConnection;42;0;41;0\nWireConnection;43;0;42;0\nWireConnection;44;0;37;0\nWireConnection;45;0;44;0\nWireConnection;4;0;43;0\nWireConnection;4;1;37;0\nWireConnection;47;0;21;0\nWireConnection;22;0;5;0\nWireConnection;21;0;5;0\nWireConnection;21;1;22;0\nWireConnection;17;0;12;0\nASEEND*/\n//CHKSM=0B0C60712FBDDDBCA2FA97207B2655BA2ACA6D1A"
+  m_functionName: 
+  m_description: 'Lerp Inverse Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Interpolation
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

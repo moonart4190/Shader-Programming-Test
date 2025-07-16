@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS GSF Ward
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;361;-2928,1808;Inherit;False;886.0977;461.022;NdotV;5;371;370;369;368;362;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;372;-2928,2288;Inherit;False;888.9039;462.9585;NdotL;5;382;381;380;379;373;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;357;-1792,1664;Inherit;False;926;562.6667;Math;7;343;344;355;135;149;353;354;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;362;-2656,1856;Inherit;False;317.4856;390.1839;NdotV;3;365;364;363;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;373;-2672,2336;Inherit;False;330.0456;397.3049;NdotL;3;378;375;374;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;360;-1792,1248;Inherit;False;1055.935;388.3889;GSF
+    Ward - Amplify Shader Pack Example;2;358;359;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;343;-1744,1904;Inherit;False;147.3326;128.2139;NdotV;1;350;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;344;-1744,2064;Inherit;False;147.3333;131.6667;NdotL;1;349;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;355;-1104,1904;Inherit;False;186;272.5;Out;1;356;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;363;-2624,1904;Inherit;False;136.6875;138.37;Normal;1;366;;0.04402506,0.04402506,0.04402506,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;364;-2624,2064;Inherit;False;136.6875;138.37;View
+    Dir;1;367;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;374;-2640,2400;Inherit;False;130.6667;135.3333;Normal;1;376;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;375;-2640,2544;Inherit;False;130.6667;135.3333;Light
+    Dir;1;377;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;358;-1760,1296;Inherit;False;353.0058;284.1535;Amplify
+    Shader Pack Example;1;385;;1,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;353;-1744,1712;Inherit;False;511.9085;135.6067;Credits;;0,0,0,0.5019608;Method
+    by Jordan Stevens$Link: https://www.jordanstevenstechart.com/physically-based-rendering$$Node
+    Made by Tiber Legacy;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;354;-1184,1760;Inherit;False;265.8074;133.5092;;;0.06603771,0.06603771,0.06603771,1;The
+    Ward GSF is a strengthened Implicit GSF. Ward uses this approach to strengthen
+    the Normal Distribution Functions $;0;0\nNode;AmplifyShaderEditor.RelayNode;349;-1712,2112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;350;-1712,1952;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;135;-1520,1952;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;149;-1328,1952;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;356;-1088,1952;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;359;-1344,1296;Inherit;False;571.6;169.2999;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.DotProductOpNode;365;-2448,1952;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;366;-2608,1952;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;367;-2608,2112;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;368;-2880,2112;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldNormalVector;369;-2880,1952;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleMaxOpNode;370;-2160,1952;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;371;-2320,2048;Inherit;False;Constant;_Zero1;Zero;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;376;-2624,2448;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;377;-2624,2592;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;378;-2448,2448;Inherit;False;2;0;FLOAT3;1,1,1;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;379;-2320,2512;Inherit;False;Constant;_Zero2;Zero;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;380;-2160,2448;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldNormalVector;381;-2864,2448;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;382;-2896,2592;Inherit;False;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WireNode;383;-1936,2176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;384;-1952,2416;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;385;-1696,1360;Inherit;True;GSF
+    Ward;-1;;1;;0;0;0\nNode;AmplifyShaderEditor.FunctionOutput;223;-1792,1152;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;349;0;383;0\nWireConnection;350;0;370;0\nWireConnection;135;0;350;0\nWireConnection;135;1;349;0\nWireConnection;149;0;135;0\nWireConnection;356;0;149;0\nWireConnection;365;0;366;0\nWireConnection;365;1;367;0\nWireConnection;366;0;369;0\nWireConnection;367;0;368;0\nWireConnection;370;0;365;0\nWireConnection;370;1;371;0\nWireConnection;376;0;381;0\nWireConnection;377;0;382;0\nWireConnection;378;0;376;0\nWireConnection;378;1;377;0\nWireConnection;380;0;378;0\nWireConnection;380;1;379;0\nWireConnection;383;0;384;0\nWireConnection;384;0;380;0\nASEEND*/\n//CHKSM=4D7E270D41FB5009BE8D67C23285591E74DACA7C"
+  m_functionName: 
+  m_description: 'GSF Ward
+
+
+    Learning Sample
+
+    (Amplify Shader Pack Example)'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Algorithm
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

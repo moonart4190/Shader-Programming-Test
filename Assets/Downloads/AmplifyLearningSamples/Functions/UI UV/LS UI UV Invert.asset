@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI UV Invert
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;400;-2816,2688;Inherit;False;1894.515;1061.31;Math;27;424;445;444;443;442;441;440;429;431;430;427;428;426;425;439;435;421;437;436;433;432;412;411;405;404;402;401;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;401;-2272,2832;Inherit;False;129.9832;127.791;UV;1;407;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;402;-1424,2832;Inherit;False;185.3303;276.875;InvertU;1;410;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;432;-1424,3136;Inherit;False;185.3303;276.875;InvertV;1;434;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;436;-1424,3440;Inherit;False;185.3303;276.875;Both;1;438;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;282;-2816,2336;Inherit;False;706.1434;286.771;UV
+    Invert;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2464,2400;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;Flips
+    the U, V or both texture coordinates.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;404;-1200,2752;Inherit;False;205.5;120.5;InvertU;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;405;-2457.873,2768;Inherit;False;139.5392;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.RelayNode;407;-2256,2880;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;411;-2448,2880;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;412;-2688,2880;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RelayNode;410;-1408,2880;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;433;-1200,3056;Inherit;False;205.5;120.5;InvertV;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;434;-1408,3184;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;437;-1200,3360;Inherit;False;205.5;120.5;Both;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;438;-1408,3488;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;425;-2096,2880;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.OneMinusNode;426;-1936,2880;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;428;-1760,2880;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.OneMinusNode;427;-1936,3216;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;430;-1968,3168;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;431;-1808,3184;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;429;-1760,3184;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;440;-1984,2960;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;441;-2000,2960;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;442;-2000,3200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;443;-1949.482,3176.042;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;444;-2128,2976;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;445;-2128,3488;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.OneMinusNode;424;-2064,3488;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;421;-1200,2880;Inherit;False;True;-1;InvertU;0;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;435;-1200,3184;Inherit;False;False;-1;InvertV;1;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;439;-1200,3488;Inherit;False;False;-1;Both;2;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;407;0;411;0\nWireConnection;411;0;412;0\nWireConnection;410;0;428;0\nWireConnection;434;0;429;0\nWireConnection;438;0;424;0\nWireConnection;425;0;407;0\nWireConnection;426;0;425;0\nWireConnection;428;0;426;0\nWireConnection;428;1;425;1\nWireConnection;427;0;442;0\nWireConnection;430;0;440;0\nWireConnection;431;0;443;0\nWireConnection;429;0;431;0\nWireConnection;429;1;427;0\nWireConnection;440;0;425;0\nWireConnection;441;0;425;1\nWireConnection;442;0;441;0\nWireConnection;443;0;430;0\nWireConnection;444;0;407;0\nWireConnection;445;0;444;0\nWireConnection;424;0;445;0\nWireConnection;421;0;410;0\nWireConnection;435;0;434;0\nWireConnection;439;0;438;0\nASEEND*/\n//CHKSM=53B59662E890C2026CEC146C571277DD0CD7FBBA"
+  m_functionName: 
+  m_description: 'UV Invert
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI UV
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

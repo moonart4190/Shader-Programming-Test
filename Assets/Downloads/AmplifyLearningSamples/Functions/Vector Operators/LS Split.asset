@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Split
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;113;-384,256;Inherit;False;621.5135;467;;5;108;112;111;110;109;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;92;-384,-256;Inherit;False;897.965;465.8502;Split
+    Node    ( shortcut: B key );3;107;99;59;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;-192,-208;Inherit;False;236.3718;137.0179;;;0,0,0,1;exposes
+    all available channels of its input data through individual output ports so they
+    can be used directly by other nodes;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;99;-192,-48;Inherit;False;554.955;208.4208;Output;;0,0,0,1;Data
+    to be broken into its individual components. Amount of outputs depends on amount
+    of channels from input data.$$X,Y,Z,W: Individual channels for vector data types$$R,G,B,A:
+    Individual channels for color data types$$[0][0] to [2][2]: Individual channels
+    for 3x3 matrix data types$$[0][0] to [3][3]: Individual channels for 4x4 matrix
+    data types;0;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;107;-368,-208;Inherit;True;FLOAT;1;0;FLOAT;0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.WorldPosInputsNode;109;-320,320;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.PosVertexDataNode;110;-320,464;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.LerpOp;112;-80,320;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;108;96,320;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RangedFloatNode;111;-304,624;Inherit;False;Constant;_MyToggle;My
+    Toggle;0;1;[ToggleUI];Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;7;-384,-384;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;112;0;109;0\nWireConnection;112;1;110;0\nWireConnection;112;2;111;0\nWireConnection;108;0;112;0\nASEEND*/\n//CHKSM=6FC062F3B323FB95BBBBB6A7242D9C730AC690AD"
+  m_functionName: 
+  m_description: 'Split Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.21960784, g: 0.19607843, b: 0.44705883, a: 1}
+  m_customNodeCategory: LS Vector Operators
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

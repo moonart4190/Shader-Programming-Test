@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Helper Histogram Scan
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;284;-3200,4096;Inherit;False;2175.35;1155.221;;41;351;312;360;331;341;342;359;358;357;356;355;354;352;349;327;334;323;345;343;344;335;336;340;339;338;337;333;332;330;329;295;328;325;321;310;293;348;324;320;309;292;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;287;-3200,3712;Inherit;False;767.6833;301.2485;Histogram
+    Scan;1;283;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;292;-2624,4256;Inherit;False;131;130.5;Gradient;1;294;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;309;-1536,4640;Inherit;False;184.5;275;Smooth;1;311;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;320;-2624,4448;Inherit;False;131;130.5;Position;1;322;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;324;-2784,4688;Inherit;False;131;130.5;Contrast;1;326;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;348;-1536,4944;Inherit;False;184.5;275;Linear;1;350;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2816,3792;Inherit;False;285.948;160.8459;;;0,0,0,1;Given
+    an input gradient, this node creates a hard black and white section.  Position
+    defines the boundary values between black and white and Contrast defines how
+    sharp the edge of the boundary is.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;293;-2832,4192;Inherit;False;182.458;100.5503;Gradient;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;310;-1312,4560;Inherit;False;192;117.5;Smooth;;0.07075471,0.07075471,0.07075471,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;321;-2832,4384;Inherit;False;182.458;100.5503;Position;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;325;-2992,4624;Inherit;False;182.458;100.5503;Contrast;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;322;-2608,4496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;294;-2608,4304;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;328;-3072,4304;Inherit;False;LS
+    UI Gradient Linear;-1;;1;5fb69c5d8950a3642ab32bc81d65d552;2,325,0,337,0;1;319;FLOAT2;0,0;False;2;FLOAT;327;FLOAT;328\nNode;AmplifyShaderEditor.FunctionInput;295;-2784,4304;Inherit;False;Gradient;1;0;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;329;-2432,4496;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;330;-2272,4496;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;332;-2128,4400;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;333;-2128,4480;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;337;-2480,4576;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;338;-2480,4576;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;339;-2480,4720;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;340;-2480,4832;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;336;-2432,4832;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;335;-2432,4720;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;344;-1968,4384;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SmoothstepOpNode;343;-1904,4688;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;345;-1968,4672;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;323;-2784,4496;Inherit;False;Position;1;1;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;334;-2624,4736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;326;-2768,4736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;327;-2944,4736;Inherit;False;Contrast;1;2;False;1;0;FLOAT;0.9;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;347;-3200,3488;Inherit;False;647.0379;160.3304;Credits;;0,0,0,0.5019608;Method
+    by:$Ben Cloward$$Tutorial Link: $https://www.youtube.com/watch?v=nj7kKHr8QNM&t=290s$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;349;-1312,4864;Inherit;False;192;117.5;Linear;;0.07075471,0.07075471,0.07075471,1;;0;0\nNode;AmplifyShaderEditor.FunctionNode;352;-1904,4992;Inherit;False;Inverse
+    Lerp;-1;;2;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;354;-1968,4384;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;355;-1968,4800;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;356;-1968,4896;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;357;-1968,5024;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;358;-1968,4992;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;359;-1968,5040;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;342;-2112,4832;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;341;-2112,4720;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;331;-2080,4304;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;360;-1696,4992;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;311;-1520,4688;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;350;-1520,4992;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;312;-1312,4688;Inherit;False;True;-1;Smooth;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;351;-1312,4992;Inherit;False;False;-1;Linear;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;322;0;323;0\nWireConnection;294;0;295;0\nWireConnection;295;0;328;328\nWireConnection;329;0;322;0\nWireConnection;330;0;329;0\nWireConnection;332;0;333;0\nWireConnection;333;0;330;0\nWireConnection;337;0;322;0\nWireConnection;338;0;322;0\nWireConnection;339;0;337;0\nWireConnection;340;0;338;0\nWireConnection;336;0;340;0\nWireConnection;336;1;334;0\nWireConnection;335;0;339;0\nWireConnection;335;1;334;0\nWireConnection;344;0;331;0\nWireConnection;343;0;345;0\nWireConnection;343;1;341;0\nWireConnection;343;2;342;0\nWireConnection;345;0;344;0\nWireConnection;334;0;326;0\nWireConnection;326;0;327;0\nWireConnection;352;1;358;0\nWireConnection;352;2;357;0\nWireConnection;352;3;359;0\nWireConnection;354;0;331;0\nWireConnection;355;0;341;0\nWireConnection;356;0;342;0\nWireConnection;357;0;356;0\nWireConnection;358;0;355;0\nWireConnection;359;0;354;0\nWireConnection;342;0;336;0\nWireConnection;341;0;335;0\nWireConnection;331;0;294;0\nWireConnection;331;1;332;0\nWireConnection;360;0;352;0\nWireConnection;311;0;343;0\nWireConnection;350;0;360;0\nWireConnection;312;0;311;0\nWireConnection;351;0;350;0\nASEEND*/\n//CHKSM=00AE4EB03299A430A5CAEB3F8598CD97C2604EA4"
+  m_functionName: 
+  m_description: 'Histogram Scan
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Helper
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

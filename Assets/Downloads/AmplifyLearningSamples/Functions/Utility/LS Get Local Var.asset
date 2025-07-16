@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Get Local Var
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;223;896,-1616;Inherit;False;926.7681;603.1323;Set
+    and Get Value;7;232;231;230;228;227;217;225;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;207;896,-1984;Inherit;False;770.9124;325.9898;Get
+    Local Var Node ( shortcut: G key );;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;212;1120,-1920;Inherit;False;495.356;203.5616;;;0,0,0,1;allows
+    access to local values created via a Register Local Var node. This can be done
+    by selecting a local variable through its Reference property available at the
+    Node Properties window or upper left corner of the node body.$$NOTE: $Using this
+    node is similar to directly connect the Register Local Var output to where the
+    value is needed.;0;0\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;225;928,-1408;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldNormalVector;217;960,-1568;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DotProductOpNode;227;1184,-1568;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;228;1312,-1568;Inherit;True;NdotL;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;230;1312,-1312;Inherit;True;228;NdotL;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleAndOffsetNode;231;1568,-1312;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;232;1328,-1104;Inherit;False;Constant;_remapfactor;remap
+    factor;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;224;928,-1920;Inherit;False;-1;;1;0;OBJECT;;False;1;OBJECT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;896,-2080;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;227;0;217;0\nWireConnection;227;1;225;0\nWireConnection;228;0;227;0\nWireConnection;231;0;230;0\nWireConnection;231;1;232;0\nWireConnection;231;2;232;0\nASEEND*/\n//CHKSM=29D25460E4535CA58CB56A3A85C54A70C8A521C6"
+  m_functionName: 
+  m_description: 'Get Local Var Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7647059, g: 0.30588236, b: 0, a: 1}
+  m_customNodeCategory: LS Utility
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

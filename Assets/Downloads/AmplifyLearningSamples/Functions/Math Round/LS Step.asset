@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Step
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;30;-384,128;Inherit;False;714.3527;328.0571;;4;29;34;31;28;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;27;-384,-192;Inherit;False;579.6884;279.1263;This
+    is the formula that the Step function uses.;3;23;24;3;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-384,-512;Inherit;False;577.6412;283.7895;Step
+    Node;2;25;19;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-352,-464;Inherit;False;290.1903;100;;;0,0,0,1;Returns
+    1 if In is the same or higher than the B input. Otherwise it returns 0.;0;0\nNode;AmplifyShaderEditor.StepOpNode;25;-16,-464;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;31;-336,304;Inherit;False;225.8215;120.4598;;;0,0,0,1;Here
+    we can see that our input gradient value is rounded up to 1 or down to 0 depending
+    on the value of B.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;-864,-512;Inherit;False;391.3966;190.651;Reference
+    Implementation;;0,0,0,1;step for float3 vectors could be implemented this way:$$float3
+    step(float3 a, float3 x)${$  return x >= a@$};0;0\nNode;AmplifyShaderEditor.Compare;23;-144,-128;Inherit;False;3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;3;-320,-128;Inherit;False;In;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;24;-320,-48;Inherit;False;Edge;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;28;-336,176;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StepOpNode;29;96,176;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;34;-96,176;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-592;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;23;0;3;0\nWireConnection;23;1;24;0\nWireConnection;29;0;34;0\nWireConnection;34;0;28;1\nASEEND*/\n//CHKSM=B081894004AE19D7577A80363086BDA62A83436F"
+  m_functionName: 
+  m_description: 'Step Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Round
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

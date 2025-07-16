@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Edge Length Tessellation with Cull
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;65;-1024,-1056;Inherit;False;633.7435;256.3333;Edge
+    Length Tessellation with Cull Node;3;17;8;13;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;59;-1024,-1680;Inherit;False;1440.448;564.0077;Edge
+    Length Tessellation with Cull Node;5;64;63;61;60;66;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;60;-992,-1632;Inherit;False;348.556;142.1179;Edge
+    Length;;0,0,0,1;Desired final tessellated edge length in pixels;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;61;-992,-1472;Inherit;False;348.556;125.0239;Max
+    Disp;;0,0,0,1;Maximum displacement/distance from camera's clip planes on which
+    tessellation should not be applied;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;63;-336,-1632;Inherit;False;724.322;263.9482;;;0,0,0,1;The
+    Edge Length Tessellation Node With Cull sets up tessellation according to an
+    object triangles edge length on screen. $$This technique allows the subdivision
+    of a mesh's triangles, splitting them into smaller triangles at run-time in order
+    to increase the surface detail of any given mesh. $$On this node in particular
+    a desired final edge length is set via the Edge Length parameter which makes
+    longer edges have a larger tessellation factor applied to them. $$This node is
+    similar to Edge Length Tessellation but also performs patch frustum culling which
+    is a bit more expensive, but saves on GPU work for parts of obejct mesh that
+    are outside of camera view.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;64;-336,-1344;Inherit;False;723.5011;117.6617;NOTE;;0,0,0,1;Using
+    this node is equivalent to activate the Tessellation option on the Master Node
+    and set its Type to Edge Length Cull. The Shader Model will be automatically
+    set to 4.6 if its set to a lower value, since its the minimum version required;0;0\nNode;AmplifyShaderEditor.EdgeLengthCullTessNode;66;-624,-1632;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.EdgeLengthCullTessNode;13;-672,-992;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RangedFloatNode;8;-976,-992;Half;False;Property;_TessellationStrength;Tessellation
+    Strength;0;0;Create;False;1;;0;0;False;0;False;0.0001;0.5;0.0001;32;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;17;-912,-912;Half;False;Property;_TessellationCulling;Tessellation
+    Culling;1;0;Create;False;1;;0;0;False;0;False;0;0.5;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;10;-1024,-1792;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;13;0;8;0\nWireConnection;13;1;17;0\nASEEND*/\n//CHKSM=B6A2C400B13287FDA8A1643C19782B2E9BC74ACA"
+  m_functionName: 
+  m_description: 'Edge Length Tessellation with Cull Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Surface Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

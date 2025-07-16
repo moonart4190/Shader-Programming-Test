@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Pattern Wedges
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;469;-2816,2688;Inherit;False;3584.077;1024.506;Math;50;432;431;609;594;595;593;613;612;611;610;592;633;631;632;615;630;618;614;616;617;591;590;620;589;621;619;452;629;628;627;626;625;624;608;607;606;605;604;603;602;601;600;599;598;597;596;421;419;412;411;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;411;-2304,2896;Inherit;False;129.0608;127.791;UV;1;430;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;412;240,2880;Inherit;False;185.3303;276.875;Out;1;424;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;282;-2816,2304;Inherit;False;706.1434;286.771;Wedges;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2464,2368;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;Creaetes
+    3 different wedge shaped masks - Diagonal, Hourglass, and Pinwheel.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;419;464,2784;Inherit;False;205.5;120.5;Out;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;421;-2480,2832;Inherit;False;135.9039;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.OneMinusNode;596;-1040,3200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;597;-1168,3200;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;598;-1328,3200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;599;-1328,3296;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;600;-1488,3200;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;601;-1488,3296;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CeilOpNode;602;-1632,3200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CeilOpNode;603;-1632,3296;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;604;-1792,3200;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;605;-1792,3296;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;606;-1952,3360;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;607;-2080,3280;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.BreakToComponentsNode;608;-2080,3184;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RelayNode;430;-2288,2944;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;624;-2144,3488;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;625;-2144,3280;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;626;-2144,3200;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;627;-2144,3024;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;628;-2144,3024;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;629;-2144,3024;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;424;256,2928;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;619;-64,3216;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;621;-48,3024;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch;589;0,2928;Inherit;False;Wedge
+    Type;False;0;3;-1;Diagonal;Hourglass;Pinwheel;Object;-1;10;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;620;-64,3008;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSubtitle;590;-224,2928;Inherit;True;Diagonal;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSubtitle;591;-224,3200;Inherit;True;Hourglass;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;617;-896,3424;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;616;-896,3280;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleRemainderNode;614;-848,3536;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;618;-48,3424;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;630;-672,3440;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;615;-848,3456;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;632;-720,3424;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;631;-736,3232;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;633;-720,3264;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSubtitle;592;-224,3440;Inherit;True;Pinwheel;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;610;-2080,3536;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;2,2;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FloorOpNode;611;-1920,3536;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;612;-1792,3536;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleAddOpNode;613;-1648,3536;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CeilOpNode;593;-1600,2928;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;595;-1760,2928;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;594;-1952,3008;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;609;-2096,2944;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.FunctionInput;431;-2480,2944;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;432;-2720,2944;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;452;464,2928;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;596;0;597;0\nWireConnection;597;0;598;0\nWireConnection;597;1;599;0\nWireConnection;598;0;600;0\nWireConnection;599;0;601;0\nWireConnection;600;0;602;0\nWireConnection;600;1;603;0\nWireConnection;601;0;603;0\nWireConnection;601;1;602;0\nWireConnection;602;0;604;0\nWireConnection;603;0;605;0\nWireConnection;604;0;608;1\nWireConnection;604;1;608;0\nWireConnection;605;0;607;1\nWireConnection;605;1;606;0\nWireConnection;606;0;607;0\nWireConnection;607;0;625;0\nWireConnection;608;0;626;0\nWireConnection;430;0;431;0\nWireConnection;624;0;629;0\nWireConnection;625;0;627;0\nWireConnection;626;0;628;0\nWireConnection;627;0;430;0\nWireConnection;628;0;430;0\nWireConnection;629;0;430;0\nWireConnection;424;0;589;0\nWireConnection;619;0;591;0\nWireConnection;621;0;618;0\nWireConnection;589;0;590;0\nWireConnection;589;1;620;0\nWireConnection;589;2;621;0\nWireConnection;620;0;619;0\nWireConnection;590;0;593;0\nWireConnection;591;0;596;0\nWireConnection;617;0;616;0\nWireConnection;616;0;596;0\nWireConnection;614;0;613;0\nWireConnection;618;0;592;0\nWireConnection;630;0;632;0\nWireConnection;630;1;615;0\nWireConnection;630;2;614;0\nWireConnection;615;0;617;0\nWireConnection;632;0;633;0\nWireConnection;631;0;596;0\nWireConnection;633;0;631;0\nWireConnection;592;0;630;0\nWireConnection;610;0;624;0\nWireConnection;611;0;610;0\nWireConnection;612;0;611;0\nWireConnection;613;0;612;0\nWireConnection;613;1;612;1\nWireConnection;593;0;595;0\nWireConnection;595;0;594;0\nWireConnection;595;1;609;0\nWireConnection;594;0;609;1\nWireConnection;609;0;430;0\nWireConnection;431;0;432;0\nWireConnection;452;0;424;0\nASEEND*/\n//CHKSM=66F1933B1E5DF1C1D9F4D8DDD2A76591F1DB50FD"
+  m_functionName: 
+  m_description: 'Wedges
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Pattern
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

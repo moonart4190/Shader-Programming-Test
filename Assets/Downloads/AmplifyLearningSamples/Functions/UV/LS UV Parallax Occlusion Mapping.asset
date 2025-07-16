@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UV Parallax Occlusion Mapping
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19901\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;488;-2432,2000;Inherit;False;1956;1595;Parallax
+    Occlusion Mapping;41;468;456;461;472;470;474;475;471;455;464;462;454;459;460;480;453;451;452;457;463;465;482;481;438;449;484;440;441;442;448;439;346;450;485;458;473;486;487;490;489;492;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;468;-2352,3024;Inherit;False;414.7539;461.6179;;6;447;446;445;444;443;374;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;425;-2432,1136;Inherit;False;1143.557;808.4996;Parallax
+    Occlusion Mapping Node;10;424;435;434;433;432;431;430;429;427;426;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;426;-2400,1200;Inherit;False;323.5925;100;UV;;0,0,0,1;UV
+    coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;427;-2400,1296;Inherit;False;320.8149;100;Tex
+    ;;0,0,0,1;Height/displacement texture (channel set in the node properties) to
+    be used in the Parallax Occlusion effect;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;429;-2400,1408;Inherit;False;320.8149;115.2761;SS;;0,0,0,1;sampler
+    state connected instead of internally generating one. Must have Use Sampling
+    Macros option turned on over master node properties;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;430;-2064,1184;Inherit;False;320.8149;115.2761;Scale;;0,0,0,1;Scale
+    value for the Parallax Occlusion effect;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;431;-2064,1280;Inherit;False;323.5924;136.1071;ViewDir;;0,0,0,1;View
+    direction used to calculate the Parallax effect. You can plug a View Direction
+    (tangent) node directly into the Parallax Mapping ViewDir Input Port or supply
+    your own tangent values for specific effects;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;432;-2064,1424;Inherit;False;315.26;118.0536;Min
+    Max Samples;;0,0,0,1;Defines the minimum and maximum number of layers extruded;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;433;-2064,1536;Inherit;False;315.26;118.0536;Sidewall
+    Steps;;0,0,0,1;The number of interpolations done to smooth the result on the
+    side of the layer extrusions, min is used at steep angle while max is used at
+    orthogonal angles;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;434;-2064,1664;Inherit;False;315.26;118.0536;Default
+    Ref Plan;;0,0,0,1;Reference plane lets you adjust the starting reference height,
+    0 = deepen ground, 1 = raise ground, any value above 0 might cause distortions
+    at higher angles;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;435;-2064,1792;Inherit;False;316.6488;134.7184;Curvature;;0,0,0,1;This
+    input is only available if the Use Texture Array option is toggled in the node
+    properties. When enabled, this allows you to use the UV coordinates to clip the
+    effect curvature in the x or v axis;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;456;-2192,2704;Inherit;False;198.0405;101.0221;;;0,0,0,1;_ParallaxMap;0;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;461;-1312,2768;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;474;-1344,2288;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;475;-1328,2512;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.SamplerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;471;-1264,2240;Inherit;True;Property;_TextureSample13;Texture
+    Sample 13;33;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Derivative;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;464;-1728,2800;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;462;-1728,2800;Inherit;False;1;0;SAMPLER2D;;False;1;SAMPLER2D;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;480;-1712,2176;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;463;-1712,2928;Inherit;False;1;0;SAMPLER2D;;False;1;SAMPLER2D;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;465;-1712,2928;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;482;-1696,2912;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;481;-1712,2880;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;374;-2096,3072;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;449;-1600,3088;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;484;-1504,2144;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;450;-1600,3392;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SamplerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;473;-1264,2448;Inherit;True;Property;_TextureSample14;Texture
+    Sample 14;34;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Derivative;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;489;-2192,2448;Inherit;False;198.0405;101.0221;;;0,0,0,1;_BumpMap;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;490;-2192,2240;Inherit;False;198.0405;101.0221;;;0,0,0,1;_MainTex;0;0\nNode;AmplifyShaderEditor.TexturePropertyNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;472;-1984,2448;Inherit;True;Property;_BumpMap;Normal
+    Map;13;2;[Normal];[SingleLineTexture];Create;False;0;0;0;False;0;False;178eab19cb0ca674f96465d00ced4309;None;True;bump;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.TexturePropertyNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;470;-1984,2240;Inherit;True;Property;_MainTex;Base
+    Map;12;1;[SingleLineTexture];Create;False;1;;0;0;False;0;False;c239d3f4bdbb239439534b34a1f262f4;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;439;-1888,3344;Half;False;Property;_ParallaxReferencePlane;Parallax
+    Reference Plane;6;0;Create;True;1;;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TextureCoordinatesNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;454;-1984,2096;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SwizzleNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;451;-2160,2144;Inherit;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;452;-2160,2064;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;453;-2384,2064;Inherit;False;Property;_MainUVs;Main
+    UVs;1;0;Create;False;0;0;0;False;0;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DdxOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;459;-1440,2096;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DdyOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;460;-1440,2176;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SamplerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;457;-1248,2704;Inherit;True;Property;_TextureSample25;Texture
+    Sample 18;38;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Derivative;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;440;-1888,3024;Half;False;Property;_ParallaxHeightScale;Parallax
+    Height Scale;5;0;Create;True;1;;0;0;False;0;False;0.05540916;0;0;0.1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;491;-3008,1136;Inherit;False;524.6;346.3;Parallax
+    Nodes;;0,0,0,1;Parallax BiDirectional$similar to occlusion mapping with added
+    ability to define number of iterations$$Parallax Iteration Normal$Cheaper less
+    quality than POM,  Artifacts are based view angle$$Parallax Iteration Planar$More
+    accurate than Iteration Normal, may have more artifacts on steep angles  $$Parallax
+    Occlusion$Parallax occlusion mapping (POM) provides Height Scale and adjustable
+    reference plan for height starting point $$$;0;0\nNode;AmplifyShaderEditor.ParallaxOcclusionMappingNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;424;-1696,1184;Inherit;False;2;4;True;_ParallaxOcclusionStepsMin;128;True;_ParallaxOcclusionStepsMax;6;0.02;0;True;1,1;True;0,0;11;0;FLOAT2;0,0;False;1;SAMPLER2D;;False;7;SAMPLERSTATE;;False;2;FLOAT;0.02;False;3;FLOAT3;0,0,0;False;8;INT;0;False;9;INT;0;False;10;INT;0;False;4;FLOAT;0;False;5;FLOAT2;0,0;False;6;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;443;-2320,3072;Inherit;False;Property;_ParallaxCurvatureV;Parallax
+    Curvature V;11;0;Create;True;0;0;0;False;0;False;5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;444;-2320,3152;Inherit;False;Property;_ParallaxCurvatureU;Parallax
+    Curvature U;10;0;Create;True;0;0;0;False;0;False;15;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.IntNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;445;-2320,3232;Inherit;False;Property;_ParallaxIterations;Parallax
+    Iterations;3;0;Create;True;1;;0;0;False;0;False;4;0;False;0;1;INT;0\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;446;-2320,3312;Half;False;Property;_ParallaxAmplitude;Parallax
+    Amplitude;2;0;Create;False;1;;0;0;False;0;False;4;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.IntNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;447;-2320,3392;Inherit;False;Property;_ParallaxSampleBias;Parallax
+    Sample Bias;4;0;Create;False;1;;0;0;False;0;False;5;0;False;0;1;INT;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;346;-1792,3424;Inherit;False;Tangent;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TexturePropertyNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;455;-1984,2704;Inherit;True;Property;_ParallaxMap;Displacement
+    Map;0;1;[SingleLineTexture];Create;False;1;;0;0;False;0;False;f1b50bfedcfcf434c8a4399a677bf56e;None;False;black;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;442;-1856,3184;Float;False;Property;_ParallaxSamplesMax;Parallax
+    Samples Max;8;0;Create;False;0;0;0;False;0;False;128;25;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ParallaxOcclusionMappingNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;438;-1536,2912;Inherit;False;2;4;True;_ParallaxOcclusionStepsMin;128;True;_ParallaxOcclusionStepsMax;6;0.02;0;False;1,1;False;0,0;11;0;FLOAT2;0,0;False;1;SAMPLER2D;;False;7;SAMPLERSTATE;;False;2;FLOAT;0.02;False;3;FLOAT3;0,0,0;False;8;INT;0;False;9;INT;0;False;10;INT;0;False;4;FLOAT;0;False;5;FLOAT2;0,0;False;6;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;492;-1248,3008;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;441;-1824,3104;Float;False;Property;_ParallaxSamplesMin;Parallax
+    Samples Min;7;0;Create;False;0;0;0;False;0;False;32;4;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.IntNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;448;-1856,3264;Inherit;False;Property;_ParallaxSidewallSteps;Parallax
+    Sidewall Steps;9;0;Create;False;0;0;0;False;0;False;6;0;False;0;1;INT;0\nNode;AmplifyShaderEditor.SwizzleNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;485;-960,2240;Inherit;True;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;458;-944,2704;Inherit;True;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.UnpackScaleNormalNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;487;-736,2448;Inherit;True;Tangent;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;486;-976,2528;Half;False;Property;_NormalStrength;Normal
+    Strength;14;0;Create;True;1;;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;218;-2432,1024;Inherit;False;True;-1;Out;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;461;0;455;1\nWireConnection;474;0;470;1\nWireConnection;475;0;472;1\nWireConnection;471;0;470;0\nWireConnection;471;1;438;0\nWireConnection;471;3;459;0\nWireConnection;471;4;460;0\nWireConnection;471;7;474;0\nWireConnection;464;0;455;1\nWireConnection;462;0;455;0\nWireConnection;480;0;454;0\nWireConnection;463;0;462;0\nWireConnection;465;0;464;0\nWireConnection;482;0;481;0\nWireConnection;481;0;480;0\nWireConnection;374;0;443;0\nWireConnection;374;1;444;0\nWireConnection;449;0;450;0\nWireConnection;484;0;454;0\nWireConnection;450;0;346;0\nWireConnection;473;0;472;0\nWireConnection;473;1;438;0\nWireConnection;473;3;459;0\nWireConnection;473;4;460;0\nWireConnection;473;7;475;0\nWireConnection;454;0;452;0\nWireConnection;454;1;451;0\nWireConnection;451;0;453;0\nWireConnection;452;0;453;0\nWireConnection;459;0;454;0\nWireConnection;460;0;484;0\nWireConnection;457;0;455;0\nWireConnection;457;1;438;0\nWireConnection;457;3;459;0\nWireConnection;457;4;460;0\nWireConnection;457;7;461;0\nWireConnection;438;0;482;0\nWireConnection;438;1;463;0\nWireConnection;438;7;465;0\nWireConnection;438;2;440;0\nWireConnection;438;3;449;0\nWireConnection;438;8;441;0\nWireConnection;438;9;442;0\nWireConnection;438;10;448;0\nWireConnection;438;4;439;0\nWireConnection;492;0;438;0\nWireConnection;485;0;471;0\nWireConnection;458;0;457;0\nWireConnection;487;0;473;0\nWireConnection;487;1;486;0\nASEEND*/\n//CHKSM=A95CD7D6EF7E25DD681E87DBB32DAA690F1A0203"
+  m_functionName: 
+  m_description: 'Parallax Occlusion Mapping Node
+
+
+    Learning Sample
+
+
+    GPU
+    Cycles:
+
+    Unknown'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6627451, g: 0.4392157, b: 0, a: 1}
+  m_customNodeCategory: LS UV
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

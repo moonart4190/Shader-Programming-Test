@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Is Infinite
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;26;-128,-80;Inherit;False;643.7213;297.9124;True;2;25;24;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;9;-128,-416;Inherit;False;643.598;292.6005;Is
+    Infinite Node;2;21;6;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;27;-128,256;Inherit;False;644.2419;310.7834;False;2;30;29;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;6;144,-368;Inherit;False;284;120;;;0,0,0,1;The
+    Is Infinite Node returns true if the input value is a infinite value and returns
+    false if it's not.;0;0\nNode;AmplifyShaderEditor.IsInfiniteNode;21;-32,-368;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.IsInfiniteNode;29;256,304;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.IsInfiniteNode;25;256,-32;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ExpOpNode;24;-16,-32;Inherit;True;1;0;FLOAT;800;False;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector3Node;30;-64,304;Inherit;False;Constant;_Vector0;Vector
+    0;0;0;Create;True;0;0;0;False;0;False;-0.3,0.71,0.25;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;0;-128,-544;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;29;0;30;0\nWireConnection;25;0;24;0\nASEEND*/\n//CHKSM=B49B69D7C3F4EAAC2381244768E4C63B7441A314"
+  m_functionName: 
+  m_description: 'Is Infinite Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    8-15'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Metal Reflectance
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;74;-896,-256;Inherit;False;1768.183;1529.667;Math;51;27;28;29;30;31;32;33;34;35;36;40;39;55;64;65;66;67;68;69;70;63;62;61;60;59;58;57;56;38;20;19;1;2;3;4;5;11;12;13;14;15;18;17;21;22;23;24;25;26;71;77;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;73;-896,-624;Inherit;False;932.4629;324.7197;Metal
+    Reflectance Node;2;37;76;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-848,-192;Inherit;False;499;104;Iron;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.560, 0.570, 0.580)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-848,-48;Inherit;False;496;101;Silver;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.972, 0.960, 0.915)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;29;-848,96;Inherit;False;500;103;Aluminium;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.913, 0.921, 0.925)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;30;-848,240;Inherit;False;500;103;Gold;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(1.000, 0.766, 0.336)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;31;-848,384;Inherit;False;502;107;Copper;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.955, 0.637, 0.538)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;32;-848,528;Inherit;False;503;103;Chromium;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.550, 0.556, 0.554)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-848,688;Inherit;False;501;105;Nickel;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.660, 0.609, 0.526)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;-848,832;Inherit;False;503;106;Titanium;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.542, 0.497, 0.449)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;-848,960;Inherit;False;504;102;Cobalt;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.662, 0.655, 0.634)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;-848,1120;Inherit;False;498;104;Platinum;;0,0,0,1;float3
+    _MetalReflectance_Out = float3(0.672, 0.637, 0.585)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;37;-608,-576;Inherit;False;582.3052;218.2913;;;0,0,0,1;Returns
+    a Metal Reflectance value for a physically based material. The material to use
+    can be selected with the Material dropdown parameter$$$When using Specular Workflow
+    on a PBR Master Node this value should be supplied to the Specular Port. $$When
+    using Metallic Workflow this value should be supplied to the Albedo/BaseColor
+    Port.$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;71;432,112;Inherit;False;389;137;;;0,0,0,1;It
+    should be noted that these values represent the reflectance values of the metals
+    in their purest forms. Other factors like rust, oxidation, coatings, dirt, etc,
+    can also influence the color of the metal.;0;0\nNode;AmplifyShaderEditor.WireNode;40;160,-32;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;39;240,-112;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;55;256,-80;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;64;256,-48;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;65;272,-16;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;66;288,0;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;67;304,32;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;68;320,64;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;69;336,80;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;70;352,96;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;63;320,1072;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;62;288,944;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;61;272,784;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;60;256,672;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;59;240,512;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;58;224,368;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;57;208,224;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;56;192,112;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitch;38;432,-192;Inherit;False;Material;False;0;10;-1;Iron;Silver;Aluminium;Gold;Copper;Chromium;Nickel;Titanium;Cobalt;Platinum;Object;-1;10;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;9;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;20;-48,-192;Inherit;False;Iron;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;19;-48,-48;Inherit;False;Silver;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;1;-336,-192;Inherit;False;Constant;_Iron;Iron;0;0;Create;True;0;0;0;False;0;False;0.56,0.57,0.58;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;2;-336,-48;Inherit;False;Constant;_Silver;Silver;0;0;Create;True;0;0;0;False;0;False;0.972,0.96,0.915;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;3;-336,96;Inherit;False;Constant;_Aluminium;Aluminium;0;0;Create;True;0;0;0;False;0;False;0.913,0.921,0.925;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;4;-336,240;Inherit;False;Constant;_Gold;Gold;0;0;Create;True;0;0;0;False;0;False;1,0.766,0.336;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;5;-336,384;Inherit;False;Constant;_Copper;Copper;0;0;Create;True;0;0;0;False;0;False;0.955,0.637,0.538;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;11;-336,528;Inherit;False;Constant;_Chromium;Chromium;0;0;Create;True;0;0;0;False;0;False;0.55,0.556,0.554;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;12;-336,672;Inherit;False;Constant;_Nickel;Nickel;0;0;Create;True;0;0;0;False;0;False;0.66,0.609,0.526;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;13;-336,816;Inherit;False;Constant;_Titanium;Titanium;0;0;Create;True;0;0;0;False;0;False;0.542,0.497,0.449;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;14;-336,960;Inherit;False;Constant;_Cobalt;Cobalt;0;0;Create;True;0;0;0;False;0;False;0.662,0.655,0.634;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;15;-336,1104;Inherit;False;Constant;_Platinum;Platinum;0;0;Create;True;0;0;0;False;0;False;0.672,0.637,0.585;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionSubtitle;18;-80,96;Inherit;False;Aluminium;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;17;-48,240;Inherit;False;Gold;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;21;-80,384;Inherit;False;Copper;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;22;-80,528;Inherit;False;Chromium;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;23;-80,672;Inherit;False;Nickel;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;24;-80,816;Inherit;False;Titanium;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;25;-80,960;Inherit;False;Cobalt;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;26;-80,1104;Inherit;False;Platinum;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;76;-848,-560;Inherit;True;Metal
+    Reflectance;-1;;3;55ea54ba7a9d52c4a8bf7b3e01e6ae77;1,38,0;0;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;77;672,-192;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-896,-736;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;40;0;19;0\nWireConnection;39;0;40;0\nWireConnection;55;0;56;0\nWireConnection;64;0;57;0\nWireConnection;65;0;58;0\nWireConnection;66;0;59;0\nWireConnection;67;0;60;0\nWireConnection;68;0;61;0\nWireConnection;69;0;62;0\nWireConnection;70;0;63;0\nWireConnection;63;0;26;0\nWireConnection;62;0;25;0\nWireConnection;61;0;24;0\nWireConnection;60;0;23;0\nWireConnection;59;0;22;0\nWireConnection;58;0;21;0\nWireConnection;57;0;17;0\nWireConnection;56;0;18;0\nWireConnection;38;0;20;0\nWireConnection;38;1;39;0\nWireConnection;38;2;55;0\nWireConnection;38;3;64;0\nWireConnection;38;4;65;0\nWireConnection;38;5;66;0\nWireConnection;38;6;67;0\nWireConnection;38;7;68;0\nWireConnection;38;8;69;0\nWireConnection;38;9;70;0\nWireConnection;20;0;1;0\nWireConnection;19;0;2;0\nWireConnection;18;0;3;0\nWireConnection;17;0;4;0\nWireConnection;21;0;5;0\nWireConnection;22;0;11;0\nWireConnection;23;0;12;0\nWireConnection;24;0;13;0\nWireConnection;25;0;14;0\nWireConnection;26;0;15;0\nWireConnection;77;0;38;0\nASEEND*/\n//CHKSM=DE9DA197054E943B79A1A238F8C368C8CFC38B7F"
+  m_functionName: 
+  m_description: 'Metal Reflectance Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Depth Fade
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;187;1792,-1280;Inherit;False;704.6165;482.6752;Depth
+    Fetch on Mobile;2;188;186;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;184;512,352;Inherit;False;1005.271;373.5478;Example
+    Unity SG Shader Sub Graph DepthFade;7;183;181;182;177;180;179;178;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;167;512,-512;Inherit;False;1645.782;806.0475;Example
+    fade Opacity;24;154;172;173;175;160;159;147;171;170;149;151;157;166;150;152;148;165;155;153;156;158;169;168;164;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;134;512,-1280;Inherit;False;1195.752;674.4421;Depth
+    Fade Node;8;133;141;140;139;138;137;136;135;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;135;544,-1232;Inherit;False;292.0957;129.149;Input
+    Vertex Position;;0.1320755,0.1320755,0.1320755,1;Allow the specification of a
+    custom vertex position;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;136;544,-1088;Inherit;False;292.0957;132.7923;Input
+    Distance;;0,0,0,1;Distance in world space coordinates to which the fade should
+    take place;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;137;1136,-1232;Inherit;False;523.5391;217.816;;;0,0,0,1;The
+    Depth Fade node outputs a linear gradient representing the distance between the
+    surface of an object and geometry behind it. $$The gradient range or fading distance
+    can be set by adjusting the Distance parameter.$$More specifically what this
+    parameter does is to create a value in a [0 1] range when the distance between
+    the surface of an object and geometry behind it is within the value specified.$$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;138;1136,-992;Inherit;False;528.3968;223.8881;Blend
+    Mode set either to Transparent or Translucent;;1,0.5708172,0,1;The shader must
+    have its Render Queue value set to Transparent or higher ( p.e. Blend Mode set
+    either to Transparent or Translucent ) so the object is not written on the Depth
+    buffer. $$This is an essential configuration since the node is internally calculating
+    the distance value by subtracting the Surface Depth by the value fetched on the
+    Depth buffer. $$If the object is being written on the depth buffer then this
+    operation will give unintended results.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;139;880,-1088;Inherit;False;225.853;134.0421;Option
+    Convert to Linear;;0,0,0,1;Convert depth values read from depth buffer from a
+    logarithmic to a linear scale.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;140;880,-928;Inherit;False;228.3529;139.0416;Option
+    Mirror;;0.009433985,0.009433985,0.009433985,1;Applies an Abs over the final value,
+    guaranteeing the final value is always positive.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;141;880,-768;Inherit;False;229.6027;127.7929;Option
+    Saturate;;0,0,0,1;Applies a Saturate over the final value, guaranteeing that
+    the final value is on a 0 to 1 range.;0;0\nNode;AmplifyShaderEditor.DepthFade;133;880,-1216;Inherit;False;True;False;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;164;1872,-352;Inherit;False;203.1335;105.6559;;;0,0,0,1;Output
+    to Alpha with Distance Fade;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;168;1136,-64;Inherit;False;317.3547;100;Fade
+    Mode - Fade In / Fade Out;;0,0,0,1;use one minus to set fade in or fade out;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;169;688,144;Inherit;False;214.9028;100;Distance;;0,0,0,1;The
+    Fade Range;0;0\nNode;AmplifyShaderEditor.DistanceOpNode;158;832,-288;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;156;1008,-288;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;165;960,-192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;150;1312,48;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;166;960,32;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;149;1472,48;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;171;1632,48;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;147;1680,-288;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;159;624,-144;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;160;560,-288;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;175;1872,-448;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DepthFade;152;1024,48;Inherit;False;True;True;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;172;1408,-448;Half;False;Property;_Opacity;Opacity;2;0;Create;True;0;0;0;False;0;False;0.5;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;173;1712,-448;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;157;688,64;Float;False;Property;_Distance;Distance
+    ;1;0;Create;True;0;0;0;False;0;False;75;1525;2;500;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;151;1216,160;Inherit;False;Constant;_ConstantExponentvalue;Constant
+    Exponent value;2;0;Create;True;0;0;0;False;0;False;0.01;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;170;1632,-208;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;148;1520,-288;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;153;1360,-288;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;155;1168,-224;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;154;1136,-144;Half;False;Property;_FadeMode;Fade
+    Mode;0;1;[Enum];Create;True;0;2;Fade In;0;Fade Out;1;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ScreenPosInputsNode;178;560,448;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ScreenDepthNode;179;768,448;Inherit;False;0;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScreenPosInputsNode;180;768,528;Float;False;1;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;177;1024,448;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;182;1232,448;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;181;1024,560;Inherit;False;Constant;_SGDistance;SG
+    Distance;3;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;183;1360,448;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;186;1824,-1232;Inherit;False;645.4795;169.498;;;0,0,0,1;If,
+    on mobile, incorrect values are being fetched from Depth Texture related nodes
+    then the user may need to explicitly let Unity know that it needs to use the
+    depth texture. $$$For that a simple script like this one below must be created
+    and placed over the Camera game object.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;188;1824,-1040;Inherit;False;644.0657;213.7945;;;0,0,0,1;using
+    UnityEngine@$[ExecuteInEditMode]$public class SetCameraDepth : MonoBehaviour${$   
+    private void Awake()$    {$        GetComponent<Camera>().depthTextureMode |=
+    DepthTextureMode.Depth@$    }$};0;0\nNode;AmplifyShaderEditor.FunctionOutput;118;512,-1408;Inherit;False;True;-1;Output;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;158;0;160;0\nWireConnection;158;1;159;0\nWireConnection;156;0;158;0\nWireConnection;156;1;165;0\nWireConnection;165;0;166;0\nWireConnection;150;0;152;0\nWireConnection;166;0;157;0\nWireConnection;149;0;150;0\nWireConnection;149;1;151;0\nWireConnection;171;0;149;0\nWireConnection;147;0;148;0\nWireConnection;147;1;170;0\nWireConnection;175;0;173;0\nWireConnection;175;1;147;0\nWireConnection;152;0;157;0\nWireConnection;173;0;172;0\nWireConnection;170;0;171;0\nWireConnection;148;0;153;0\nWireConnection;153;0;156;0\nWireConnection;153;1;155;0\nWireConnection;153;2;154;0\nWireConnection;155;0;156;0\nWireConnection;179;0;178;0\nWireConnection;177;0;179;0\nWireConnection;177;1;180;4\nWireConnection;182;0;177;0\nWireConnection;182;1;181;0\nWireConnection;183;0;182;0\nASEEND*/\n//CHKSM=47C4D4630BE8420F51144588018C80FE2C74359F"
+  m_functionName: 
+  m_description: 'Depth Fade Node
+
+
+    Learning Sample
+
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Surface Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

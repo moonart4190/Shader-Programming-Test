@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS One Minus
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;47;0,640;Inherit;False;611;211;converted
+    smoothness to roughness ;3;42;43;46;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;41;0,-224;Inherit;False;392.3705;211;Math;2;2;5;;0.009433985,0.009433985,0.009433985,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;40;0,-544;Inherit;False;693.5299;304;One
+    Minus Node;2;1;39;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;36;0,16;Inherit;False;802.9033;560.0206;Example
+    Invert Value;4;34;38;37;35;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;42;400,688;Inherit;False;159;138.5;roughness;1;45;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;43;48,688;Inherit;False;139.4548;130.7314;smoothness;1;44;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;1;208,-496;Inherit;False;433.5299;141.4973;;;0,0,0,1;The
+    One Minus Node subtracts the input value from one. $$For values that are between
+    0 and 1, this has the effect of returning the inverse of the input.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;37;464,80;Inherit;False;288.6642;120.5;;;0,0,0,1;An
+    input value of 0.2 results in an output of 0.8 - which is the inverse of 0.2.;0;0\nNode;AmplifyShaderEditor.OneMinusNode;39;48,-496;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;5;224,-176;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;2;48,-128;Inherit;False;In;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;35;256,64;Inherit;True;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;34;48,272;Inherit;True;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;38;288,272;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;44;64,736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;45;432,736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;46;224,736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;0,-640;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;5;1;2;0\nWireConnection;35;1;34;0\nWireConnection;38;0;34;0\nWireConnection;45;0;46;0\nWireConnection;46;0;44;0\nASEEND*/\n//CHKSM=28309D61C28A591E8DED2BEF923A03FE27EAD404"
+  m_functionName: 
+  m_description: 'One Minus Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Range
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

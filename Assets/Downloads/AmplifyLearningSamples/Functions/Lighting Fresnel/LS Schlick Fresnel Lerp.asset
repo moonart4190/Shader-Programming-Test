@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Schlick Fresnel Lerp
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;31;-1920,-768;Inherit;False;1282.707;857.4862;Math;14;49;48;75;73;71;10;1;29;28;27;26;25;23;9;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;51;-2656,-400;Inherit;False;717.9971;490.8561;NdotV;7;61;67;56;69;70;55;52;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;78;-1920,-1184;Inherit;False;1024.935;386.8889;Schlick
+    Fresnel Lerp - Amplify Shader Pack Example;2;79;77;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;9;-1616,-288;Inherit;False;499.2614;212.7552;Schlick
+    Fresnel Approximation;3;22;5;6;;0,0,0,0.5019608;0;0\nNode;AmplifyShaderEditor.CommentaryNode;23;-912,-592;Inherit;False;207.1005;273.053;Out;1;24;;0.009433985,0.006986489,0.006986489,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;52;-2384,-288;Inherit;False;136.6875;138.37;Normal;1;57;;0.04402506,0.04402506,0.04402506,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;55;-2384,-128;Inherit;False;136.6875;138.37;View
+    Dir;1;58;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;71;-1840,-288;Inherit;False;152.9999;131.0001;Alpha;1;72;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;73;-1296,-592;Inherit;False;152.9999;131.0001;A;1;74;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;75;-1296,-448;Inherit;False;152.9999;131.0001;B;1;76;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;79;-1888,-1136;Inherit;False;352.8333;283.0667;Amplify
+    Shader Pack Example;1;80;;1,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;25;-1680,-560;Inherit;False;169.7654;100;A;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;26;-1680,-432;Inherit;False;169.7654;100;B;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-1840,-144;Inherit;False;195.381;100;Alpha;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-1888,-720;Inherit;False;541.6117;126.3333;Credits;;0,0,0,1;Method
+    by Jordan Stevens$Link: https://www.jordanstevenstechart.com/physically-based-rendering$$Node
+    Made by Tiber Legacy;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;29;-928,-720;Inherit;False;216.6136;117.4621;;;0,0,0,1;Interpolating
+    Between A & B via Schlick's Fresnel Approximation;0;0\nNode;AmplifyShaderEditor.RelayNode;24;-880,-544;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;1;-1072,-544;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;6;-1440,-240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;5;-1600,-240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;22;-1264,-240;Inherit;False;5;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;10;-1264,-64;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;57;-2368,-240;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;58;-2368,-80;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;70;-2208,-128;Inherit;False;Constant;_Zero1;Zero;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;69;-2048,-240;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;56;-2208,-240;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;67;-2608,-80;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldNormalVector;61;-2608,-240;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RelayNode;72;-1808,-240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;74;-1264,-544;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;76;-1264,-400;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;48;-1488,-544;Inherit;False;Constant;_A;A;7;0;Create;True;0;0;0;False;0;False;0.25;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;49;-1488,-400;Inherit;False;Constant;_B;B;7;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;77;-1504,-1136;Inherit;False;571.6;169.2999;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionNode;80;-1824,-1088;Inherit;True;Schlick
+    Fresnel Lerp;-1;;1;;0;0;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1920,-1280;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;24;0;1;0\nWireConnection;1;0;74;0\nWireConnection;1;1;76;0\nWireConnection;1;2;22;0\nWireConnection;6;0;5;0\nWireConnection;5;0;72;0\nWireConnection;22;0;6;0\nWireConnection;22;1;6;0\nWireConnection;22;2;6;0\nWireConnection;22;3;6;0\nWireConnection;22;4;6;0\nWireConnection;10;0;6;0\nWireConnection;57;0;61;0\nWireConnection;58;0;67;0\nWireConnection;69;0;56;0\nWireConnection;69;1;70;0\nWireConnection;56;0;57;0\nWireConnection;56;1;58;0\nWireConnection;72;0;69;0\nWireConnection;74;0;48;0\nWireConnection;76;0;49;0\nASEEND*/\n//CHKSM=737642DB73E0DB380DAEC014B24E7E935852261C"
+  m_functionName: 
+  m_description: 'Schlick Fresnel Lerp
+
+
+    Learning Sample
+
+    (Amplify Shader
+    Pack Example)'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Fresnel
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

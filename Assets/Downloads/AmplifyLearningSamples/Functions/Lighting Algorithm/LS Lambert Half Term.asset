@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Lambert Half Term
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;12;-768,-256;Inherit;False;1184.958;418.0345;Math;7;2;6;1;3;4;5;21;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;21;160,-192;Inherit;False;197.7089;271.9177;Out;1;20;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;19;-768,176;Inherit;False;461.9085;543.5243;Lambert
+    vs Lambert Half;3;18;16;15;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;11;-768,-672;Inherit;False;701.6117;353.5683;Lambert
+    Half Term Node;2;14;9;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;9;-496,-592;Inherit;False;380;135;;;0,0,0,1;Half
+    Lambert Term Generates a linear gradient from black to white that represents
+    the surface facing term to a light. Useful for cloth shading, skin or toon ramps;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;15;-496,240;Inherit;False;153.5123;106.5;;;0,0,0,1;Lamber
+    Half  can reduce the rear of objects looking flat;0;0\nNode;AmplifyShaderEditor.DotProductOpNode;5;-272,-144;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;3;-512,-48;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionInput;1;-480,-144;Inherit;False;World
+    Normal;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;6;-704,-144;Inherit;False;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RelayNode;20;192,-144;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;4;-256,-48;Float;False;Constant;_RemapValue1;Remap
+    Value;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleAndOffsetNode;2;-64,-144;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;16;-720,240;Inherit;True;Half
+    Lambert Term;-1;;8;86299dc21373a954aa5772333626c9c1;0;1;3;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;18;-720,464;Inherit;True;Lambert
+    Light;0;;9;9be9b95d80559e74dac059ac0a4060cf;0;2;42;COLOR;0,0,0,0;False;52;FLOAT3;0,0,0;False;2;COLOR;0;FLOAT;57\nNode;AmplifyShaderEditor.FunctionNode;14;-720,-592;Inherit;True;Half
+    Lambert Term;-1;;10;86299dc21373a954aa5772333626c9c1;0;1;3;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;7;-768,-768;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;5;0;1;0\nWireConnection;5;1;3;0\nWireConnection;1;0;6;0\nWireConnection;20;0;2;0\nWireConnection;2;0;5;0\nWireConnection;2;1;4;0\nWireConnection;2;2;4;0\nASEEND*/\n//CHKSM=A5B4D74AFDCE2CE76FE60AE3796696AAE7F881D7"
+  m_functionName: 
+  m_description: 'Lambert Half Term Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Algorithm
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS View Direction
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;90;-768,736;Inherit;False;2815.465;1464.48;View
+    Direction vs View Vector;9;185;184;95;91;110;126;179;109;186;;0.02830189,0.02830189,0.02830189,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;109;603.5974,1328;Inherit;False;709.7331;331.4401;Distance
+    From The Camera;3;118;111;181;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;131;-768,2288;Inherit;False;2188.095;1173.625;Edge
+    Mask;26;165;164;163;162;161;160;159;158;157;156;155;146;145;144;143;142;141;140;139;138;137;136;135;134;133;132;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;110;608,1680;Inherit;False;1378.089;481.6464;Camera
+    Distance Mask;8;115;120;121;114;113;182;116;112;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;186;-720,800;Inherit;False;245.1;252.95;View
+    Direction WS;1;89;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;181;624,1376;Inherit;False;137.3269;124.5;View
+    Vector;1;180;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;179;-720,1072;Inherit;False;246.3002;247.05;View
+    Vector WS;1;178;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;126;-704,1360;Inherit;False;786.7621;551.8051;View
+    Vector World Space;6;85;87;86;103;94;88;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;65;-768,-416;Inherit;False;619;445;Pointing
+    toward the Camera View;5;66;64;62;63;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;56;-768,-976;Inherit;False;1542.177;484.8575;View
+    Direction Node;10;169;168;167;166;92;57;59;60;55;58;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;71;-768,96;Inherit;False;1331.987;605.7159;
+    Fresnel Effect;11;81;82;80;79;78;77;76;75;74;73;72;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;132;1152,2432;Inherit;False;205.5;272.5;Mask
+    Surface;1;154;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;133;-720,2672;Inherit;False;716.191;380.8127;NdotV;5;151;150;149;148;147;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;134;1152,2720;Inherit;False;203.5;271;Mask;1;152;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;135;1152,3008;Inherit;False;203.5;271;Mask
+    Edge;1;153;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;182;624,1728;Inherit;False;138.5;124.5;View
+    Vector;1;183;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;57;-720,-912;Inherit;False;498.4548;189.3724;;;0,0,0,1;The
+    View Dir node outputs the current camera view direction on a coordinates space
+    defined by the Space parameter.$$World Space coordinates will be the most commonly
+    used option but Tangent Space is also very helpful mostly with operations over
+    normal maps ( which are usually in tangent space ).;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;512,-896;Inherit;False;223.3999;113;Space
+    World;;0,0,0,1;Coordinate space based on absolute world coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;60;512,-704;Inherit;False;224.0127;109.3468;Space
+    Tangent;;0,0,0,1;Coordinate space based on a surface tangent plane.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;66;-496,-144;Inherit;False;288.7054;138.1758;;;0,0,0,1;By
+    doing a dot product between the View Direction and the Normal Vector, you can
+    create a mask that's white when the surface is facing the camera and black when
+    it's facing away.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;72;112,368;Inherit;False;255.9122;100;;;0,0,0,1;Raising
+    the result to a power controls the falloff curve.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;73;-496,384;Inherit;False;244.1442;130.8911;;;0.03773582,0.03773582,0.03773582,1;The
+    dot product is white where the normal and view vector are parallel and black
+    where they're perpendicular.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;74;-144,368;Inherit;False;236.7892;117.652;;;0,0,0,1;Most
+    use-cases call for the mask to be inverted so we do that with the One Minus node.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;75;-144,496;Inherit;False;526.1356;184.8061;Fresnel
+    Effect Node;;0,0,0,1;Creates a mask based on the relationship between the view
+    direction and the surface normal.  When the mesh's surface is facing the camera,
+    the mask is black.  When it's facing away, the mask is white.$$The Power input
+    can be used to control the falloff curve of the effect. Values higher than 1
+    push the black toward the glancing angles. Values lower than 1 pull the white
+    toward the camera-facing angles.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;88;-656,1664;Inherit;False;249.4012;143.1976;;;0,0,0,1;You
+    can create the same vector as the View Dir node by subtracting the Position in
+    World Space from the Camera Position. $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;91;-464,800;Inherit;False;541.4526;250.555;;;0.05660379,0.05660379,0.05660379,1;The
+    difference between the View Vector and the View Direction:$$View Direction:$The
+    View Direction is a normalized vector (so it's only 1 unit long). It's best used
+    to find the ANGLE of the camera and other vectors.$$View Vector:$The View Vector
+    is a line that extends all the way from the current fragment or vertex to the
+    camera - so it can be used to get the DISTANCE to the camera.$$Both vectors point
+    in the same direction.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;92;-720,-704;Inherit;False;354.1746;102.5911;Safe
+    Normalize;;0,0,0,1;Makes sure view vector is not zero, even when scene has no
+    cameras;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;94;-448,1408;Inherit;False;484.6892;100;World
+    Space Camera Pos Node;;0,0,0,1;The World Space Camera Pos node outputs the current
+    camera position in world space.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;95;-464,1072;Inherit;False;543.5508;246.4944;View
+    Vector;;0,0,0,1;Creates a vector from the camera to the object currently being
+    rendered $$- unique for each object.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;103;-160,1744;Inherit;False;199.9;103;;;0,0,0,1;Distance
+    between the camera and the current position.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;111;800,1488;Inherit;False;305.9239;129.7988;;;0,0,0,1;By
+    measuring the length of the View Vector, you can find out how far each pixel
+    is from the camera. The resulting distance value is in meters.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;112;784,1856;Inherit;False;301.7797;117.0062;;;0,0,0,1;By
+    measuring the length of the View Vector, you can find out how far each pixel
+    is from the camera. The resulting distance value is in meters.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;116;1664,2000;Inherit;False;285;134;;;0,0,0,1;This
+    type of mask can be used to fade out close-up details when the camera is futher
+    away or make other visual changes based on camera distance.;0;0\nNode;AmplifyShaderEditor.OneMinusNode;64;-352,-368;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldNormalVector;63;-720,-368;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DotProductOpNode;62;-496,-368;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;76;-496,160;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;77;-288,160;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;78;-144,160;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;79;96,288;Inherit;False;Constant;_falloffcurve;falloff
+    curve;0;0;Create;True;0;0;0;False;0;False;2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;80;304,160;Inherit;True;True;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldNormalVector;82;-720,160;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;81;-720,320;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;85;-144,1520;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;136;208,2368;Inherit;False;211.2697;100;Surface
+    Strength;;0.0754717,0.0754717,0.0754717,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;137;208,2592;Inherit;False;215.2697;100;Surface
+    Offset;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;138;208,2928;Inherit;False;210.7697;100;Edge
+    Strength;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;139;176,3312;Inherit;False;205.2697;100;Edge
+    Offset;;0.08490568,0.08490568,0.08490568,1;;0;0\nNode;AmplifyShaderEditor.OneMinusNode;140;496,2480;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;142;480,2736;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;143;656,2736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;144;656,2560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;145;704,2480;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldNormalVector;147;-688,2736;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;148;-688,2880;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DotProductOpNode;149;-480,2736;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;150;-368,2800;Inherit;False;Constant;_Zero1;Zero;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;151;-208,2736;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;152;1184,2768;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;153;1184,3056;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;154;1184,2480;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;155;1008,2768;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;156;880,2768;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;157;704,3056;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;158;528,3056;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;159;368,3152;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;160;208,3152;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;161;176,3232;Inherit;False;Edge
+    Offset;1;3;False;1;0;FLOAT;5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;163;144,3136;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;164;32,2736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;165;144,2800;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;162;208,3056;Inherit;False;Edge
+    Strength;1;2;False;1;0;FLOAT;0.1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;146;256,2704;Inherit;False;Surface
+    Offset;1;1;False;1;0;FLOAT;5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;141;224,2480;Inherit;False;Surface
+    Strength;1;0;False;1;0;FLOAT;0.1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;166;32,-896;Inherit;False;223.3999;113;Space
+    Object;;0,0,0,1;Coordinate space based on Object Space coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;167;32,-704;Inherit;False;224.0127;109.3468;Space
+    View;;0,0,0,1;Coordinate space based on View Space coordinates;0;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;169;-192,-704;Inherit;True;View;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;55;288,-704;Inherit;True;Tangent;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;61;-720,-208;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;87;-448,1520;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;86;-384,1664;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewVectorNode;178;-704,1120;Inherit;True;World;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;89;-704,848;Inherit;True;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RelayNode;180;640,1424;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewVectorNode;184;304,1424;Inherit;True;World;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.LengthOpNode;118;1136,1424;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;183;640,1776;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewVectorNode;185;320,1776;Inherit;True;World;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.LengthOpNode;113;1120,1776;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;114;1520,1776;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;121;1536,1888;Inherit;False;Constant;_MaskLength;Mask
+    Length;0;0;Create;True;0;0;0;False;0;False;1.75;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;120;1296,1888;Inherit;False;Constant;_MaskStartDistance;Mask
+    Start Distance;0;0;Create;True;0;0;0;False;0;False;4.03;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;115;1760,1776;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;168;-192,-896;Inherit;True;Object;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;58;288,-896;Inherit;True;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;0;-768,-1072;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;64;0;62;0\nWireConnection;62;0;63;0\nWireConnection;62;1;61;0\nWireConnection;76;0;82;0\nWireConnection;76;1;81;0\nWireConnection;77;0;76;0\nWireConnection;78;0;77;0\nWireConnection;80;0;78;0\nWireConnection;80;1;79;0\nWireConnection;85;0;87;0\nWireConnection;85;1;86;0\nWireConnection;140;0;141;0\nWireConnection;142;0;164;0\nWireConnection;142;1;146;0\nWireConnection;143;0;142;0\nWireConnection;144;0;143;0\nWireConnection;145;0;140;0\nWireConnection;145;1;144;0\nWireConnection;149;0;147;0\nWireConnection;149;1;148;0\nWireConnection;151;0;149;0\nWireConnection;151;1;150;0\nWireConnection;152;0;155;0\nWireConnection;153;0;157;0\nWireConnection;154;0;145;0\nWireConnection;155;0;156;0\nWireConnection;156;0;145;0\nWireConnection;156;1;157;0\nWireConnection;157;0;158;0\nWireConnection;158;0;162;0\nWireConnection;158;1;159;0\nWireConnection;159;0;160;0\nWireConnection;159;1;161;0\nWireConnection;160;0;163;0\nWireConnection;163;0;165;0\nWireConnection;164;0;151;0\nWireConnection;165;0;164;0\nWireConnection;180;0;184;0\nWireConnection;118;0;180;0\nWireConnection;183;0;185;0\nWireConnection;113;0;183;0\nWireConnection;114;0;113;0\nWireConnection;114;1;120;0\nWireConnection;115;0;114;0\nWireConnection;115;1;121;0\nASEEND*/\n//CHKSM=194E4920A3F7FCD4EC1FB14531D3B5F4BEA198E7"
+  m_functionName: 
+  m_description: ' Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    32-63'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

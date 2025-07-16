@@ -1,0 +1,292 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Blend Operations
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19901\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;201;-1184,-1664;Inherit;False;1175.437;484.1748;Blend
+    Operations Node;6;197;310;200;199;198;76;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;161;-1200,-1136;Inherit;False;953.3691;515.489;ColorBurn;6;158;97;75;77;196;315;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;202;-1200,-592;Inherit;False;953.3691;515.489;ColorDodge;6;207;206;205;204;203;316;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;208;-1200,-48;Inherit;False;953.3691;515.489;Darken;6;213;212;211;210;209;317;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;214;-1200,496;Inherit;False;953.3691;515.489;Divide;6;219;218;217;216;215;318;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;220;-1200,1056;Inherit;False;953.3691;515.489;Difference;6;225;224;223;222;221;319;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;226;-192,-1136;Inherit;False;953.3691;515.489;Exclusion;6;231;230;229;228;227;320;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;232;-192,-592;Inherit;False;953.3691;515.489;SoftLight;6;237;236;235;234;233;321;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;238;-192,-48;Inherit;False;953.3691;515.489;HardLight;6;243;242;241;240;239;322;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;244;-192,496;Inherit;False;953.3691;515.489;HardMix;6;249;248;247;246;245;323;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;250;-192,1056;Inherit;False;953.3691;515.489;Lighten;6;255;254;253;252;251;324;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;256;816,-1136;Inherit;False;953.3691;515.489;LinearBurn;6;261;260;259;258;257;325;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;262;816,-592;Inherit;False;953.3691;515.489;LinearDodge;6;267;266;265;264;263;326;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;268;816,-48;Inherit;False;953.3691;515.489;LinearLight;6;273;272;271;270;269;327;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;274;816,496;Inherit;False;953.3691;515.489;Multiply;6;279;278;277;276;275;328;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;280;816,1056;Inherit;False;953.3691;515.489;Overlay;6;285;284;283;282;281;329;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;286;1824,-1136;Inherit;False;953.3691;515.489;PinLight;6;291;290;289;288;287;330;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;292;1824,-592;Inherit;False;953.3691;515.489;Subtract;6;297;296;295;294;293;331;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;298;1824,-48;Inherit;False;953.3691;515.489;Screen;6;303;302;301;300;299;332;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;304;1824,496;Inherit;False;953.3691;515.489;VividLight;6;309;308;307;306;305;333;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;76;-1168,-1616;Inherit;False;161.9853;408.6398;;;0,0,0,1;ColorBurn$ColorDodge$Darken$Divide$Difference$Exclusion$SoftLight$HardLight$HardMix$Lighten$LinearBurn$LinearDodge$LinearLight$Multiply$Overlay$PinLight$Subtract$Screen$VividLight$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;77;-672,-1088;Inherit;False;398.4101;133.0073;ColorBurn;;0,0,0,1;result
+    = string.Format( \"( 1.0 - ( ( 1.0 - {0}) / max( {1}, 0.00001) ) )\", dstLocalVar,
+    srcLocalVar)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;196;-912,-864;Inherit;False;527.9186;133.6017;;;0,0,0,1;Color
+    Burn Looks at the color information in each channel and darkens the base color
+    to reflect the blend color by $increasing the contrast between the two. Blending
+    with white produces no change;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;198;-992,-1600;Inherit;False;224.3375;101;Source;;0.01886791,0.01886791,0.01886791,1;First
+    Layer;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null;199;-992,-1488;Inherit;False;226.3375;101.6758;Destiny;;0.01886791,0.01886791,0.01886791,1;Second
+    layer;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null;200;-992,-1376;Inherit;False;224.3375;100.6758;Alpha;;0.01886791,0.01886791,0.01886791,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;203;-672,-544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;206;-912,-320;Inherit;False;532.3761;160.229;;;0,0,0,1;Color
+    Dodge Looks at the color information in each channel and brightens the base color
+    to reflect the blend color by decreasing contrast between the two. Blending with
+    black produces no change;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;209;-672,0;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;212;-912,224;Inherit;False;529.7861;160.3605;;;0,0,0,1;Darken
+    Looks at the color information in each channel and selects the base or blend
+    color\u2014whichever is darker\u2014as $the result color. Pixels lighter than
+    the blend color are replaced, and pixels darker than the blend color do not change;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;215;-672,544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;218;-912,768;Inherit;False;526.7328;147.1004;;;0,0,0,1;Divide
+    Looks at the color information in each channel and divides the blend color from
+    the base color;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;221;-672,1104;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;224;-912,1328;Inherit;False;525.3804;161.1898;;;0,0,0,1;Difference
+    Looks at the color information in each channel and subtracts either the blend
+    color from the base color or $the base color from the blend color, depending
+    on which has the greater brightness value. Blending with white inverts the base
+    color values@ blending with black produces no change;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;227;336,-1088;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;228;96,-864;Inherit;False;540.7433;131.0806;;;0,0,0,1;Exclusion
+    Creates an effect similar to but lower in contrast than the Difference mode.
+    Blending with white inverts the $base color values. Blending with black produces
+    no change.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;233;336,-544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;234;96,-320;Inherit;False;543.2567;186.376;;;0,0,0,1;Soft
+    Light Darkens or lightens the colors, depending on the blend color. The effect
+    is similar to shining a diffused $spotlight on the image. If the blend color
+    (light source) is lighter than 50% gray, the image is lightened as if it were
+    $dodged. If the blend color is darker than 50% gray, the image is darkened as
+    if it were burned in. Painting with pure $black or white produces a distinctly
+    darker or lighter area, but does not result in pure black or white.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;239;336,0;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;242;96,224;Inherit;False;547.1033;202.7567;;;0,0,0,1;Hard
+    Light Multiplies or screens the colors, depending on the blend color. The effect
+    is similar to shining a harsh $ spotlight on the image. If the blend color (light
+    source) is lighter than 50% gray, the image is lightened, as if it were $screened.
+    This is useful for adding highlights to an image. If the blend color is darker
+    than 50% gray, the image is $darkened, as if it were multiplied. This is useful
+    for adding shadows to an image. Painting with pure black or white $results in
+    pure black or white;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;245;336,544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;248;96,768;Inherit;False;543.701;165.3323;;;0,0,0,1;Hard
+    Mix Adds the red, green and blue channel values of the blend color to the RGB
+    values of the base color. If the $resulting sum for a channel is 255 or greater,
+    it receives a value of 255@ if less than 255, a value of 0. Therefore, all blended
+    $pixels have red, green, and blue channel values of either 0 or 255. This changes
+    all pixels to primary additive colors (red, $green, or blue), white, or black.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;251;336,1104;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;254;96,1328;Inherit;False;542;136.4133;;;0,0,0,1;Lighten
+    Looks at the color information in each channel and selects the base or blend
+    color\u2014whichever is lighter\u2014as $the result color. Pixels darker than
+    the blend color are replaced, and pixels lighter than the blend color do not
+    change. ;0;0\nNode;AmplifyShaderEditor.GetLocalVarNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;230;-160,-1088;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;236;-160,-544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;241;-160,0;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;253;-160,1104;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;257;1344,-1088;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;258;1104,-864;Inherit;False;558;138;;;0,0,0,1;Linear
+    Burn Looks at the color information in each channel and darkens the base color
+    to reflect the blend color by $decreasing the brightness. Blending with white
+    produces no change.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;263;1344,-544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;264;1104,-320;Inherit;False;559.1488;137.4361;;;0,0,0,1;Linear
+    Dodge Looks at the color information in each channel and brightens the base color
+    to reflect the blend $color by increasing the brightness. Blending with black
+    produces no change.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;269;1344,0;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;272;1104,224;Inherit;False;562.007;150.2977;;;0,0,0,1;Linear
+    Light Burns or dodges the colors by decreasing or increasing the brightness,
+    depending on the blend color. If $the blend color (light source) is lighter than
+    50% gray, the image is lightened by increasing the brightness. If the blend $color
+    is darker than 50% gray, the image is darkened by decreasing the brightness.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;275;1344,544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;278;1104,768;Inherit;False;557.3025;190.3116;;;0,0,0,1;Multiply
+    Looks at the color information in each channel and multiplies the base color
+    by the blend color. The result $color is always a darker color. Multiplying any
+    color with black produces black. Multiplying any color with white leaves $the
+    color unchanged. When you\u2019re painting with a color other than black or white,
+    successive strokes with a painting $tool produce progressively darker colors.
+    The effect is similar to drawing on the image with multiple marking pens;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;281;1344,1104;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;284;1104,1328;Inherit;False;557.7198;141.7233;;;0,0,0,1;Overlay
+    Multiplies or screens the colors, depending on the base color. Patterns or colors
+    overlay the existing pixels $while preserving the highlights and shadows of the
+    base color. The base color is not replaced, but mixed with the blend $color to
+    reflect the lightness or darkness of the original color;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;287;2352,-1088;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;288;2112,-864;Inherit;False;572.6558;175.9791;;;0,0,0,1;Pin
+    Light Replaces the colors, depending on the blend color. If the blend color (light
+    source) is lighter than 50% gray, $pixels darker than the blend color are replaced,
+    and pixels lighter than the blend color do not change. If the blend color $is
+    darker than 50% gray, pixels lighter than the blend color are replaced, and pixels
+    darker than the blend color do not $change. This is useful for adding special
+    effects to an image;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;293;2352,-544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;294;2112,-320;Inherit;False;572.656;135.993;;;0,0,0,1;Subtract
+    Looks at the color information in each channel and subtracts the blend color
+    from the base color. In 8- and $16-bit images, any resulting negative values
+    are clipped to zero.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;299;2352,0;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;302;2112,224;Inherit;False;575.3218;153.3204;;;0,0,0,1;Screen
+    Looks at each channel\u2019s color information and multiplies the inverse of
+    the blend and base colors. The result $color is always a lighter color. Screening
+    with black leaves the color unchanged. Screening with white produces white. $The
+    effect is similar to projecting multiple photographic slides on top of each other.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;305;2352,544;Inherit;False;398.4101;133.0073;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;308;2112,768;Inherit;False;575.3218;181.3106;;;0,0,0,1;Vivid
+    Light Burns or dodges the colors by increasing or decreasing the contrast, depending
+    on the blend color. If the $blend color (light source) is lighter than 50% gray,
+    the image is lightened by decreasing the contrast. If the blend color $is darker
+    than 50% gray, the image is darkened by increasing the contrast. ;0;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;213;-912,0;Inherit;True;Darken;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;219;-912,544;Inherit;True;Divide;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;225;-912,1104;Inherit;True;Difference;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;249;96,544;Inherit;True;HardMix;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;255;96,1104;Inherit;True;Lighten;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;279;1104,544;Inherit;True;Multiply;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;285;1104,1104;Inherit;True;Overlay;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;297;2112,-544;Inherit;True;Subtract;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;303;2112,0;Inherit;True;Screen;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;309;2112,544;Inherit;True;VividLight;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;291;2112,-1088;Inherit;True;PinLight;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0.25;False;1;COLOR;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;310;-448,-1600;Inherit;False;384;165;;;0,0,0,1;The
+    Blend Operations node outputs a blended result of its inputs according to the
+    selected Blend Op property similarly to layer blending operations normally found
+    on image editing tools;0;0\nNode;AmplifyShaderEditor.BlendOpsNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;197;-704,-1600;Inherit;True;ColorBurn;True;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;273;1104,0;Inherit;True;LinearLight;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;267;1104,-544;Inherit;True;LinearDodge;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;261;1104,-1088;Inherit;True;LinearBurn;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;231;96,-1088;Inherit;True;Exclusion;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;237;96,-544;Inherit;True;SoftLight;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;243;96,0;Inherit;True;HardLight;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;158;-1136,-1088;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;97;-1136,-1008;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;205;-1136,-544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;204;-1136,-464;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;229;-160,-1008;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;235;-160,-464;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;240;-160,80;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;211;-1152,0;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;210;-1152,80;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;217;-1152,544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;216;-1152,624;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;223;-1152,1104;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;222;-1152,1184;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;246;-160,624;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;247;-160,544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;252;-160,1184;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;260;864,-1088;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;259;864,-1008;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;266;864,-544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;265;864,-464;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;271;864,0;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;270;864,80;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;277;864,544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;283;864,1104;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;282;864,1184;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;290;1888,-1088;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;289;1888,-1008;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;295;1888,-464;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;301;1888,0;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;300;1888,80;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;307;1888,544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;306;1888,624;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;75;-912,-1088;Inherit;True;ColorBurn;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.BlendOpsNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;207;-912,-544;Inherit;True;ColorDodge;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;316;-1136,-384;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;317;-1152,160;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;318;-1152,704;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;319;-1152,1264;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;315;-1136,-928;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;321;-160,-384;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;322;-160,160;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;323;-160,704;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;324;-160,1264;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;320;-160,-928;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;326;864,-384;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;327;864,160;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;276;864,624;Inherit;False;96;Destiny;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;328;864,704;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;329;864,1264;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;325;864,-928;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;330;1888,-928;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;296;1888,-544;Inherit;False;156;Source;1;0;OBJECT;;False;1;COLOR;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;331;1888,-384;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;332;1888,160;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;333;1888,704;Inherit;False;313;Alpha;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;311;-2240,-944;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;226671182b79a4f448d2f41951f30fb4;226671182b79a4f448d2f41951f30fb4;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;312;-2240,-752;Inherit;True;Property;_TextureSample1;Texture
+    Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;40d039c7c47e80541b43e38546594e5d;40d039c7c47e80541b43e38546594e5d;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.PosVertexDataNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;173;-2896,-544;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DistanceOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;178;-2672,-544;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;179;-2512,-544;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;180;-2368,-544;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;181;-2192,-544;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;0.01;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;177;-2864,-400;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;-1;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SinTimeNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;176;-3056,-400;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;314;-2192,-432;Inherit;False;Constant;_Alpha;Alpha;2;0;Create;True;0;0;0;False;0;False;0.75;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;313;-1984,-544;Inherit;False;Alpha;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;156;-1920,-752;Inherit;False;Source;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;96;-1920,-944;Inherit;False;Destiny;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;74;-1184,-1760;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;213;0;211;0\nWireConnection;213;1;210;0\nWireConnection;213;2;317;0\nWireConnection;219;0;217;0\nWireConnection;219;1;216;0\nWireConnection;219;2;318;0\nWireConnection;225;0;223;0\nWireConnection;225;1;222;0\nWireConnection;225;2;319;0\nWireConnection;249;0;247;0\nWireConnection;249;1;246;0\nWireConnection;249;2;323;0\nWireConnection;255;0;253;0\nWireConnection;255;1;252;0\nWireConnection;255;2;324;0\nWireConnection;279;0;277;0\nWireConnection;279;1;276;0\nWireConnection;279;2;328;0\nWireConnection;285;0;283;0\nWireConnection;285;1;282;0\nWireConnection;285;2;329;0\nWireConnection;297;0;296;0\nWireConnection;297;1;295;0\nWireConnection;297;2;331;0\nWireConnection;303;0;301;0\nWireConnection;303;1;300;0\nWireConnection;303;2;332;0\nWireConnection;309;0;307;0\nWireConnection;309;1;306;0\nWireConnection;309;2;333;0\nWireConnection;291;0;290;0\nWireConnection;291;1;289;0\nWireConnection;291;2;330;0\nWireConnection;273;0;271;0\nWireConnection;273;1;270;0\nWireConnection;273;2;327;0\nWireConnection;267;0;266;0\nWireConnection;267;1;265;0\nWireConnection;267;2;326;0\nWireConnection;261;0;260;0\nWireConnection;261;1;259;0\nWireConnection;261;2;325;0\nWireConnection;231;0;230;0\nWireConnection;231;1;229;0\nWireConnection;231;2;320;0\nWireConnection;237;0;236;0\nWireConnection;237;1;235;0\nWireConnection;237;2;321;0\nWireConnection;243;0;241;0\nWireConnection;243;1;240;0\nWireConnection;243;2;322;0\nWireConnection;75;0;158;0\nWireConnection;75;1;97;0\nWireConnection;75;2;315;0\nWireConnection;207;0;205;0\nWireConnection;207;1;204;0\nWireConnection;207;2;316;0\nWireConnection;178;0;173;0\nWireConnection;178;1;177;0\nWireConnection;179;0;178;0\nWireConnection;180;0;179;0\nWireConnection;181;0;180;0\nWireConnection;177;0;176;4\nWireConnection;313;0;314;0\nWireConnection;156;0;312;0\nWireConnection;96;0;311;0\nASEEND*/\n//CHKSM=5F1522FE4E4FF76346C07A4C4CB6B4679097C8F0"
+  m_functionName: 
+  m_description: 'Blend Operations Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    Unknown'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4392157, g: 0.34509805, b: 0.015686275, a: 1}
+  m_customNodeCategory: LS Blend
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

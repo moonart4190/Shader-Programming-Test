@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS World Tangent
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;143;123.8386,-1104;Inherit;False;1458.681;1000.461;SG
+    Tangent Vector Node;18;151;156;155;154;137;153;152;142;136;150;149;146;145;139;141;140;138;144;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;134;128,-1536;Inherit;False;904.5051;381.7297;World
+    Tangent Node ;2;135;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;103;432,-1488;Inherit;False;464.2008;145.1484;;;0.05660379,0.05046281,0.05046281,1;Per
+    pixel calculation of a vector that represents the surface tangent in world space.
+    A tangent vector is a unit vector which is tangent to a surface at a given point.;0;0\nNode;AmplifyShaderEditor.VertexTangentNode;135;176,-1488;Inherit;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.StickyNoteNode;144;1152,-896;Inherit;False;377.5483;189.9182;;;0,0,0,1;The
+    Tangent Vector Node brings the mesh's tangent vector into the shader. The tangent
+    vector points along the mesh's surface in the direction of the U coordinate of
+    the UV coordinates.$$Together with the Normal Vector and Bitangent Vector, the
+    Tangent Vector can be used to transform vectors from tangent space to world space
+    and back.;0;0\nNode;AmplifyShaderEditor.FunctionSubtitle;138;784,-1040;Inherit;True;Object
+    Space;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;140;784,-592;Inherit;True;World
+    Space;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;141;784,-368;Inherit;True;Tangent
+    Space;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;139;784,-816;Inherit;True;View
+    Space;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformPositionNode;145;544,-816;Inherit;False;World;View;False;Fast;True;1;0;FLOAT3;0,0,0;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TransformPositionNode;146;544,-1040;Inherit;False;World;Object;False;Fast;True;1;0;FLOAT3;0,0,0;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.WireNode;149;448,-976;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;150;464,-768;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;152;1024,-928;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;153;1056,-912;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitch;137;1152,-1040;Inherit;False;Space;False;0;4;-1;Object;View;World;Tangent;Object;-1;10;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;154;1056,-384;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;155;1024,-608;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;156;976,-816;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;151;992,-944;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.VertexTangentNode;136;208,-592;Inherit;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TangentVertexDataNode;142;208,-368;Inherit;True;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;118;128,-1664;Inherit;False;True;-1;Output;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;138;0;146;0\nWireConnection;140;0;136;0\nWireConnection;141;0;142;0\nWireConnection;139;0;145;0\nWireConnection;145;0;150;0\nWireConnection;146;0;149;0\nWireConnection;149;0;136;0\nWireConnection;150;0;136;0\nWireConnection;152;0;155;0\nWireConnection;153;0;154;0\nWireConnection;137;0;138;0\nWireConnection;137;1;151;0\nWireConnection;137;2;152;0\nWireConnection;137;3;153;0\nWireConnection;154;0;141;0\nWireConnection;155;0;140;0\nWireConnection;156;0;139;0\nWireConnection;151;0;156;0\nASEEND*/\n//CHKSM=405C6A40C4A2F7E1135CF65C9DEAC7209AC14FF9"
+  m_functionName: 
+  m_description: 'World Tangent Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Surface Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

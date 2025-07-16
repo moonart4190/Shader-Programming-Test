@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Maximum
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;19;-512,-384;Inherit;False;883.7636;341.6105;Maximum
+    Node;2;1;2;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;8;-512,0;Inherit;False;1015.96;439.4115;Maximum
+    Node;5;5;3;4;6;13;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;29;-512,464;Inherit;False;710.96;439.4115;;5;31;33;34;35;30;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;2;-432,-336;Inherit;False;418.2786;190.2177;Maximum
+    Node;;0,0,0,1;The Max node compares two values A and B and outputs the maximum
+    value between them$$$Max between multi-channel data types are done per-channel.
+    If A and B have different channel amounts a cast is done to match the one with
+    the most amount of channels$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;6;-144,272;Inherit;False;573.47;122.0073;;;0,0,0,1;A
+    - First value of the maximum operation$$B - Second value of the maximum operation,
+    Fully outputted when Alpha = 1$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;13;48,48;Inherit;False;320.0657;191.0073;;;0,0,0,1;Lower
+    limit$$Returning the minimum of the two input values, in this example set 0.25
+    as min it is clamping the values to anything above 0.25;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;30;-128,736;Inherit;False;269.47;101;;;0,0,0,1;This
+    Maximum 0.00001 (1E-05) is here to prevent a divide by zero.;0;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;4;-144,48;Inherit;True;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.RangedFloatNode;5;-368,224;Inherit;False;Constant;_Maximum;Maximum;0;0;Create;True;0;0;0;False;0;False;0.25;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;3;-400,48;Inherit;False;Constant;_Color0;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleDivideOpNode;35;-128,528;Inherit;True;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ColorNode;34;-480,528;Inherit;False;Constant;_Color2;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMaxOpNode;31;-288,736;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1E-05;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;33;-480,736;Inherit;False;Constant;_Fuzz;Fuzz;0;0;Create;True;0;0;0;False;0;False;3.92;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;1;16,-336;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;-944,-384;Inherit;False;397.0974;213.129;Reference
+    Implementation;;0,0,0,1;max for float3 vectors could be implemented this way:$$float3
+    max(float3 a, float3 b)${$  return float3(a.x > b.x ? a.x : b.x,$               
+    a.y > b.y ? a.y : b.y,$                a.z > b.z ? a.z : b.z)@$};0;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-512,-480;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;4;0;3;0\nWireConnection;4;1;5;0\nWireConnection;35;0;34;0\nWireConnection;35;1;31;0\nWireConnection;31;0;33;0\nASEEND*/\n//CHKSM=3A63FCBC36C2216487D72E3B029699202C3A6469"
+  m_functionName: 
+  m_description: 'Maximum Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Range
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

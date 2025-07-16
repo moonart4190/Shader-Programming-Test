@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI UV Shake
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;259;-2816,2688;Inherit;False;2818.766;770.3496;Math;27;376;255;386;431;432;281;434;433;423;422;430;428;425;426;427;263;424;419;418;384;356;355;251;383;352;351;350;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;350;-1808,2864;Inherit;False;129.9832;127.791;UV;1;374;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;351;-528,2864;Inherit;False;185.3303;276.875;Out;1;377;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;352;-1824,3280;Inherit;False;129.9832;127.791;Speed;1;370;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;383;-2224,3072;Inherit;False;129.9832;127.791;Seed;1;385;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;418;-1440,3280;Inherit;False;129.9832;127.791;Strength;1;420;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;251;-320,2768;Inherit;False;205.5;120.5;Out;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;282;-2816,2304;Inherit;False;706.1434;286.771;UV
+    Shake;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2464,2368;Inherit;False;285.5339;156.3606;;;0.0235849,0.0235849,0.0235849,1;Creates
+    a set of UV coordinates that are shaking a random amount based on Speed and Strength.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;355;-2016,3216;Inherit;False;152.0649;100;Speed;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;356;-2000,2800;Inherit;False;161.6664;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;384;-2432,3008;Inherit;False;173.5;100.5;Seed;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;419;-1440,3168;Inherit;False;173.5;100.5;Strength;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;370;-1808,3328;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;263;-1984,3328;Inherit;False;Speed;1;1;False;1;0;FLOAT;10;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;427;-2016,3120;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;426;-1616,3120;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;420;-1424,3328;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;430;-1280,3328;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;422;-1600,3328;Inherit;False;Strength;1;2;False;1;0;FLOAT;0.03;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;423;-1072,2992;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;433;-1120,3072;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;434;-1120,3312;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;432;-912,2992;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.CeilOpNode;425;-1616,2992;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionNode;431;-784,2912;Inherit;False;LS
+    UI UV Move;-1;;2;91744ba6a18f4a342a6d317c105fa510;0;3;255;FLOAT2;0,0;False;263;FLOAT;0;False;284;FLOAT;0;False;2;FLOAT2;281;FLOAT2;267\nNode;AmplifyShaderEditor.RelayNode;374;-1792,2912;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;376;-2240,2912;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionInput;255;-1984,2912;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;377;-512,2912;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;385;-2208,3120;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;428;-2272,3232;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;386;-2384,3120;Inherit;False;Seed;1;3;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;424;-1440,2992;Inherit;False;LS
+    UI Helper Random;-1;;1;dcd5bb2f14d17a14aabd63b8921ce49e;0;3;214;FLOAT2;0,0;False;278;FLOAT;2;False;282;FLOAT;0;False;3;FLOAT2;250;FLOAT;270;FLOAT;274\nNode;AmplifyShaderEditor.FunctionOutput;281;-320,2912;Inherit;False;True;-1;Out;0;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;370;0;263;0\nWireConnection;427;0;385;0\nWireConnection;427;1;428;0\nWireConnection;426;0;427;0\nWireConnection;426;1;370;0\nWireConnection;420;0;422;0\nWireConnection;430;0;420;0\nWireConnection;430;1;420;0\nWireConnection;423;0;424;250\nWireConnection;423;1;433;0\nWireConnection;433;0;434;0\nWireConnection;434;0;430;0\nWireConnection;432;0;423;0\nWireConnection;425;0;374;0\nWireConnection;431;255;374;0\nWireConnection;431;263;432;0\nWireConnection;431;284;432;1\nWireConnection;374;0;255;0\nWireConnection;255;0;376;0\nWireConnection;377;0;431;281\nWireConnection;385;0;386;0\nWireConnection;424;214;425;0\nWireConnection;424;278;426;0\nWireConnection;281;0;377;0\nASEEND*/\n//CHKSM=16AE5A1C8CABF156DA7278E63619F2EA990A6E10"
+  m_functionName: 
+  m_description: 'UV Shake
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI UV
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Gradient Square Borders
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;345;-3833.046,4224;Inherit;False;2817.261;1290.401;Math;26;327;480;479;478;473;475;469;477;474;471;472;470;456;450;449;318;319;463;320;298;302;330;447;455;462;481;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;481;-1888,4352;Inherit;False;265.1433;276.8481;0.75;1;476;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;462;-2752,4720;Inherit;False;750.9434;371.1357;Horizontal
+    Gradient;5;461;457;458;460;459;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;455;-2752,5104;Inherit;False;749.12;324.9531;Mask;5;454;453;452;451;448;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;447;-3152,4912;Inherit;False;329.75;209.4795;Prepare
+    UV for Top Right Start + Clockwise Rotation;2;446;445;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;330;-1552,4352;Inherit;False;190.689;267.5996;Out;1;329;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;302;-3328,4912;Inherit;False;132.5;128;UV;1;301;;0.0754717,0.0754717,0.0754717,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;463;-2752,4352;Inherit;False;752.0481;352.9082;Horizontal
+    Gradient;4;467;464;468;465;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;298;-1328,4272;Inherit;False;221;110.5;Out;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;320;-3520,4848;Inherit;False;144.4785;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;346;-3840,3904;Inherit;False;898.1434;290.771;Square
+    Borders Gradient;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;347;-3361.385,3968;Inherit;False;243.2798;132.0027;;;0.0235849,0.0235849,0.0235849,1;Creates
+    a gradient that moves around the sides of a square.;0;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;446;-2944,4960;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RelayNode;301;-3312,4960;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;319;-3504,4960;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;318;-3728,4960;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.WireNode;449;-3184,5056;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;450;-3184,5184;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;456;-3152,5216;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;459;-2496,4848;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.25;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StepOpNode;460;-2496,4960;Inherit;False;2;0;FLOAT;0.5;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;458;-2528,4768;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;457;-2704,4768;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.25;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;461;-2336,4768;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StepOpNode;465;-2496,4592;Inherit;False;2;0;FLOAT;0.5;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;468;-2336,4400;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;470;-2800,4944;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;472;-2816,4944;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;471;-2816,4832;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;474;-2816,4944;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;448;-2576,5184;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.AbsOpNode;452;-2432,5184;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;453;-2320,5184;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.StepOpNode;454;-2208,5184;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;477;-1936,5184;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;469;-2800,4480;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;475;-2784,4656;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;473;-2816,4672;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;478;-1984,4768;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;479;-1952,4496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;480;-1936,4496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;476;-1856,4400;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;329;-1536,4400;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;467;-2704,4400;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.25;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;464;-2496,4480;Inherit;False;2;2;0;FLOAT;0.75;False;1;FLOAT;0.75;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;451;-2736,5248;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;445;-3120,4960;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;327;-1328,4400;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;446;0;445;0\nWireConnection;301;0;319;0\nWireConnection;319;0;318;0\nWireConnection;449;0;301;0\nWireConnection;450;0;449;0\nWireConnection;456;0;450;0\nWireConnection;459;0;457;0\nWireConnection;460;1;446;1\nWireConnection;458;0;457;0\nWireConnection;457;0;471;0\nWireConnection;461;0;458;0\nWireConnection;461;1;459;0\nWireConnection;461;2;460;0\nWireConnection;465;1;475;0\nWireConnection;468;0;467;0\nWireConnection;468;1;464;0\nWireConnection;468;2;465;0\nWireConnection;470;0;446;1\nWireConnection;472;0;446;0\nWireConnection;471;0;472;0\nWireConnection;474;0;446;0\nWireConnection;448;0;456;0\nWireConnection;448;1;451;0\nWireConnection;452;0;448;0\nWireConnection;453;0;452;0\nWireConnection;454;0;453;0\nWireConnection;454;1;453;1\nWireConnection;477;0;454;0\nWireConnection;469;0;470;0\nWireConnection;475;0;473;0\nWireConnection;473;0;474;0\nWireConnection;478;0;461;0\nWireConnection;479;0;478;0\nWireConnection;480;0;477;0\nWireConnection;476;0;468;0\nWireConnection;476;1;479;0\nWireConnection;476;2;480;0\nWireConnection;329;0;476;0\nWireConnection;467;0;469;0\nWireConnection;464;1;467;0\nWireConnection;445;0;301;0\nWireConnection;327;0;329;0\nASEEND*/\n//CHKSM=CEAD6C73D0C2C0465B4AA2451CAA85612CF2C52C"
+  m_functionName: 
+  m_description: 'Square Borders Gradient
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Gradient
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

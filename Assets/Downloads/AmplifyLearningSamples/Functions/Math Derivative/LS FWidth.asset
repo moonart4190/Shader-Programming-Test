@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS FWidth
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;18;-656,-32;Inherit;False;612;259;Safe
+    Mode;4;8;3;10;1;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;14;-640,-576;Inherit;False;1239.167;497.8535;FWidth
+    Node;3;13;12;11;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;11;-400,-352;Inherit;False;943.3171;231.1232;Derivative;;0,0,0,1;The
+    FWidth, DDXY and the DDX & DDY functions give you information about how much
+    a value change between one pixel and the next.$$--- DDY returns the horizontal
+    change in left pixel value from the left subtracted from the right $--- DDX returns
+    the vertical change in top pixels value from the top subtracted from the bottom
+    $--- FWidth returns the abs value of DDY and DDX added together and is native
+    to the HLSL compiler$--- DDXY does the same as FWidth however skips the abs value
+    and Unity simply adds the results of DDY and DDX together$$ Note Unity shader
+    graph does not have a FWidth node $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;12;-416,-528;Inherit;False;972.4392;153.0162;;;0,0,0,1;The
+    Fwith node outputs the absolute value of the partial derivatives of the specified
+    Input value or, in case of vectors, each component value of the input vector.
+    $$In other words it sums the absolute values of its partial derivatives of the
+    Input value both in horizontal and vertical window space abs(ddx(Input)) + abs(ddy(Input)).$;0;0\nNode;AmplifyShaderEditor.FWidthOpNode;13;-576,-528;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;15;-1120,-576;Inherit;False;424;177.1964;Reference
+    Implementation;;0,0,0,1;fmod for float3 vectors could be implemented this way:$$float3
+    fwidth(float3 a)${$  return abs(ddx(a)) + abs(ddy(a))@$};0;0\nNode;AmplifyShaderEditor.FWidthOpNode;1;-608,16;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;8;-432,80;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode;10;-624,112;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.01;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch;3;-304,16;Inherit;False;Safe
+    Mode;True;1;2;-1;;;Object;-1;10;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-640,-704;Inherit;False;True;-1;Output;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;8;0;1;0\nWireConnection;8;1;10;0\nWireConnection;3;0;1;0\nWireConnection;3;1;8;0\nASEEND*/\n//CHKSM=0C9E00827D0F6EDDFDAA46A8D7D1927CF91486A8"
+  m_functionName: 
+  m_description: 'FWidth Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Derivative
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Power
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;51;-384,512;Inherit;False;1354.368;1091.559;Math
+    Optimization;11;61;62;57;56;59;47;58;50;54;63;81;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;45;-384,-160;Inherit;False;1093.898;643.8849;Example;7;43;42;44;40;41;76;77;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;81;48,576;Inherit;False;236.6667;263.6667;Power
+    of 2;1;46;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;69;-384,1664;Inherit;False;885.1001;639;Controlling
+    the Falloff of a Mask;7;80;68;73;75;72;71;70;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;67;528,1664;Inherit;False;599.2845;312.5128;Fast
+    approximation for sRGB correction;3;64;65;66;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;63;576,1056;Inherit;False;225.2808;271.533;Power
+    of 5;1;60;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;54;304,848;Inherit;False;231.2101;270.3365;Power
+    of 4;1;53;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;50;48,848;Inherit;False;222.0174;272.4197;Power
+    of 2;1;48;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;41;-64,-112;Inherit;False;247;267;Brighter;1;38;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;40;-64,160;Inherit;False;250;270;Darker;1;39;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-384,-512;Inherit;False;641.1065;291.1014;Power
+    Node;2;37;19;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;58;288,1232;Inherit;False;229.9154;271.6313;Power
+    of 3;1;55;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-352,-464;Inherit;False;304.1903;135;;;0,0,0,1;Returns
+    the result of input A to the power of input B$$Out = pow(A, B)@;0;0\nNode;AmplifyShaderEditor.PowerNode;37;-16,-464;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;-240,896;Inherit;False;220.5312;125.9782;;;0,0,0,1;Hard
+    coding with multiple can be a lot cheaper than use of power node;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;66;736,1712;Inherit;False;366.0676;127.385;other
+    case use exsample;;0,0,0,1;Exp = 2.2 Correction for Linear$$Exp = 0.45 gamma
+    correction sRGB to Linear;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;76;208,-96;Inherit;False;482.8453;286.2594;behavior
+    of the power operation depend on its input values;;0,0,0,1;The Power node ( shortcut:
+    E key ) calculates a value using the exponentiation operator BaseExp.$$With Exp
+    greater than 0 it corresponds to multiplying base by itself exp times, p.e Base
+    = 2, Exp = 3 results in 2 x 2 x 2$$With Exp lower than 0 it corresponds to the
+    inverse operation described above, p.e Base = 2, Exp = -3 results in 1/(2 x 2
+    x 2)$$On the other hand if Exp equals 0 then it will always output 1 independently
+    of the Base value specified.$$Power on multi-channel data types generates an
+    output of the same type with the operator applied per-channel.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;77;208,208;Inherit;False;256.8253;134.2389;Safe
+    Power;;0,0,0,1;When toggled on, assures that Base is always greater than 0 to
+    avoid indeterminations/NaN.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;78;-912,-512;Inherit;False;461.2662;244.1654;Reference
+    Implementation;;0,0,0,1;pow for float3 vectors could be implemented this way:$$float3
+    pow(float3 x, float3 y)${$  float3 rv@$$  for (int i=0@ i<3@ i++) {$    rv[i]
+    = exp(x[i] * log(y[i]))@$  }$  return rv@$};0;0\nNode;AmplifyShaderEditor.PowerNode;38;-48,-64;Inherit;True;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;1;False;1;COLOR;0\nNode;AmplifyShaderEditor.PowerNode;39;-48,208;Inherit;True;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;1;False;1;COLOR;0\nNode;AmplifyShaderEditor.ColorNode;44;-304,0;Inherit;False;Constant;_Color0;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0,0.1566185,0.990566,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;42;-272,-96;Inherit;False;Constant;_Lowerthanone;Lower
+    than one;0;0;Create;True;0;0;0;False;0;False;0.2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;43;-272,208;Inherit;False;Constant;_Higherthanone;Higher
+    than one;0;0;Create;True;0;0;0;False;0;False;5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;65;576,1824;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;0.45;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;64;576,1712;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;2.2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;70;-352,1744;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldNormalVector;71;-352,1888;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DotProductOpNode;72;-128,1744;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;75;-352,2048;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.7496549;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;73;-48,2048;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;1;False;4;FLOAT;8;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;68;192,1744;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinTimeNode;80;-272,2128;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ColorNode;47;-224,624;Inherit;False;Constant;_Color1;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0,0.1566185,0.990566,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;53;320,896;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;55;304,1280;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;56;0,1280;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;57;64,1328;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;62;0,1120;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;61;48,1152;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;60;592,1104;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;48;64,896;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.PowerNode;46;64,624;Inherit;True;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;2;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-640;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;38;0;44;0\nWireConnection;38;1;42;0\nWireConnection;39;0;44;0\nWireConnection;39;1;43;0\nWireConnection;72;0;70;0\nWireConnection;72;1;71;0\nWireConnection;73;0;80;4\nWireConnection;68;0;72;0\nWireConnection;68;1;73;0\nWireConnection;53;0;48;0\nWireConnection;53;1;48;0\nWireConnection;55;0;48;0\nWireConnection;55;1;57;0\nWireConnection;56;0;47;0\nWireConnection;57;0;56;0\nWireConnection;62;0;47;0\nWireConnection;61;0;62;0\nWireConnection;60;0;53;0\nWireConnection;60;1;61;0\nWireConnection;48;0;47;0\nWireConnection;48;1;47;0\nWireConnection;46;0;47;0\nASEEND*/\n//CHKSM=38903EBE55425E0D308059DDC8E791403D0E691A"
+  m_functionName: 
+  m_description: 'Power Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Integer
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;116;-384,-544;Inherit;False;887;643;Select
+    Color by Index;11;108;110;107;112;109;113;114;115;104;105;106;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;108;-304,-128;Inherit;False;171.903;139.1554;Index;1;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;21;-384,-896;Inherit;False;675.0516;288.1145;Int
+    Node;2;102;17;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;17;-128,-848;Inherit;False;363.3253;180.7106;;;0,0,0,1;The
+    Int node ( shortcut: numeric 0 key ) generates a single integer value. $$This
+    value is usually useful to either define a Constant value which is directly used
+    in shader calculations or to define an exposed Property value that can be modified
+    by the material inspector that uses it.;0;0\nNode;AmplifyShaderEditor.IntNode;102;-304,-848;Inherit;True;Constant;_Int0;Int
+    0;0;0;Create;True;0;0;0;False;0;False;0;0;False;0;1;INT;0\nNode;AmplifyShaderEditor.WireNode;110;-96,-352;Inherit;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.LerpOp;107;-32,-480;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;112;-128,-384;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;109;-96,-96;Inherit;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.LerpOp;113;240,-480;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;114;64,-96;Inherit;False;2;0;INT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;106;-16,-352;Inherit;False;Property;_Color2;Color
+    2;1;0;Create;True;0;0;0;False;0;False;0,0.1479583,1,0;0,0.1479583,1,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;105;-336,-320;Inherit;False;Property;_Color1;Color
+    1;2;0;Create;True;0;0;0;False;0;False;0.1821241,1,0,0;0.1821241,1,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;104;-336,-480;Inherit;False;Property;_Color0;Color
+    0;3;0;Create;True;0;0;0;False;0;False;0.990566,0,0,0;0.990566,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;115;-96,0;Inherit;False;Constant;_Float0;Float
+    0;1;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.IntNode;103;-288,-96;Inherit;False;Property;_Integer;Integer;0;0;Create;True;0;0;0;False;0;False;0;0;False;0;1;INT;0\nNode;AmplifyShaderEditor.FunctionOutput;12;-384,-1024;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;110;0;109;0\nWireConnection;107;0;104;0\nWireConnection;107;1;112;0\nWireConnection;107;2;110;0\nWireConnection;112;0;105;0\nWireConnection;109;0;103;0\nWireConnection;113;0;107;0\nWireConnection;113;1;106;0\nWireConnection;113;2;114;0\nWireConnection;114;0;103;0\nWireConnection;114;1;115;0\nASEEND*/\n//CHKSM=27D8AA6F5CABBD7F41297BB524849FAB3CA09A42"
+  m_functionName: 
+  m_description: 'Int Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.30588236, g: 0.5176471, b: 0.16078432, a: 1}
+  m_customNodeCategory: LS Properties
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

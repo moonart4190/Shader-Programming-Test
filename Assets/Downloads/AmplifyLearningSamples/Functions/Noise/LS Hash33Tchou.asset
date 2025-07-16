@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Hash33Tchou
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19901\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;226;-1024,-960;Inherit;False;764.6142;250.3279;Hash33Tchou;3;230;228;227;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;231;-1024,-112;Inherit;False;641.7351;820.1291;Unity
+    Hashes.hlsl;3;234;233;232;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;237;-1024,-640;Inherit;False;768.9075;478.6371;Math;4;235;236;239;238;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;227;-1008,-896;Inherit;False;329.5681;123.9305;Based
+    on Unity Core/ShaderLibrary /Hashes.hlsl;;0,0,0,1;Generates a random output value
+    for every unique input value.$$This one receives a Vec3 and outputs a Vec3.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;228;-480,-896;Inherit;False;129.5;100;;;0,0,0,1;Input
+    = Vec3$Output = Vec3;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;232;-944,-64;Inherit;False;383.3368;285.5254;Hash33Tchou_uint;;0,0,0,1;void
+    Hash_Tchou_3_3_uint(uint3 v, out uint3 o)${$    // ~15 alu (3 mul)$    v.x ^=
+    1103515245U@$    v.y ^= v.x + v.z@$    v.y = v.y * 134775813@$    v.z += v.x
+    ^ v.y@$    v.y += v.x ^ v.z@$    v.x += v.y * v.z@$    v.x = v.x * 0x27d4eb2du@$   
+    v.z ^= v.x << 3@$    v.y += v.z << 3@$    o = v@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;233;-960,256;Inherit;False;511.8715;193.4505;Hash33Tchou_float;;0,0,0,1;void
+    Hash_Tchou_3_3_float(float3 i, out float3 o)${$    uint3 r, v = (uint3) (int3)
+    round(i)@$    Hash_Tchou_3_3_uint(v, r)@$    o = (r >> 8) * (1.0 / float(0x00ffffff))@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;234;-960,496;Inherit;False;514.4776;176.4052;Hash33Tchou_half;;0,0,0,1;void
+    Hash_Tchou_3_3_half(half3 i, out half3 o)${$    uint3 r, v = (uint3) (int3) round(i)@$   
+    Hash_Tchou_3_3_uint(v, r)@$    o = (r >> 8) * (1.0 / float(0x00ffffff))@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;238;-992,-464;Inherit;False;356.8876;278.9534;Hash33Tchou;;0,0,0,1;uint3
+    v = (uint3) (int3) round(In)@$    v.x ^= 1103515245U@$    v.y ^= v.x + v.z@$   
+    v.y = v.y * 134775813@$    v.z += v.x ^ v.y@$    v.y += v.x ^ v.z@$    v.x +=
+    v.y * v.z@$    v.x = v.x * 0x27d4eb2du@$    v.z ^= v.x << 3@$    v.y += v.z <<
+    3@ $$Hash = v * (1.0 / float(0xffffffff))@$return out@$return Hash@;0;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;236;-992,-576;Inherit;False;In;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CustomExpressionNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;230;-640,-896;Inherit;False;uint3
+    v = (uint3) (int3) round(In)@$    v.x ^= 1103515245U@$    v.y ^= v.x + v.z@$   
+    v.y = v.y * 134775813@$    v.z += v.x ^ v.y@$    v.y += v.x ^ v.z@$    v.x +=
+    v.y * v.z@$    v.x = v.x * 0x27d4eb2du@$    v.z ^= v.x << 3@$    v.y += v.z <<
+    3@ $$Hash = v * (1.0 / float(0xffffffff))@$return out@$return Hash@;3;Create;2;True;Hash;FLOAT3;0,0,0;Out;;Inherit;False;True;In;FLOAT3;0,0,0;In;;Inherit;False;Hash33Tchou;True;False;0;;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0;FLOAT3;1\nNode;AmplifyShaderEditor.CustomExpressionNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;239;-816,-576;Inherit;False;uint3
+    v = (uint3) (int3) round(In)@$    v.x ^= 1103515245U@$    v.y ^= v.x + v.z@$   
+    v.y = v.y * 134775813@$    v.z += v.x ^ v.y@$    v.y += v.x ^ v.z@$    v.x +=
+    v.y * v.z@$    v.x = v.x * 0x27d4eb2du@$    v.z ^= v.x << 3@$    v.y += v.z <<
+    3@ $$Hash = v * (1.0 / float(0xffffffff))@$return Hash@;3;Create;2;True;Hash;FLOAT3;0,0,0;Out;;Inherit;False;True;In;FLOAT3;0,0,0;In;;Inherit;False;Hash33Tchou;True;False;0;;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0;FLOAT3;1\nNode;AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;235;-640,-576;Inherit;False;True;-1;Hash;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;239;1;236;0\nWireConnection;235;0;239;1\nASEEND*/\n//CHKSM=BDEFB2F41C2EF9F6E0135B1643E36144EF9028EE"
+  m_functionName: 
+  m_description: 'Hash33Tchou
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0, b: 0, a: 1}
+  m_customNodeCategory: LS Noise
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

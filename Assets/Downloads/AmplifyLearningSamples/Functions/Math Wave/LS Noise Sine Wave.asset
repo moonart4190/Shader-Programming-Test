@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Noise Sine Wave
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;48;-1152,-896;Inherit;False;850.2323;298.3774;Noise
+    Sine Wave Node;2;23;49;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;46;-1152,-544;Inherit;False;1620;454.5873;Math;17;24;16;18;13;10;4;19;21;20;22;11;5;9;6;7;12;14;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;45;-1152,-48;Inherit;False;1824;454.9207;Example;18;25;26;27;28;29;30;31;33;34;35;41;42;43;44;32;36;38;39;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;23;-832,-848;Inherit;False;510.1;133.8;;;0,0,0,1;The
+    Noise Sine Wave node generates a sine wave from the input value.  For variance,
+    psuedo-random noise is added to the amplitude of the sine wave, within a range
+    determined by input Min Max.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;24;-608,-496;Inherit;False;229.6768;100;Min
+    Max;;0,0,0,1;Minimum and Maximum values for noise intensity;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;44;64,176;Inherit;False;291;193;;;0,0,0,1;When
+    we pass Time into the Noise Sine Wave node, you can see that we're getting a
+    nice sine wave dimming and brightening and each frame is darkened or brightened
+    by a random amount between -0.1 and 1. $$This result in random flickering.;0;0\nNode;AmplifyShaderEditor.LerpOp;25;64,0;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;26;-80,16;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleAddOpNode;27;240,80;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;28;-64,192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;29;-208,192;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;30;-336,192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;31;-480,192;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;33;-640,192;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;34;-768,112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;35;-768,208;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector2Node;41;-288,0;Inherit;False;Constant;_MinMax;Min
+    Max;0;0;Create;True;0;0;0;False;0;False;-0.1,0.1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.SimpleTimeNode;42;-1104,96;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;43;384,64;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;32;-400,304;Inherit;False;Constant;_Float3;Float
+    2;0;0;Create;True;0;0;0;False;0;False;43758.55;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;36;-896,208;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;38;-1056,240;Inherit;False;Constant;_Float4;Float
+    0;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;39;-672,304;Inherit;False;Constant;_Float5;Float
+    1;0;0;Create;True;0;0;0;False;0;False;91.2228;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;16;16,-496;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;18;-128,-496;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleAddOpNode;13;192,-432;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;10;-112,-320;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-256,-320;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;19;-384,-320;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;21;-528,-320;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;22;-688,-320;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;11;-816,-400;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;5;-816,-304;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;9;-944,-304;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;6;-1104,-400;Inherit;False;In;1;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;7;-1104,-272;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;14;-288,-496;Inherit;False;Min
+    Max;2;1;False;1;0;FLOAT2;-0.5,0.5;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionNode;49;-1088,-848;Inherit;True;Noise
+    Sine Wave;-1;;2;a6eff29f739ced848846e3b648af87bd;0;2;1;FLOAT;0;False;2;FLOAT2;-0.5,0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;20;-448,-208;Inherit;False;Constant;_Float2;Float
+    2;0;0;Create;True;0;0;0;False;0;False;43758.55;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;12;-720,-208;Inherit;False;Constant;_Float1;Float
+    1;0;0;Create;True;0;0;0;False;0;False;91.2228;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1152,-1024;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;25;0;26;0\nWireConnection;25;1;26;1\nWireConnection;25;2;28;0\nWireConnection;26;0;41;0\nWireConnection;27;0;25;0\nWireConnection;27;1;34;0\nWireConnection;28;0;29;0\nWireConnection;29;0;30;0\nWireConnection;29;1;32;0\nWireConnection;30;0;31;0\nWireConnection;31;0;33;0\nWireConnection;31;1;39;0\nWireConnection;33;0;34;0\nWireConnection;33;1;35;0\nWireConnection;34;0;42;0\nWireConnection;35;0;36;0\nWireConnection;43;0;27;0\nWireConnection;36;0;42;0\nWireConnection;36;1;38;0\nWireConnection;16;0;18;0\nWireConnection;16;1;18;1\nWireConnection;16;2;10;0\nWireConnection;18;0;14;0\nWireConnection;13;0;16;0\nWireConnection;13;1;11;0\nWireConnection;10;0;4;0\nWireConnection;4;0;19;0\nWireConnection;4;1;20;0\nWireConnection;19;0;21;0\nWireConnection;21;0;22;0\nWireConnection;21;1;12;0\nWireConnection;22;0;11;0\nWireConnection;22;1;5;0\nWireConnection;11;0;6;0\nWireConnection;5;0;9;0\nWireConnection;9;0;6;0\nWireConnection;9;1;7;0\nASEEND*/\n//CHKSM=8EB98D11344986FFF842B09349A1D35B1602BCB5"
+  m_functionName: 
+  m_description: 'Noise Sine Wave Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    64-127'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Wave
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

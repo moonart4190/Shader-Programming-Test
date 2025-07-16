@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Helper Posterize Gradient
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;259;-2951.896,2688;Inherit;False;2054.797;894.6322;Math;18;352;346;345;349;348;344;353;354;351;350;347;355;312;310;309;308;307;272;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;307;-1536,2848;Inherit;False;182.1145;269.959;KeepRange;1;316;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;308;-2400,2848;Inherit;False;123.2477;134.5073;Gradient;1;314;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;309;-2400,3136;Inherit;False;123.2477;134.5073;Steps;1;322;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;310;-1536,3120;Inherit;False;182.1145;269.959;EqualStepDistance;1;317;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;264;-2944,2336;Inherit;False;706.1434;286.771;Posterize
+    Gradient;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;265;-2592,2400;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;Converts
+    a smooth gradient into a stepped gradient with the given number of Steps.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;272;-1296,2752;Inherit;False;205.5;120.5;KeepRange;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;312;-2592,3280;Inherit;False;285.1494;131.2124;Steps;;0,0,0,1;Value
+    between [1,256] which defines strength of the posterization effect. $$The greater
+    the value lesser are the used tones$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;355;-1296,3024;Inherit;False;205.5;120.5;EqualStepDistance;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;316;-1520,2896;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;317;-1520,3168;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;347;-2208,2896;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FloorOpNode;350;-2016,2896;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;351;-1856,2896;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;322;-2384,3184;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;344;-2592,3184;Inherit;False;Steps;1;1;False;1;0;FLOAT;4;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;348;-2208,3040;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;349;-2016,3040;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;314;-2384,2896;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;345;-2576,2896;Inherit;False;Gradient;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;346;-2832,2896;Inherit;False;LS
+    SDF Linear Gradient;-1;;2;5fb69c5d8950a3642ab32bc81d65d552;2,325,0,337,0;1;319;FLOAT2;0,0;False;2;FLOAT;327;FLOAT;328\nNode;AmplifyShaderEditor.SimpleDivideOpNode;352;-1856,3168;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;354;-1296,3168;Inherit;False;True;-1;EqualStepDistance;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;353;-1296,2896;Inherit;False;False;-1;KeepRange;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;316;0;351;0\nWireConnection;317;0;352;0\nWireConnection;347;0;314;0\nWireConnection;347;1;322;0\nWireConnection;350;0;347;0\nWireConnection;351;0;350;0\nWireConnection;351;1;349;0\nWireConnection;322;0;344;0\nWireConnection;348;0;322;0\nWireConnection;349;0;348;0\nWireConnection;314;0;345;0\nWireConnection;345;0;346;327\nWireConnection;352;0;350;0\nWireConnection;352;1;322;0\nWireConnection;354;0;317;0\nWireConnection;353;0;316;0\nASEEND*/\n//CHKSM=B27027C7D95CA93D14F00FA748B5C17A347A8848"
+  m_functionName: 
+  m_description: 'Posterize Gradient
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Helper
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

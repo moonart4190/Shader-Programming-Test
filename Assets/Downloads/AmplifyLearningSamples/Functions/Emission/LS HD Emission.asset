@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HD Emission
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;212;-128,-896;Inherit;False;3645.603;1466.324;HDRP
+    Emisssion;63;276;275;274;272;271;270;269;277;268;262;266;265;260;259;258;257;256;255;254;253;248;247;244;243;242;241;238;237;236;235;234;233;232;231;230;228;227;226;225;224;223;222;221;220;219;217;216;215;214;213;278;279;280;281;282;283;284;285;286;287;288;289;290;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;213;1168,-544;Inherit;False;369.1;289.8;Register
+    Inline and return 0;2;239;218;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;63;-128,-1408;Inherit;False;1024.05;459.0154;
+    HD Emission Node;3;62;64;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;214;1008,160;Inherit;False;128.5;137;UV;1;250;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;215;1008,304;Inherit;False;127;131.5;SS;1;249;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;216;2272,-304;Inherit;False;138.4912;129.7859;BaseColor;1;245;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;217;3056,-64;Inherit;False;184.1475;271.8693;Emisssion;1;229;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;218;1184,-432;Inherit;False;183.15;161.65;Return
+    0;1;240;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;61;576,-1360;Inherit;False;253.4949;125.2522;;;0,0,0,1;The
+    HD Emission node calculates a emission HDR Color according to what is set over
+    is input;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;64;-64,-1360;Inherit;False;289.5682;100;Color;;0,0,0,1;LDR
+    color value for the emission;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;65;-64,-1248;Inherit;False;289.5682;100;Intensity;;0,0,0,1;Intensity
+    of the final color;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;66;-64,-1136;Inherit;False;289.5682;120.6289;Exposition
+    Weight;;0,0,0,1;Value between 0 and 1 to set how exposure affects emission (
+    0 exposure does not effect emission and 1 fully affects emission );0;0\nNode;AmplifyShaderEditor.StickyNoteNode;67;256,-1232;Inherit;False;299.1567;118.1118;Intensity
+    Unit;;0,0,0,1;Type of physical light units to control the strength of the emission.$---
+    Luminance$--- EV100;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;68;256,-1088;Inherit;False;299.1567;118.1118;Normalize
+    Color;;0,0,0,1;Normalizes the LDR input color before calculating the final HD
+    Emission value ( pre-multiplies it by the reciprocal value of the calculated
+    luminance );0;0\nNode;AmplifyShaderEditor.HDEmissionNode;62;320,-1360;Inherit;False;Luminance;False;3;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;219;2192,-80;Inherit;False;227.4726;100;Albedo
+    Affect Emissive;;0,0,0,1;_AlbedoAffectEmissive;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;220;928,-608;Inherit;False;219.8098;100.0465;Emissive
+    Intensity;;0,0,0,1;_EmissiveIntensity;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;221;1856,-368;Inherit;False;224.8478;100;Emissive
+    Pre Exposure;;0,0,0,1; _EmissiveExposureWeight;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;222;560,-16;Inherit;False;200.6796;107.9397;Emissive
+    Color Map;;0,0,0,1;_EmissiveColorMap;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;223;1632,-672;Inherit;False;201.4641;103.6304;Emissive
+    Color;;0,0,0,1;_EmissiveColor;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;224;3072,-224;Inherit;False;225.544;130.2383;Emisssion;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;225;2144,-832;Inherit;False;227.3252;100;Use
+    Emissive Intensity;;0,0,0,1;_UseEmissiveIntensity;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;226;1808,208;Inherit;False;533.5499;123.0371;_EMISSIVE_COLOR_MAP;;0,0,0,1;#pragma
+    shader_feature_local_fragment _EMISSIVE_COLOR_MAP;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;227;832,-304;Inherit;False;268.781;140.8611;Global
+    Illumination;;0,0,0,1;_EmissionFlags$$LS_DrawerEmissionFlags$used to register
+    Global Illumination Emission Flags;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;268;352,448;Inherit;False;207.2868;100;Emissive
+    UVs;;0,0,0,1;_EmissiveColorMap_ST;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;277;-64,288;Inherit;False;149.1433;100;Emissive
+    UV Set;;0,0,0,1;_UVEmissive;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;290;944,448;Inherit;False;189.5;100;SS;;0,0,0,1;Get
+    sampler states from _BaseColorMap;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;228;2896,-16;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;229;3072,-16;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.HDEmissionNode;230;2160,-528;Inherit;False;Luminance;False;3;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;231;2096,-528;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;232;2416,-528;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;233;2096,-608;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;234;2144,-720;Inherit;False;Property;_UseEmissiveIntensity;Use
+    Emissive Intensity;6;1;[Toggle];Create;False;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;235;2464,-672;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;236;2416,-576;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;237;2672,-672;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;238;2832,-608;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;239;1408,-496;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;240;1216,-384;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;241;1856,-672;Float;False;Property;_EmissiveColor;Emissive
+    Color;1;1;[HDR];Create;False;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WireNode;242;2624,-576;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;243;1856,-448;Half;False;Property;_EmissiveExposureWeight;Emissive
+    Exposure Weight;8;0;Create;False;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;244;2448,-256;Inherit;False;Lerp
+    White To;-1;;58757;047d7c189c36a62438973bad9d37b1c2;0;2;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;245;2288,-256;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;247;2192,-160;Float;False;Property;_AlbedoAffectEmissive;Albedo
+    Affect Emissive;0;1;[Toggle];Create;False;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch;248;1808,112;Float;False;Property;_EMISSION;_EMISSIVE_COLOR_MAP;7;0;Fetch;False;0;0;0;False;0;False;0;0;0;False;_EMISSIVE_COLOR_MAP;Toggle;2;Key0;Key1;Fetch;False;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;249;1024,352;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.RelayNode;250;1024,208;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;253;1168,112;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode;254;1168,336;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode;255;1152,208;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;256;1152,80;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SamplerNode;257;1216,-16;Inherit;True;Property;_TextureSample15;Texture
+    Sample 5;24;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SwizzleNode;258;1504,-16;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TexturePropertyNode;259;784,-16;Inherit;True;Property;_EmissiveColorMap;Emissive
+    Color Map;2;0;Create;False;0;0;0;False;1;LS_DrawerTextureSingleLine;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.RangedFloatNode;260;928,-496;Half;False;Property;_EmissiveIntensity;Emissive
+    Intensity;7;0;Create;False;1;;0;0;False;0;False;1;86.9;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;265;2624,-272;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;266;2832,-16;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;262;912,-384;Half;False;Property;_EmissionFlags;Global
+    Illumination;5;0;Create;False;0;0;0;False;1;LS_DrawerEmissionFlags;False;0;10;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;269;544,272;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;270;704,208;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;271;880,208;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;272;704,336;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;274;352,272;Inherit;False;Property;_EmissiveColorMap_ST;Emissive
+    UVs;4;0;Create;False;0;0;0;False;1;LS_DrawerTextureScaleOffset;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.CustomExpressionNode;275;176,208;Inherit;False;if(m_switch
+    ==0)$\treturn m_UV0@$else if(m_switch ==1)$\treturn m_UV1@$else if(m_switch ==2)$\treturn
+    m_UV2@$else if(m_switch ==3)$\treturn m_UV3@$else$return float2(0,0)@;2;Create;5;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_UV0;FLOAT2;0,0;In;;Inherit;False;True;m_UV1;FLOAT2;0,0;In;;Inherit;False;True;m_UV2;FLOAT2;0,0;In;;Inherit;False;True;m_UV3;FLOAT2;0,0;In;;Inherit;False;float2
+    switch UV Mode;True;False;0;;False;5;0;FLOAT;0;False;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode;276;-48,208;Inherit;False;Property;_UVEmissive;UV
+    Set;3;1;[Enum];Create;False;0;4;UV0;0;UV1;1;UV2;2;UV3;3;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;278;-80,-304;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;279;-80,-176;Inherit;False;1;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;280;-80,-48;Inherit;False;2;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;281;-80,80;Inherit;False;3;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.WireNode;283;128,224;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;284;128,272;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;285;128,288;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;282;128,320;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;286;128,-240;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;287;128,-112;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;288;128,16;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;289;128,144;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;29;-128,-1536;Inherit;False;True;-1;Out;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;228;0;258;0\nWireConnection;228;1;266;0\nWireConnection;229;0;228;0\nWireConnection;230;0;231;0\nWireConnection;230;1;239;0\nWireConnection;230;2;243;0\nWireConnection;231;0;233;0\nWireConnection;232;0;230;0\nWireConnection;233;0;241;0\nWireConnection;235;0;241;0\nWireConnection;235;1;236;0\nWireConnection;235;2;234;0\nWireConnection;236;0;232;0\nWireConnection;237;0;235;0\nWireConnection;237;1;242;0\nWireConnection;238;0;237;0\nWireConnection;239;0;260;0\nWireConnection;239;1;240;0\nWireConnection;240;0;262;0\nWireConnection;242;0;265;0\nWireConnection;244;1;245;0\nWireConnection;244;2;247;0\nWireConnection;250;0;271;0\nWireConnection;253;0;254;0\nWireConnection;254;0;249;0\nWireConnection;255;0;250;0\nWireConnection;256;0;255;0\nWireConnection;257;0;259;0\nWireConnection;257;1;256;0\nWireConnection;257;7;253;0\nWireConnection;258;0;257;0\nWireConnection;265;0;244;0\nWireConnection;266;0;238;0\nWireConnection;269;0;274;1\nWireConnection;269;1;274;2\nWireConnection;270;0;275;0\nWireConnection;270;1;269;0\nWireConnection;271;0;270;0\nWireConnection;271;1;272;0\nWireConnection;272;0;274;3\nWireConnection;272;1;274;4\nWireConnection;275;0;276;0\nWireConnection;275;1;283;0\nWireConnection;275;2;284;0\nWireConnection;275;3;285;0\nWireConnection;275;4;282;0\nWireConnection;283;0;286;0\nWireConnection;284;0;287;0\nWireConnection;285;0;288;0\nWireConnection;282;0;289;0\nWireConnection;286;0;278;0\nWireConnection;287;0;279;0\nWireConnection;288;0;280;0\nWireConnection;289;0;281;0\nASEEND*/\n//CHKSM=711E11E60AF45FE1E3FC3D6613ED1EC63334F122"
+  m_functionName: 
+  m_description: ' HD Emission Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    Unknown'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.38039216, g: 0.24705882, b: 0.4627451, a: 1}
+  m_customNodeCategory: LS Emission
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

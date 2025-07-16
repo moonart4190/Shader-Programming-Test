@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Camera Depth Fade
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;46;-256,-640;Inherit;False;700.2;362.5;;4;45;44;43;40;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;42;-256,-1184;Inherit;False;1025.585;494.421;Camera
+    Depth Fade Node;5;31;39;38;37;36;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;352,-1120;Inherit;False;374.8999;171.4999;;;0,0,0,1;outputs
+    the difference between a surface depth and the cameras near plane. $$The calculated
+    value is set on a linear [0,1] range and can be tweaked via the Length and Offset
+    parameters.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;37;-224,-1120;Inherit;False;265.7;107.8;Vertex
+    Position;;0,0,0,1;Allow the specification of a custom vertex position;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;38;-224,-992;Inherit;False;265.7;122.8;Length;;0,0,0,1;Defines
+    the distance in view coordinates over which the fade between 0 and 1 values should
+    occur;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;39;-224,-848;Inherit;False;268.7;121.8;Offset;;0,0,0,1;Defines
+    an offset in view coordinates to the cameras near plane on which the fade from
+    0 to 1 should start;0;0\nNode;AmplifyShaderEditor.PosVertexDataNode;40;-240,-576;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RangedFloatNode;44;-16,-496;Inherit;False;Constant;_Falloff;Falloff;0;0;Create;True;0;0;0;False;0;False;3;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;45;-16,-416;Inherit;False;Constant;_Distance;Distance;0;0;Create;True;0;0;0;False;0;False;10.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.CameraDepthFade;31;80,-1120;Inherit;False;3;2;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CameraDepthFade;43;192,-576;Inherit;False;3;2;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;32;-256,-1296;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;43;2;40;0\nWireConnection;43;0;44;0\nWireConnection;43;1;45;0\nASEEND*/\n//CHKSM=0DE1CE5D4B8E940B355FF8E49D979ABD19564F75"
+  m_functionName: 
+  m_description: 'Camera Depth Fade Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Scale
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;40;-256,-320;Inherit;False;1566.507;712.7794;Example;17;35;45;44;43;42;41;39;25;38;33;32;36;31;30;29;28;27;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;22;-256,-688;Inherit;False;500.605;301.321;Scale
+    Node;1;19;;0.06603771,0.06603771,0.06603771,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-48,-624;Inherit;False;281.8521;130.2655;;;0,0,0,1;The
+    Scale node multiplies the value connected to its Input by a Scale property, Scale*Input,
+    thus scaling it;0;0\nNode;AmplifyShaderEditor.ScaleNode;24;-224,-624;Inherit;True;1;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;27;432,-192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;28;288,-192;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;29;160,-192;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScreenPosInputsNode;30;-64,-192;Inherit;False;1;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.NormalizeNode;31;-32,-16;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GradientNode;36;336,-272;Inherit;False;0;6;2;0.0999999,0,1,0;0,0.5500002,1,0.08116274;0.00999999,1,0.2245,0.1797055;1,0.9166666,0,0.498558;1,0.03333334,0,0.6956588;0.0999999,0,1,1;1,0;1,1;0;1;OBJECT;0\nNode;AmplifyShaderEditor.Vector3Node;32;-208,-16;Inherit;False;Constant;_Vector0;Vector
+    0;0;0;Create;True;0;0;0;False;0;False;0.5,0.01,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleTimeNode;33;80,64;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;38;944,-272;Inherit;True;0.25;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ScaleNode;25;944,-64;Inherit;True;1;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ScaleNode;39;944,160;Inherit;True;2;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.StickyNoteNode;41;1120,-256;Inherit;False;150;100;;;0,0,0,1;Quick
+    Multiply Node;0;0\nNode;AmplifyShaderEditor.WireNode;42;880,-192;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;43;880,-176;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;44;880,-48;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;45;880,176;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.GradientSampleNode;35;560,-272;Inherit;True;2;0;OBJECT;;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;0;-256,-800;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;27;0;28;0\nWireConnection;28;0;29;0\nWireConnection;28;1;33;0\nWireConnection;29;0;30;0\nWireConnection;29;1;31;0\nWireConnection;31;0;32;0\nWireConnection;38;0;35;0\nWireConnection;25;0;44;0\nWireConnection;39;0;45;0\nWireConnection;42;0;35;0\nWireConnection;43;0;35;0\nWireConnection;44;0;42;0\nWireConnection;45;0;43;0\nWireConnection;35;0;36;0\nWireConnection;35;1;27;0\nASEEND*/\n//CHKSM=383A86900541B89315571ED69ECD14EEFB657C6D"
+  m_functionName: 
+  m_description: 'Scale Node
+
+
+    Learning Sample
+
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

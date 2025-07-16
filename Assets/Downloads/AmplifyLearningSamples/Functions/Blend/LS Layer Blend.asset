@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Layer Blend
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;315;-1008,-1200;Inherit;False;1144.344;640.0973;Example;7;314;97;158;312;317;316;313;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;201;-1004.883,-1728;Inherit;False;1129.99;455.2539;Layered
+    Blend Node;5;311;310;200;199;198;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;198;-960,-1680;Inherit;False;315.2809;124.1212;Weights;;0.01886791,0.01886791,0.01886791,1;Interpolation
+    values to be applied between each layer blendomg. Number of channels on this
+    data type determines the amount of available layers on top of base layer;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;199;-960,-1536;Inherit;False;226.3375;101.6758;Layer
+    Base;;0.01886791,0.01886791,0.01886791,1;Base layer, to be used on first interpolation
+    operation.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;200;-960,-1408;Inherit;False;224.3375;100.6758;Layer
+    #;;0.01886791,0.01886791,0.01886791,1;Layer value to blend;0;0\nNode;AmplifyShaderEditor.PosVertexDataNode;173;-2864,-912;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DistanceOpNode;178;-2640,-912;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;179;-2480,-912;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;177;-2848,-752;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;-1;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SinTimeNode;176;-3168,-832;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DistanceOpNode;189;-2640,-800;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;190;-2480,-800;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;191;-2336,-800;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;180;-2336,-912;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;181;-2160,-912;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;2.26;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;163;-1984,-1088;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;185;-1984,-800;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;96;-1808,-1088;Inherit;True;Red;-1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;156;-1808,-800;Inherit;True;Blue;-1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DynamicAppendNode;192;-2848,-624;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;-1;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;193;-3008,-624;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;187;-2160,-800;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;1.13;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;310;-288,-1664;Inherit;False;380.9172;197.3696;;;0,0,0,1;The
+    Layered Blend node outputs the result of layering each one of its Layer values
+    on top of a Base layer by an interpolation factor given by its Weights. $$The
+    amount of layers to blend on top of the assigned base layer is determined by
+    the amount of channels given by the connection data type on the weights input.;0;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;313;-720,-1152;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;316;-480,-832;Inherit;False;541.963;235.1597;;;0,0,0,1;P.e.
+    a Vector4 is connected to the Weights Input, input ports Layer 1 through 4 will
+    be made available A Lerp is done between Layer Base and Layer 1 using Weights.x
+    as an interpolator. $$The result of the previous operation will then be Lerp'ed
+    with Layer 2 using Weights.y and so on.$$$If Layers are of different types and
+    have different channel amounts then a cast is done for each to match the one
+    with the most amount of channels;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;317;-480,-1152;Inherit;False;150;100;;;0,0,0,1;Layers
+    from UV;0;0\nNode;AmplifyShaderEditor.LayeredBlendNode;312;-480,-1040;Inherit;True;6;0;FLOAT2;0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GetLocalVarNode;158;-960,-1024;Inherit;True;156;Blue;1;0;OBJECT;;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GetLocalVarNode;97;-752,-960;Inherit;True;96;Red;1;0;OBJECT;;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LayeredBlendNode;311;-592,-1664;Inherit;True;6;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;162;-2240,-1088;Inherit;False;Constant;_Color0;Color
+    0;2;0;Create;True;0;0;0;False;0;False;1,0.08238351,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;184;-2240,-688;Inherit;False;Constant;_Color1;Color
+    1;0;0;Create;True;0;0;0;False;0;False;0,0.1339102,1,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;314;-768,-768;Inherit;False;Constant;_Color2;Color
+    2;0;0;Create;True;0;0;0;False;0;False;0.02661091,0.3254902,0.1921569,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionOutput;74;-1008,-1808;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;178;0;173;0\nWireConnection;178;1;177;0\nWireConnection;179;0;178;0\nWireConnection;177;0;176;4\nWireConnection;189;0;173;0\nWireConnection;189;1;192;0\nWireConnection;190;0;189;0\nWireConnection;191;0;190;0\nWireConnection;180;0;179;0\nWireConnection;181;0;180;0\nWireConnection;163;0;162;0\nWireConnection;163;1;181;0\nWireConnection;185;0;187;0\nWireConnection;185;1;184;0\nWireConnection;96;0;163;0\nWireConnection;156;0;185;0\nWireConnection;192;0;193;0\nWireConnection;193;0;176;4\nWireConnection;187;0;191;0\nWireConnection;312;0;313;0\nWireConnection;312;1;158;0\nWireConnection;312;2;97;0\nWireConnection;312;3;314;0\nASEEND*/\n//CHKSM=0F89241C8A6490245CEA1DC70008ABB8E6C60020"
+  m_functionName: 
+  m_description: 'Layered Blend Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4392157, g: 0.34509805, b: 0.015686275, a: 1}
+  m_customNodeCategory: LS Blend
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

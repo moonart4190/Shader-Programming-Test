@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Helper Mirror
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;284;-3200,4096;Inherit;False;2832.532;733.6436;;31;319;313;318;317;299;314;315;316;308;295;303;307;306;305;304;301;302;300;291;312;285;310;309;297;296;293;292;289;288;286;261;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;287;-3200,3712;Inherit;False;767.6833;301.2485;Mirror;1;283;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;261;-896,4240;Inherit;False;184.5;275;Out;1;267;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;288;-2864,4256;Inherit;False;131;130.5;Value;1;290;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;292;-2864,4464;Inherit;False;131;130.5;Subdivisions;1;294;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;296;-1840,4560;Inherit;False;131;130.5;Height;1;298;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;309;-896,4528;Inherit;False;184.5;275;Inverse;1;311;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2816,3792;Inherit;False;285.948;160.8459;;;0,0,0,1;Converts
+    a one-way gradient into a gradient that alternates back and forth.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;286;-672,4160;Inherit;False;192;117.5;Out;;0.07075471,0.07075471,0.07075471,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;289;-3072,4192;Inherit;False;182.458;100.5503;Value;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;293;-3072,4400;Inherit;False;182.458;100.5503;Subdivisions;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;297;-2048,4496;Inherit;False;182.458;100.5503;Height;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;310;-672,4448;Inherit;False;192;117.5;Inverse;;0.07075471,0.07075471,0.07075471,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;267;-880,4288;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;311;-880,4576;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;291;-3024,4304;Inherit;False;Value;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;290;-2848,4304;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;300;-2624,4304;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;302;-2688,4400;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FloorOpNode;301;-2448,4368;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;304;-2320,4304;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.OneMinusNode;305;-2144,4368;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMinOpNode;306;-1984,4304;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;307;-1840,4304;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;2,2;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;303;-2688,4512;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;294;-2848,4512;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;295;-3056,4512;Inherit;False;Subdivisions;1;1;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;308;-1648,4288;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;316;-1040,4576;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;1,1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;315;-1200,4576;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;314;-1376,4528;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;298;-1824,4608;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;317;-1696,4592;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;318;-1696,4352;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;313;-1648,4528;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;319;-1440,4624;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;299;-2000,4608;Inherit;False;Height;1;2;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;321;-3200,3456;Inherit;False;647.0379;160.3304;Credits;;0,0,0,0.5019608;Method
+    by:$Ben Cloward$$Tutorial Link: $https://www.youtube.com/watch?v=jxr4YK_m8hc&t=835s$;0;0\nNode;AmplifyShaderEditor.FunctionOutput;312;-672,4576;Inherit;False;False;-1;Inverse;1;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;285;-672,4288;Inherit;False;True;-1;Out;0;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;267;0;308;0\nWireConnection;311;0;316;0\nWireConnection;290;0;291;0\nWireConnection;300;0;290;0\nWireConnection;300;1;302;0\nWireConnection;302;0;303;0\nWireConnection;301;0;300;0\nWireConnection;304;0;300;0\nWireConnection;304;1;301;0\nWireConnection;305;0;304;0\nWireConnection;306;0;304;0\nWireConnection;306;1;305;0\nWireConnection;307;0;306;0\nWireConnection;303;0;294;0\nWireConnection;294;0;295;0\nWireConnection;308;0;318;0\nWireConnection;308;1;307;0\nWireConnection;316;0;315;0\nWireConnection;315;0;314;0\nWireConnection;315;1;298;0\nWireConnection;314;0;313;0\nWireConnection;314;1;319;0\nWireConnection;298;0;299;0\nWireConnection;317;0;298;0\nWireConnection;318;0;317;0\nWireConnection;313;0;307;0\nWireConnection;319;0;298;0\nWireConnection;312;0;311;0\nWireConnection;285;0;267;0\nASEEND*/\n//CHKSM=C1142A735EC97144CDDDBBF5E91A42AB5889C0EC"
+  m_functionName: 
+  m_description: 'Mirror
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Helper
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Surface Depth
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;134;896,-1280;Inherit;False;931.74;730.9568;Surface
+    Depth Node;11;158;147;157;154;142;153;145;144;143;137;135;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;135;928,-1072;Inherit;False;359.8079;124.0917;;;0.1320755,0.1320755,0.1320755,1;The
+    distance value is obtained by transforming each vertex position into view space
+    and returning its Z value thus it's not dependent on the Depth buffer;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;137;928,-1232;Inherit;False;357.4222;143.9949;;;0,0,0,1;The
+    Surface Depth node outputs the distance between the object surface and the camera.
+    It can be set in a [0,1] range or use its real value directly in View Space range
+    by changing the View Space parameter.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;143;1312,-1216;Inherit;False;409.3627;100;View
+    Space;;0,0,0,1;Defines how the distance value between camera and surface is to
+    be presented$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;144;1568,-688;Inherit;False;232.5271;100;Linear
+    0-1;;0,0,0,1;Distance value in a linear [0,1] range;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;145;1568,-960;Inherit;False;239.8982;101.3931;Linear
+    Eye;;0,0,0,1;Real distance value between camera and surface;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;153;1568,-1088;Inherit;False;229.5989;100.7432;Eye;;0.009433985,0.009433985,0.009433985,1;;0;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;154;1312,-960;Inherit;False;2;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;157;1568,-832;Inherit;False;232.5271;100;0-1;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;147;1312,-688;Inherit;False;1;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;142;1312,-1088;Inherit;False;2;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;158;1312,-832;Inherit;False;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PosVertexDataNode;159;960,-448;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.PosVertexDataNode;149;960,-288;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.PosVertexDataNode;151;960,-128;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.PosVertexDataNode;155;960,32;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SurfaceDepthNode;160;1184,-448;Inherit;False;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;148;1184,-288;Inherit;False;1;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;152;1184,-128;Inherit;False;2;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;156;1184,32;Inherit;False;0;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;118;896,-1408;Inherit;False;True;-1;Output;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;160;0;159;0\nWireConnection;148;0;149;0\nWireConnection;152;0;151;0\nWireConnection;156;0;155;0\nASEEND*/\n//CHKSM=5D478CDC4A1AC8D49AF296AC23B8C3B3646DB9BE"
+  m_functionName: 
+  m_description: 'Surface Depth Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Surface Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

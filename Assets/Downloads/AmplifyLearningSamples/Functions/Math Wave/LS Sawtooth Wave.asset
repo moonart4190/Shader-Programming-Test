@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Sawtooth Wave
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;20;-512,-320;Inherit;False;897;294.6667;Math;6;3;2;4;6;5;1;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;19;-512,-656;Inherit;False;670.0777;304.8917;Sawtooth
+    Wave Node;2;7;21;;0.009433985,0.009433985,0.009433985,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;16;-512,0;Inherit;False;1264;304;Example;9;11;10;8;13;12;14;9;15;17;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-256,-608;Inherit;False;362.8038;146.9201;;;0,0,0,1;The
+    Sawtooth Wave creates a sawtooth-shaped wave in the range of -1 to 1 based on
+    the input value.;0;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;11;-112,128;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FloorOpNode;10;0,128;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;8;128,48;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-272,48;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;14;-464,48;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;9;288,48;Inherit;False;2;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;15;464,48;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;17;144,176;Inherit;False;259.7676;107.1588;;;0,0,0,1;Here
+    we can see the sawtooth wave.  The wave ramps up slowely and then instantly drops
+    back down.;0;0\nNode;AmplifyShaderEditor.RangedFloatNode;12;-432,160;Inherit;False;Constant;_Float2;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;1;-464,-272;Inherit;False;In;1;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;5;-32,-272;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;6;128,-272;Inherit;True;2;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FloorOpNode;4;-160,-176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;2;-288,-176;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3;-448,-144;Inherit;False;Constant;_Float1;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;21;-464,-608;Inherit;True;Sawtooth
+    Wave;-1;;2;289adb816c3ac6d489f255fc3caf5016;0;1;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-512,-768;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;11;0;13;0\nWireConnection;11;1;12;0\nWireConnection;10;0;11;0\nWireConnection;8;0;13;0\nWireConnection;8;1;10;0\nWireConnection;13;0;14;0\nWireConnection;13;1;12;0\nWireConnection;9;0;8;0\nWireConnection;15;0;9;0\nWireConnection;5;0;1;0\nWireConnection;5;1;4;0\nWireConnection;6;0;5;0\nWireConnection;4;0;2;0\nWireConnection;2;0;1;0\nWireConnection;2;1;3;0\nASEEND*/\n//CHKSM=4E627FEFEB54D7294AED0C6539E30BCA5ECC92EF"
+  m_functionName: 
+  m_description: 'Sawtooth Wave Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    8-15'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Wave
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS RGB to HSV
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;23;-1520.047,-160;Inherit;False;2160.254;2211.29;Coverting
+    Color to data;49;113;112;111;110;104;107;109;108;106;105;102;100;98;95;93;67;71;66;94;77;96;83;81;86;82;72;73;63;62;84;65;28;52;53;50;46;51;45;49;48;47;85;70;60;59;68;58;75;97;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;97;128,848;Inherit;False;180.5;270;HSV;1;24;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;75;-784.3226,-96;Inherit;False;318.0439;177.4206;HSV;3;69;61;74;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;13;-1536,-768;Inherit;False;1282.993;544.4161;HSV
+    to RGB Node;6;25;26;18;17;14;10;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;98;128,1136;Inherit;False;180.5;270;Hue;1;99;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;100;128,1424;Inherit;False;180.5;270;Saturation;1;101;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;102;128,1712;Inherit;False;180.5;270;Value;1;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;10;-1456,-720;Inherit;False;480.3269;191.4939;;;0,0,0,1;The
+    RGB to HSV node converts a value from a RGB to an HSV color space. RGB color
+    space is defined by three separate channels:$$R: First channel defines the amount
+    of red in the color$G: Second channel defines the amount of green in the color$B:
+    Third channel defines the amount of blue in the color;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;14;-656,-720;Inherit;False;260.5001;102.6;HSV;;0,0,0,1;Returns
+    the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;17;-656,-608;Inherit;False;260.5001;102.6;Hue;;0,0,0,1;Returns
+    only the Hue component of the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;18;-656,-496;Inherit;False;260.5001;102.6;Saturation;;0,0,0,1;Returns
+    only the Saturation component of the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;26;-656,-368;Inherit;False;260.5001;102.6;Value;;0,0,0,1;Returns
+    only the Value/Brightness component of the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.RGBToHSVNode;25;-928,-720;Inherit;True;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.StickyNoteNode;74;-768,-48;Inherit;False;150.67;106.2242;;;0,0,0,1;Returns
+    the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.RGBToHSVNode;58;-880,208;Inherit;True;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WireNode;68;-624,208;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SamplerNode;59;-1344,208;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;40d039c7c47e80541b43e38546594e5d;40d039c7c47e80541b43e38546594e5d;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SwizzleNode;60;-1040,208;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;61;-576,-48;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.WireNode;69;-624,16;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;70;-464,64;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;85;-448,144;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DistanceOpNode;47;-1120,1072;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;48;-976,1072;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;49;-832,1072;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PosVertexDataNode;45;-1328,1072;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DynamicAppendNode;51;-1296,1216;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;-1;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SinTimeNode;46;-1472,1184;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.PowerNode;50;-688,1072;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;8;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;53;-416,896;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode;52;-672,896;Inherit;False;Constant;_Color10;Color
+    10;0;1;[HDR];Create;True;0;0;0;False;0;False;2,0,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;84;-352,64;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;62;-352,-80;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;63;-768,464;Inherit;False;Constant;_Hue;Hue;1;0;Create;True;0;0;0;False;0;False;0.2780139;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;73;-464,464;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;72;-464,464;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;82;-448,560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;86;-448,560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;81;-768,560;Inherit;False;Constant;_Saturation;Saturation;1;0;Create;True;0;0;0;False;0;False;0.3943976;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;83;-448,464;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;96;-416,544;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;77;-352,352;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;94;-352,448;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;66;-352,240;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;71;-464,352;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.HSVToRGBNode;67;-144,240;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RangedFloatNode;93;-768,640;Inherit;False;Constant;_Brightness;Brightness;1;0;Create;True;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;95;-416,624;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;105;48,1008;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;106;32,1040;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;108;64,1424;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;109;48,1744;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;107;80,1168;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;104;64,992;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;24;144,896;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;99;144,1184;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;101;144,1472;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;103;144,1760;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;110;336,848;Inherit;False;260.5001;102.6;HSV;;0,0,0,1;Returns
+    the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;111;336,1136;Inherit;False;260.5001;102.6;Hue;;0,0,0,1;Returns
+    only the Hue component of the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;112;336,1424;Inherit;False;260.5001;102.6;Saturation;;0,0,0,1;Returns
+    only the Saturation component of the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;113;336,1712;Inherit;False;261.4459;107.5665;Value;;0,0,0,1;Returns
+    only the Value/Brightness component of the converted value in HSV color space;0;0\nNode;AmplifyShaderEditor.RGBToHSVNode;28;-240,896;Inherit;True;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.HSVToRGBNode;65;-144,-48;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;0;-1536,-896;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;58;0;60;0\nWireConnection;68;0;58;0\nWireConnection;60;0;59;0\nWireConnection;61;0;69;0\nWireConnection;69;0;68;0\nWireConnection;70;0;73;0\nWireConnection;85;0;86;0\nWireConnection;47;0;45;0\nWireConnection;47;1;51;0\nWireConnection;48;0;47;0\nWireConnection;49;0;48;0\nWireConnection;51;0;46;4\nWireConnection;50;0;49;0\nWireConnection;53;0;52;0\nWireConnection;53;1;50;0\nWireConnection;84;0;61;1\nWireConnection;84;1;85;0\nWireConnection;62;0;61;0\nWireConnection;62;1;70;0\nWireConnection;73;0;63;0\nWireConnection;72;0;63;0\nWireConnection;82;0;81;0\nWireConnection;86;0;81;0\nWireConnection;83;0;82;0\nWireConnection;96;0;95;0\nWireConnection;77;0;58;2\nWireConnection;77;1;83;0\nWireConnection;94;0;58;3\nWireConnection;94;1;96;0\nWireConnection;66;0;58;1\nWireConnection;66;1;71;0\nWireConnection;71;0;72;0\nWireConnection;67;0;66;0\nWireConnection;67;1;77;0\nWireConnection;67;2;94;0\nWireConnection;95;0;93;0\nWireConnection;105;0;28;2\nWireConnection;106;0;28;3\nWireConnection;108;0;105;0\nWireConnection;109;0;106;0\nWireConnection;107;0;104;0\nWireConnection;104;0;28;1\nWireConnection;24;0;28;0\nWireConnection;99;0;107;0\nWireConnection;101;0;108;0\nWireConnection;103;0;109;0\nWireConnection;28;0;53;0\nWireConnection;65;0;62;0\nWireConnection;65;1;84;0\nWireConnection;65;2;61;2\nASEEND*/\n//CHKSM=593226479B1E4C01F3884BC3D0696166213F3359"
+  m_functionName: 
+  m_description: 'HSV to RGB Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.30588236, g: 0.5176471, b: 0.16078432, a: 1}
+  m_customNodeCategory: LS Color
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Normal Blend
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;43;-505.9226,-768;Inherit;False;2175.974;959.0263;Math
+    Unity SG Vs ASE;37;27;37;36;35;34;63;64;62;61;21;44;45;32;26;40;23;24;7;8;16;13;20;18;17;9;15;33;31;30;2;3;57;48;47;22;56;60;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;60;1472,-640;Inherit;False;182;271.5;XYZ;1;59;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;56;-208,-640;Inherit;False;126;130;Normal
+    A;1;55;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;42;-512,-1168;Inherit;False;994.7711;332.598;Blend
+    Normal Node;2;46;41;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;54;-512,256;Inherit;False;521.0591;402.8841;to
+    avoid nan after normalizing;5;53;52;51;50;49;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;57;-208,-432;Inherit;False;126;130;Normal
+    B;1;58;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;22;1120,-480;Inherit;False;323.2841;307.7562;;;0,0,0,1;The
+    Normal Blend node is used for combining the effects of two normal maps together.$$The
+    Default mode is slightly cheaper, and the Reoriented mode is more accurate.$$Default$commonly
+    called the Whiteout method.$$Reoriented$commonly called the RNM method.  It's
+    the most accurate but is slightly more computationally expensive.$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;46;-192,-1120;Inherit;False;608.576;211.1429;;;0,0,0,1;The
+    Blend Normals node blends two normals using the Whiteout Blend method$https://www.chrisoat.com/papers/Oat-Wrinkles(Siggraph07).pdf$$Instead
+    of just averaging both normal maps, they are calculated the following way:$BlendedNormal
+    = normalize( float3( A.xy + B.xy, A.z*B.z )$$This way details, which would have
+    been lost on an regular average, are better preserved$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;47;-465,-720;Inherit;False;209;103.5;Normal
+    A;;0,0,0,1;First normal to blend;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;48;-467,-496;Inherit;False;211;105.5;Normal
+    B;;0,0,0,1;Second normal to blend;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;49;-480,528;Inherit;False;219.6831;100;;;0,0,0,1;mixedNormal.z
+    += 1e-5f@;0;0\nNode;AmplifyShaderEditor.DynamicAppendNode;50;-160,320;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;51;-288,416;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;52;-432,320;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RangedFloatNode;53;-480,448;Float;False;Constant;_Float8;Float
+    7;9;0;Create;True;0;0;0;False;0;False;0.001;0.001;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;55;-192,-592;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;58;-192,-384;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;3;-384,-384;Inherit;False;Normal
+    B;3;1;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;2;-384,-592;Inherit;False;Normal
+    A;3;0;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;30;-16,-592;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;31;-16,-512;Inherit;False;FLOAT;2;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;33;-16,-304;Inherit;False;FLOAT;2;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;15;-16,-224;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.DynamicAppendNode;9;272,-224;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;17;448,-160;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;18;576,-224;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;20;752,-224;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;13;576,-112;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;16;144,-112;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;8;288,-16;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;7;-16,-16;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.NegateNode;24;128,96;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.NegateNode;23;128,-16;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;40;528,-16;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;26;896,-224;Inherit;False;Reoriented;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;32;-16,-384;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;45;1056,-224;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;44;1056,-496;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitch;21;1120,-592;Inherit;False;Type;False;0;2;-1;Default;Reoriented;Object;-1;10;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;59;1488,-592;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;61;-80,-496;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;62;-80,-224;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;64;-80,-304;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;63;-80,-16;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;34;256,-592;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;35;256,-496;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;36;432,-592;Inherit;False;FLOAT3;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;37;640,-592;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;27;896,-592;Inherit;False;Default;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BlendNormalsNode;41;-464,-1120;Inherit;True;0;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;1;-512,-1264;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;50;0;52;0\nWireConnection;50;1;52;1\nWireConnection;50;2;51;0\nWireConnection;51;0;52;2\nWireConnection;51;1;53;0\nWireConnection;55;0;2;0\nWireConnection;58;0;3;0\nWireConnection;30;0;55;0\nWireConnection;31;0;55;0\nWireConnection;33;0;58;0\nWireConnection;15;0;62;0\nWireConnection;9;0;15;0\nWireConnection;9;1;15;1\nWireConnection;9;2;16;0\nWireConnection;17;0;9;0\nWireConnection;17;1;8;0\nWireConnection;18;0;9;0\nWireConnection;18;1;17;0\nWireConnection;20;0;18;0\nWireConnection;20;1;13;0\nWireConnection;13;0;16;0\nWireConnection;13;1;40;0\nWireConnection;16;0;15;2\nWireConnection;8;0;23;0\nWireConnection;8;1;24;0\nWireConnection;8;2;7;2\nWireConnection;7;0;63;0\nWireConnection;24;0;7;1\nWireConnection;23;0;7;0\nWireConnection;40;0;8;0\nWireConnection;26;0;20;0\nWireConnection;32;0;58;0\nWireConnection;45;0;26;0\nWireConnection;44;0;45;0\nWireConnection;21;0;27;0\nWireConnection;21;1;44;0\nWireConnection;59;0;21;0\nWireConnection;61;0;55;0\nWireConnection;62;0;61;0\nWireConnection;64;0;58;0\nWireConnection;63;0;64;0\nWireConnection;34;0;30;0\nWireConnection;34;1;32;0\nWireConnection;35;0;31;0\nWireConnection;35;1;33;0\nWireConnection;36;0;34;0\nWireConnection;36;2;35;0\nWireConnection;37;0;36;0\nWireConnection;27;0;37;0\nASEEND*/\n//CHKSM=29D7D229D549FD3ED61A00CD7F268080FF57B677"
+  m_functionName: 
+  m_description: 'Normal Blend Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    32-63'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.18039216, b: 0.4745098, a: 1}
+  m_customNodeCategory: LS Normal
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

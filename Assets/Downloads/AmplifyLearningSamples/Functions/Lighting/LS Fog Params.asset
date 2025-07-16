@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Fog Params
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;90;-896,-256;Inherit;False;661.7598;562.9671;Fog
+    Params Node;6;107;105;104;103;102;108;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;102;-512,-192;Inherit;False;229.3911;108.6667;Density/Sqrt(Ln(2));;0,0,0,1;unity_FogParams.x$$Useful
+    for Exp2 fog mode.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;103;-512,-64;Inherit;False;230.6002;100;Density/Ln(2);;0,0,0,1;unity_FogParams.y$$Useful
+    for Exp fog mode.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;104;-512,48;Inherit;False;223.3381;100;-1/(End-Start);;0,0,0,1;unity_FogParams.z$$Useful
+    for Linear mode.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;105;-512,160;Inherit;False;224.6847;100;End/(End-Start));;0,0,0,1;unity_FogParams.w$$Useful
+    for Linear mode.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;108;-864,16;Inherit;False;301.55;179.45;unity_FogParams;;0,0,0,1;unity_FogParams.x$unity_FogParams.y$unity_FogParams.z$unity_FogParams.w$$The
+    Fog Params outputs fog parameters useful for fog calculation;0;0\nNode;AmplifyShaderEditor.FogParamsNode;107;-864,-192;Inherit;True;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;0;-896,-384;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nASEEND*/\n//CHKSM=CB28B1555B5C574CBD767C10FE5CD8483BB2179D"
+  m_functionName: 
+  m_description: 'Fog Params Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

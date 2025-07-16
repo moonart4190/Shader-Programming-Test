@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Object Scale
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;278;-1792,-32;Inherit;False;1290;581;Example;10;274;275;276;273;271;277;272;270;267;268;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;25;-1792,-480;Inherit;False;1729.659;387.2166;Object
+    Scale Node;4;264;266;265;250;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;250;-1760,-416;Inherit;False;387.6157;228.5872;;;0,0,0,1;The
+    Object Scale node returns the scale for the current game object.$$This scale
+    value can be retrieved either from its Object To World transform matrix or World
+    To Object transform matrix.$$Note:$This node is not compatible with dynamic batching
+    or Instancing $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;265;-1344,-224;Inherit;False;288.5356;103.2547;Rotation
+    Independent Scale;;0,0,0,1;Defines if calculated scale value should be independent
+    of object rotation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;266;-1120,-416;Inherit;False;1020.452;164.703;;;0,0,0,1;(BIRP)$float3(
+    length( unity_ObjectToWorld[ 0 ].xyz ), length( unity_ObjectToWorld[ 1 ].xyz
+    ), length( unity_ObjectToWorld[ 2 ].xyz ) )@$$(URP/HDRP)$float3( length( GetObjectToWorldMatrix()[
+    0 ].xyz ), length( GetObjectToWorldMatrix()[ 1 ].xyz ), length( GetObjectToWorldMatrix()[
+    2 ].xyz ) )@$$;0;0\nNode;AmplifyShaderEditor.ObjectScaleNode;264;-1344,-416;Inherit;True;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SwizzleNode;274;-1488,192;Inherit;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;275;-1696,144;Inherit;False;Property;_MainUVs1;Main
+    UVs;0;0;Create;False;0;0;0;False;0;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;276;-1728,16;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SwizzleNode;273;-1488,96;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;271;-944,160;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;277;-1280,96;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;272;-1104,16;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SamplerNode;270;-816,160;Inherit;True;Property;_MainTex1;BaseColor
+    Map;1;0;Create;False;0;0;0;False;0;False;-1;40d039c7c47e80541b43e38546594e5d;40d039c7c47e80541b43e38546594e5d;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ObjectScaleNode;267;-1744,320;Inherit;True;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DynamicAppendNode;268;-1488,320;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1792,-560;Inherit;False;True;-1;Output;0;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nWireConnection;274;0;275;0\nWireConnection;273;0;275;0\nWireConnection;271;0;272;0\nWireConnection;271;1;274;0\nWireConnection;277;0;273;0\nWireConnection;277;1;268;0\nWireConnection;272;0;276;0\nWireConnection;272;1;277;0\nWireConnection;270;1;271;0\nWireConnection;268;0;267;1\nWireConnection;268;1;267;3\nASEEND*/\n//CHKSM=70A86FCD05D71D1BABC07FD3D6C4E95250FDF7D0"
+  m_functionName: 
+  m_description: 'Object Scale Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.627451, g: 0.05490196, b: 0.14117648, a: 1}
+  m_customNodeCategory: LS Object
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

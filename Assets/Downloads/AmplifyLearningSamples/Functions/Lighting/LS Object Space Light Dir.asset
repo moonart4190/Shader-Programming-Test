@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Object Space Light Dir
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;32;-384,-1376;Inherit;False;772.1686;385.7916;Object
+    Space Light Dir Node;3;193;192;33;;0.01886791,0.01886791,0.01886791,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-96,-1328;Inherit;False;417.4183;234.6043;;;0,0,0,1;The
+    Object Space Light Dir node outputs a normalized light direction vector in object/local
+    space coordinates.$$For directional lights, the output result is the direction
+    from the light itself. $$As for point lights the resulting outputted vector is
+    the one formed between the light position and the game object local space position;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;193;-352,-1136;Inherit;False;219.8906;101.092;XYZ;;0,0,0,1;Returns
+    the light direction in object space coordinates;0;0\nNode;AmplifyShaderEditor.ObjSpaceLightDirHlpNode;192;-352,-1328;Inherit;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-1472;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nASEEND*/\n//CHKSM=B4B9D0D85D0CF84A9204FFECCAE112820857FCF3"
+  m_functionName: 
+  m_description: 'Object Space Light Dir Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

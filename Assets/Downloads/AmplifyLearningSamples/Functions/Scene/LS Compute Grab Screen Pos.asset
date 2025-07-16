@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Compute Grab Screen Pos
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;10;-518.5075,-176;Inherit;False;1219.506;393.9367;Get
+    grab screen pos from vertex clip pos;7;20;17;19;18;15;14;13;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;9;-514,-546;Inherit;False;724;304;Compute
+    Grab Screen Pos  Node;2;7;12;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-224,-496;Inherit;False;388.1143;179.1434;;;0,0,0,1;The
+    Compute Grab Screen Pos node converts a position in clip space into normalized
+    screen space texture coordinates taking also vertical orientation API differences
+    into account. $$The outputted result can then be directly used a into a Grab
+    Screen Color node as its UV coordinates;0;0\nNode;AmplifyShaderEditor.PosVertexDataNode;13;-480,-96;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.UnityObjToClipPosHlpNode;14;-272,-96;Inherit;False;1;0;FLOAT3;0,0,0;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ComputeGrabScreenPosHlpNode;12;-464,-480;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.ComputeGrabScreenPosHlpNode;15;-16,-96;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RangedFloatNode;19;-208,96;Inherit;False;Constant;_Scale;Scale;1;0;Create;True;0;0;0;False;0;False;0.3;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;17;320,-96;Inherit;False;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.ScreenColorNode;20;464,-96;Inherit;False;Global;_GrabScreen0;Grab
+    Screen 0;1;0;Create;True;0;0;0;False;0;False;Object;-1;False;False;False;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SamplerNode;18;-16,0;Inherit;True;Property;_NormalMap;Normal
+    Map;0;1;[Normal];Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionOutput;5;-512,-656;Inherit;False;True;-1;OUT;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;14;0;13;0\nWireConnection;15;0;14;0\nWireConnection;17;0;15;0\nWireConnection;17;1;18;0\nWireConnection;20;0;17;0\nWireConnection;18;5;19;0\nASEEND*/\n//CHKSM=83FC8522060529D74F6DA2E3341EC1009712A2CB"
+  m_functionName: 
+  m_description: 'Compute Grab Screen Pos  Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

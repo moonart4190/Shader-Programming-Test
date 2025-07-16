@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Distance Cutoff
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;230;-4480,-128;Inherit;False;2181.804;1364;Math;52;212;181;171;182;184;209;213;215;217;186;187;188;208;226;227;228;229;177;178;179;189;191;193;173;172;200;202;206;205;207;219;220;175;196;174;195;192;190;221;222;176;194;197;199;198;201;203;204;225;224;223;15;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;231;-4475.445,-578;Inherit;False;763.8054;355.2604;Distance
+    Cutoff;1;167;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;212;-2864,896;Inherit;False;193.2454;272.832;Dither;1;211;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;181;-4032,-64;Inherit;False;124.6533;131.3542;Fade
+    End;1;180;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;171;-4352,384;Inherit;False;255.8145;216.8656;_WorldSpaceCameraPos;1;169;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;182;-4032,80;Inherit;False;124.6533;131.3542;Motion
+    Cutoff;1;183;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;184;-4032,224;Inherit;False;124.6533;131.3542;Fade
+    Start;1;185;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;209;-3200,1024;Inherit;False;124.6533;131.3542;Dither
+    Scale;1;210;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;213;-2864,336;Inherit;False;193.2454;272.832;Movement;1;214;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;215;-2864,32;Inherit;False;193.2454;272.832;Falloff;1;216;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;217;-2864,624;Inherit;False;193.2454;272.832;Fade;1;218;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;167;-4090.565,-512;Inherit;False;329.5657;189.9752;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;186;-4432,-16;Inherit;False;195.5;101;Fade
+    End;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;187;-4432,128;Inherit;False;195.5;101;Motion
+    Cutoff;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;188;-4432,256;Inherit;False;195.5;101;Fade
+    Start;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;208;-3392,960;Inherit;False;169;102.5;Dither
+    Scale;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;226;-2608,-80;Inherit;False;257.8042;145.0817;Falloff;;0,0,0,1;lerps
+    from 0 (at camera) to 1 (at 'fade start) ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;227;-2608,224;Inherit;False;257.8042;145.0817;Movement;;0,0,0,1;lerps
+    between 0 (at camera) and 1 at \"motion cutoff\", the value where the user doesn't
+    want to do any animation on the vertices.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;228;-2608,496;Inherit;False;257.8042;145.0817;Fade;;0,0,0,1;lerps
+    between 0 (from camera to the fade-start distance) and 1 (at the fade-end distance). 
+    ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;229;-2608,784;Inherit;False;257.8042;145.0817;Dither;;0,0,0,1;controls
+    the screen-door dither value between fade-start and fade-end$;0;0\nNode;AmplifyShaderEditor.RelayNode;180;-4016,-16;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;183;-4016,128;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;169;-4336,432;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionInput;177;-4208,-16;Inherit;False;Fade
+    End;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;178;-4208,128;Inherit;False;Motion
+    Cutoff;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;179;-4208,272;Inherit;False;Fade
+    Start;1;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;189;-3872,80;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;191;-3872,208;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;193;-3872,352;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DistanceOpNode;173;-4032,432;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;200;-3872,80;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;202;-3872,352;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;185;-4016,272;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;216;-2848,80;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;214;-2848,384;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;206;-3024,944;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;205;-3184,944;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;210;-3184,1072;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;207;-3392,1072;Inherit;False;Dither
+    Scale;1;3;False;1;0;FLOAT;1.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;219;-3216,928;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;220;-3216,736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;175;-3808,384;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;196;-3632,384;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;174;-3808,80;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;195;-3632,80;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;192;-3872,400;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;190;-3872,112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;221;-3872,400;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;222;-3872,144;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;176;-3808,560;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;194;-3872,560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;197;-3632,560;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;199;-3808,672;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;198;-3488,656;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;201;-3872,656;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;203;-3872,688;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;204;-3360,656;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;211;-2848,944;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;218;-2848,656;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ObjectPositionNode;172;-4256,624;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;223;-2608,384;Inherit;False;False;-1;Movement;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;224;-2608,656;Inherit;False;False;-1;Fade;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;225;-2608,944;Inherit;False;False;-1;Dither;3;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;15;-2608,80;Inherit;False;True;-1;Falloff;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;180;0;177;0\nWireConnection;183;0;178;0\nWireConnection;189;0;180;0\nWireConnection;191;0;183;0\nWireConnection;193;0;185;0\nWireConnection;173;0;169;0\nWireConnection;173;1;172;0\nWireConnection;200;0;180;0\nWireConnection;202;0;185;0\nWireConnection;185;0;179;0\nWireConnection;216;0;195;0\nWireConnection;214;0;196;0\nWireConnection;206;0;205;0\nWireConnection;206;1;210;0\nWireConnection;205;0;219;0\nWireConnection;210;0;207;0\nWireConnection;219;0;220;0\nWireConnection;220;0;204;0\nWireConnection;175;0;173;0\nWireConnection;175;1;192;0\nWireConnection;196;0;175;0\nWireConnection;174;0;222;0\nWireConnection;174;1;190;0\nWireConnection;195;0;174;0\nWireConnection;192;0;191;0\nWireConnection;190;0;189;0\nWireConnection;221;0;173;0\nWireConnection;222;0;221;0\nWireConnection;176;0;173;0\nWireConnection;176;1;194;0\nWireConnection;194;0;193;0\nWireConnection;197;1;176;0\nWireConnection;199;0;201;0\nWireConnection;199;1;203;0\nWireConnection;198;0;197;0\nWireConnection;198;1;199;0\nWireConnection;201;0;200;0\nWireConnection;203;0;202;0\nWireConnection;204;0;198;0\nWireConnection;211;0;206;0\nWireConnection;218;0;204;0\nWireConnection;223;0;214;0\nWireConnection;224;0;218;0\nWireConnection;225;0;211;0\nWireConnection;15;0;216;0\nASEEND*/\n//CHKSM=77516B18C828A2D0F0E06B329FE9FC4A073439DC"
+  m_functionName: 
+  m_description: 'Distance Cutoff
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Vector
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

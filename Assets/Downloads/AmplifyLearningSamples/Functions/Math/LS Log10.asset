@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Log10
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;95;-384,-128;Inherit;False;819.7213;890.1843;World
+    X Position;5;93;92;104;94;99;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;99;144,192;Inherit;False;206.2345;268.6599;Logarithm2
+    X Position;1;102;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;94;144,-80;Inherit;False;208.3763;269.7308;Logarithm
+    X Position;1;105;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-384,-512;Inherit;False;550.8417;315.8386;Log10
+    Node;2;106;19;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;104;144,480;Inherit;False;206.2345;268.6599;Logarithm10
+    X Position;1;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-160,-448;Inherit;False;289.4015;135.4064;;;0,0,0,1;The
+    Log10 Node provides the base-10 logarithmic value of a scalar or of the individual
+    components of vectors;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;100;-896,-512;Inherit;False;467;242;Reference
+    Implementation;;0,0,0,1;float3 log10(float3 a)${$  float3 rv@$  int i@$$  for
+    (i=0@ i<3@ i++) {$    rv[i] = log10(a[i])@  // this is the ANSI C standard library
+    log10()$  }$  return rv@$};0;0\nNode;AmplifyShaderEditor.LogOpNode;105;160,-32;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.Log2OpNode;102;160,240;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.Log10OpNode;103;160,528;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;92;-112,-32;Inherit;True;2;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;93;-304,-32;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Log10OpNode;106;-352,-448;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-640;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;105;0;92;0\nWireConnection;102;0;92;0\nWireConnection;103;0;92;0\nWireConnection;92;0;93;1\nASEEND*/\n//CHKSM=D6C0826A8C457CCB671AC0762EEDAC8F3E5F2BF6"
+  m_functionName: 
+  m_description: 'Log10 Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    8-15'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

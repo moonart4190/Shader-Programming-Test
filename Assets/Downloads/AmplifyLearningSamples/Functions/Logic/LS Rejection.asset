@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Rejection
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;25;-512,-432;Inherit;False;768.1001;412.6776;Math;5;21;33;31;27;26;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;18;-512,-784;Inherit;False;831.179;312.2928;Rejection
+    Node;2;16;32;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;16;-272,-736;Inherit;False;552.7361;192.8739;;;0,0,0,1;Rejection
+    Node creates a rectangle shape with a specified size$$Returns the result of the
+    projection of the value of input A onto the plane orthogonal, or perpendicular,
+    to the value of input B. $$The value of the rejection vector is equal to the
+    original vector, the value of input A, minus the value of the Projection of the
+    same inputs.$$;0;0\nNode;AmplifyShaderEditor.Vector4Node;26;-480,-384;Inherit;False;Constant;_A;A;0;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.Vector4Node;27;-480,-208;Inherit;False;Constant;_B;B;0;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionNode;32;-464,-736;Inherit;True;Rejection;-1;;7;ea6ca936e02c9e74fae837451ff893c3;0;2;3;FLOAT4;0,0,0,0;False;4;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionNode;31;-256,-288;Inherit;False;Projection;-1;;9;3249e2c8638c9ef4bbd1902a2d38a67c;0;2;5;FLOAT4;0,0,0,0;False;6;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-256,-192;Inherit;False;215;124;Projection;;0,0,0,1;Returns
+    the result of projecting the value of input A onto a straight line parallel to
+    the value of input B;0;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;21;-16,-384;Inherit;True;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;15;-512,-896;Inherit;False;True;-1;OUT;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;31;5;26;0\nWireConnection;31;6;27;0\nWireConnection;21;0;26;0\nWireConnection;21;1;31;0\nASEEND*/\n//CHKSM=E1F02DBA6735183F2E1900FFA446FA11F25DB29E"
+  m_functionName: 
+  m_description: 'Rejection Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    32-63'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HDRP Depth Prepass Postpass
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;4014;-11953.18,-1174.355;Inherit;False;1279.269;770.3798;HDRP
+    Depth Prepass Postpass;13;4029;4028;4027;4024;4023;4022;4021;4020;4019;4018;4017;4016;4015;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;4015;-11393.18,-966.3549;Inherit;False;273.5073;133.8696;Alpha
+    Clip Threshold Depth Prepass;1;4025;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;4016;-11393.18,-678.3549;Inherit;False;280.4644;130.4497;Alpha
+    Clip Threshold Depth Postpass;1;4026;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;4017;-11905.18,-1126.355;Inherit;False;537.8656;129.7825;;;0,0,0,1;in
+    ASE template Enable Transparent Depth Prepass and Postpass$$checkbox will show
+    in the Rendering.HighDefinition.LightingShaderGraphGUI;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;4018;-11921.18,-822.3549;Inherit;False;291.4502;102;;;0,0,0,1;_TransparentDepthPrepassEnable;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;4019;-11921.18,-630.3549;Inherit;False;291.5278;100;;;0,0,0,1;_TransparentDepthPostpassEnable;0;0\nNode;AmplifyShaderEditor.RangedFloatNode;4020;-11921.18,-710.3549;Half;False;Property;_TransparentDepthPrepassEnable;_TransparentDepthPrepassEnable;5;2;[HideInInspector];[ToggleUI];Create;True;0;0;0;False;0;False;0;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;4021;-11553.18,-918.3549;Inherit;False;3;0;FLOAT;1;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;4022;-11537.18,-630.3549;Inherit;False;3;0;FLOAT;1;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;4023;-11889.18,-902.3549;Half;False;Property;_HiddenPostpass;HiddenPostpass;6;1;[HideInInspector];Create;True;0;0;0;False;0;False;1;2.29;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;4024;-11889.18,-982.3549;Half;False;Property;_HiddenPrepass;HiddenPrepass;4;1;[HideInInspector];Create;True;0;0;0;False;0;False;0;-0.9;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;4025;-11345.18,-918.3549;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;4026;-11345.18,-630.3549;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;4027;-11921.18,-518.3549;Half;False;Property;_TransparentDepthPostpassEnable;_TransparentDepthPostpassEnable;3;2;[HideInInspector];[ToggleUI];Create;True;0;0;0;False;0;False;0;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;4028;-11089.18,-630.3549;Inherit;False;True;-1;Alpha
+    Clip Threshold Depth Postpass;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;4029;-11089.18,-918.3549;Inherit;False;False;-1;Alpha
+    Clip Threshold Depth Prepass;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;4021;0;4024;0\nWireConnection;4021;1;4023;0\nWireConnection;4021;2;4020;0\nWireConnection;4022;0;4024;0\nWireConnection;4022;1;4023;0\nWireConnection;4022;2;4027;0\nWireConnection;4025;0;4021;0\nWireConnection;4026;0;4022;0\nWireConnection;4028;0;4026;0\nWireConnection;4029;0;4025;0\nASEEND*/\n//CHKSM=2C728E05F046E4AD8C92B4F45115DD43A84D8245"
+  m_functionName: 
+  m_description: 'HDRP Depth Prepass Postpass
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4745098, g: 0.4117647, b: 0.34117648, a: 1}
+  m_customNodeCategory: LS Input Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

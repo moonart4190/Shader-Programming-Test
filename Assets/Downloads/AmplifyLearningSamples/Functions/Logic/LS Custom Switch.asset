@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Custom Switch
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;211;16,-384;Inherit;False;436;371;Example
+    a switch set with Vector4 ;2;210;209;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;81;-1024,-896;Inherit;False;1018.927;441.6702;Custom
+    Switch;5;159;161;164;163;162;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;198;-1024,-384;Inherit;False;1025.137;777.3745;Example
+    Building Normal Mode;10;204;203;202;201;205;208;207;206;200;199;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;126;-867.389,3030.665;Inherit;False;297.3748;202.6522;;;0,0,0,1;Float(Flip,
+    0, Mirror, 1, None, 2)]$_DoubleSidedConstantsFlip$*Flip      = (-1, -1, -1)$_DoubleSidedConstantsMirror$*Mirror 
+    = (1, 1, -1)$_DoubleSidedConstantsNone$*None   = (1, 1, 1) $$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;127;-435.389,2166.665;Inherit;False;327.8372;152.9766;Normal
+    Mode;;0,0,0,1;_DoubleSidedNormalMode$DE_DrawerFloatEnum(Flip _Mirror _None)$$For
+    the 'Flip' mode, we should not modify the tangent and the bitangent which correspond
+    to the surface derivatives;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;128;-1123.389,2470.665;Inherit;False;320.7356;223.2696;;;0,0,0,1;Face
+    Node$The Face node outputs a positive value of 1 if the rendered surface is facing
+    the camera or a negative value of -1 if its facing away from the camera.$$Exsample:
+    (vect3)$Flip      = (-1, -1, -1)$Mirror  = (1, 1, -1)$None   = (1, 1, 1) $$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;129;188.611,2486.665;Inherit;False;504.8228;218.97;Normal
+    Flip Node;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;130;236.611,3030.665;Inherit;False;306.1018;148.0313;Switch
+    by Face Node;;0,0,0,1;The Switch by Face outputs relays one of its inputs according
+    to if the rendered surface is facing the camera ( Front ) or facing away from
+    the camera ( Back ).;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;131;60.61096,2950.665;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwitchByFaceNode;132;236.611,2918.665;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;133;8.408691,2933.741;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;134;156.611,2886.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;135;188.611,2918.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;136;492.611,2742.665;Inherit;False;4;0;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;137;412.611,2854.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;138;380.611,2886.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CustomExpressionNode;139;-195.389,2998.665;Inherit;False;if(m_switch
+    ==0)$\treturn m_Flip@$else if(m_switch ==1)$\treturn m_Mirror@$else if(m_switch
+    ==2)$\treturn m_None@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Flip;FLOAT3;0,0,0;In;;Inherit;False;True;m_Mirror;FLOAT3;0,0,0;In;;Inherit;False;True;m_None;FLOAT3;0,0,0;In;;Inherit;False;_NormalMode
+    float3 switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;140;428.611,2774.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;141;-547.389,3030.665;Inherit;False;Constant;_DoubleSidedConstantsFlip1;_DoubleSidedConstantsFlip;4;0;Create;True;0;0;0;False;0;False;-1,-1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;142;-547.389,3174.665;Inherit;False;Constant;_DoubleSidedConstantsMirror1;_DoubleSidedConstantsMirror;4;0;Create;True;0;0;0;False;0;False;1,1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;143;-547.389,3318.665;Inherit;False;Constant;_DoubleSidedConstantsNone1;_DoubleSidedConstantsNone;4;0;Create;True;0;0;0;False;0;False;1,1,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WireNode;144;-759.6121,2519.467;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;145;-755.389,2630.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;146;-691.389,2582.665;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.WireNode;147;-723.389,2470.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;148;-547.389,2678.665;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FaceVariableNode;149;-675.389,2502.665;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;150;-19.38904,2886.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;152;-435.389,2342.665;Inherit;False;Normal
+    Mode;1;1;False;1;0;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;153;-915.389,2854.665;Inherit;False;Normal;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;154;-403.389,2422.665;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;155;-755.389,2838.665;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DynamicAppendNode;156;-403.389,2582.665;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CustomExpressionNode;151;-192,2752;Inherit;False;if(m_switch
+    ==0)$\treturn m_Flip@$else if(m_switch ==1)$\treturn m_Mirror@$else if(m_switch
+    ==2)$\treturn m_None@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Flip;FLOAT3;0,0,0;In;;Inherit;False;True;m_Mirror;FLOAT3;0,0,0;In;;Inherit;False;True;m_None;FLOAT3;0,0,0;In;;Inherit;False;_NormalMode
+    float3 switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;162;-384,-816;Inherit;False;255.7423;135.2018;_SwitchVector3;;0,0,0,1;Input
+    and output as vec3$$return float3(0,0,0)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;163;-384,-640;Inherit;False;254.2423;135.2018;_SwitchVector4;;0.08962262,0.08962262,0.08962262,1;Input
+    and output as vec4$$return float4(0,0,0,0)@;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;164;-960,-816;Inherit;False;321.8431;130.4911;;;0,0,0,1;Making
+    custom switches $users can modify custom expression to add as many inputs as
+    needed, switch is controlled by setting input to float values $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;199;-656,16;Inherit;False;297.3748;202.6522;;;0,0,0,1;Float(Flip,
+    0, Mirror, 1, None, 2)]$_DoubleSidedConstantsFlip$*Flip      = (-1, -1, -1)$_DoubleSidedConstantsMirror$*Mirror 
+    = (1, 1, -1)$_DoubleSidedConstantsNone$*None   = (1, 1, 1) $$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;200;-992,-320;Inherit;False;327.8372;152.9766;Normal
+    Mode;;0,0,0,1;_DoubleSidedNormalMode$DE_DrawerFloatEnum(Flip _Mirror _None)$$For
+    the 'Flip' mode, we should not modify the tangent and the bitangent which correspond
+    to the surface derivatives;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;206;-416,-176;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwitchByFaceNode;207;-256,-240;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;208;-560,-240;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CustomExpressionNode;205;-656,-144;Inherit;False;if(m_switch
+    ==0)$\treturn m_Flip@$else if(m_switch ==1)$\treturn m_Mirror@$else if(m_switch
+    ==2)$\treturn m_None@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Flip;FLOAT3;0,0,0;In;;Inherit;False;True;m_Mirror;FLOAT3;0,0,0;In;;Inherit;False;True;m_None;FLOAT3;0,0,0;In;;Inherit;False;_NormalMode
+    float3 switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;201;-992,-64;Inherit;False;Constant;_DoubleSidedConstantsFlip;_DoubleSidedConstantsFlip;4;0;Create;True;0;0;0;False;0;False;-1,-1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;202;-992,80;Inherit;False;Constant;_DoubleSidedConstantsMirror;_DoubleSidedConstantsMirror;4;0;Create;True;0;0;0;False;0;False;1,1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;203;-992,224;Inherit;False;Constant;_DoubleSidedConstantsNone;_DoubleSidedConstantsNone;4;0;Create;True;0;0;0;False;0;False;1,1,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.CustomExpressionNode;161;-608,-640;Inherit;False;if(m_switch
+    ==0)$\treturn m_A@$else if(m_switch ==1)$\treturn m_B@$else if(m_switch ==2)$\treturn
+    m_C@$else if(m_switch ==3)$\treturn m_D@$else$return float4(0,0,0,0)@;4;Create;5;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_A;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_B;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_C;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_D;FLOAT4;0,0,0,0;In;;Inherit;False;_SwitchVector4;False;False;0;;False;5;0;FLOAT;0;False;1;FLOAT4;0,0,0,0;False;2;FLOAT4;0,0,0,0;False;3;FLOAT4;0,0,0,0;False;4;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.CustomExpressionNode;159;-608,-816;Inherit;False;if(m_switch
+    ==0)$\treturn m_A@$else if(m_switch ==1)$\treturn m_B@$else if(m_switch ==2)$\treturn
+    m_C@$else if(m_switch ==3)$\treturn m_D@$else$return float3(0,0,0)@;3;Create;5;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_A;FLOAT3;0,0,0;In;;Inherit;False;True;m_B;FLOAT3;0,0,0;In;;Inherit;False;True;m_C;FLOAT3;0,0,0;In;;Inherit;False;True;m_D;FLOAT3;0,0,0;In;;Inherit;False;_SwitchVector3;False;False;0;;False;5;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;204;-992,-144;Half;False;Property;_DoubleSidedNormalMode;Normal
+    Mode;0;1;[Enum];Create;False;0;3;Flip;0;Mirror;1;None;2;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.CustomExpressionNode;209;256,-272;Inherit;False;if(m_switch
+    ==0)$\treturn m_One@$else if(m_switch ==1)$\treturn m_Two@$else if(m_switch ==2)$\treturn
+    m_Three@$else if(m_switch ==3)$\treturn m_Four@$else if(m_switch ==4)$\treturn
+    m_Five@$else if(m_switch ==5)$\treturn m_Six@$else$return float4(0,0,0,0)@;4;Create;7;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_One;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_Two;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_Three;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_Four;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_Five;FLOAT4;0,0,0,0;In;;Inherit;False;True;m_Six;FLOAT4;0,0,0,0;In;;Inherit;False;_SwitchVector4_6;False;False;0;;False;7;0;FLOAT;0;False;1;FLOAT4;0,0,0,0;False;2;FLOAT4;0,0,0,0;False;3;FLOAT4;0,0,0,0;False;4;FLOAT4;0,0,0,0;False;5;FLOAT4;0,0,0,0;False;6;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RangedFloatNode;210;80,-336;Half;False;Property;_MySwitch;My
+    Switch;1;1;[Enum];Create;True;0;6;One;0;Two;1;Three;2;Four;3;Five;4;Six;5;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;157;732.611,2742.665;Inherit;False;False;-1;Normal;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;4;-1024,-1024;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;131;0;133;0\nWireConnection;131;1;139;0\nWireConnection;132;0;135;0\nWireConnection;132;1;131;0\nWireConnection;133;0;150;0\nWireConnection;134;0;153;0\nWireConnection;135;0;134;0\nWireConnection;136;0;151;0\nWireConnection;136;3;140;0\nWireConnection;136;1;132;0\nWireConnection;136;2;137;0\nWireConnection;137;0;138;0\nWireConnection;138;0;153;0\nWireConnection;139;0;152;0\nWireConnection;139;1;141;0\nWireConnection;139;2;142;0\nWireConnection;139;3;143;0\nWireConnection;140;0;151;0\nWireConnection;144;0;153;0\nWireConnection;145;0;153;0\nWireConnection;146;0;145;0\nWireConnection;147;0;144;0\nWireConnection;148;0;146;2\nWireConnection;148;1;149;0\nWireConnection;150;0;153;0\nWireConnection;154;0;147;0\nWireConnection;154;1;149;0\nWireConnection;155;0;153;0\nWireConnection;156;0;146;0\nWireConnection;156;1;146;1\nWireConnection;156;2;148;0\nWireConnection;151;0;152;0\nWireConnection;151;1;154;0\nWireConnection;151;2;156;0\nWireConnection;151;3;155;0\nWireConnection;206;0;208;0\nWireConnection;206;1;205;0\nWireConnection;207;0;208;0\nWireConnection;207;1;206;0\nWireConnection;205;0;204;0\nWireConnection;205;1;201;0\nWireConnection;205;2;202;0\nWireConnection;205;3;203;0\nWireConnection;209;0;210;0\nWireConnection;157;0;136;0\nASEEND*/\n//CHKSM=3C5F50C3C42595E32EB5BA46A4853162F230BC63"
+  m_functionName: 
+  m_description: 'Custom Switch
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

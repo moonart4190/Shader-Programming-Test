@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Remap
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;102;0,1008;Inherit;False;1613.017;800;Example
+    Blend Mask;20;101;100;45;95;51;52;53;98;99;50;49;62;61;60;59;97;93;55;94;54;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;111;1440,-64;Inherit;False;738.613;482.9264;Remap
+    0-1 Vec3;6;109;110;107;108;106;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;101;1376,1232;Inherit;False;179.0134;262.373;Blend
+    Maksing;1;63;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;100;1376,1504;Inherit;False;185.0171;271.8088;
+    Inverted;1;48;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;43;0,-64;Inherit;False;1409.527;479.5544;ASE
+    vs Unity SG Math;20;11;34;33;3;4;8;7;9;2;10;35;31;32;14;6;5;13;12;21;20;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;42;0,-352;Inherit;False;718.2208;259;Remap
+    Node;2;1;41;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;19;0,448;Inherit;False;982.4612;524.9823;Faster
+    Alternate Methods;9;37;36;40;38;15;17;16;22;18;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;1;224,-304;Inherit;False;442.2208;162.3695;;;0,0,0,1;The
+    Remap node changes the range of incoming values to the given output range.$$Use
+    the In Min Max to tell the node what the original range of values is.  Use the
+    Out Min Max to tell the node what the new resulting range should be.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;18;560,608;Inherit;False;383.8468;105.3303;Example;;0,0,0,1;Multiplying
+    by 2 and subtracting 1 is a fast method to change a 0-1 range to a -1 to 1 range.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;20;64,112;Inherit;False;197.0745;100;In
+    Min Max;;0,0,0,1;Minimum and Maximum values for input interpolation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;21;64,240;Inherit;False;191.0393;100;Out
+    Min Max;;0.009433985,0.009433985,0.009433985,1;Minimum and Maximum values for
+    output interpolation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;22;80,496;Inherit;False;295.2299;143.3703;;;0,0,0,1;If
+    you have a more specific remapping to do, it may be more efficient to do it another
+    way rather than using this node.;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;16;560,512;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;17;736,512;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;15;400,496;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;38;400,720;Inherit;False;Constant;_Float1;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;40;560,832;Inherit;False;379.168;102.9908;Example;;0,0,0,1;Multiplying
+    by 0.5 and then adding 0.5 is a fast way to convert from a -1 to 1 range to a
+    0 to 1 range.;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;36;560,736;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;37;736,736;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;41;48,-304;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;12;592,224;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;13;624,240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;5;640,-16;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;6;800,-16;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;14;976,-16;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;32;928,64;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;31;928,272;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;35;912,304;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;10;640,288;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;2;480,-16;Inherit;False;In;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;9;640,80;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;7;480,80;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.BreakToComponentsNode;8;480,288;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.FunctionInput;4;288,288;Inherit;False;Out
+    Min Max;2;3;False;1;0;FLOAT2;0,1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;3;288,80;Inherit;False;In
+    Min Max;2;2;False;1;0;FLOAT2;-1,1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SaturateNode;51;752,1552;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;52;560,1552;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;2.69;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;53;384,1568;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;98;352,1648;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;99;336,1600;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;50;912,1552;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;49;1216,1552;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;48;1392,1552;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;63;1392,1280;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;62;1056,1280;Inherit;False;True;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;61;912,1280;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;60;752,1280;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;59;560,1280;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;1;False;4;FLOAT;2.69;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;97;64,1056;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;2ca84d1122af3a849a83618fc699cb19;2ca84d1122af3a849a83618fc699cb19;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;93;48,1296;Half;False;Property;_BlendStrength;Blend
+    Strength;1;0;Create;True;1;;0;0;False;0;False;0.3742791;0;0.001;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;55;384,1376;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;94;48,1376;Half;False;Property;_BlendHardness;Blend
+    Hardness;2;0;Create;True;1;;0;0;False;0;False;5;0;0.001;5;0;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;54;368,1184;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;95;752,1456;Half;False;Property;_BlendFalloff;Blend
+    Falloff;3;0;Create;True;1;;0;0;False;0;False;0.999;0;0.001;0.999;0;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;45;1056,1456;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;33;1120,32;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;34;1120,176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;11;1168,176;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;103;1488,-16;Inherit;False;IN;3;1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;106;1856,-16;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;108;1856,80;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;107;2032,-16;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;110;1648,208;Inherit;False;Constant;_MaxOld;Max
+    Old;4;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;109;1648,48;Inherit;False;Constant;_MinOld;Min
+    Old;4;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;0;0,-448;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;16;0;15;0\nWireConnection;17;0;16;0\nWireConnection;36;0;38;0\nWireConnection;37;0;36;0\nWireConnection;12;0;7;0\nWireConnection;13;0;12;0\nWireConnection;5;0;2;0\nWireConnection;5;1;8;0\nWireConnection;6;0;5;0\nWireConnection;6;1;9;0\nWireConnection;14;0;6;0\nWireConnection;14;1;32;0\nWireConnection;32;0;31;0\nWireConnection;31;0;35;0\nWireConnection;35;0;10;0\nWireConnection;10;0;8;1\nWireConnection;10;1;8;0\nWireConnection;9;0;7;1\nWireConnection;9;1;7;0\nWireConnection;7;0;3;0\nWireConnection;8;0;4;0\nWireConnection;51;0;52;0\nWireConnection;52;0;54;0\nWireConnection;52;1;53;0\nWireConnection;52;4;98;0\nWireConnection;53;0;93;0\nWireConnection;98;0;99;0\nWireConnection;99;0;94;0\nWireConnection;50;0;51;0\nWireConnection;49;0;50;0\nWireConnection;49;1;45;0\nWireConnection;48;0;49;0\nWireConnection;63;0;62;0\nWireConnection;62;0;61;0\nWireConnection;62;1;95;0\nWireConnection;61;0;60;0\nWireConnection;60;0;59;0\nWireConnection;59;0;54;0\nWireConnection;59;1;93;0\nWireConnection;59;4;55;0\nWireConnection;55;0;94;0\nWireConnection;54;0;97;1\nWireConnection;45;0;95;0\nWireConnection;33;0;14;0\nWireConnection;34;0;33;0\nWireConnection;11;0;34;0\nWireConnection;11;1;13;0\nWireConnection;106;0;103;0\nWireConnection;106;1;109;0\nWireConnection;108;0;110;0\nWireConnection;108;1;109;0\nWireConnection;107;0;106;0\nWireConnection;107;1;108;0\nASEEND*/\n//CHKSM=B0A3EAB0519B73537E1C2B4180844D90C1AC9B0C"
+  m_functionName: 
+  m_description: 'Remap Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    32-63'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Range
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

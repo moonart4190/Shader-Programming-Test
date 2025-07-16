@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Custom Expression
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;206;768,-2048;Inherit;False;1607.674;935.5219;Custom
+    Expression Node;6;208;207;204;205;209;210;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;205;1712,-2000;Inherit;False;584.4365;284.0363;;;0,0,0,1;The
+    Custom Expression Node allows shader code to be directly injected into the graph.
+    $$It will either write inline or create a function according to how code is written
+    on its Code text area. $$If a return function is detected on the text area then
+    a function will be created. Also in function mode each instruction line must
+    end with a @. $$If no return function is detected them an expression will be
+    generated and used directly on the vertex/frag body. $$On Expression mode a @
+    is not required on the end of an instruction line.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;207;864,-1984;Inherit;False;568.8076;106.7278;Name;;0,0,0,1;Custom
+    Expression name. It will be used to internally name the variable or function
+    generated;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;208;848,-1856;Inherit;False;578.8993;335.474;Mode;;0,0,0,1;Determines
+    on how use the code placed over the Code text area.$$Create: The result of what
+    is placed over the coding area and connected to the inputs will be directly assigned
+    to the output port.$$Call: $Instructions placed over the code area are placed
+    inline over the shader body and they are not assigned to anything. This is particularly
+    useful for calling functions declared over another part of the shader or on an
+    included cginc.$$With Call Mode active, a special input port In is added, which
+    acts as a relay passing what is connected to it directly to the node output port.$$File:
+    $Can drag and drop a .cginc/.hlsl file into the new Source field and will automatically
+    include it on shader as an #include. Function call uses value set on Name followed
+    by the values set over the created input ports.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;209;848,-1504;Inherit;False;573.224;100;Source;;0,0,0,1;Library
+    text file to include;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;210;848,-1392;Inherit;False;573.224;111.3505;Precision
+    Suffix;;0,0,0,1;If turned on, it automatically adds a precision suffix to the
+    function call. ( Adds _float or _half to function call p.e MyFunctionCall_float(<value
+    from input ports>));0;0\nNode;AmplifyShaderEditor.CustomExpressionNode;204;1488,-1984;Inherit;False;
+    ;1;Create;1;True;In0;FLOAT;0;In;;Inherit;False;My Custom Expression;True;False;0;;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;768,-2176;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nASEEND*/\n//CHKSM=12ECFF03A2E06426428CC18AE6E6BC45F9AAC5BF"
+  m_functionName: 
+  m_description: 'Custom Expression Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    Unknown'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7647059, g: 0.30588236, b: 0, a: 1}
+  m_customNodeCategory: LS Utility
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

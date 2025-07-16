@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Object Space View Dir
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;90;1280,-640;Inherit;False;260.6909;257.9349;Use
+    View Direction Node;1;88;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;49;1280,-1024;Inherit;False;1091.7;325.3225;Object
+    Space View Direction node;4;87;70;54;71;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;54;1792,-960;Inherit;False;543.8279;190.2213;;;0,0,0,1;The
+    Object Space View Dir node calculates a non-normalized direction in object/local
+    space from a position also in object/local space given by its Input towards the
+    camera.$$This node will also return the direction from the current game object
+    to the camera if Input is left unconnected and its default internal value of
+    (0,0,0,1) is used.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;70;1298.37,-960;Inherit;False;147.6305;100;Input;;0,0,0,1;Position
+    in object/local space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;87;1296,-848;Inherit;False;199.5692;102.7235;Deprecate;;1,0,0,1;Use
+    View Direction Node;0;0\nNode;AmplifyShaderEditor.ObjSpaceViewDirHlpNode;71;1536,-960;Inherit;True;1;0;FLOAT4;0,0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;88;1312,-592;Inherit;True;Object;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;15;1280,-1152;Inherit;False;True;-1;;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nASEEND*/\n//CHKSM=246F76EBB1DDBD228E66B5556E4E73448524FFF0"
+  m_functionName: 
+  m_description: 'Object Space View Dir node
+
+
+    Learning Sample
+
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.11372549, g: 0.30588236, b: 0.3764706, a: 1}
+  m_customNodeCategory: LS Transform
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

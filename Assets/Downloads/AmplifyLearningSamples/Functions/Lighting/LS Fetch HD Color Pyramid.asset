@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Fetch HD Color Pyramid
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;9;-256,-336;Inherit;False;773.4865;464.5157;Math;6;3;5;4;2;1;10;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;8;-259.3557,-642;Inherit;False;899.3134;290.654;Fetch
+    HD Color Pyramid Node;2;11;6;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;6;64,-592;Inherit;False;506.0311;174.8434;;;0,0,0,1;Fetches
+    the _ColorPyramidTexture texture of the HDRP pipeline.$$Using this over LW or
+    default pipelines will result in incorrect behaviors.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;10;-16,-16;Inherit;False;448.831;102.6229;;;0,0,0,1;LOAD_TEXTURE2D_LOD(
+    _ColorPyramidTexture,UV,LOD);0;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;1;208,-288;Inherit;False;4;0;FLOAT4;0,0,0,0;False;3;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;2;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.Vector4Node;2;-16,-288;Float;False;Constant;_Vector1;Vector
+    0;0;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionInput;4;-208,-32;Inherit;False;LOD;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;5;-208,-112;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.CustomExpressionNode;3;-16,-112;Float;False;LOAD_TEXTURE2D_LOD(
+    _ColorPyramidTexture,UV,LOD);4;Create;2;True;UV;FLOAT2;0,0;In;;Float;False;True;LOD;FLOAT;0;In;;Float;False;FetchColorPyramid;True;False;0;;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionNode;11;-194.4835,-591.2183;Inherit;False;FetchHDColorPyramid;-1;;2;e17d5b1cd6898394dbe1f30e05022025;0;2;3;FLOAT2;0,0;False;2;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-256,-736;Inherit;False;True;-1;Output;0;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nWireConnection;1;0;2;0\nWireConnection;1;3;2;0\nWireConnection;1;1;2;0\nWireConnection;1;2;3;0\nWireConnection;3;0;5;0\nWireConnection;3;1;4;0\nASEEND*/\n//CHKSM=0BCC34A3963DDC2BA26310CB3B3F561ED4359A8B"
+  m_functionName: 
+  m_description: 'Fetch HD Color Pyramid Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

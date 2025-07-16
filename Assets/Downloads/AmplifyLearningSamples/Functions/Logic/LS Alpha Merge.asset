@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Alpha Merge
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;44;-256,128;Inherit;False;1587.395;872.4341;Example
+    Impostor Bake Shaders;15;17;18;45;33;41;32;35;31;43;34;36;37;38;39;40;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;40;528,240;Inherit;False;217.9586;138.7712;Impostor
+    Alpha Is full white;1;12;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;39;48,576;Inherit;False;789.9776;392.4552;Imposters
+    Pack From Normal Depth;7;21;23;24;22;27;26;25;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;7;-260,-448;Inherit;False;680;252;Apha
+    Merge Node;2;5;8;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;6;-256,-176;Inherit;False;508.8766;244.1224;Math;3;3;4;1;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;5;-16,-400;Inherit;False;383;168;;;0,0,0,1;The
+    Alpha Merge node takes a Vector 3 and a Float and merges them to form a Vector
+    4 where the float value is appended as the last component. $$This node is useful
+    for joining an RGB color and an alpha channel;0;0\nNode;AmplifyShaderEditor.FunctionInput;1;-192,-112;Inherit;False;RGB;3;0;False;1;0;FLOAT3;0.5,0.5,0.5;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;4;-192,-32;Inherit;False;Alpha;1;1;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;3;0,-112;Inherit;False;FLOAT4;4;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RangedFloatNode;25;256,704;Float;False;Constant;_1;-1;2;0;Create;True;1;;0;0;False;0;False;-1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ProjectionMatrixNode;27;80,784;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;22;448,704;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;23;576,624;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1.732051;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;21;704,688;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;38;848,688;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;37;848,496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;36;896,688;Inherit;False;Impostor
+    Depth Normal;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;34;912,416;Inherit;False;Alpha
+    Merge;-1;;3;e0d79828992f19c4f90bfc29aa19b7a5;0;2;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionNode;43;96,176;Inherit;False;Alpha
+    Split;-1;;5;07dab7960105b86429ac8eebd729ed6d;0;1;2;COLOR;0,0,0,0;False;2;FLOAT3;0;FLOAT;6\nNode;AmplifyShaderEditor.SamplerNode;31;-224,176;Inherit;True;Property;_MainTex;BaseColor
+    Map;0;0;Create;False;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RegisterLocalVarNode;35;1120,416;Inherit;False;Impostor
+    Normal;-1;True;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SamplerNode;32;-224,416;Inherit;True;Property;_BumpMap;Normal
+    Map;1;1;[Normal];Create;False;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionNode;41;800,176;Inherit;False;Alpha
+    Merge;-1;;6;e0d79828992f19c4f90bfc29aa19b7a5;0;2;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.ScaleAndOffsetNode;18;480,416;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT;0.5;False;2;FLOAT;0.5;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;17;256,416;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RegisterLocalVarNode;33;1024,176;Inherit;False;Impostor
+    BaseColor;-1;True;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RangedFloatNode;12;576,288;Float;False;Constant;_Alpha1;Alpha1;5;0;Create;True;1;;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;45;288,272;Inherit;False;Impostor
+    Alpha;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode;24;160,624;Inherit;False;0;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.VectorFromMatrixNode;26;224,784;Inherit;False;Row;2;1;0;FLOAT4x4;1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionNode;8;-208,-400;Inherit;False;Alpha
+    Merge;-1;;7;e0d79828992f19c4f90bfc29aa19b7a5;0;2;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-256,-544;Inherit;False;True;-1;Out;0;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nWireConnection;3;0;1;0\nWireConnection;3;3;4;0\nWireConnection;22;0;25;0\nWireConnection;22;1;26;3\nWireConnection;23;0;24;0\nWireConnection;23;1;22;0\nWireConnection;21;0;23;0\nWireConnection;21;1;22;0\nWireConnection;38;0;21;0\nWireConnection;37;0;38;0\nWireConnection;36;0;21;0\nWireConnection;34;2;18;0\nWireConnection;34;3;37;0\nWireConnection;43;2;31;0\nWireConnection;35;0;34;0\nWireConnection;41;2;43;0\nWireConnection;41;3;12;0\nWireConnection;18;0;17;0\nWireConnection;17;0;32;0\nWireConnection;33;0;41;0\nWireConnection;45;0;43;6\nWireConnection;26;0;27;0\nASEEND*/\n//CHKSM=E71CD94ECBF7834442ED57D47524B4803366FDDF"
+  m_functionName: 
+  m_description: 'Alpha Merge Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HdotY
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;471;-768,-896;Inherit;False;1172;683;Math;8;410;470;248;245;449;450;446;451;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;475;-768,-128;Inherit;False;1006.661;678.4907;HdotY;7;487;486;485;484;483;482;476;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;410;-160,-848;Inherit;False;307.8438;401.5949;HdotY;3;242;443;444;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;476;-128,-80;Inherit;False;307.8438;401.5949;HdotY;3;481;478;477;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;472;-768,-1312;Inherit;False;1026.435;388.3889;HdotY
+    - Amplify Shader Pack Example;2;474;473;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;444;-144,-592;Inherit;False;141.3334;130.6667;Half
+    Vector;1;468;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;443;-144,-784;Inherit;False;142.6666;122.6667;World
+    Bitangent;1;467;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;470;176,-784;Inherit;False;175.9999;267;HdotY;1;469;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;477;-112,176;Inherit;False;141.3334;130.6667;Half
+    Vector;1;480;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;478;-112,-16;Inherit;False;142.6666;122.6667;World
+    Bitangent;1;479;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;474;-736,-1264;Inherit;False;354.8333;282.5667;Amplify
+    Shader Pack Example;1;488;;1,0,0,1;0;0\nNode;AmplifyShaderEditor.RelayNode;469;192,-736;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;473;-352,-1264;Inherit;False;571.6;169.2999;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;467;-128,-736;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;468;-128,-544;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;242;32,-736;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.NormalizeNode;248;-336,-736;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.VertexBinormalNode;245;-624,-736;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.NormalizeNode;449;-336,-544;Inherit;False;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;450;-464,-544;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;446;-688,-544;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;451;-720,-400;Inherit;False;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RelayNode;479;-96,32;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;480;-96,224;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;481;64,32;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.VertexBinormalNode;482;-624,32;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleAddOpNode;483;-464,224;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;484;-688,224;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;485;-720,368;Inherit;False;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.NormalizeNode;486;-416,32;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;487;-304,224;Inherit;False;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;488;-688,-1216;Inherit;True;HdotY;-1;;1;;0;0;0\nNode;AmplifyShaderEditor.FunctionOutput;300;-768,-1408;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;469;0;242;0\nWireConnection;467;0;248;0\nWireConnection;468;0;449;0\nWireConnection;242;0;467;0\nWireConnection;242;1;468;0\nWireConnection;248;0;245;0\nWireConnection;449;0;450;0\nWireConnection;450;0;446;0\nWireConnection;450;1;451;0\nWireConnection;479;0;486;0\nWireConnection;480;0;487;0\nWireConnection;481;0;479;0\nWireConnection;481;1;480;0\nWireConnection;483;0;484;0\nWireConnection;483;1;485;0\nWireConnection;486;0;482;0\nWireConnection;487;0;483;0\nASEEND*/\n//CHKSM=E7F4AD99BAEC36C20AF8C408730EB3B6B52DB86B"
+  m_functionName: 
+  m_description: 'HdotY
+
+
+    Learning Sample
+
+    (Amplify Shader Pack Example)'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Dot Products
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

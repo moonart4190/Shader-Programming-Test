@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Sampler State
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;80;-2047.755,-3488;Inherit;False;1715.872;1828.64;Sampler
+    State Node;22;78;74;77;75;73;100;95;94;99;98;66;72;71;97;96;93;92;91;83;81;67;90;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;90;-992,-2544;Inherit;False;218.9789;125.4753;Register
+    Local Var;1;76;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;67;-1968,-3312;Inherit;False;424.141;330.2546;Sampler
+    State Node;;0,0,0,1;Sampler State Node is useful for locking a filter or a mode
+    into a sample$$Filter - Defines filtering mode for sampling$--- Point$--- Bilinear$---
+    Trilinear$$Wrap - Defines wrap mode for sampling$--- Repeat$--- Clamp$--- Mirror$---
+    MirrorOnce$--- Per-Axis$       * U axis$       * V axis$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;81;-1968,-2752;Inherit;False;638.8701;310.1127;SS
+    out from texture object can be used to share Sampler State;;0,0,0,1;in order
+    to not break the Mip Chain with in GPU avoid sharing SS between fragment stages,
+    in most cases 3 SS sets can be used as follows $$--- SS (BaseColor)$This is safe
+    to share with anything not listed below such as metallic, smoothness and emission.
+    $$--- SS (Normal)$keeping normal maps in its own SS will have improved quality
+    and not break mip mapping $$--- SS (Vertex Position)$avoid sharing anything using
+    vertex position such as height maps and or parallax with the SS used for Base
+    Color or normal mapping. $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;83;-1168,-2064;Inherit;False;264.9938;159.4007;Get
+    Local Var;;0,0,0,1;use register Node to share SS with other locations within
+    your graph;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;91;-1968,-2960;Inherit;False;419.2999;178.9001;Unity
+    2021.2 and above;;0.9056604,0,0,1;Aniso. Filtering$$--- None$--- X2$--- X4$---
+    X8$--- X16;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;92;-1968,-3440;Inherit;False;422.9196;116.3501;Use
+    Sampling Macros flag;;1,0,0,1;to Use Sampling Macros flag,  \"Use Sampling Macros\"
+    must be turned on over the Master Node properties$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;93;-1040,-3216;Inherit;False;201.9905;110.1934;Sampler
+    State Node;;0,0,0,1;Useful for locking Sampler State filters ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;96;-1968,-2416;Inherit;False;639.3541;199.8132;SS
+    - Sampler State;;0,0,0,1;The Sampler State node enables the user to create and
+    use sampling states separately from texture samplers. $$This is of great importance
+    since graphic APIs only allow 16 different samplers on a shader but up to 128
+    textures.$$When using textures and sampling states coupled together, the user
+    is inherently is setting a max texture count of 16.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;97;-1040,-2912;Inherit;False;201.9905;110.1934;Reference;;0,0,0,1;Reference
+    can be selected to get SS from source texture ;0;0\nNode;AmplifyShaderEditor.TexturePropertyNode;71;-1264,-3408;Inherit;True;Property;_Texture0;Texture
+    0;0;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SamplerNode;72;-816,-3408;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerStateNode;66;-1040,-3312;Inherit;False;4;0;0;0;-1;None;1;0;SAMPLER2D;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.TexturePropertyNode;98;-1264,-3104;Inherit;True;Property;_Texture2;Texture
+    0;1;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SamplerNode;99;-816,-3104;Inherit;True;Property;_TextureSample5;Texture
+    Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.TexturePropertyNode;94;-1264,-2768;Inherit;True;Property;_Texture1;Texture
+    0;2;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SamplerNode;95;-816,-2768;Inherit;True;Property;_TextureSample4;Texture
+    Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerStateNode;100;-1040,-3008;Inherit;False;4;0;0;0;71;None;1;0;SAMPLER2D;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.SamplerNode;73;-880,-2400;Inherit;True;Property;_TextureSample1;Texture
+    Sample 1;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;75;-880,-2208;Inherit;True;Property;_TextureSample2;Texture
+    Sample 2;2;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;77;-880,-2000;Inherit;True;Property;_TextureSample3;Texture
+    Sample 3;4;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.TexturePropertyNode;74;-1248,-2400;Inherit;True;Property;_BaseColor;BaseColor
+    ;3;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.GetLocalVarNode;78;-1104,-1984;Inherit;False;76;SSBaseColor;1;0;OBJECT;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;76;-976,-2496;Inherit;False;SSBaseColor;-1;True;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.FunctionOutput;64;-2048,-3600;Inherit;False;True;-1;Output;0;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nWireConnection;72;0;71;0\nWireConnection;72;7;66;0\nWireConnection;99;0;98;0\nWireConnection;99;7;100;0\nWireConnection;95;0;94;0\nWireConnection;95;7;94;1\nWireConnection;73;0;74;0\nWireConnection;73;7;74;1\nWireConnection;75;0;74;0\nWireConnection;75;7;74;1\nWireConnection;77;7;78;0\nWireConnection;76;0;74;1\nASEEND*/\n//CHKSM=B8D010943A8D951F6378C5ABB787B21257BF0BDD"
+  m_functionName: 
+  m_description: 'Sample Sampler State Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.11764706, g: 0.31764707, b: 0.63529414, a: 1}
+  m_customNodeCategory: LS Sample
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

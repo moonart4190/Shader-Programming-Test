@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Sign
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;46;-640,-384;Inherit;False;664.9653;337.2831;Math;4;28;31;33;34;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;45;-640,-768;Inherit;False;634.4622;320.0288;Sign
+    Node;2;43;29;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;44;-640,-32;Inherit;False;952;768;Example
+    Directional Masks;8;35;37;38;39;40;42;36;41;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;29;-416,-720;Inherit;False;349;226;;;0,0,0,1;The
+    Sign Node gives the sign (negative or positive) of the input. It returns 1 if
+    the input is positive and -1 if the input is negative. If the number is zero,
+    it returns 0.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;-288,-240;Inherit;False;281.3875;102;;;0,0,0,1;The
+    Sign node divides the input value by the absolute value of the input resulting
+    in either 1 or -1.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;42;-368,304;Inherit;False;350;187;;;0,0,0,1;You
+    can use the Sign Node with the Normal Vector node to generate masks to tell you
+    if a surface is facing the left or right, top or bottom, and front or back.$$This
+    is useful if you want to do something different on one side of your model from
+    the other.;0;0\nNode;AmplifyShaderEditor.SignOpNode;43;-608,-720;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;47;-1088,-768;Inherit;False;387.0688;172.5721;Reference
+    Implementation;;0,0,0,1;sign for float3 could be implemented like this.$$float3
+    sign(float x)${$  float3 val = a > 0@$  return val - (a < 0)@$};0;0\nNode;AmplifyShaderEditor.WorldNormalVector;35;-592,176;Inherit;True;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SaturateNode;37;-240,176;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;38;-80,176;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RelayNode;39;112,16;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;40;112,240;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SignOpNode;36;-368,176;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;41;112,480;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;33;-288,-336;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;31;-416,-272;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;28;-576,-336;Inherit;False;Input;1;0;False;1;0;FLOAT;12;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-640,-864;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;37;0;36;0\nWireConnection;38;0;37;0\nWireConnection;39;0;38;0\nWireConnection;40;0;38;1\nWireConnection;36;0;35;0\nWireConnection;41;0;38;2\nWireConnection;33;0;28;0\nWireConnection;33;1;31;0\nWireConnection;31;0;28;0\nASEEND*/\n//CHKSM=8E03E162F06671ACC5EC05AC9C7ACE8297E842B4"
+  m_functionName: 
+  m_description: 'Sign Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    8-15'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Round
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HDRP Coat Mask
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;3852;-9974.808,371.8975;Inherit;False;334.978;280.5705;Register
+    Inline and return 0;2;3869;3854;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3853;-9430.808,-28.10254;Inherit;False;129.1222;133.469;Coat
+    Mask;1;3863;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3854;-9942.808,467.8975;Inherit;False;183.15;161.65;Return
+    0;1;3868;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3855;-10720,-208;Inherit;False;574.0573;156.8513;;;0,0,0,1;Adds
+    an extra Material layer which simulates a transparent and thin coating on top
+    of the base Material.$$Performance impact: $Rendering Clear Coat has roughly
+    twice the cost of rendering a base material, because the lighting is evaluated
+    once per layer.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3856;-10198.81,291.8975;Inherit;False;193.9919;100;ENABLE
+    COAT MASK;;0,0,0,1;_ClearCoatMaskEnable;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3857;-9830.808,-76.10254;Inherit;False;178.6667;120.5836;;;0,0,0,1;Ensure
+    that surfaceData.coatMask is 0 if the feature is not enabled;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3858;-11216,-192;Inherit;False;192.2521;100;Coat
+    Mask Map;;0,0,0,1;_CoatMaskMap$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3859;-10422.81,99.89746;Inherit;False;211.7075;101;Coat
+    Mask;;0,0,0,1;_CoatMask$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3860;-11680,192;Inherit;False;188.3126;100.3784;UV
+    Set;;0,0,0,1;_ClearCoatUVMapping;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3861;-11440,272;Inherit;False;265.1125;100;Coat
+    Mask UVs;;0,0,0,1;_CoatMaskMap_ST;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3862;-9270.808,-236.1025;Inherit;False;290.9851;233.3266;Coat
+    Mask;;0.05660379,0.05660379,0.05660379,1;_ClearCoatMaskEnable$_CoatMaskMap$_ClearCoatUVMapping$_CoatMaskMap_ST$_CoatMask$$$This
+    property defines the intensity of the effect: 0 - no effect, 1 - maximum effect.
+    Setting the Mask value to 0 does not disable the feature.;0;0\nNode;AmplifyShaderEditor.RelayNode;3863;-9414.808,19.89746;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;3865;-10742.81,-12.10254;Inherit;True;Property;_TextureSample6;Texture
+    Sample 1;9;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;3866;-10422.81,211.8975;Inherit;False;Property;_CoatMask;Coat
+    Mask;5;0;Create;False;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3867;-10102.81,35.89746;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3868;-9910.808,515.8975;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3869;-9734.808,403.8975;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3870;-10198.81,403.8975;Half;False;Property;_ClearCoatMaskEnable;ENABLE
+    COAT MASK;1;0;Create;False;0;6;Default;0;Layer 2;1;Layer 3;2;Layer 4;3;Layer
+    5;4;Layer 6;5;0;False;1;LS_DrawerToggleLeft;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;3871;-9622.808,147.8975;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;3872;-9574.808,19.89746;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;3873;-9622.808,387.8975;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3874;-10102.81,515.8975;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3875;-10358.81,515.8975;Inherit;False;Property;_CATEGORY_COATMASK;CATEGORY_COATMASK;0;0;Create;True;0;0;0;False;1;LS_DrawerCategory(COAT
+    MASK,true,_ClearCoatMaskEnable,0,0);False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3876;-10422.81,595.8975;Inherit;False;Property;_CATEGORYSPACE_COATMASK;CATEGORYSPACE_COATMASK;6;0;Create;True;0;0;0;False;1;LS_DrawerCategorySpace(10);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexturePropertyNode;3864;-11008,-192;Inherit;True;Property;_CoatMaskMap;Coat
+    Mask Map;2;0;Create;False;0;0;0;False;1;LS_DrawerTextureSingleLine;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3877;-11088,16;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;3878;-11248,80;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;3879;-11088,160;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3880;-10912,16;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;3881;-11440,96;Inherit;False;Property;_CoatMaskMap_ST;Coat
+    Mask UVs;4;0;Create;False;0;0;0;False;1;LS_DrawerTextureScaleOffset;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.CustomExpressionNode;3882;-11680,16;Inherit;False;if(m_switch
+    ==0)$\treturn m_UV0@$else if(m_switch ==1)$\treturn m_UV1@$else if(m_switch ==2)$\treturn
+    m_UV2@$else if(m_switch ==3)$\treturn m_UV3@$else$return float2(0,0)@;2;Create;5;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_UV0;FLOAT2;0,0;In;;Inherit;False;True;m_UV1;FLOAT2;0,0;In;;Inherit;False;True;m_UV2;FLOAT2;0,0;In;;Inherit;False;True;m_UV3;FLOAT2;0,0;In;;Inherit;False;float2
+    switch UV Mode;True;False;0;;False;5;0;FLOAT;0;False;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode;3883;-11872,16;Half;False;Property;_ClearCoatUVMapping;UV
+    Set;3;1;[Enum];Create;False;0;4;UV0;0;UV1;1;UV2;2;UV3;3;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;3884;-11936,96;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;3885;-11936,224;Inherit;False;1;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;3886;-11936,352;Inherit;False;2;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;3887;-11936,480;Inherit;False;3;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;3888;-9270.808,19.89746;Inherit;False;True;-1;Coat
+    Mask;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;3863;0;3872;0\nWireConnection;3865;0;3864;0\nWireConnection;3865;1;3880;0\nWireConnection;3865;7;3864;1\nWireConnection;3867;0;3865;1\nWireConnection;3867;1;3866;0\nWireConnection;3868;0;3874;0\nWireConnection;3869;0;3870;0\nWireConnection;3869;1;3868;0\nWireConnection;3871;0;3873;0\nWireConnection;3872;1;3867;0\nWireConnection;3872;2;3871;0\nWireConnection;3873;0;3869;0\nWireConnection;3874;0;3875;0\nWireConnection;3874;1;3876;0\nWireConnection;3877;0;3882;0\nWireConnection;3877;1;3878;0\nWireConnection;3878;0;3881;1\nWireConnection;3878;1;3881;2\nWireConnection;3879;0;3881;3\nWireConnection;3879;1;3881;4\nWireConnection;3880;0;3877;0\nWireConnection;3880;1;3879;0\nWireConnection;3882;0;3883;0\nWireConnection;3882;1;3884;0\nWireConnection;3882;2;3885;0\nWireConnection;3882;3;3886;0\nWireConnection;3882;4;3887;0\nWireConnection;3888;0;3863;0\nASEEND*/\n//CHKSM=CA00B961FD090B473D744F83CE132A887CF46A6A"
+  m_functionName: 
+  m_description: 'HDRP Coat Mask
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4745098, g: 0.4117647, b: 0.34117648, a: 1}
+  m_customNodeCategory: LS Input Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Triangle Wave
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;68;-1152,736;Inherit;False;1918.587;547.7493;Comment;24;56;54;62;34;35;42;41;40;39;59;44;43;47;45;38;37;49;58;48;57;63;69;61;66;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;66;-704,784;Inherit;False;131.3597;138.7599;In;1;65;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;61;512,960;Inherit;False;181.7566;273.1448;Out;1;60;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;30;-1152,-592;Inherit;False;651.4784;303.6667;Triangle
+    Wave Node;2;11;31;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;27;-1152,-256;Inherit;False;1278.95;348.523;Math;10;9;10;8;7;6;5;3;4;1;2;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-1152,112;Inherit;False;909.0037;428.4756;Example;5;24;32;22;23;25;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;11;-912,-544;Inherit;False;359.4784;119.3136;;;0,0,0,1;The
+    Triangle Wave Node creates a triangle-shaped wave in the range of -1 to 1 based
+    on the input value.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;25;-560,400;Inherit;False;233.6208;109.3168;;;0,0,0,1;Here
+    we can see that the triangle wave ramps up to 1 and then ramps down to 0.;0;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;2;-656,-176;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;1;-1088,-176;Inherit;False;In;1;0;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FloorOpNode;4;-784,-96;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3;-912,-96;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;5;-1088,-48;Inherit;False;Constant;_Float1;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;6;-496,-176;Inherit;False;2;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;7;-336,-176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;8;-224,-176;Inherit;False;2;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;10;-64,-176;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;9;-224,-80;Inherit;False;Constant;_Float2;Float
+    1;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;31;-1104,-544;Inherit;True;Triangle
+    Wave;-1;;5;51ec3c8d117f3ec4fa3742c3e00d535b;0;1;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;23;-912,176;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;22;-1104,176;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;32;-752,176;Inherit;True;Triangle
+    Wave;-1;;6;51ec3c8d117f3ec4fa3742c3e00d535b;0;1;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;24;-560,176;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector4Node;69;-1120,928;Inherit;False;Constant;_Vector1;Vector
+    1;0;0;Create;True;0;0;0;False;0;False;0.5,0.5,0.5,0.5;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleTimeNode;63;-1120,832;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;57;-544,960;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;48;-400,960;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.DynamicAppendNode;58;-544,1056;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;49;-400,1056;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.WireNode;37;-272,1024;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;38;-240,1056;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;45;-224,1088;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;47;-224,960;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;43;64,1104;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;44;48,1120;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;59;384,1008;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;39;-224,832;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;40;-64,832;Inherit;False;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;41;112,832;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.WireNode;42;64,928;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;35;-384,832;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;34;-512,832;Inherit;False;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0.5,0.5,0.5,0.5;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;62;-864,832;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT4;0.5,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RelayNode;60;528,1008;Inherit;True;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;54;256,1008;Inherit;False;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.Vector4Node;56;-752,976;Inherit;False;Constant;_Vector0;Vector
+    0;0;0;Create;True;0;0;0;False;0;False;-1,1,0,1;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RelayNode;65;-688,832;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1152,-688;Inherit;False;True;-1;Output;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;2;0;1;0\nWireConnection;2;1;4;0\nWireConnection;4;0;3;0\nWireConnection;3;0;1;0\nWireConnection;3;1;5;0\nWireConnection;6;0;2;0\nWireConnection;7;0;6;0\nWireConnection;8;0;7;0\nWireConnection;10;0;8;0\nWireConnection;10;1;9;0\nWireConnection;23;0;22;0\nWireConnection;32;1;23;0\nWireConnection;24;0;32;0\nWireConnection;57;0;56;1\nWireConnection;57;1;56;2\nWireConnection;48;0;57;0\nWireConnection;58;0;56;3\nWireConnection;58;1;56;4\nWireConnection;49;0;58;0\nWireConnection;37;0;48;0\nWireConnection;38;0;37;0\nWireConnection;45;0;49;1\nWireConnection;45;1;49;0\nWireConnection;47;0;48;1\nWireConnection;47;1;48;0\nWireConnection;43;0;44;0\nWireConnection;44;0;45;0\nWireConnection;59;0;54;0\nWireConnection;39;0;35;0\nWireConnection;39;1;49;0\nWireConnection;40;0;39;0\nWireConnection;40;1;47;0\nWireConnection;41;0;40;0\nWireConnection;41;1;42;0\nWireConnection;42;0;43;0\nWireConnection;35;0;34;0\nWireConnection;34;0;65;0\nWireConnection;62;0;63;0\nWireConnection;62;1;69;0\nWireConnection;60;0;59;0\nWireConnection;54;0;41;0\nWireConnection;54;1;38;0\nWireConnection;65;0;62;0\nASEEND*/\n//CHKSM=8DE11515555D858EE54CE6BD8A6006736A34FF65"
+  m_functionName: 
+  m_description: 'Triangle Wave Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Wave
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

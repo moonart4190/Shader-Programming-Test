@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Round
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;68;1344,-272;Inherit;False;1021.529;928;;10;59;60;63;65;67;58;62;64;66;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;55;736,320;Inherit;False;584;528;Rounding
+    Up or Down;5;54;49;51;52;53;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;48;448,320;Inherit;False;248;304;Round
+    X Position;1;46;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;47;-16,320;Inherit;False;440;304;World
+    X Position;2;44;45;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;25;0,-272;Inherit;False;1293.481;516.0344;Functionality
+    of the Round Node;8;33;32;34;35;36;37;38;39;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;16;0,-592;Inherit;False;462.0147;295.7503;Round
+    Node;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;18;192,-544;Inherit;False;242.3752;134.83;;;0,0,0,1;The
+    Round Node rounds the input to the nearest integer value of a scalar or of the
+    individual components of vectors;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;32,-64;Inherit;False;199;117;;;0,0,0,1;We
+    create a horizontal gradient using the UV coordinates.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;37;272,64;Inherit;False;186;111;;;0,0,0,1;We
+    multiply the gradient by 5 so it has a range of 0 to 5.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;38;496,64;Inherit;False;243;145;;;0,0,0,1;The
+    Round node rounds all of the values up or down to the nearest whole number -
+    giving us 6 distinct bands with the values 0,1, 2, 3,4, and 5.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;39;800,64;Inherit;False;243;145;;;0,0,0,1;Dividing
+    by 5 brings the data back into the 0-1 range so we can visualize the effect of
+    the Ceiling node in the preview.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;54;784,464;Inherit;False;253.2024;103.8223;;;0,0,0,1;Values
+    less than 0.5 get rounded down while values 0.5 or greater get rounded up.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;56;-464,-592;Inherit;False;384.5493;511.683;Reference
+    Implementation;;0,0,0,1;round for float could be implemented this way:$$// round-to-nearest
+    even profiles$float round(float a)${$  float x = a + 0.5@$  float f = floor(x)@$ 
+    float r@$  if (x == f) {$    if (a > 0)$      r = f - fmod(f, 2)@$    else$     
+    r = f + fmod(f, 2)@$  } else$    r = f@$  return r@$}$$// round-to-nearest up
+    profiles$float round(float a)${$  return floor(x + 0.5)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;2048,-208;Inherit;False;265.5293;151.4628;;;0,0,0,1;We
+    multiply our texture sample by X and then use the Round node, which gives us
+    distinct regions of values that are 1, 2, and 3, 4.;0;0\nNode;AmplifyShaderEditor.RoundOpNode;31;32,-544;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;32;32,-192;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;33;272,-144;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;34;592,-144;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;35;848,-144;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;44;32,368;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ScaleNode;45;224,368;Inherit;True;2;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;46;496,368;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;49;784,368;Inherit;False;Constant;_lessthan05;less
+    than 0.5;0;0;Create;True;0;0;0;False;0;False;0.3;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;51;1120,368;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;52;784,592;Inherit;False;Constant;_greaterthan05;greater
+    than 0.5;0;0;Create;True;0;0;0;False;0;False;0.7;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;53;1120,592;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;60;1872,-224;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;63;1872,-16;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;65;1872,192;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;67;1872,400;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;62;1632,-16;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;64;1632,192;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;3;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;66;1632,400;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;4;False;1;FLOAT;0\nNode;AmplifyShaderEditor.VoronoiNode;61;1392,-224;Inherit;True;0;0;1;0;1;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;5.33;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;58;1632,-224;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;14;0,-704;Inherit;False;True;-1;out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;33;0;32;1\nWireConnection;34;0;33;0\nWireConnection;35;0;34;0\nWireConnection;45;0;44;1\nWireConnection;46;0;45;0\nWireConnection;51;0;49;0\nWireConnection;53;0;52;0\nWireConnection;60;0;58;0\nWireConnection;63;0;62;0\nWireConnection;65;0;64;0\nWireConnection;67;0;66;0\nWireConnection;62;0;61;0\nWireConnection;64;0;61;0\nWireConnection;66;0;61;0\nWireConnection;58;0;61;0\nASEEND*/\n//CHKSM=D4B28C077B4255998FC5E762F358AB6D4C3B2437"
+  m_functionName: 
+  m_description: 'Round Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Round
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

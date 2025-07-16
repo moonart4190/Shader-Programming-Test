@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Arctangent2
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;128;-304,-336;Inherit;False;2177.535;1172.216;Get
+    Polar Coordinates;25;132;109;133;135;134;130;127;114;112;111;110;129;102;101;100;99;98;97;95;94;93;92;91;90;89;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;16;-304,-720;Inherit;False;821.4513;340.8127;ATan2
+    Node;2;61;14;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;89;240,192;Inherit;False;627.5945;569.9777;scale
+    of angle value;9;122;120;119;121;125;123;124;113;96;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;90;0,-112;Inherit;False;168.9243;171.1504;CenteredUV;1;106;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;91;592,-192;Inherit;False;359.3804;294.861;Radius;1;115;;0.1698113,0.1698113,0.1698113,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;14;-48,-656;Inherit;False;334.915;131.48;;;0,0,0,1;The
+    ATan2 node outputs the arctangent of the division A/B. If (B,A) defines a (x,y)
+    vector then using this operator returns the angle in radians it does with the
+    x-axis;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;60;-1040,-720;Inherit;False;613.8851;534.9709;Reference
+    Implementation;;0,0,0,1;atan2 for a float2 scalar could be implemented as an
+    approximation like this.$$float2 atan2(float2 y, float2 x)${$  float2 t0, t1,
+    t2, t3, t4@$$  t3 = abs(x)@$  t1 = abs(y)@$  t0 = max(t3, t1)@$  t1 = min(t3,
+    t1)@$  t3 = float(1) / t0@$  t3 = t1 * t3@$$  t4 = t3 * t3@$  t0 =         -
+    float(0.013480470)@$  t0 = t0 * t4 + float(0.057477314)@$  t0 = t0 * t4 - float(0.121239071)@$ 
+    t0 = t0 * t4 + float(0.195635925)@$  t0 = t0 * t4 - float(0.332994597)@$  t0
+    = t0 * t4 + float(0.999995630)@$  t3 = t0 * t3@$$  t3 = (abs(y) > abs(x)) ? float(1.570796327)
+    - t3 : t3@$  t3 = (x < 0) ?  float(3.141592654) - t3 : t3@$  t3 = (y < 0) ? -t3
+    : t3@$$  return t3@$}$;0;0\nNode;AmplifyShaderEditor.TanOpNode;61;-240,-656;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;92;1328,-288;Inherit;False;433.0529;126.8049;UV
+    Polar Coordinates Node;;0,0,0,1;The Polar Coordinates node converts UV coordinates
+    to polar coordinates - so instead of U and V going in straight horizontal and
+    vertical lines, U goes around in a circle and V goes away from the center.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;93;-224,-176;Inherit;False;150;100;UV;;0,0,0,1;the
+    input UV coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;94;-192,192;Inherit;False;162.0815;100;Center;;0.0471698,0.0471698,0.0471698,1;center
+    reference point;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;95;160,-256;Inherit;False;401.3896;100;Radial
+    Scale;;0.1792453,0.1682538,0.1682538,1;scale of distance value$radius = length(delta)
+    * 2 * RadialScale;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;96;304,640;Inherit;False;439.6738;104.0697;;;0,0,0,1;angle
+    = atan2(delta.x, delta.y) * 1.0 / 6.28 * LengthScale;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;97;912,416;Inherit;False;178.8835;111.816;Length
+    Scale;;0,0,0,1;scale of angle value;0;0\nNode;AmplifyShaderEditor.LengthOpNode;98;256,-64;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;99;256,16;Inherit;False;Constant;_Float5;Float
+    2;0;0;Create;True;0;0;0;False;0;False;2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;100;432,-64;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;101;192,240;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;102;192,16;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;106;32,-64;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;113;672,464;Inherit;False;148.15;166.7556;;;0,0,0,1;1
+    * 6.28 ;0;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;124;288,240;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RangedFloatNode;129;368,-144;Inherit;False;Constant;_RadialScale;Radial
+    Scale;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ATan2OpNode;123;416,240;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;125;688,240;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;121;544,464;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;119;368,464;Inherit;False;Constant;_Float6;Float
+    3;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TauNode;120;400,544;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;115;624,-144;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;110;1280,240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;111;1280,-64;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;112;1504,-48;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.DynamicAppendNode;114;1328,-144;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;127;1136,240;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;130;928,336;Inherit;False;Constant;_LengthScale;Length
+    Scale;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;134;1680,96;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;135;1680,320;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;133;1680,-144;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;122;688,528;Inherit;False;2;2;0;FLOAT;1;False;1;FLOAT;6.28;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;109;-224,-64;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.Vector2Node;132;-192,64;Inherit;False;Constant;_Center;Center;0;0;Create;True;0;0;0;False;0;False;0.5,0.5;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.FunctionOutput;6;-304,-816;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;98;0;106;0\nWireConnection;100;0;98;0\nWireConnection;100;1;99;0\nWireConnection;101;0;102;0\nWireConnection;102;0;106;0\nWireConnection;106;0;109;0\nWireConnection;106;1;132;0\nWireConnection;124;0;101;0\nWireConnection;123;0;124;0\nWireConnection;123;1;124;1\nWireConnection;125;0;123;0\nWireConnection;125;1;121;0\nWireConnection;121;0;119;0\nWireConnection;121;1;120;0\nWireConnection;115;0;129;0\nWireConnection;115;1;100;0\nWireConnection;110;0;127;0\nWireConnection;111;0;110;0\nWireConnection;112;0;114;0\nWireConnection;114;0;115;0\nWireConnection;114;1;111;0\nWireConnection;127;0;125;0\nWireConnection;127;1;130;0\nWireConnection;134;0;112;0\nWireConnection;135;0;112;1\nWireConnection;133;0;114;0\nASEEND*/\n//CHKSM=0B9401965C0175AA25BB577265B9D36E1AEE021F"
+  m_functionName: 
+  m_description: 'Arctangent2 Node
+
+    Atan2
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    64-127'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Trigonometry
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

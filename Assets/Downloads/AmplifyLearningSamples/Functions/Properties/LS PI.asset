@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS PI
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;94;-768,-160;Inherit;False;1476.026;734.1884;ASE
+    vs Unity SG Constant Node;18;95;118;117;124;121;122;123;120;119;96;91;114;113;107;106;105;98;99;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;99;-256,48;Inherit;False;271.4137;114.0563;6.28318548202515;1;97;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;98;-256,-80;Inherit;False;273.18;108.9294;UNITY_PI  
+    3.14159265358979323846;1;93;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;89;-768,-576;Inherit;False;849.5133;326.2395;Rotate
+    by Pi/4 =45 degree;4;87;88;85;84;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;21;-768,-896;Inherit;False;1033.842;294.4891;PI
+    Node;4;83;17;16;111;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;105;32,176;Inherit;False;242.491;108.4956;1.618034;1;108;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;106;32,304;Inherit;False;242.491;108.4956;2.718282;1;109;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;107;32,432;Inherit;False;242.491;108.4956;1.414214;1;110;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;113;32,-80;Inherit;False;242.491;108.4956;3.141593;1;116;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;114;32,48;Inherit;False;242.491;108.4956;6.283185;1;115;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;16;-736,-848;Inherit;False;352.3253;131.495;Multiplier;;0,0,0,1;Scalar
+    factor which is multiplied by the \u03C0 constant;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;17;-144,-832;Inherit;False;380.0084;201.8755;;;0,0,0,1;UNITY_PI$$The
+    Pi node outputs the mathematical constant \u03C0 ( 3.14159265359... ) multiplied
+    by a scalar factor defined by its Multiplier property$$example$2.0 * UNITY_PI;0;0\nNode;AmplifyShaderEditor.RangedFloatNode;85;-720,-400;Inherit;False;Constant;_PiValue;Pi
+    Value;0;0;Create;True;0;0;0;False;0;False;0.008231633;0;0;2;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;88;-544,-528;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RotatorNode;87;-208,-528;Inherit;True;3;0;FLOAT2;0,0;False;1;FLOAT2;0.5,0.5;False;2;FLOAT;1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.PiNode;84;-416,-400;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;91;-736,-80;Inherit;False;440;459.9719;Other
+    UNITY_MACROS;;0,0,0,1;UNITY_PI                                  = 3.14159265358979323846$$UNITY_TWO_PI                    
+    = 6.28318530717958647693$$UNITY_FOUR_PI                   = 12.5663706143591729538$$UNITY_INV_PI                       
+    = 0.31830988618379067154$$UNITY_INV_TWO_PI           = 0.15915494309189533577$$UNITY_INV_FOUR_PI         
+    = 0.07957747154594766788$$UNITY_HALF_PI                    = 1.57079632679489661923$$UNITY_INV_HALF_PI         
+    = 0.63661977236758134308$$UNITY_LOG2_E                     = 1.44269504088896340736$$UNITY_INV_SQRT2             
+    = 0.70710678118654752440$$UNITY_PI_DIV_FOUR           = 0.78539816339744830961$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;96;416,128;Inherit;False;255.6598;163.7287;Unity
+    SG Constant Node;;0,0,0,1;PI                             = 3.141593$TAU                      
+    = 6.283185$PHI                         = 1.618034$E                             
+    = 2.718282$SQRT2                = 1.414214;0;0\nNode;AmplifyShaderEditor.PiNode;83;-352,-832;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PiNode;111;-352,-704;Inherit;False;1;0;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;110;80,464;Inherit;False;Constant;_1414214;1.414214;0;0;Create;True;0;0;0;False;0;False;1.414214;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;109;80,336;Inherit;False;Constant;_2718282;2.718282;0;0;Create;True;0;0;0;False;0;False;2.718282;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;108;80,208;Inherit;False;Constant;_1618034;1.618034;0;0;Create;True;0;0;0;False;0;False;1.618034;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;116;80,-48;Inherit;False;Constant;_3141593;3.141593;0;0;Create;True;0;0;0;False;0;False;3.141593;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;115;80,80;Inherit;False;Constant;_6283185;6.283185;0;0;Create;True;0;0;0;False;0;False;6.283185;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.PiNode;93;-224,-48;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;119;304,192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;120;288,96;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;123;336,80;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;122;320,64;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;121;304,48;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;124;352,96;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;117;336,464;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;118;320,320;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch;95;416,-48;Inherit;False;Constant
+    Type;False;0;5;-1;PI;TAU;PHI;E;SQRT2;Object;-1;10;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TauNode;97;-240,80;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;12;-768,-976;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;87;0;88;0\nWireConnection;87;2;84;0\nWireConnection;84;0;85;0\nWireConnection;119;0;108;0\nWireConnection;120;0;115;0\nWireConnection;123;0;118;0\nWireConnection;122;0;119;0\nWireConnection;121;0;120;0\nWireConnection;124;0;117;0\nWireConnection;117;0;110;0\nWireConnection;118;0;109;0\nWireConnection;95;0;116;0\nWireConnection;95;1;121;0\nWireConnection;95;2;122;0\nWireConnection;95;3;123;0\nWireConnection;95;4;124;0\nASEEND*/\n//CHKSM=33D2C560F52659DA26C1F4C05139C869A1FCA3AB"
+  m_functionName: 
+  m_description: 'PI Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.30588236, g: 0.5176471, b: 0.16078432, a: 1}
+  m_customNodeCategory: LS Properties
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

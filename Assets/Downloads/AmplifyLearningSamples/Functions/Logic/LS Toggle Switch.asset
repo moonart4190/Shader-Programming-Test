@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Toggle Switch
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;46;-96,496;Inherit;False;692;707;Example
+    making a custom Enum;8;43;45;44;41;40;42;39;38;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;33;-768,496;Inherit;False;650.9276;465.8253;Toggle
+    vs other toggle methouds;5;32;30;31;34;36;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;29;-96,48;Inherit;False;916;419;Sharing
+    to other places in same shader;6;24;25;23;28;27;26;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;22;-768,-464;Inherit;False;1288.42;478.6236;Math;7;35;16;17;21;20;19;18;;0.009433985,0.009433985,0.009433985,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;15;-768,48;Inherit;False;642.7189;420.2509;Switch
+    between inputs using toggle;3;12;14;13;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;10;-768,-864;Inherit;False;1071.081;368.926;Toggle
+    Switch Node;3;9;11;8;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;8;-432,-816;Inherit;False;686.7222;162.747;;;0,0,0,1;The
+    Toggle Switch outputs one of its inputs according to the current toggle value
+    set on its internal property. $$This value can later be changed in build time
+    via its assigned material;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;11;-432,-640;Inherit;False;687.012;109.7755;Generate
+    Keyword;;0,0,0,1;By default Unity's material drawer used to show the toggle UI
+    also internally generates a global shader keyword. Toggling this option off prevents
+    this keyword from being generated.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;18;-528,-288;Inherit;False;318.7633;152.3624;Toggle;;0,0,0,1;Displays
+    a float as a toggle. The property value will be 0 or 1, depending on the toggle
+    state. $$Generates a global shader keyword to control state$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;32,-288;Inherit;False;351.7633;150.3624;No
+    Keyword Toggle;;0,0,0,1;Displays a float as a toggle. The property value will
+    be 0 or 1, depending on the toggle state. $$Does not generates shader keywords$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;-400,768;Inherit;False;213.8041;112.3402;;;0,0,0,1;Use
+    lerp with float toggle compiles faster;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;32,-128;Inherit;False;347;108;No
+    Keyword Toggle Drawer file;;0,0,0,1;for No-Keyword toogle uses a Drawer file
+    to work. Users should have drawer file NoKeywordToggle.cs in project when used.$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;-400,544;Inherit;False;213.8041;112.3402;;;0,0,0,1;Toggle
+    Switch Node does not have easy way to share in other places in shader;0;0\nNode;AmplifyShaderEditor.LerpOp;20;32,-416;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;17;-528,-416;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;23;144,112;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;26;640,128;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;21;-160,-288;Inherit;False;Constant;_Toggle1;Toggle;2;1;[Toggle];Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;16;-720,-288;Inherit;False;Constant;_Toggle;Toggle;2;1;[Toggle];Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;28;144,240;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;25;144,368;Inherit;False;Toggle;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;24;-32,368;Inherit;False;Constant;_MyToggle;My
+    Toggle;2;1;[Toggle];Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;27;432,240;Inherit;False;25;Toggle;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;31;-736,864;Inherit;False;Constant;_Toggle3;Toggle;2;1;[Toggle];Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ToggleSwitchNode;12;-448,96;Inherit;True;Property;_ToggleSwitch1;Toggle
+    Switch0;0;0;Create;True;0;0;0;False;0;False;0;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ToggleSwitchNode;32;-624,544;Inherit;True;Property;_ToggleSwitch2;Toggle
+    Switch0;1;0;Create;True;0;0;0;False;0;False;0;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;13;-720,96;Inherit;False;Constant;_Color0;Color
+    0;2;0;Create;True;0;0;0;False;0;False;0.990566,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;14;-720,272;Inherit;False;Constant;_Color1;Color
+    1;2;0;Create;True;0;0;0;False;0;False;0,0.08817577,1,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.LerpOp;30;-560,768;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;43;160,640;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;45;176,992;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;44;176,816;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode;41;-48,816;Inherit;False;Constant;_Color3;Color
+    1;2;0;Create;True;0;0;0;False;0;False;0,0.08817577,1,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;40;-48,640;Inherit;False;Constant;_Color2;Color
+    0;2;0;Create;True;0;0;0;False;0;False;0.990566,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;42;-48,992;Inherit;False;Constant;_Color4;Color
+    4;3;0;Create;True;0;0;0;False;0;False;0.3890928,1,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;39;160,544;Inherit;False;Constant;_MyEnum;My
+    Enum;3;1;[Enum];Create;True;0;3;Red;0;Blue;1;Green;2;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ToggleSwitchNode;9;-656,-816;Inherit;True;Property;_ToggleSwitch0;Toggle
+    Switch0;2;0;Create;True;0;0;0;False;0;False;0;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CustomExpressionNode;38;400,624;Inherit;False;if(m_switch
+    ==0)$\treturn m_Red@$else if(m_switch ==1)$\treturn m_Blue@$else if(m_switch
+    ==2)$\treturn m_Green@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Red;FLOAT3;0,0,0;In;;Inherit;False;True;m_Blue;FLOAT3;0,0,0;In;;Inherit;False;True;m_Green;FLOAT3;0,0,0;In;;Inherit;False;float3
+    switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-768,-960;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;20;2;21;0\nWireConnection;17;2;16;0\nWireConnection;23;2;24;0\nWireConnection;26;2;27;0\nWireConnection;28;2;24;0\nWireConnection;25;0;24;0\nWireConnection;12;0;13;0\nWireConnection;12;1;14;0\nWireConnection;30;2;31;0\nWireConnection;43;0;40;0\nWireConnection;45;0;42;0\nWireConnection;44;0;41;0\nWireConnection;38;0;39;0\nWireConnection;38;1;43;0\nWireConnection;38;2;44;0\nWireConnection;38;3;45;0\nASEEND*/\n//CHKSM=97AF68F3E9860E0A0A67D2826FBEE6D3ED0C091B"
+  m_functionName: 
+  m_description: 'Toggle Switch Node
+
+
+    Learning Sample
+
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

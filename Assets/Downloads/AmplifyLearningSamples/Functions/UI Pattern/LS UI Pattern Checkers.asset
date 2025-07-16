@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Pattern Checkers
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;469;-2816,2688;Inherit;False;1920.397;651.3711;Math;17;452;495;494;493;492;489;490;491;433;432;431;421;420;419;413;412;411;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;411;-2320,2864;Inherit;False;129.9832;127.791;UV;1;430;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;412;-1376,2864;Inherit;False;185.3303;276.875;Out;1;424;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;413;-2320,3088;Inherit;False;129.9832;127.791;Tiles;1;429;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;282;-2816,2304;Inherit;False;706.1434;286.771;Checkers;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2464,2368;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;Creates
+    a simple black and white checkerboard pattern.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;419;-1152,2768;Inherit;False;205.5;120.5;Out;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;420;-2544,3024;Inherit;False;152.0649;100;Tiles;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;421;-2518.238,2800;Inherit;False;135.9039;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.RelayNode;430;-2304,2912;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;431;-2512,2912;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;432;-2752,2912;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RelayNode;429;-2304,3136;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;424;-1360,2912;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;433;-2512,3136;Inherit;False;Tiles;2;1;False;1;0;FLOAT2;4,4;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;491;-2160,3136;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;490;-2160,3008;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;489;-2112,2912;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FloorOpNode;492;-1936,2912;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;493;-1808,2912;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleAddOpNode;494;-1680,2912;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleRemainderNode;495;-1552,2912;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;452;-1152,2912;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;430;0;431;0\nWireConnection;431;0;432;0\nWireConnection;429;0;433;0\nWireConnection;424;0;495;0\nWireConnection;491;0;429;0\nWireConnection;490;0;491;0\nWireConnection;489;0;430;0\nWireConnection;489;1;490;0\nWireConnection;492;0;489;0\nWireConnection;493;0;492;0\nWireConnection;494;0;493;0\nWireConnection;494;1;493;1\nWireConnection;495;0;494;0\nWireConnection;452;0;424;0\nASEEND*/\n//CHKSM=7507453061B9636914CF5454BBB602655ABD950A"
+  m_functionName: 
+  m_description: 'Pattern Checkers
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Pattern
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

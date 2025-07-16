@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Compare With Range
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;33;-384,-512;Inherit;False;1178.82;593.5612;Compare
+    With Range Node;3;32;35;34;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;37;-384,128;Inherit;False;675.3079;714.3329;Selects
+    between Normals and UVs;6;38;44;45;40;41;43;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;16,-464;Inherit;False;725.8362;101.7954;;;0,0,0,1;The
+    Compare With Range node compares the value set on its Value and checks if it
+    is within the range defined by both Range Min and Range Max. It will outputs
+    either the result set on True if the value is within the specified range or False
+    if not.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;16,-336;Inherit;False;724.4468;277.5115;Node
+    Parameter;;0,0,0,1;Value$Value to be verified if within range. Only visible if
+    the respective input port is not connected$$Range Min$Minimum range value. $$Range
+    Max$Maximum range value. $$True$Result to be outputted if value is within given
+    range. $$False$Result to be outputted if value is outside given range. $$;0;0\nNode;AmplifyShaderEditor.TFHCCompareWithRange;32;-256,-464;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;41;-336,640;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.WorldNormalVector;40;-304,496;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RangedFloatNode;45;-272,416;Inherit;False;Constant;_Max;Max;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;44;-272,336;Inherit;False;Constant;_Min;Min;0;0;Create;True;0;0;0;False;0;False;-1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;38;-304,176;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TFHCCompareWithRange;43;-32,224;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT3;0,0,0;False;4;FLOAT2;0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-640;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;43;0;38;2\nWireConnection;43;1;44;0\nWireConnection;43;2;45;0\nWireConnection;43;3;40;0\nWireConnection;43;4;41;0\nASEEND*/\n//CHKSM=6CBDF648D56260A58934B6ADB4E3819B17B63E33"
+  m_functionName: 
+  m_description: 'Compare With Range Node
+
+
+    Learning Sample
+
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

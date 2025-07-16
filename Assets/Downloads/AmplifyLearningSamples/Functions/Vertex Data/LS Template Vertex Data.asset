@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Template Vertex Data
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;25;-1920,-416;Inherit;False;881.4931;505.3487;Template
+    Vertex Data Node;2;250;267;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;250;-1520,-368;Inherit;False;447;263;;;0,0,0,1;The
+    Template Vertex Data node allows access to vertex data declared over the currently
+    used Template shader via the Data dropdown option. $$The node's Outputs type
+    and amount will vary according to which type of data is currently selected.$$NOTE:
+    $This node only outputs valid results if connected to a vertex function related
+    port. Use the Vertex To Fragment if data is required to be interpolated over
+    the fragment function.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;267;-1872,-160;Inherit;False;331;192;Node
+    Parameter;;0,0,0,1;SubShader$Select which subshader to get vertex data$$Pass$Select
+    which subshader to get vertex data$$Data$Select which subshader to get vertex
+    data$;0;0\nNode;AmplifyShaderEditor.TemplateVertexDataNode;266;-1776,-368;Inherit;False;0;0;;0;5;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;0;-1920,-512;Inherit;False;True;-1;Output;0;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nASEEND*/\n//CHKSM=C2993BFB9327BE3A953E5FEF5FF1DF11CEDA0C10"
+  m_functionName: 
+  m_description: 'Template Vertex Data Node
+
+
+    Learning Sample'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.627451, g: 0.05490196, b: 0.14117648, a: 1}
+  m_customNodeCategory: LS Vertex Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

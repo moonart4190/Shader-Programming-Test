@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Shader Functions
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19901\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;218;2416,-2112;Inherit;False;1311.577;1510.659;Function
+    Input Node;9;288;223;222;221;220;284;285;286;287;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;299;1280,-64;Inherit;False;1090.23;491.9156;Math
+    to show in inspector for toggle;10;301;300;296;293;295;294;290;291;292;302;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;287;3200,-1328;Inherit;False;448.2278;196.4681;Color;2;228;271;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;286;3200,-1792;Inherit;False;447.1179;424.4038;Matrix;6;305;304;229;230;276;275;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;285;2464,-864;Inherit;False;696.8521;223.8;Custom;2;237;280;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;284;2464,-1328;Inherit;False;706.4517;447.8;Sampler;12;235;234;233;232;231;278;277;274;273;272;236;279;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;262;1280,-512;Inherit;False;1490.695;419.939;Example;10;259;265;261;253;260;258;257;256;254;252;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;243;1280,-1344;Inherit;False;1088.469;741.1499;Function
+    Switch Node;6;250;248;242;249;247;303;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;239;1280,-1696;Inherit;False;1085.91;304.5108;Function
+    Subtitle Node;3;244;238;241;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;215;1286.606,-2114;Inherit;False;1083.716;390.8188;Function
+    Output Node;4;0;245;216;246;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;288;2464,-1792;Inherit;False;706.5659;448.0637;Properties;10;227;226;225;217;224;270;269;268;267;266;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;216;1856,-2048;Inherit;False;477.5932;240.1429;;;0,0,0,1;The
+    Function Ouput node adds data exit points into Shader Functions. $$This node
+    is specific to Shader Functions and cannot be created/used inside a normal shader.$$Each
+    Function Output node will be represented by an Output Port when its Shader Function
+    node is used inside a canvas. $$Output port name will be set through the Function
+    Output Name and its data type will be set by its Input connection data type.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;219;1296,-2480;Inherit;False;993.5496;328.3319;Shader
+    Function Nodes;;0,0,0,1;The Function Input node adds data entry points into Shader
+    Functions. $$This node is specific to Shader Functions and cannot be created/used
+    inside a normal shader.$$Each Function Input node will be represented by an Input
+    Port when its Shader Function node is used inside a canvas. $$Input port properties
+    like name and data type will be set through the Function Input Name and Type.$$Shader
+    Function Nodes:$--- Function Output Node$--- Function Input Node$--- Function
+    Subtitle Node$--- Function Switch Node$$Other Nodes only found in Shader Functions$---
+    Switch by Pipeline$--- Switch by SRP Version$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;220;2464,-1920;Inherit;False;466.3939;100;Input
+    Type;;0,0,0,1;Specifies the input data type which will be also used on its corresponding
+    input port.$$$$$$$$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;221;2464,-2048;Inherit;False;466.6438;104.9283;Name;;0,0,0,1;Specifies
+    the input name which will be also used on its corresponding input port.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;222;2960,-2048;Inherit;False;463.8904;100;Auto
+    Cast;;0,0,0,1;Defines if Input Type will be changed by incoming connections.
+    When toggled on, data type will always match a connection data type if it exists.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;223;2960,-1936;Inherit;False;465;105;Default
+    Value;;0,0,0,1;Defines a simple default value which will be used if no connection
+    is made with the corresponding Input Port when the shader function is uses on
+    the canvas.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;241;1328,-1632;Inherit;False;449.0908;196.1989;;;0,0,0,1;The
+    Function Title sets a subtitle over the shader function it is currently used.
+    $$Can be used on multiple paths set by Function Switches to show additional info
+    over the shader function node Its Output port works as a relay not altering the
+    value set over the input port in any matter.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;244;1824,-1552;Inherit;False;249.9851;100;Name;;0,0,0,1;Sets
+    text to be added to subtitle;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;245;1328,-2048;Inherit;False;332.4014;105.114;Name;;0,0,0,1;Specifies
+    the output name which will be also used on its corresponding output port.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;246;1328,-1920;Inherit;False;332.4015;149.4358;Set
+    as Preview;;0,0,0,1;Each shader function can only show a preview from one of
+    its function outputs.$$Clicking on this button links the shader function preview
+    to the selected function input;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;247;1312,-1296;Inherit;False;477.7782;143.9128;Mode;;0,0,0,1;Determines
+    if current node creates a new option or uses an already created one over another
+    Function Switch$$--- Object: Creates a new option$--- Reference: Uses option
+    created by referenced Function Switch;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;249;1312,-1136;Inherit;False;476.2097;118.8198;Option
+    Label;;0,0,0,1;Name of the option as it will be displayed over its shader function
+    node;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null;250;1312,-992;Inherit;False;480.9148;114.1148;Toggle
+    Mode;;0,0,0,1;Sets the option as a Toggle button with only two input ports/paths
+    labeled as False and True;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;265;1600,-240;Inherit;False;190;101;Default
+    Value;;0,0,0,1;Default Values can be set directly. ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;266;2816,-1744;Inherit;False;305.6519;108;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;267;2496,-1744;Inherit;False;305.6519;108;Float:
+    Float data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;268;2496,-1616;Inherit;False;305.6519;108;Vector2:
+    Float2 data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;269;2816,-1616;Inherit;False;305.6519;108;Vector3:
+    Float3 data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;270;2496,-1488;Inherit;False;305.6519;108;Vector4:
+    Float4 data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;271;3296,-1280;Inherit;False;305.6519;108;Color:
+    Color data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;272;2496,-1280;Inherit;False;305.6519;108;Sampler
+    1D: Sampler1D data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;273;2496,-1152;Inherit;False;305.6519;108;Sampler
+    2D: Sampler2D data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;274;2496,-1024;Inherit;False;305.6519;108;Sampler
+    3D: Sampler3D data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;275;3296,-1632;Inherit;False;305.6519;108;Matrix
+    3x3: Float3x3 data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;276;3296,-1504;Inherit;False;305.6519;108;Matrix
+    4x4: Float4x4 data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;277;2816,-1280;Inherit;False;305.6519;108;Sampler
+    Cube: Cubemap data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;278;2816,-1152;Inherit;False;305.6519;108;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;279;2816,-1024;Inherit;False;305.6519;108;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;280;2496,-816;Inherit;False;305.6519;108;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionSubtitle,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;238;1824,-1632;Inherit;False;Subtitle;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;248;1808,-992;Inherit;False;Option;True;1;2;-1;In
+    0;In 1;Object;-1;20;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;11;FLOAT;0;False;12;FLOAT;0;False;13;FLOAT;0;False;14;FLOAT;0;False;15;FLOAT;0;False;16;FLOAT;0;False;17;FLOAT;0;False;18;FLOAT;0;False;19;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;256;1920,-384;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;257;1792,-464;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;258;1600,-464;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScreenDepthNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;260;1344,-464;Inherit;False;0;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SurfaceDepthNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;261;1312,-384;Inherit;False;0;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;252;2288,-464;Inherit;False;Enable
+    Saturate;True;1;2;-1;In 0;In 1;Object;-1;20;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;11;FLOAT;0;False;12;FLOAT;0;False;13;FLOAT;0;False;14;FLOAT;0;False;15;FLOAT;0;False;16;FLOAT;0;False;17;FLOAT;0;False;18;FLOAT;0;False;19;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSubtitle,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;254;2080,-384;Inherit;False;Saturate
+    Off;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSubtitle, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;253;2080,-464;Inherit;False;Saturate
+    On;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;224;2528,-1712;Inherit;False;Input;1;4;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;217;2848,-1712;Inherit;False;Input;0;2;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;225;2528,-1584;Inherit;False;Input;2;6;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;226;2848,-1584;Inherit;False;Input;3;7;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;227;2528,-1456;Inherit;False;Input;4;8;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;231;2528,-1248;Inherit;False;Input;9;13;False;1;0;SAMPLER1D;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;SAMPLER1D;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;232;2528,-1120;Inherit;False;Input;10;14;False;1;0;SAMPLER2D;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;SAMPLER2D;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;233;2528,-992;Inherit;False;Input;11;15;False;1;0;SAMPLER3D;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;SAMPLER3D;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;237;2528,-784;Inherit;False;Input;15;19;False;1;0;OBJECT;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;OBJECT;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;228;3328,-1248;Inherit;False;Input;6;9;False;1;0;FLOAT2x2;1,0,0,1;False;1;FLOAT2x2;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;235;2848,-1120;Inherit;False;Input;13;17;False;1;0;SAMPLER2DARRAY;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;SAMPLER2DARRAY;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;236;2848,-992;Inherit;False;Input;14;18;False;1;0;SAMPLERSTATE;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;234;2848,-1248;Inherit;False;Input;12;16;False;1;0;SAMPLERCUBE;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;SAMPLERCUBE;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;292;1632,112;Inherit;False;False;3;5;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;290;1808,176;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.OneMinusNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;294;1808,32;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;295;1968,80;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;293;2128,160;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;296;1632,32;Inherit;False;Toggle;1;1;True;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;302;1424,32;Inherit;False;Constant;_IsRed;IsRed;0;1;[Toggle];Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;301;1360,112;Inherit;False;Constant;_Color1;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0,0.191608,1,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;300;1360,256;Inherit;False;Constant;_Color0;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;291;1632,256;Inherit;False;True;3;3;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;242;1808,-1296;Inherit;False;Option;False;0;10;-1;In
+    0;In 1;In 2;In 3;In 4;In 5;In 6;In 7;In 8;In 9;Object;-1;20;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;11;FLOAT;0;False;12;FLOAT;0;False;13;FLOAT;0;False;14;FLOAT;0;False;15;FLOAT;0;False;16;FLOAT;0;False;17;FLOAT;0;False;18;FLOAT;0;False;19;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;303;2048,-1296;Inherit;False;Option;False;0;20;-1;In
+    0;In 1;In 2;In 3;In 4;In 5;In 6;In 7;In 8;In 9;In 10;In 11;In 12;In 13;In 14;In
+    15;In 16;In 17;In 18;In 19;Object;-1;20;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;11;FLOAT;0;False;12;FLOAT;0;False;13;FLOAT;0;False;14;FLOAT;0;False;15;FLOAT;0;False;16;FLOAT;0;False;17;FLOAT;0;False;18;FLOAT;0;False;19;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;259;1600,-320;Inherit;False;Distance;1;0;False;1;0;FLOAT;25;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;304;3296,-1760;Inherit;False;305.6519;108;Matrix
+    2x2: Float2x2 data type;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;305;3328,-1728;Inherit;False;Input;6;11;False;1;0;FLOAT2x2;0,0,1,1;False;1;FLOAT2x2;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;230;3328,-1472;Inherit;False;Input;8;12;False;1;0;FLOAT4x4;0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,1;False;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;229;3328,-1600;Inherit;False;Input;7;10;False;1;0;FLOAT3x3;0,0,0,1,1,1,1,0,1;False;1;FLOAT3x3;0\nNode;AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;0;1696,-2048;Inherit;False;True;-1;Output;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;256;0;257;0\nWireConnection;257;0;258;0\nWireConnection;257;1;259;0\nWireConnection;258;0;260;0\nWireConnection;258;1;261;0\nWireConnection;252;0;253;0\nWireConnection;252;1;254;0\nWireConnection;254;0;256;0\nWireConnection;253;0;257;0\nWireConnection;292;0;301;0\nWireConnection;290;0;296;0\nWireConnection;290;1;291;0\nWireConnection;294;0;296;0\nWireConnection;295;0;294;0\nWireConnection;295;1;292;0\nWireConnection;293;0;295;0\nWireConnection;293;1;290;0\nWireConnection;296;0;302;0\nWireConnection;291;0;300;0\nASEEND*/\n//CHKSM=FCCC57A2B43FB5C6A690C3E3D40051AB37BC0AB9"
+  m_functionName: 
+  m_description: 'Shader Functions
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7647059, g: 0.30588236, b: 0, a: 1}
+  m_customNodeCategory: LS Utility
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

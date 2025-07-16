@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS BlinnPhong
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;60;-1536,-512;Inherit;False;2761.779;1278.421;Math;41;29;54;7;25;20;52;23;14;45;44;35;50;51;31;21;2;36;10;53;11;3;16;19;15;40;43;9;4;27;8;22;42;39;63;62;61;67;68;70;72;74;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;74;176,304;Inherit;False;138;130;Diffuse;1;73;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;72;-176,-448;Inherit;False;137.0135;138.0175;Specular;1;71;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;70;-1264,-48;Inherit;False;132.4564;123.3884;Normal;1;69;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;68;960,-448;Inherit;False;209.1816;278.7094;RGB;1;65;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;67;960,432;Inherit;False;184.5531;267.5652;Alpha;1;66;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;56;-1536,-928;Inherit;False;709.4169;356.9064;BlinnPhong
+    Node;2;59;48;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;48;-1152,-864;Inherit;False;289.3357;149.346;;;0,0,0,1;Blinn-Phong
+    Light Generates a lighting model using Blinn-Phong reflectance model and closely
+    resembles Unity legacy shaders;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;61;-1328,96;Inherit;False;202;110;Normal;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;62;96,448;Inherit;False;219;113;Diffuse;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;63;-272,-304;Inherit;False;231.9054;123.2269;Specular;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.WireNode;39;-448,32;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;42;-416,48;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;22;48,0;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.PowerNode;8;0,-176;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;27;-176,-96;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;128;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;4;-512,-176;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;9;224,128;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;43;-416,240;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;40;-384,256;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;15;-704,-176;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.NormalizeNode;19;-880,0;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;16;-1088,0;Inherit;False;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleAddOpNode;3;400,128;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;11;576,128;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;53;752,128;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.LightColorNode;10;-176,0;Inherit;False;0;3;COLOR;0;FLOAT3;1;FLOAT;2\nNode;AmplifyShaderEditor.LightAttenuation;36;-208,128;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;2;-496,-64;Float;False;Property;_Shininess;Shininess;6;0;Create;False;0;0;0;False;0;False;0.1;0;0.01;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;21;-544,160;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;31;-704,160;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;51;368,480;Inherit;False;FLOAT;3;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;50;368,352;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.IndirectDiffuseLighting;35;160,224;Inherit;False;Tangent;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;66;976,480;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;65;992,-400;Inherit;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.RelayNode;69;-1248,0;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;71;-160,-400;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SwizzleNode;44;16,-400;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;45;16,-320;Inherit;False;FLOAT;3;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;14;224,-400;Inherit;False;4;4;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;23;816,-400;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.WireNode;52;752,-320;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionNode;59;-1472,-864;Inherit;True;Blinn-Phong
+    Light;1;;118;cf814dba44d007a4e958d2ddd5813da6;0;3;42;COLOR;0,0,0,0;False;52;FLOAT3;0,0,1;False;43;COLOR;0,0,0,0;False;2;COLOR;0;FLOAT;57\nNode;AmplifyShaderEditor.RelayNode;73;192,352;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ColorNode;20;-128,352;Float;False;Property;_MainColor;Main
+    Color;0;0;Create;False;0;0;0;False;0;False;0.3921569,0.3921569,0.3921569,1;0,0,0,0;False;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionInput;25;-1424,0;Inherit;False;Normal;3;0;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode;7;-496,-400;Float;False;Property;_SpecularColor;Specular
+    Color;5;0;Create;False;0;0;0;False;0;False;0.3921569,0.3921569,0.3921569,1;0,0,0,0;False;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionNode;54;-992,-176;Inherit;False;Blinn-Phong
+    Half Vector;-1;;120;91a149ac9d615be429126c95e20753ce;0;0;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;29;-960,192;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;32;-1536,-1024;Inherit;False;True;-1;Out;0;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nWireConnection;39;0;19;0\nWireConnection;42;0;39;0\nWireConnection;22;0;10;0\nWireConnection;22;1;36;0\nWireConnection;8;0;4;0\nWireConnection;8;1;27;0\nWireConnection;27;0;2;0\nWireConnection;4;0;15;0\nWireConnection;9;0;22;0\nWireConnection;9;1;21;0\nWireConnection;43;0;42;0\nWireConnection;40;0;43;0\nWireConnection;15;0;54;0\nWireConnection;15;1;19;0\nWireConnection;19;0;16;0\nWireConnection;16;0;69;0\nWireConnection;3;0;9;0\nWireConnection;3;1;35;0\nWireConnection;11;0;3;0\nWireConnection;11;1;50;0\nWireConnection;53;0;11;0\nWireConnection;21;0;31;0\nWireConnection;31;0;19;0\nWireConnection;31;1;29;0\nWireConnection;51;0;73;0\nWireConnection;50;0;73;0\nWireConnection;35;0;40;0\nWireConnection;66;0;51;0\nWireConnection;65;0;23;0\nWireConnection;69;0;25;0\nWireConnection;71;0;7;0\nWireConnection;44;0;71;0\nWireConnection;45;0;71;0\nWireConnection;14;0;44;0\nWireConnection;14;1;45;0\nWireConnection;14;2;8;0\nWireConnection;14;3;22;0\nWireConnection;23;0;14;0\nWireConnection;23;1;52;0\nWireConnection;52;0;53;0\nWireConnection;73;0;20;0\nASEEND*/\n//CHKSM=B7A6749341C781BDFD73D168B54670A7AD0EC044"
+  m_functionName: 
+  m_description: 'BlinnPhong Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Algorithm
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

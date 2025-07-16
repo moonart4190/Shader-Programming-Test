@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Normal Perturb HQ
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;44;-512,-512;Inherit;False;2411.135;1185.405;Math;37;4;23;26;22;40;39;24;38;36;37;17;20;19;18;13;25;5;12;16;11;15;21;14;9;10;32;6;7;3;2;1;41;30;27;28;29;51;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;51;1664,336;Inherit;False;184.5;254.5;World
+    Normal;1;50;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;47;-512,736;Inherit;False;812.1204;310.8916;;2;48;46;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;43;-512,-896;Inherit;False;897.3955;304;Normal
+    Perturb HQ Node;1;33;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;29;-416,48;Inherit;False;252.8953;111.7211;Bump
+    one pixel down;;0,0,0,1;The scalar bump value (grayscale) one pixel down from
+    the current position.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-416,-160;Inherit;False;252.3638;111.6282;Bump
+    center;;0,0,0,1;The scalar bump value (grayscale) at the current position.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-416,-384;Inherit;False;253.2076;115.5984;Bump
+    One Pixel Right;;0,0,0,1;The scalar bump value (grayscale) one pixel to the right
+    of the current position;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;30;1152,96;Inherit;False;647.6432;222.8239;Using
+    Textures;;0,0,0,1;Textures can be used with the bump mapping Material Functions
+    for better performance@ however, artifacts may be introduced due to the way in
+    which the graphics card handles filtering textures. $$A normally filtered color
+    is interpolated with a linear interpolation, the derivative of that is a constant.
+    $$That means using a grayscale texture provides you with normals that are not
+    smoothly interpolating of the surfac;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-48,-848;Inherit;False;293.6676;148.0922;;;0,0,0,1;Based
+    on Perturb Normal HQ UE4 Material Expression;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;41;-160,480;Inherit;False;252.8953;111.7211;World
+    Normal;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;7;-64,-256;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;6;-64,-464;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;32;-320,176;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DdyOpNode;10;-96,176;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DdxOpNode;9;-96,256;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CrossProductOpNode;14;64,176;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;21;304,240;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CrossProductOpNode;15;64,336;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;11;224,-464;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;16;224,-256;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;12;400,-464;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;5;-352,400;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.AbsOpNode;25;432,368;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;13;864,-464;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;18;480,-336;Float;False;Constant;_Float0;Float
+    0;0;0;Create;True;1;;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;19;480,-272;Float;False;Constant;_Float1;Float
+    1;0;0;Create;True;1;;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;20;480,-208;Float;False;Property;_Float2;Float
+    2;0;0;Create;True;1;;0;0;False;0;False;-1;-1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ConditionalIfNode;17;672,-336;Inherit;False;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;37;624,-288;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;36;624,240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;38;592,272;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;24;864,368;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;39;1024,-384;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;40;1024,336;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;22;1088,368;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;23;1280,432;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;4;-160,400;Inherit;False;World
+    Normal;3;3;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;2;-336,-240;Inherit;False;Bump
+    Center;1;1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;3;-384,-32;Inherit;False;Bump
+    One Pixel Down;1;2;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch;26;1440,368;Inherit;False;Normalize;True;1;2;-1;In
+    0;In 1;Object;-1;10;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;49;-464,-848;Inherit;True;PerturbNormalHQ;-1;;5;45dff16e78a0685469fed8b5b46e4d96;0;4;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;46;-464,784;Inherit;False;PreparePerturbNormalHQ;-1;;7;ce0790c3228f3654b818a19dd51453a4;0;1;1;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT3;4;FLOAT3;6;FLOAT;9\nNode;AmplifyShaderEditor.FunctionInput;1;-384,-464;Inherit;False;Bump
+    One Pixel Right;1;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;48;-128,784;Inherit;True;PerturbNormalHQ;-1;;8;45dff16e78a0685469fed8b5b46e4d96;0;4;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;50;1680,368;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-512,-992;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;7;0;3;0\nWireConnection;7;1;2;0\nWireConnection;6;0;1;0\nWireConnection;6;1;2;0\nWireConnection;10;0;32;0\nWireConnection;9;0;32;0\nWireConnection;14;0;10;0\nWireConnection;14;1;4;0\nWireConnection;21;0;14;0\nWireConnection;21;1;9;0\nWireConnection;15;0;4;0\nWireConnection;15;1;9;0\nWireConnection;11;0;6;0\nWireConnection;11;1;14;0\nWireConnection;16;0;7;0\nWireConnection;16;1;15;0\nWireConnection;12;0;11;0\nWireConnection;12;1;16;0\nWireConnection;25;0;21;0\nWireConnection;13;0;12;0\nWireConnection;13;1;17;0\nWireConnection;17;0;37;0\nWireConnection;17;1;18;0\nWireConnection;17;2;19;0\nWireConnection;17;3;18;0\nWireConnection;17;4;20;0\nWireConnection;37;0;36;0\nWireConnection;36;0;38;0\nWireConnection;38;0;21;0\nWireConnection;24;0;25;0\nWireConnection;24;1;4;0\nWireConnection;39;0;13;0\nWireConnection;40;0;39;0\nWireConnection;22;0;24;0\nWireConnection;22;1;40;0\nWireConnection;23;0;22;0\nWireConnection;4;0;5;0\nWireConnection;26;0;22;0\nWireConnection;26;1;23;0\nWireConnection;48;1;46;0\nWireConnection;48;2;46;4\nWireConnection;48;3;46;6\nWireConnection;50;0;26;0\nASEEND*/\n//CHKSM=B544CF5095A68068A217AA6F834D308557AE6978"
+  m_functionName: 
+  m_description: 'Normal Perturb HQ Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.18039216, b: 0.4745098, a: 1}
+  m_customNodeCategory: LS Normal
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

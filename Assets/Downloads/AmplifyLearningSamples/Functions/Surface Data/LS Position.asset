@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Position
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;251;0,-512;Inherit;False;1841.839;1449.148;Decal
+    UV Coordinates;30;297;240;241;247;246;245;244;242;239;238;237;236;235;234;233;232;231;230;229;272;271;224;223;222;221;220;219;270;310;311;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;311;464,-416;Inherit;False;240.5;249;Position
+    World Space;1;249;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;307;0,1024;Inherit;False;1355.894;709.1712;example
+    from Unity SG - Character Brightness Gradient;9;299;301;300;298;306;305;304;303;302;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;270;528,448;Inherit;False;137.5;127;Normal
+    Face WS;1;269;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;141;0,-1408;Inherit;False;1150.332;858.1396;Position
+    Node;9;207;210;209;208;255;254;253;252;143;;0.009433985,0.009433985,0.009433985,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;219;768,-416;Inherit;False;129.5;131.5;Position
+    WS;1;248;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;220;1600,160;Inherit;False;180.5539;270.3801;UV;1;250;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;221;64,448;Inherit;False;243.3043;261.2234;Calculate
+    Face Normals;1;243;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;222;960,176;Inherit;False;204.1237;296.9725;XY
+    Decal Front/Back;1;228;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;223;960,-112;Inherit;False;204.1237;281.0552;XZ
+    Decal Top/Bottom;1;227;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;224;960,-416;Inherit;False;196.1649;287.6873;YZ
+    Decal Left/Right;1;226;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;143;32,-1344;Inherit;False;354.8186;190.9498;;;0,0,0,1;Provides
+    access to the mesh vertex's or fragment's Position, depending on the effective
+    Shader Stage of the graph section that the Node is part of. $$Use the Space drop-down
+    parameter to select the coordinate space of the output value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;252;672,-1344;Inherit;False;364.515;171.5526;Object;;0,0,0,1;ase_positionOS$$Object-space
+    position;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;253;672,-1152;Inherit;False;368.7857;174.1151;View;;0,0,0,1;ase_positionVS$$View-space
+    position$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;254;672,-960;Inherit;False;366.1686;171.1805;World;;0,0,0,1;ase_positionWS$$Absolute
+    world position$World refers to absolute World-Space coordinates, in full coordinates
+    around the origin;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;255;672,-768;Inherit;False;372.6724;187.6943;Relative
+    World;;0,0,0,1;$$Camera-relative world position$Relative World refers to Camera-relative
+    World-space, where values are kept relative to the Camera position, making them
+    less prone to the numerical precision degradation of large floating point values$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;271;832,704;Inherit;False;270.8333;119.9203;;;0,0,0,1;The
+    top/bottom, left/right, and front/back coordinates are selected using face normals
+    which are calculated using derivatives.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;272;64,272;Inherit;False;366.5662;140.728;
+    Normal Face WS;;0,0,0,1;For regular meshes, we would use a Vertex Normal node
+    here, but decals don't have a Vertex Normal, so we use the Normal Face node to
+    derive the approximate world space normal of the surfaces that the decal intersects.;0;0\nNode;AmplifyShaderEditor.PositionNode;208;432,-1152;Inherit;True;3;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.PositionNode;209;432,-960;Inherit;True;1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.PositionNode;210;432,-768;Inherit;True;2;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.PositionNode;207;432,-1344;Inherit;True;0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.StickyNoteNode;302;48,1072;Inherit;False;464.1155;164.5682;;;0,0,0,1;In
+    stylized character art, some artists like to apply a gradient to their charactger
+    so the the area at the feet of the character is darker, and the character gets
+    brighter toward the head.  $$Here's one way to achieve that using the Position
+    node in Object space.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;303;48,1456;Inherit;False;205.8428;109.8889;;;0,0,0,1;First,
+    we isolate just the height data - the Y channel of the position.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;304;336,1488;Inherit;False;284.3717;164.5682;;;0,0,0,1;Here
+    we're adjusting the length and position of the gradient so that it matches our
+    sphere.  The multiply shrinks the gradient's range, and the add moves the dark
+    end of the gradient down to the bottom of the character.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;305;672,1488;Inherit;False;285.535;111.6339;;;0,0,0,1;Your
+    adjustments may vary depending on the height of the character and location of
+    the character's pivot point.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;306;1040,1488;Inherit;False;258.7769;137.8102;;;0,0,0,1;Your
+    adjustments may vary depending on the height of the character and location of
+    the character's pivot point.;0;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;300;672,1264;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;301;1040,1264;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;299;336,1264;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0.6;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;227;992,-64;Inherit;True;FLOAT2;0;2;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;228;992,240;Inherit;True;FLOAT2;0;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.LerpOp;229;1248,-96;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;230;1200,-96;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;231;1200,-288;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;232;1392,-32;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;233;1392,208;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.LerpOp;234;1440,208;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;235;1056,496;Inherit;False;FLOAT;1;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;236;1216,16;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;237;1216,496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;238;1264,336;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;239;1248,576;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;242;1056,576;Inherit;False;FLOAT;2;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;244;912,-288;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;245;912,-80;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;246;912,-288;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;247;912,208;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;248;784,-368;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.AbsOpNode;241;704,496;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;269;544,496;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RoundOpNode;240;832,496;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;226;992,-368;Inherit;True;FLOAT2;1;2;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;297;320,496;Inherit;False;Normal
+    Face WS;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;250;1616,208;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;310;1536,0;Inherit;False;243.5161;139.0029;UV;;0,0,0,1;The
+    top/bottom, left/right, and front/back coordinates are selected using face normals
+    which are calculated using derivatives.;0;0\nNode;AmplifyShaderEditor.PositionNode;298;64,1264;Inherit;True;0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionNode;243;80,496;Inherit;True;Normal
+    Face;-1;;1;f4725843c667a994e8a7e4987db394b2;2,88,0,86,1;0;1;FLOAT3;30\nNode;AmplifyShaderEditor.PositionNode;249;480,-368;Inherit;True;1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;118;0,-1520;Inherit;False;True;-1;Output;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;300;0;299;0\nWireConnection;301;0;300;0\nWireConnection;299;0;298;2\nWireConnection;227;0;245;0\nWireConnection;228;0;247;0\nWireConnection;229;0;230;0\nWireConnection;229;1;227;0\nWireConnection;229;2;236;0\nWireConnection;230;0;231;0\nWireConnection;231;0;226;0\nWireConnection;232;0;229;0\nWireConnection;233;0;232;0\nWireConnection;234;0;233;0\nWireConnection;234;1;228;0\nWireConnection;234;2;238;0\nWireConnection;235;0;240;0\nWireConnection;236;0;237;0\nWireConnection;237;0;235;0\nWireConnection;238;0;239;0\nWireConnection;239;0;242;0\nWireConnection;242;0;240;0\nWireConnection;244;0;248;0\nWireConnection;245;0;244;0\nWireConnection;246;0;248;0\nWireConnection;247;0;246;0\nWireConnection;248;0;249;0\nWireConnection;241;0;269;0\nWireConnection;269;0;297;0\nWireConnection;240;0;241;0\nWireConnection;226;0;248;0\nWireConnection;297;0;243;30\nWireConnection;250;0;234;0\nASEEND*/\n//CHKSM=1ADB2E8363F92CE07E1CC0911395F22936CBDAA4"
+  m_functionName: 
+  m_description: 'Position Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Surface Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Angle Mask
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;56;-384,-832;Inherit;False;1762.423;1102.096;Math;21;42;41;46;45;47;44;114;113;40;21;20;57;23;54;43;35;110;109;105;83;104;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;104;448,-752;Inherit;False;120.5;127;Minimum;1;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;55;-384,-1168;Inherit;False;773.4236;279.6675;Angle
+    Mask Node;1;29;;0.05660379,0.05660379,0.05660379,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;58;-384,352;Inherit;False;1670.014;729.8066;Math;11;65;80;81;62;75;76;66;78;71;77;74;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;83;1024,-464;Inherit;False;181.0538;267.0618;Mask;1;98;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;105;448,-608;Inherit;False;120.5;127;Maximum;1;106;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;109;240,-416;Inherit;False;120.5;127;Mask
+    Vector;1;111;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;110;240,-224;Inherit;False;120.5;127;Normal;1;112;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;29;-64,-1120;Inherit;False;416.1107;189.7018;;;0.06603771,0.06261123,0.06261123,1;The
+    Angle Mask subgraph uses the direction that a surface is facing to determine
+    if the mask should be black or white. $$If the surface is pointing in the direction
+    of the given input vector, the mask is white.$$If it\u2019s pointing away from
+    the given vector, the mask is black.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;432,-256;Inherit;False;406.0439;156.3191;Dot
+    Product;;0,0,0,1;The MaskVector input is set to (0,1,0) - which is a vector pointing
+    in the up direction (positive Y). $$When the object\u2019s surface (Normal) is
+    pointing in that direction, the mask is white.  When the surface is pointing
+    away from that direction, the mask is black.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;43;-16,-704;Inherit;False;255.7661;135.0585;Min
+    & Max;;0,0,0,1;The closer together the Min and Max values the sharper the falloff
+    and vice versa. Min and Max should be greater than 0 and less than 1.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;54;656,-640;Inherit;False;335.0283;208;Lerp
+    Inverse Node;;0,0,0,1;Returns the linear parameter that produces the interpolant
+    specified by input Alpha within the range of input A to input B.$$Inverse Lerp
+    is the inverse operation of the Lerp Node. It can be used to determine what the
+    input to a Lerp was based on its output. $$cheap replacement of smoothstep;0;0\nNode;AmplifyShaderEditor.Vector3Node;74;432,576;Inherit;False;Constant;_MaskVector;Mask
+    Vector;0;0;Create;True;0;0;0;False;0;False;0,1,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.LerpOp;77;464,720;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;71;224,800;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RangedFloatNode;78;224,944;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;0.85;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;66;640,576;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;76;608,496;Inherit;False;Constant;_Minimum;Minimum;0;0;Create;True;0;0;0;False;0;False;0.4;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;75;608,416;Inherit;False;Constant;_Maximum;Maximum;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;62;800,528;Inherit;False;Inverse
+    Lerp;-1;;2;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TransformPositionNode;81;0,720;Inherit;False;Tangent;World;False;Precise;True;1;0;FLOAT3;0,0,0;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SamplerNode;80;-320,720;Inherit;True;Property;_BumpMap1;Normal
+    Map;0;0;Create;False;0;0;0;False;0;False;-1;131c3fbe02d4e8940a611725e65d76ff;131c3fbe02d4e8940a611725e65d76ff;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SaturateNode;65;1056,528;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;113;16,-480;Inherit;False;196.5;100;Mask
+    Vector;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;114;16,-288;Inherit;False;196.5;100;Normal;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;98;1040,-416;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;23;864,-416;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;57;656,-416;Inherit;False;Inverse
+    Lerp;-1;;3;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;20;272,-704;Inherit;False;Minimum;1;2;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;21;272,-560;Inherit;False;Maximum;1;3;False;1;0;FLOAT;0.4;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;103;464,-704;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;106;464,-560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;111;256,-368;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;112;256,-176;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;40;432,-368;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;44;-80,-176;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;46;-320,112;Inherit;False;Constant;_Float2;Float
+    2;0;0;Create;True;0;0;0;False;0;False;0.85;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;41;48,-368;Inherit;False;Mask
+    Vector;3;0;False;1;0;FLOAT3;0,1,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;42;80,-176;Inherit;False;Normal;3;1;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;45;-320,-32;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TransformPositionNode;47;-352,-176;Inherit;False;Tangent;World;False;Precise;True;1;0;FLOAT3;0,0,0;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-1280;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;77;0;81;0\nWireConnection;77;1;71;0\nWireConnection;77;2;78;0\nWireConnection;66;0;74;0\nWireConnection;66;1;77;0\nWireConnection;62;1;75;0\nWireConnection;62;2;76;0\nWireConnection;62;3;66;0\nWireConnection;81;0;80;0\nWireConnection;65;0;62;0\nWireConnection;98;0;23;0\nWireConnection;23;0;57;0\nWireConnection;57;1;103;0\nWireConnection;57;2;106;0\nWireConnection;57;3;40;0\nWireConnection;103;0;20;0\nWireConnection;106;0;21;0\nWireConnection;111;0;41;0\nWireConnection;112;0;42;0\nWireConnection;40;0;111;0\nWireConnection;40;1;112;0\nWireConnection;44;0;47;0\nWireConnection;44;1;45;0\nWireConnection;44;2;46;0\nWireConnection;42;0;44;0\nASEEND*/\n//CHKSM=EDA8AD5472340D588D06BE5BB6B8D5E0751241AC"
+  m_functionName: 
+  m_description: 'Angle Mask
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4392157, g: 0.34509805, b: 0.015686275, a: 1}
+  m_customNodeCategory: LS Mask
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

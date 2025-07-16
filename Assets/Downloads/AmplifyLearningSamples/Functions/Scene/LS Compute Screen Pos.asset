@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Compute Screen Pos
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;10;-518.5075,-176;Inherit;False;1419.765;302.2027;Get
+    screen pos from object local pos;6;25;23;24;13;14;22;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;9;-514,-546;Inherit;False;724;304;Compute
+    Screen Pos  Node;2;7;21;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-256,-480;Inherit;False;388.1143;179.1434;;;0,0,0,1;The
+    Compute Screen Pos node converts a position in clip space into screen space texture
+    coordinates. $$These coordinates can then be used directly on a Texture Sample
+    as its UV coordinates for doing a screen space-mapped texture sample;0;0\nNode;AmplifyShaderEditor.ComputeScreenPosHlpNode;21;-480,-496;Inherit;True;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.ComputeScreenPosHlpNode;22;-48,-96;Inherit;False;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.UnityObjToClipPosHlpNode;14;-272,-96;Inherit;False;1;0;FLOAT3;0,0,0;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.PosVertexDataNode;13;-480,-96;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ComponentMaskNode;24;224,-16;Inherit;False;False;False;False;True;1;0;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;23;448,-96;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SamplerNode;25;592,-96;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionOutput;5;-512,-640;Inherit;False;True;-1;OUT;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;22;0;14;0\nWireConnection;14;0;13;0\nWireConnection;24;0;22;0\nWireConnection;23;0;22;0\nWireConnection;23;1;24;0\nWireConnection;25;1;23;0\nASEEND*/\n//CHKSM=278422DFC30B14A2D9AAC3D830D7F1E06AE60594"
+  m_functionName: 
+  m_description: 'Compute Screen Pos  Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

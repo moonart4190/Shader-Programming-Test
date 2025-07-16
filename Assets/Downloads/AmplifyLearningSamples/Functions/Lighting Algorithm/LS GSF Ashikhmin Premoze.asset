@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS GSF Ashikhmin Premoze
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;493;-2672,2640;Inherit;False;888.9039;462.9585;NdotL;5;481;486;492;491;472;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;471;-2672,2160;Inherit;False;886.0977;461.022;NdotV;5;459;464;470;469;450;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;446;-1664,2048;Inherit;False;908;562.0002;Math;9;432;433;430;431;434;429;428;427;426;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;450;-2400,2208;Inherit;False;317.4856;390.1839;NdotV;3;455;453;451;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;472;-2416,2688;Inherit;False;330.0456;397.3049;NdotL;3;477;475;473;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;447;-1664,1632;Inherit;False;1055.935;388.3889;GSF
+    Ashikhmin Premoze - Amplify Shader Pack Example;2;449;448;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;426;-976,2256;Inherit;False;180.5;270;Out;1;444;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;427;-1616,2464;Inherit;False;156.3334;129.3332;NdotL;1;436;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;428;-1616,2272;Inherit;False;151.9999;134.3332;NdotV;1;435;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;451;-2368,2256;Inherit;False;136.6875;138.37;Normal;1;456;;0.04402506,0.04402506,0.04402506,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;453;-2368,2416;Inherit;False;136.6875;138.37;View
+    Dir;1;457;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;473;-2384,2752;Inherit;False;130.6667;135.3333;Normal;1;478;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;475;-2384,2896;Inherit;False;130.6667;135.3333;Light
+    Dir;1;479;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;449;-1632,1680;Inherit;False;390.8333;288.0667;Amplify
+    Shader Pack Example;1;497;;1,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;429;-976,2128;Inherit;False;187.5876;110.0416;;;0,0,0,1;The
+    Ashikhmin-Premoze GSF is designed for use with Isotropic NDF;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;434;-1616,2096;Inherit;False;541.6597;130.1795;Credits;;0,0,0,0.5019608;Method
+    by Jordan Stevens$Link: https://www.jordanstevenstechart.com/physically-based-rendering$$Node
+    Made by Tiber Legacy$;0;0\nNode;AmplifyShaderEditor.RelayNode;444;-960,2304;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;435;-1584,2304;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;436;-1584,2496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;431;-1424,2304;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;430;-1424,2416;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;433;-1104,2304;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;432;-1264,2368;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;448;-1216,1680;Inherit;False;571.6;169.2999;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;478;-2368,2800;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;479;-2368,2944;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;477;-2192,2800;Inherit;False;2;0;FLOAT3;1,1,1;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;486;-2064,2864;Inherit;False;Constant;_Zero1;Zero;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;481;-1904,2800;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldNormalVector;491;-2608,2800;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;492;-2640,2944;Inherit;False;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WireNode;494;-1760,2560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;495;-1760,2800;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;496;-1751.225,2539.289;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;455;-2192,2304;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;456;-2352,2304;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;457;-2352,2464;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;469;-2624,2464;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldNormalVector;470;-2624,2304;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleMaxOpNode;459;-1904,2304;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;464;-2064,2400;Inherit;False;Constant;_Zero;Zero;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;497;-1600,1744;Inherit;True;GSF
+    Ashikhmin Premoze;-1;;1;;0;0;0\nNode;AmplifyShaderEditor.FunctionOutput;445;-1664,1536;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;444;0;433;0\nWireConnection;435;0;459;0\nWireConnection;436;0;496;0\nWireConnection;431;0;435;0\nWireConnection;431;1;436;0\nWireConnection;430;0;436;0\nWireConnection;430;1;435;0\nWireConnection;433;0;431;0\nWireConnection;433;1;432;0\nWireConnection;432;0;430;0\nWireConnection;432;1;431;0\nWireConnection;478;0;491;0\nWireConnection;479;0;492;0\nWireConnection;477;0;478;0\nWireConnection;477;1;479;0\nWireConnection;481;0;477;0\nWireConnection;481;1;486;0\nWireConnection;494;0;495;0\nWireConnection;495;0;481;0\nWireConnection;496;0;494;0\nWireConnection;455;0;456;0\nWireConnection;455;1;457;0\nWireConnection;456;0;470;0\nWireConnection;457;0;469;0\nWireConnection;459;0;455;0\nWireConnection;459;1;464;0\nASEEND*/\n//CHKSM=700C9CC14EE92DF3495E67333FC40D44D6FC46A7"
+  m_functionName: 
+  m_description: 'GSF Ashikhmin Premoze
+
+
+    Learning Sample
+
+    (Amplify Shader
+    Pack Example)'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Algorithm
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

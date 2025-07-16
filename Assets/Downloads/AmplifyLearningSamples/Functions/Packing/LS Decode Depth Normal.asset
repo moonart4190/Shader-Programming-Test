@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Decode Depth Normal
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;74;-512,144;Inherit;False;2625.247;1415.777;example
+    making simple ground blending;23;109;107;89;83;115;114;113;112;111;110;108;106;105;90;88;87;86;82;81;80;78;76;75;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;76;-496,896;Inherit;False;1757.318;609.6464;Ground
+    Blending;15;100;99;102;101;98;97;96;95;94;93;92;91;77;116;117;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;73;-512,-208;Inherit;False;852;304;Example
+    Get Camera Depth Normals Texture;3;70;72;71;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;65;-512,-640;Inherit;False;1038.728;400.8954;Decode
+    Depth Normal Node;6;64;69;68;67;66;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;75;1824,208;Inherit;False;209.1011;272.1733;BaseColor;1;84;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;77;1057,1152;Inherit;False;177.4385;271.8286;Gound
+    Mask;1;79;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;78;1840,512;Inherit;False;209.1011;272.1733;Normal;1;85;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;61;-496,-592;Inherit;False;341.4953;119.5109;;;0,0,0,1;The
+    Decode Depth Normal node decodes both Depth and Normal values from a previously
+    encoded Float4;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;66;224,-368;Inherit;False;253.4953;100;NOTE:;;1,0,0,1;Node
+    only supported on Built-in pipeline.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;67;-112,-480;Inherit;False;258.2208;102.7303;Encoded;;1,0,0,1;Value
+    previously encoded to be decoded;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;68;224,-592;Inherit;False;258.2208;102.7303;Depth;;0,0,0,1;Depth
+    value within a 0 to 1 range decoded from the encoded pixel value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;69;224,-480;Inherit;False;258.2208;102.7303;Normal;;0,0,0,1;Normal
+    value decoded from the encoded pixel value;0;0\nNode;AmplifyShaderEditor.DecodeDepthNormalNode;70;64,-160;Inherit;True;1;0;FLOAT4;0,0,0,0;False;2;FLOAT;0;FLOAT3;1\nNode;AmplifyShaderEditor.ScreenPosInputsNode;71;-480,-144;Inherit;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.LerpOp;80;1360,368;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SaturateNode;81;1520,368;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LerpOp;82;1680,272;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;84;1872,272;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;85;1872,560;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;86;1168,272;Inherit;False;BaseColor;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;87;1136,368;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SamplerNode;88;800,368;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;26;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WireNode;90;1312,480;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;105;1360,624;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LerpOp;106;1680,560;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SamplerNode;108;816,624;Inherit;True;Property;_TextureSample1;Texture
+    Sample 1;28;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WireNode;110;1312,736;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;111;1168,560;Inherit;False;Normal;3;1;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;112;1296,1200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;113;1296,1200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;114;1312,1152;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;115;1312,1152;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;83;1504,208;Inherit;False;Property;_GroundEnable;Enable;0;2;[Header];[Toggle];Create;False;1;GROUND
+    BLENDING;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexturePropertyNode;89;512,368;Inherit;True;Property;_GroundBaseColorMap;Ground
+    Base Color Map;6;0;Create;True;0;0;0;False;1;DE_DrawerTextureSingleLine;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.TexturePropertyNode;107;512,624;Inherit;True;Property;_GroundNormalMap;Ground
+    Normal Map;7;1;[Normal];Create;True;0;0;0;False;1;DE_DrawerTextureSingleLine;False;None;None;False;bump;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.RangedFloatNode;109;528,816;Half;False;Property;_GroundNormalStrength;Normal
+    Strength;1;0;Create;False;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;79;1072,1200;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;93;896,1200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;92;736,1200;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;91;576,1200;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;94;544,1296;Inherit;False;Property;_GoundOffset;Gound
+    Offset;5;0;Create;True;0;0;0;False;0;False;-0.48;0.02;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;116;512,1088;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;117;512,1200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;96;352,1024;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;101;144,976;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RangedFloatNode;102;112,1120;Inherit;False;Property;_GoundSharpness;Gound
+    Sharpness;3;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;95;384,1200;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;97;160,1312;Inherit;False;Property;_GoundHeight;Gound
+    Height;4;0;Create;True;0;0;0;False;0;False;0.1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.DecodeDepthNormalNode;98;96,1200;Inherit;False;1;0;FLOAT4;0,0,0,0;False;2;FLOAT;0;FLOAT3;1\nNode;AmplifyShaderEditor.SamplerNode;99;-208,1200;Inherit;True;Global;_CameraDepthNormalsTexture1;_CameraDepthNormalsTexture;2;2;[Normal];[SingleLineTexture];Create;True;0;0;0;True;0;False;-1;None;None;True;0;False;white;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ScreenPosInputsNode;100;-448,1200;Inherit;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SamplerNode;72;-256,-160;Inherit;True;Global;_CameraDepthNormalsTexture;_CameraDepthNormalsTexture;8;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.DecodeDepthNormalNode;64;-112,-592;Inherit;False;1;0;FLOAT4;0,0,0,0;False;2;FLOAT;0;FLOAT3;1\nNode;AmplifyShaderEditor.FunctionOutput;1;-512,-720;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;70;0;72;0\nWireConnection;80;0;87;0\nWireConnection;80;1;86;0\nWireConnection;80;2;90;0\nWireConnection;81;0;80;0\nWireConnection;82;0;86;0\nWireConnection;82;1;81;0\nWireConnection;82;2;83;0\nWireConnection;84;0;82;0\nWireConnection;85;0;106;0\nWireConnection;87;0;88;0\nWireConnection;88;0;89;0\nWireConnection;88;7;89;1\nWireConnection;90;0;115;0\nWireConnection;105;0;108;0\nWireConnection;105;1;111;0\nWireConnection;105;2;110;0\nWireConnection;106;0;111;0\nWireConnection;106;1;105;0\nWireConnection;106;2;83;0\nWireConnection;108;0;107;0\nWireConnection;108;5;109;0\nWireConnection;108;7;107;1\nWireConnection;110;0;114;0\nWireConnection;112;0;79;0\nWireConnection;113;0;79;0\nWireConnection;114;0;112;0\nWireConnection;115;0;113;0\nWireConnection;79;0;93;0\nWireConnection;93;0;92;0\nWireConnection;92;0;91;0\nWireConnection;92;1;94;0\nWireConnection;91;0;117;0\nWireConnection;91;1;95;0\nWireConnection;116;0;96;0\nWireConnection;117;0;116;0\nWireConnection;96;0;101;2\nWireConnection;96;1;102;0\nWireConnection;95;0;98;0\nWireConnection;95;1;97;0\nWireConnection;98;0;99;0\nWireConnection;99;1;100;0\nWireConnection;72;1;71;0\nASEEND*/\n//CHKSM=35D4EA00490F0F5DF8973002278B056E27E67A2D"
+  m_functionName: 
+  m_description: 'Decode Depth Normal Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.44157162, g: 0, b: 0.6886792, a: 1}
+  m_customNodeCategory: LS Packing
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

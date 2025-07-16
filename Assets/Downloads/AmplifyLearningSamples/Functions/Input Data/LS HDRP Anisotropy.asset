@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HDRP Anisotropy
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;3937;-12016,-848;Inherit;False;2443.278;871.0535;HDRP
+    Anisotropy;19;3960;3959;3958;3957;3954;3953;3952;3950;3949;3948;3947;3946;3945;3944;3943;3942;3941;3939;3938;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3938;-10784,-384;Inherit;False;323.4658;320.7098;Register
+    Inline and return 0;2;3956;3940;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3939;-10224,-608;Inherit;False;128;134.5;Anisotropy;1;3951;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3940;-10768,-256;Inherit;False;173;165;Return
+    0;1;3955;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3941;-11984,-256;Inherit;False;548.5566;102.8574;_ANISOTROPYMAP;;0,0,0,1;#pragma
+    shader_feature_local_fragment _ANISOTROPYMAP$#pragma shader_feature_local_fragment
+    _MATERIAL_FEATURE_ANISOTROPY$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3942;-10032,-720;Inherit;False;256.7327;134.0179;Anisotropy;;0,0,0,1;_AnisotropyEnable$_AnisotropyMap$_Anisotropy;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3943;-11968,-784;Inherit;False;323.4771;160.4857;;;0,0,0,1;The
+    highlights of Anisotropic surfaces change in appearance as you view the Material
+    from different angles. $;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3944;-11984,-592;Inherit;False;255;154;Anisotropy
+    Map;;0,0,0,1;_AnisotropyMap$$The highlights of Anisotropic surfaces change in
+    appearance as you view the Material from different angles;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3945;-11312,-336;Inherit;False;226;100;ENABLE
+    ANISOTROPY;;0,0,0,1;_AnisotropyEnable;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3946;-11152,-800;Inherit;False;543.6926;238.4248;Anisotropy;;0,0,0,1;_Anisotropy$$Use
+    the float to set the direction of the anisotropy effect. Negative values make
+    the effect vertical, and positive values make the effect horizontal. This stretches
+    the specular highlights in the given direction.$$$Anisotropic Ratio:$ 0->no isotropic$
+    1->full anisotropy in tangent direction$-1->full anisotropy in bitangent direction$$$;0;0\nNode;AmplifyShaderEditor.SamplerNode;3947;-11456,-592;Inherit;True;Property;_TextureSample4;Texture
+    Sample 0;8;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3948;-10832,-544;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;3949;-10416,-560;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch;3950;-11984,-368;Float;False;Property;_EMISSION;_EMISSIVE_COLOR_MAP;7;0;Fetch;False;0;0;0;False;0;False;0;0;0;False;_ANISOTROPYMAP;Toggle;2;Key0;Key1;Fetch;False;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;3951;-10208,-560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3952;-11152,-480;Half;False;Property;_Anisotropy;Anisotropy;81;0;Create;False;0;0;0;False;0;False;-1;0;-1;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexturePropertyNode;3953;-11712,-592;Inherit;True;Property;_AnisotropyMap;Anisotropy
+    Map;80;0;Create;False;0;0;0;False;1;LS_DrawerTextureSingleLine;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SimpleAddOpNode;3954;-10928,-208;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3955;-10752,-208;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3956;-10576,-336;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3958;-11056,-336;Half;False;Property;_AnisotropyEnable;ENABLE
+    ANISOTROPY;79;0;Create;False;0;6;Default;0;Layer 2;1;Layer 3;2;Layer 4;3;Layer
+    5;4;Layer 6;5;0;False;1;LS_DrawerToggleLeft;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3957;-11200,-208;Inherit;False;Property;_CATEGORY_ANISOTROPY;CATEGORY_ANISOTROPY;78;0;Create;True;0;0;0;False;1;LS_DrawerCategory(ANISOTROPY,true_AnisotropyEnable,0,0);False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3959;-11264,-128;Inherit;False;Property;_CATEGORYSPACE_ANISOTROPY;CATEGORYSPACE_ANISOTROPY;82;0;Create;True;0;0;0;False;1;LS_DrawerCategorySpace(10);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;3960;-10032,-560;Inherit;False;True;-1;Anisotropy;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;3947;0;3953;0\nWireConnection;3947;7;3953;1\nWireConnection;3948;0;3947;1\nWireConnection;3948;1;3952;0\nWireConnection;3949;1;3948;0\nWireConnection;3949;2;3956;0\nWireConnection;3951;0;3949;0\nWireConnection;3954;0;3957;0\nWireConnection;3954;1;3959;0\nWireConnection;3955;0;3954;0\nWireConnection;3956;0;3958;0\nWireConnection;3956;1;3955;0\nWireConnection;3960;0;3951;0\nASEEND*/\n//CHKSM=70AAE98ACF020E802D49CD12EC9DA79235568D60"
+  m_functionName: 
+  m_description: 'HDRP Anisotropy
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4745098, g: 0.4117647, b: 0.34117648, a: 1}
+  m_customNodeCategory: LS Input Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

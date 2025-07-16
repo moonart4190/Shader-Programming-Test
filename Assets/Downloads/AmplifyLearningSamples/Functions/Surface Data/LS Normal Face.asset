@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Normal Face
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;308;-639.2327,640;Inherit;False;3294.413;1320.158;Alpha
+    Clip Threshold / Clip Glancing Angle;15;266;264;300;259;307;306;232;265;301;304;256;292;293;299;303;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;293;-576,688;Inherit;False;1940.519;658.1628;Alpha
+    Clip Bias;13;281;278;282;283;252;287;277;279;280;269;268;251;286;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;292;-592,1392;Inherit;False;1960.5;539;Clip
+    Glancing Angle;20;247;227;229;236;237;240;241;239;245;219;220;243;224;244;221;222;225;226;228;318;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;148;-640,-880;Inherit;False;2462.293;780.2922;Math;23;175;189;312;313;319;324;325;326;327;329;328;330;331;336;323;321;322;320;332;333;334;335;337;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;196;-640,-32;Inherit;False;1733.49;631.6735;Example
+    Vertex Slope Check;16;208;210;133;167;166;204;211;207;205;202;201;200;199;198;197;315;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;303;2416,800;Inherit;False;187.1799;276.5214;Alpha;1;302;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;299;1392,1472;Inherit;False;494.5;368;Enable
+    Clip Glancing Angle;4;296;297;295;298;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;286;0,944;Inherit;False;570.848;169.5784;Sharpens
+    the alpha to the width of a single pixel.;5;284;271;273;272;288;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;251;-176,832;Inherit;False;130.5;131.5;Alpha;1;250;;0.08962262,0.08919987,0.08919987,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;247;1136,1504;Inherit;False;180.5;272;Glancing
+    Angle;1;246;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;118;-640,-1232;Inherit;False;799.058;307.6547;Normal
+    Face;1;103;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;109;-640,1984;Inherit;False;1414.028;576.9116;Example
+    Foliage Fade-Out;8;106;108;105;104;112;111;110;316;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;175;1440,-688;Inherit;False;180.9279;274.4858;Out;1;176;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;197;368,224;Inherit;False;180.9524;270.4762;Alpha;1;212;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;198;-144,224;Inherit;False;126.5998;125.3591;Normal
+    Face;1;203;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;199;-16,432;Inherit;False;125.5998;125.8591;Slope;1;206;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;236;-144,1504;Inherit;False;126.5998;125.3591;Normal
+    Face;1;238;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;240;-144,1712;Inherit;False;126.5998;125.3591;View
+    Direction;1;242;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;304;2416,1152;Inherit;False;187.1799;276.5214;Alpha
+    Clip Threshold;1;305;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;103;-352,-1168;Inherit;False;459.058;168.8037;;;0.05660379,0.05046281,0.05046281,1;Returns
+    a world-space Face Normal$$Generates unsmoothed normals for the faces of the
+    mesh. $$The normals are generated using derivatives so these normals are completely
+    independent from the vertex normals provided by the mesh.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;110;-336,2320;Inherit;False;246.9999;142;;;0,0,0,1;The
+    result of this dot product is white when the faces are pointed toward the camera,
+    and black when they're pointed away.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;111;-64,2320;Inherit;False;274;139;;;0,0,0,1;When
+    Alpha Clipping is enabled in the Graph Settings, the result of this could be
+    passed into the Alpha port of the Context Node to clip out faces that aren't
+    facing the camera.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;112;352,2096;Inherit;False;402;309;;;0,0,0,1;Frequently,
+    the normals of foliage assets (such as tree branches or bushes) are pushed outward
+    away from the center.  This improves the lighting, but it also means that the
+    normals no longer represent the actual facing direction of the surface.$$For
+    this type of asset, it can improve quality to hide the faces when they're edge-on
+    to the camera - to hide the fact that the foliage is made of flat cards instead
+    of thousands of leaves.$$When normals are bent, fading out edge-on faces requires
+    using the Face Normal node instead of the Normal Vector. In that case, this type
+    of node arrangement could be used.$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;189;800,-496;Inherit;False;190.2661;100.5035;Space;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;200;-336,160;Inherit;False;160.2065;100;Normal
+    Face;;0,0,0,1;World Space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;201;-224,368;Inherit;False;157.2887;100;Slope;;0,0,0,1;Range
+    -0.5 / 0.5$Default 0.1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;202;368,80;Inherit;False;180.623;123.1082;Alpha;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.WireNode;205;144,368;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;206;0,480;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;207;144,480;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;212;384,272;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;204;0,272;Inherit;False;FLOAT;1;1;2;3;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;166;592,16;Inherit;False;Constant;_Color0;Color
+    0;1;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;167;592,160;Inherit;False;Constant;_Color1;Color
+    1;1;0;Create;True;0;0;0;False;0;False;0,0.2464237,1,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.LerpOp;133;848,224;Inherit;True;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Compare;210;208,272;Inherit;False;2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;227;64,1648;Inherit;False;245.1846;142.9977;;;0,0,0,1;The
+    result of this dot product is white when the faces are pointed toward the camera,
+    and black when they're pointed away.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;229;816,1664;Inherit;False;288.8093;106.8314;;;0.009433985,0.009433985,0.009433985,1;Set
+    UNITY_PASS_SHADOWCASTER to False so shadows do not get included in clip for glancing
+    angles;0;0\nNode;AmplifyShaderEditor.RelayNode;203;-128,272;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;208;-336,272;Inherit;False;Normal
+    Face;3;2;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;237;-560,1440;Inherit;False;166.6361;100;Normal
+    Face;;0,0,0,1;World Space$Safe Normalize = Off;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;241;-336,1648;Inherit;False;158.0075;100;View
+    Direction;;0,0,0,1;World Space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;256;2016,1392;Inherit;False;160.5307;100;_Cutoff;;0,0,0,1;HDRP
+    Hidden in Inspector for GUI;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;268;192,1136;Inherit;False;318.7956;100;Alpha
+    Cutoff Bias;;0,0,0,1;Fragments with an alpha below this value are discarded.
+    Expected range 0 - 1.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;269;-368,768;Inherit;False;160.1432;100;Alpha;;0,0,0,1;Defines
+    material's alpha value. ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;298;1440,1712;Inherit;False;224.1979;100.7052;Enable
+    Clip Glancing Angle;;0,0,0,1;Toggle;0;0\nNode;AmplifyShaderEditor.WireNode;301;1920,1520;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;302;2432,848;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;305;2432,1200;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FWidthOpNode;272;16,1008;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;273;176,1008;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.0001;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;284;448,992;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;280;592,960;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ClipNode;277;640,848;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;271;320,992;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;282;432,1248;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;278;192,1248;Inherit;False;Alpha
+    Cutoff Bias;1;6;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;281;592,1232;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;265;2192,848;Inherit;False;4;0;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;306;1920,1136;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;307;1920,928;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;300;1920,1232;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;264;2192,1200;Inherit;False;4;0;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;266;2016,1312;Inherit;False;Property;_Cutoff;Cutoff;0;1;[HideInInspector];Create;False;1;;0;0;False;0;False;0;0.9;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionSwitch;283;1008,848;Inherit;False;Saturate;True;1;2;-1;In
+    0;In 1;Object;-1;10;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;279;848,912;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;250;-160,880;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;287;240,912;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;288;272,944;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;106;-64,2096;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;108;176,2096;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DotProductOpNode;104;-304,2096;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;211;-224,480;Inherit;False;Slope;1;5;False;1;0;FLOAT;0.1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;312;-192,-320;Inherit;False;191;100;;;0,0,0,1;Correction
+    for Unity flipped the projection;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;313;-512,-480;Inherit;False;205.6593;118.5548;;;0.05660379,0.0536668,0.0536668,1;Normals
+    are generated using the derivatives (DDX / DDY) of the position.$;0;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;105;-544,2288;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionInput;252;-336,880;Inherit;False;Alpha;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;317;-592,-1168;Inherit;True;Normal
+    Face;-1;;57739;f4725843c667a994e8a7e4987db394b2;2,88,0,86,1;0;1;FLOAT3;30\nNode;AmplifyShaderEditor.StickyNoteNode;319;-256,-816;Inherit;False;508.3998;151.394;Normal
+    Face Node;;0.05660379,0.05046281,0.05046281,1;Returns a world-space Face Normal$$Generates
+    unsmoothed normals for the faces of the mesh. $$The normals are generated using
+    derivatives so these normals are completely independent from the vertex normals
+    provided by the mesh.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;324;-512,-768;Inherit;False;196.7704;103.587;;;0.05660379,0.0536668,0.0536668,1;Use
+    Camera-relative World Position to avoid precision issues$;0;0\nNode;AmplifyShaderEditor.RelayNode;176;1456,-640;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformDirectionNode;325;272,-560;Inherit;False;World;Object;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TransformDirectionNode;326;272,-416;Inherit;False;World;View;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TransformDirectionNode;327;272,-272;Inherit;False;World;Tangent;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionSubtitle;329;512,-272;Inherit;False;Space(
+    Tangent );1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;328;544,-416;Inherit;False;Space(
+    View );1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;330;544,-560;Inherit;False;Space(
+    Object );1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSubtitle;331;544,-640;Inherit;False;Space(
+    World );1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;336;64,-640;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitch;323;800,-640;Inherit;False;Space;False;0;4;-1;World;Object;View;Tangent;Object;-1;10;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;321;1056,-640;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;322;1056,-560;Inherit;False;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitch;320;1216,-640;Inherit;False;Safe
+    Normalize;True;1;2;1;In 0;In 1;Object;-1;10;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.PositionNode;332;-512,-640;Inherit;False;2;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DdxOpNode;333;-256,-640;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DdyOpNode;334;-256,-560;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CrossProductOpNode;335;-112,-640;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ProjectionParams;337;-192,-480;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionNode;315;-576,272;Inherit;True;Normal
+    Face;-1;;57741;f4725843c667a994e8a7e4987db394b2;2,88,0,86,0;0;1;FLOAT3;30\nNode;AmplifyShaderEditor.FunctionNode;316;-576,2096;Inherit;True;Normal
+    Face;-1;;57743;f4725843c667a994e8a7e4987db394b2;2,88,0,86,0;0;1;FLOAT3;30\nNode;AmplifyShaderEditor.RelayNode;259;1808,848;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;232;2000,1136;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;238;-128,1552;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;239;-336,1552;Inherit;False;Normal
+    Face;3;3;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;245;0,1632;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode;219;64,1552;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;220;208,1552;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;246;1152,1552;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;242;-128,1760;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;244;0,1744;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.OneMinusNode;221;336,1552;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;222;496,1552;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;225;656,1552;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;226;656,1632;Inherit;False;Constant;_Float1;Float
+    1;18;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch;228;816,1552;Inherit;False;Property;_Keyword1;Keyword
+    0;16;0;Create;True;0;0;0;False;0;False;0;0;0;False;UNITY_PASS_SHADOWCASTER;Toggle;2;Key0;Key1;Fetch;False;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;295;1712,1520;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;296;1536,1520;Inherit;False;Constant;_Constant;Constant;15;0;Create;True;1;;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;297;1440,1632;Inherit;False;Enable
+    Clip Glancing Angle;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;224;-544,1760;Inherit;False;World;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionInput;243;-336,1760;Inherit;False;View
+    Direction;3;4;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;318;-576,1552;Inherit;True;Normal
+    Face;-1;;57744;f4725843c667a994e8a7e4987db394b2;2,88,0,86,0;0;1;FLOAT3;30\nNode;AmplifyShaderEditor.FunctionOutput;139;-640,-1344;Inherit;False;True;-1;Out;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;205;0;207;0\nWireConnection;206;0;211;0\nWireConnection;207;0;206;0\nWireConnection;212;0;210;0\nWireConnection;204;0;203;0\nWireConnection;133;0;166;0\nWireConnection;133;1;167;0\nWireConnection;133;2;212;0\nWireConnection;210;0;204;0\nWireConnection;210;1;205;0\nWireConnection;203;0;208;0\nWireConnection;208;0;315;30\nWireConnection;301;0;295;0\nWireConnection;302;0;265;0\nWireConnection;305;0;264;0\nWireConnection;272;0;250;0\nWireConnection;273;0;272;0\nWireConnection;284;0;271;0\nWireConnection;280;0;281;0\nWireConnection;277;0;284;0\nWireConnection;277;1;250;0\nWireConnection;277;2;280;0\nWireConnection;271;0;288;0\nWireConnection;271;1;273;0\nWireConnection;282;0;278;0\nWireConnection;281;0;282;0\nWireConnection;265;0;259;0\nWireConnection;265;3;259;0\nWireConnection;265;1;232;0\nWireConnection;265;2;232;0\nWireConnection;306;0;307;0\nWireConnection;307;0;259;0\nWireConnection;300;0;301;0\nWireConnection;264;0;232;0\nWireConnection;264;3;232;0\nWireConnection;264;1;282;0\nWireConnection;264;2;266;0\nWireConnection;283;0;277;0\nWireConnection;283;1;279;0\nWireConnection;279;0;277;0\nWireConnection;250;0;252;0\nWireConnection;287;0;250;0\nWireConnection;288;0;287;0\nWireConnection;106;0;104;0\nWireConnection;106;1;104;0\nWireConnection;108;0;106;0\nWireConnection;104;0;316;30\nWireConnection;104;1;105;0\nWireConnection;176;0;320;0\nWireConnection;325;0;336;0\nWireConnection;326;0;336;0\nWireConnection;327;0;336;0\nWireConnection;329;0;327;0\nWireConnection;328;0;326;0\nWireConnection;330;0;325;0\nWireConnection;331;0;336;0\nWireConnection;336;0;335;0\nWireConnection;336;1;337;1\nWireConnection;323;0;331;0\nWireConnection;323;1;330;0\nWireConnection;323;2;328;0\nWireConnection;323;3;329;0\nWireConnection;321;0;323;0\nWireConnection;322;0;323;0\nWireConnection;320;0;321;0\nWireConnection;320;1;322;0\nWireConnection;333;0;332;0\nWireConnection;334;0;332;0\nWireConnection;335;0;333;0\nWireConnection;335;1;334;0\nWireConnection;259;0;283;0\nWireConnection;232;0;306;0\nWireConnection;232;1;300;0\nWireConnection;238;0;239;0\nWireConnection;239;0;318;30\nWireConnection;245;0;244;0\nWireConnection;219;0;238;0\nWireConnection;219;1;245;0\nWireConnection;220;0;219;0\nWireConnection;246;0;228;0\nWireConnection;242;0;243;0\nWireConnection;244;0;242;0\nWireConnection;221;0;220;0\nWireConnection;222;0;221;0\nWireConnection;222;1;221;0\nWireConnection;225;0;222;0\nWireConnection;228;1;225;0\nWireConnection;228;0;226;0\nWireConnection;295;0;296;0\nWireConnection;295;1;246;0\nWireConnection;295;2;297;0\nWireConnection;243;0;224;0\nASEEND*/\n//CHKSM=F684D811ABBC61BFDB4A4C7612B2892296D9FD6F"
+  m_functionName: 
+  m_description: 'Normal Face
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Surface Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

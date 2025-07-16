@@ -1,0 +1,437 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Material Property Drawer
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;128;-512,336;Inherit;False;1997.319;1725.42;Headers;3;122;123;185;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;156;1520,336;Inherit;False;1646.175;1730.667;Emission;3;68;13;7;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;131;3200,336;Inherit;False;825.5793;1281.502;Toggle;2;140;133;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;145;256,-288;Inherit;False;1009.636;576.3599;Texture
+    Single Line Mini Thumbnail on Left Side;1;146;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;310;1520,2096;Inherit;False;1441;827;Custom
+    Enums from Index;12;309;307;292;293;306;302;298;303;299;308;295;294;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;13;1568,384;Inherit;False;1541.342;737.5721;Emission
+    Flags;14;31;35;33;32;25;19;22;37;36;34;40;38;12;202;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;197;-512,-288;Inherit;False;741;581.3102;Texture
+    Tiling and Offset;7;196;194;193;192;191;198;199;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;185;-464,864;Inherit;False;1888.649;1021.699;example;23;159;165;164;170;169;171;173;178;172;174;168;167;166;163;161;160;162;175;177;157;184;186;187;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;123;512,384;Inherit;False;894.7801;447.2346;LS_DrawerCategorySpace;2;125;130;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;68;1568,1152;Inherit;False;1546.175;894.7288;Emissive
+    Intensity (HDRP);20;81;79;76;73;80;77;78;85;115;114;83;84;113;82;75;74;116;71;70;111;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;122;-464,384;Inherit;False;908.4274;452.7993;LS_DrawerCategory;2;124;129;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;133;3264,384;Inherit;False;702.2525;586.0809;LS_DrawerToggleLeft;3;65;136;63;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;140;3264,1008;Inherit;False;702.2525;586.0809;LS_DrawerToggleNoKeyword;3;143;142;141;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;146;320,-240;Inherit;False;807.8832;400.6532;LS_DrawerTextureSingleLine;2;148;120;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;309;1600,2272;Inherit;False;241.5;138.5;LS_DrawerEnumIndex;1;291;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;307;2080,2160;Inherit;False;124;134.5;Normal;1;296;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;202;2071.5,558;Inherit;False;305;434.5;;2;5;6;;0.223132,1,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;199;-480,-112;Inherit;False;245;240.3333;LS_DrawerTextureScaleOffset;1;195;;0,0.08817577,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;184;912,1232;Inherit;False;305.9041;283.6495;Register;2;180;182;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;130;576,448;Inherit;False;389;136.6666;LS_DrawerCategorySpace;1;126;;0,0.05882353,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;111;1728,1440;Inherit;False;292;257.3333;LS_DrawerEmissiveIntensity;1;110;;0,0.1371078,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;12;1760,688;Inherit;False;285.391;127;LS_DrawerEmissionFlags;1;4;;0,0.05708027,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;63;3328,592;Inherit;False;241.8891;131.0305;LS_DrawerToggleLeft;1;66;;0.009344985,0.06706392,0.990566,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;129;-400,448;Inherit;False;387;136.6666;LS_DrawerCategory;1;127;;0,0.05882353,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;141;3360,1216;Inherit;False;241.8891;131.0305;LS_DrawerToggleNoKeyword;1;59;;0.009344985,0.06706392,0.990566,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;120;688,-176;Inherit;False;327;280;LS_DrawerTextureSingleLine;1;118;;0,0.1934497,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;306;2736,2160;Inherit;False;189;280;Normal;1;305;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;337;-512,3104;Inherit;False;573.0333;600.75;LS_DrawerGradient;3;340;339;338;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;2096,832;Inherit;False;214.6203;126;;;0.3015954,1,0,1;used
+    to register Global Illumination Emission Flags and return 0$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;38;1600,448;Inherit;False;187.1734;103.2685;_EmissiveColor;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;39;-512,-768;Inherit;False;899.551;386.7733;LS
+    Material Property Drawers;;0,0,0,1;Property Drawers can be used to customize
+    the look of certain controls in the Inspector window by using attributes on your
+    scripts. ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;40;2432,688;Inherit;False;548.708;391.7291;MaterialGlobalIlluminationFlags;;0,0,0,1;None:$The
+    emissive lighting does not affect Global Illumination at all.$$RealtimeEmissive:$The
+    emissive lighting will affect Enlighten Realtime Global Illumination. It emits
+    lighting into real-time lightmaps and real-time Light Probes.$$BakedEmissive:$The
+    emissive lighting affects baked Global Illumination. It emits lighting into baked
+    lightmaps and baked lightprobes.$$EmissiveIsBlack:$The emissive lighting is guaranteed
+    to be black. This lets the lightmapping system know that it doesn't have to extract
+    emissive lighting information from the material and can simply assume it is completely
+    black.$$AnyEmissive:$Helper Mask to be used to query the enum only based on whether
+    Enlighten Realtime Global Illumination or baked GI is set, ignoring all other
+    bits.$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;70;2096,1824;Inherit;False;191.217;104.6284;*0;;0,0,0,1;used
+    to register Global Illumination Emission Flags and return 0;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;71;1600,1216;Inherit;False;188.3314;100;_EmissiveColor;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;116;2464,1440;Inherit;False;518.382;386.7455;Physical
+    light units;;0,0,0,1;Selection between EV100 and Nits$$$Nits (candela per square
+    meter):$The unit of luminance. Describes the surface power of a visible light
+    source. When you use this unit, the overall power of a light source depends the
+    size of the light source, meaning the the illumination level of a Scene changes
+    depending on the size of the light source. Highlights that a light source produces
+    conserve their intensity regardless of the size of the surface.$$$Exposure value
+    (EV):$A value that represents a combination of a camera's shutter speed and f-number.
+    It is essentially a measurement of exposure such that all combinations of shutter
+    speed and f-number that yield the same level of exposure have the same EV. HDRP
+    Lights can use EV100, which is EV with a 100 International Standards Organisation
+    (ISO) film.$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;124;-400,608;Inherit;False;514.259;172.9602;LS_DrawerCategory(SURFACE
+    OPTIONS,true,_Cull,0,0);;0.01886791,0.01886791,0.01886791,1;Header;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;125;576,608;Inherit;False;509.2252;174.7077;LS_DrawerCategorySpace(10);;0,0,0,1;Used
+    to add a space drawer at the end of each category$see LS_DrawerCategory;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;136;3328,752;Inherit;False;514.259;172.9602;LS_DrawerToggleLeft;;0.01886791,0.01886791,0.01886791,1;Toggle
+    on Left side that does not take up a keyword;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;142;3328,1376;Inherit;False;514.259;172.9602;LS_DrawerToggleNoKeyword;;0.01886791,0.01886791,0.01886791,1;Toggle
+    on right side that does not take up a keyword;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;148;352,-176;Inherit;False;318.259;122.9602;LS_DrawerTextureSingleLine;;0.01886791,0.01886791,0.01886791,1;Texture
+    $--- Single Line $--- Mini Thumbnail$--- Left Side;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;157;-320,1536;Inherit;False;455.1959;254.7241;Dynamic 
+    - example for your GUI ;;0,0,0,1;            if (material.HasProperty(\"_XXXXEnable\"))$           
+    {$                if (material.GetInt(\"_XXXXEnable\") == 0)$               
+    {$                    if (prop.name == \"_XXXXIntensity\")$                       
+    continue@$                    if (prop.name == \"_XXXXSpeed\")$                       
+    continue@                    $                    if (prop.name == \"_XXXXOffset\")$                       
+    continue@$                }$            };0;0\nNode;AmplifyShaderEditor.StickyNoteNode;158;-96,-688;Inherit;False;387.6664;100;Namespace
+    (LearningSamples.Drawers);;1,0,0,1;When use TS Drawer files users should copy
+    and give a namespace so not to conflict with other users;0;0\nNode;AmplifyShaderEditor.LerpOp;65;3648,448;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;143;3648,1072;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;34;2368,528;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;37;2368,656;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;22;1808,608;Half;False;Property;_EmissiveIntensity;Emissive
+    Intensity;7;0;Create;False;1;;0;0;False;0;False;1;86.9;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;25;1808,448;Half;False;Property;_EmissiveColor;Emissive
+    Color;4;1;[HDR];Create;False;0;0;0;False;0;False;0,0,0,0;1,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;32;2432,448;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;33;2352,480;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;35;2704,448;Inherit;False;4;0;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.HDEmissionNode;31;2432,560;Inherit;False;Luminance;False;3;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;74;2384,1280;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;75;2368,1248;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;113;2064,1344;Inherit;False;4;0;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;84;2096,1728;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;114;2256,1424;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;115;2256,1744;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;85;2304,1344;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;78;2416,1408;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;77;2416,1936;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.HDEmissionNode;80;2464,1312;Inherit;False;Luminance;False;3;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;73;2464,1216;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;76;2720,1216;Inherit;False;4;0;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;182;944,1376;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;180;1088,1296;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;162;-112,1168;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PosVertexDataNode;161;-112,1264;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleAddOpNode;163;96,1168;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;166;224,1168;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StepOpNode;167;368,1168;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;168;480,1168;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;174;800,1024;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.OneMinusNode;172;640,1168;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;171;800,1376;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode;165;192,1424;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TimeNode;159;-352,1152;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.WireNode;186;1216,1296;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;187;1216,1120;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;177;1280,1008;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;160;-416,1312;Half;False;Property;_XXXXSpeed;_XXXXSpeed;20;0;Create;False;0;0;0;False;0;False;5;5;0;100;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;198;-480,144;Inherit;False;483.7892;108.8497;LS_DrawerTextureScaleOffset;;0.01886791,0.01886791,0.01886791,1;Texture
+    Scale Offset Property;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;191;-48,-240;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;192;-464,-240;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SwizzleNode;193;-208,-64;Inherit;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;194;-208,-144;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;196;112,-80;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;200;-96,-576;Inherit;False;385.6707;118.2031;LS
+    Drawer Files and GUI;;1,0,0,1;Example LS Drawer Files are made to work with LS_ShaderGUI$$you
+    may copy and modify as needed;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;201;-480,-688;Inherit;False;350.6086;229.2945;Connecting
+    drawer files;;0,0,0,1;look under Node Parameter for \"Attributes\" / \"Custom
+    Attributes\"$$Custom Attributes:$Allows adding custom attributes directly on
+    a textfield$;0;0\nNode;AmplifyShaderEditor.WireNode;36;2368,1040;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;6;2272,608;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;5;2096,736;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;210;-512,2176;Inherit;False;982.6068;421.5417;ASE
+    RemapSliders;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;276;-512,2656;Inherit;False;976.5712;425.6177;ASE
+    RemapSlidersFull;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;277;-480,2896;Inherit;False;199.8453;121.4186;RemapSlidersFull;;0,0,0,1;X
+    = minVal$Y = maxVal$Z = minValLimit$W = maxValLimit;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;278;544,2176;Inherit;False;903.2259;435.3286;ASE
+    SingleLineTexture;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;279;944,2256;Inherit;False;403.8;273.6;SingleLineTexture;;0,0,0,1;small
+    size texture on left;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;280;544,2656;Inherit;False;903.2259;435.3286;ASE
+    NoKeywordToggle;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;281;928,2752;Inherit;False;403.8;273.6;NoKeywordToggle;;0,0,0,1;toggle
+    on right side with no keyword ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;285;-272,2256;Inherit;False;208.9741;114.5166;RemapSlider
+    is for vec2: ;;0,0,0,1;min = 0$max = 1$newMin = vec2.x$newMax = vec2.y;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;286;-32,2912;Inherit;False;382.3812;118.5525;RemapSlider
+    full is for vec4:;;0,0,0,1;min = vec4.z$max = vec4.w$newMin = vec4.x$newMax =
+    vec4.y;0;0\nNode;AmplifyShaderEditor.Vector4Node;195;-432,-64;Inherit;False;Property;_MainUVs;Main
+    UVs;5;0;Create;False;0;0;0;False;1;LS_DrawerTextureScaleOffset;False;1,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SamplerNode;118;720,-112;Inherit;True;Property;_MainTex;BaseColor
+    Map;14;0;Create;False;0;0;0;False;1;LS_DrawerTextureSingleLine;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;127;-368,496;Inherit;False;Property;_CATEGORY_SURFACEOPTIONS;CATEGORY_SURFACEOPTIONS;0;0;Create;True;0;0;0;True;1;LS_DrawerCategory(SURFACE
+    OPTIONS,true,_Cull,0,0);False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;126;608,496;Inherit;False;Property;_CATEGORYSPACE_SURFACEOPTIONS;CATEGORYSPACE_SURFACEOPTIONS;16;0;Create;True;0;0;0;True;1;LS_DrawerCategorySpace(10);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;4;1792,736;Half;False;Property;_EmissionFlags;Global
+    Illumination;1;0;Create;False;0;0;0;False;1;LS_DrawerEmissionFlags;False;0;10;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;19;2080,1056;Half;False;Property;_BlendAEmissiveExposureWeight;Emissive
+    Exposure Weight;9;0;Create;False;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;82;1824,1216;Half;False;Property;_EmissiveColor1;Emissive
+    Color;6;1;[HDR];Create;False;0;0;0;False;0;False;0,0,0,0;1,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;81;1824,1360;Half;False;Property;_EmissiveIntensity1;Emissive
+    Intensity;8;0;Create;False;1;;0;0;False;0;False;1;86.9;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector4Node;110;1776,1504;Half;False;Property;_EmissiveIntensityHDRP;Emissive
+    Intensity;13;0;Create;False;0;0;0;False;1;LS_DrawerEmissiveIntensity;False;1,1,1,0;0.125,0,0,1;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RangedFloatNode;83;1872,1728;Half;False;Property;_EmissionFlags1;Global
+    Illumination;3;0;Create;False;0;0;0;False;1;LS_DrawerEmissionFlags;False;0;10;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;79;2112,1952;Half;False;Property;_BlendAEmissiveExposureWeight1;Emissive
+    Exposure Weight;10;0;Create;False;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;59;3376,1264;Half;False;Property;_ToggleNoKeyword;Toggle
+    No Keyword;11;0;Create;True;0;0;0;False;1;LS_DrawerToggleNoKeyword;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;66;3360,640;Half;False;Property;_ToggleLeft;Toggle
+    Left;12;0;Create;True;0;0;0;False;1;LS_DrawerToggleLeft;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;164;-112,1424;Half;False;Property;_XXXXIntensity;_XXXXIntensity;19;0;Create;False;0;0;0;False;0;False;0.5;0.657;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector3Node;175;1024,912;Half;False;Constant;_Vector1;Vector
+    0;5;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;173;576,1024;Inherit;False;Property;_XXXXOffset;_XXXXOffset;21;0;Create;False;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.RangedFloatNode;178;608,1296;Inherit;False;Property;_XXXXEnable;_XXXXEnable;18;0;Create;True;0;0;0;False;1;LS_DrawerToggleLeft;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;169;544,1376;Inherit;False;Property;_CATEGORY_MYHEADER;CATEGORY
+    MY HEADER;17;0;Create;False;0;0;0;False;1;LS_DrawerCategory(MY HEADER,true,_XXXXEnable,0,0);False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;170;480,1456;Inherit;False;Property;_CATEGORYSPACEMYHEADER;CATEGORY
+    SPACE MY HEADER;22;1;[HideInInspector];Create;True;0;0;0;True;1;LS_DrawerSpace(10);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;283;720,2752;Inherit;False;Constant;_MyToggle;My
+    Toggle;23;1;[Toggle];Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexturePropertyNode;284;704,2256;Inherit;True;Property;_Texture0;Texture
+    0;15;1;[SingleLineTexture];Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.Vector4Node;287;-32,2736;Inherit;False;Constant;_Vector0;Vector
+    0;24;1;[RemapSlidersFull];Create;True;0;0;0;False;0;False;-20,20,0,1;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TFHCRemapNode;288;192,2736;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;292;1904,2528;Inherit;False;297.3748;202.6522;;;0,0,0,1;Float(Flip,
+    0, Mirror, 1, None, 2)]$_DoubleSidedConstantsFlip$*Flip      = (-1, -1, -1)$_DoubleSidedConstantsMirror$*Mirror 
+    = (1, 1, -1)$_DoubleSidedConstantsNone$*None   = (1, 1, 1) $$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;293;2464,2320;Inherit;False;230.887;167.1172;Normal
+    Mode;;0,0,0,1;_DoubleSidedNormalMode $_Flip _Mirror _None$$For the 'Flip' mode,
+    we should not modify the tangent and the bitangent which correspond to the surface
+    derivatives;0;0\nNode;AmplifyShaderEditor.RelayNode;305;2752,2208;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;296;2096,2208;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;291;1632,2320;Half;False;Property;_DoubleSidedNormalMode;Normal
+    Mode;24;0;Create;False;0;6;Default;0;Layer 2;1;Layer 3;2;Layer 4;3;Layer 5;4;Layer
+    6;5;0;False;1;LS_DrawerEnumIndex(Flip _Mirror _None);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector3Node;302;1584,2464;Inherit;False;Constant;_DoubleSidedConstantsFlip;_DoubleSidedConstantsFlip;4;0;Create;True;0;0;0;False;0;False;-1,-1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;298;1584,2608;Inherit;False;Constant;_DoubleSidedConstantsMirror;_DoubleSidedConstantsMirror;4;0;Create;True;0;0;0;False;0;False;1,1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;303;1584,2752;Inherit;False;Constant;_DoubleSidedConstantsNone;_DoubleSidedConstantsNone;4;0;Create;True;0;0;0;False;0;False;1,1,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.CustomExpressionNode;299;1904,2368;Inherit;False;if(m_switch
+    ==0)$\treturn m_Flip@$else if(m_switch ==1)$\treturn m_Mirror@$else if(m_switch
+    ==2)$\treturn m_None@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Flip;FLOAT3;0,0,0;In;;Inherit;False;True;m_Mirror;FLOAT3;0,0,0;In;;Inherit;False;True;m_None;FLOAT3;0,0,0;In;;Inherit;False;_NormalMode
+    float3 switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;308;1872,2208;Inherit;False;Constant;_Vector2;Vector
+    2;25;0;Create;True;0;0;0;False;0;False;0,0,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SwitchByFaceNode;295;2448,2208;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;294;2272,2352;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;311;1280,6320;Inherit;False;993.2776;241.0881;Render
+    Face;;0,0,0,1;$            if (material.HasProperty(\"_CullMode\"))$           
+    {$                var cull = material.GetInt(\"_CullMode\")@$$               
+    RenderFace = EditorGUILayout.Popup(\"Render Face\", RenderFace, new string[]
+    { \"Both\", \"Back\", \"Front\" })@$$                material.SetInt(\"_CullMode\",
+    RenderFace)@$$            }$$$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;312;1280,6592;Inherit;False;993.2776;241.0881;ZWrite
+    Mode;;0,0,0,1;$            if (material.HasProperty(\"_ZWriteMode\"))$           
+    {$                var ZWriteMode = material.GetInt(\"_ZWriteMode\")@$$               
+    ZWriteMode = EditorGUILayout.Popup(\"ZWrite Mode\", ZWriteMode, new string[]
+    { \"Off\", \"On\" })@$$                material.SetInt(\"_ZWriteMode\", ZWriteMode)@$$           
+    }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;313;1280,6864;Inherit;False;993.2776;241.0881;Alpha
+    to Coverage;;0,0,0,1;$            if (material.HasProperty(\"_AlphatoCoverage\"))$           
+    {$                var AlphatoCoverage = material.GetInt(\"_AlphatoCoverage\")@$$               
+    AlphatoCoverage = EditorGUILayout.Popup(\"Alpha to Coverage\", AlphatoCoverage,
+    new string[] { \"Off\", \"On\" })@$$                material.SetInt(\"_AlphatoCoverage\",
+    AlphatoCoverage)@$$            }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;314;1280,7136;Inherit;False;993.2776;241.0881;Mask
+    Clip Value;;0,0.7428495,0.8632076,1; $            //_Cutoff ( \"Mask Clip Value\",
+    Float ) = 0.5$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;315;1280,7392;Inherit;False;993.2776;241.0881;HDRP
+    Surface Type;;0,0.8987927,1,1;$            // #pragma shader_feature _SURFACE_TYPE_TRANSPARENT$           
+    //[HideInInspector] _SurfaceType(\"Surface Type\", Float) = 0$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;316;1280,7648;Inherit;False;993.2776;241.0881;HDRP
+    OpaqueCullMode;;0,0.9188104,1,1;            //[Enum(UnityEditor.Rendering.HighDefinition.OpaqueCullMode)]
+    _OpaqueCullMode(\"_OpaqueCullMode\", Int) = 2$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;317;1280,7920;Inherit;False;993.2776;241.0881;[HDRP
+    TransparentCullMode;;0,0.9143372,1,1;$            //[Enum(UnityEditor.Rendering.HighDefinition.TransparentCullMode)]
+    _TransparentCullMode(\"_TransparentCullMode\", Int) = 2$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;318;1296,8192;Inherit;False;988.7922;544.6023;HDRP
+    Double Sided;;0,0.9056604,0.8962603,1;            //[HideInInspector][ToggleUI]
+    _DoubleSidedEnable(\"Double Sided Enable\", Float) = 0$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_DoubleSidedEnable\"))$               
+    {$                    if (material.HasProperty(\"_DoubleSidedEnable\"))$                   
+    {$                        var control = material.GetInt(\"_DoubleSidedEnable\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Double Sided\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_DoubleSidedEnable\",
+    1)@$                            material.DisableKeyword(\"DOUBLESIDED_ON\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_DoubleSidedEnable\", 0)@$                            material.EnableKeyword(\"DOUBLESIDED_ON\")@$                       
+    }$                    }$                }$$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;319;1328,13296;Inherit;False;1013.819;524.8132;HDRP
+    Receive Decals;;0.2101859,1,0,1;$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_SupportDecals\"))$               
+    {$                    if (material.HasProperty(\"_SupportDecals\"))$                   
+    {$                        var control = material.GetInt(\"_SupportDecals\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Receive Decals\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_SupportDecals\",
+    1)@$                            material.DisableKeyword(\"DECALS_OFF\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_SupportDecals\", 0)@$                            material.EnableKeyword(\"DECALS_OFF\")@$                       
+    }$                    }$                }$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;320;144,6336;Inherit;False;1018.222;572.1643;HDRP
+    Geometric Specular AA;;0,0,0,1;$            //#pragma shader_feature_local_fragment
+    _ENABLE_GEOMETRIC_SPECULAR_AA$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_EnableGeometricSpecularAA\"))$               
+    {$                    if (material.HasProperty(\"_EnableGeometricSpecularAA\"))$                   
+    {$                        var control = material.GetInt(\"_EnableGeometricSpecularAA\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Geometric Specular AA\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_EnableGeometricSpecularAA\",
+    1)@$                            material.DisableKeyword(\"ENABLE_GEOMETRIC_SPECULAR_AA\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_EnableGeometricSpecularAA\", 0)@$                           
+    material.EnableKeyword(\"ENABLE_GEOMETRIC_SPECULAR_AA\")@$                       
+    }$                    }$                }$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;321;160,6944;Inherit;False;1006.883;568.2659;HDRP
+    Preserve Specular Lighting;;0,0,0,1;$            //[HideInInspector][ToggleUI]
+    _EnableBlendModePreserveSpecularLighting(\"Enable Blend Mode Preserve Specular
+    Lighting\", Float) = 1$            if (material.GetTag(\"RenderPipeline\", false)
+    == \"HDRenderPipeline\")$                if (material.HasProperty(\"_EnableBlendModePreserveSpecularLighting\"))$               
+    {$                    if (material.HasProperty(\"_EnableBlendModePreserveSpecularLighting\"))$                   
+    {$                        var control = material.GetInt(\"_EnableBlendModePreserveSpecularLighting\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Preserve Specular Lighting\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_EnableBlendModePreserveSpecularLighting\",
+    1)@$                            material.DisableKeyword(\"SUPPORT_BLENDMODE_PRESERVE_SPECULAR_LIGHTING\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_EnableBlendModePreserveSpecularLighting\", 0)@$                           
+    material.EnableKeyword(\"SUPPORT_BLENDMODE_PRESERVE_SPECULAR_LIGHTING\")@$                       
+    }$                    }$                }$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;322;160,7568;Inherit;False;1002.375;546.4812;HDRP
+    Enable Fog On Transparent;;0,0,0,1;            //#pragma shader_feature_local_fragment
+    _ENABLE_FOG_ON_TRANSPARENT$            //[HideInInspector][ToggleUI] _EnableFogOnTransparent(\"Enable
+    Fog\", Float) = 1$            if (material.GetTag(\"RenderPipeline\", false)
+    == \"HDRenderPipeline\")$                if (material.HasProperty(\"_EnableFogOnTransparent\"))$               
+    {$                    if (material.HasProperty(\"_EnableFogOnTransparent\"))$                   
+    {$                        var control = material.GetInt(\"_EnableFogOnTransparent\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Enable Fog On Transparent\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_EnableFogOnTransparent\",
+    1)@$                            material.DisableKeyword(\"ENABLE_FOG_ON_TRANSPARENT\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_EnableFogOnTransparent\", 0)@$                           
+    material.EnableKeyword(\"ENABLE_FOG_ON_TRANSPARENT\")@$                       
+    }$                    }$                }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;323;160,8144;Inherit;False;1010.172;543.8821;HDRP
+    Enable Fog On Transparent;;0,0,0,1;$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_CullModeForward\"))$               
+    {$                    if (material.HasProperty(\"_CullModeForward\"))$                   
+    {$                        var control = material.GetInt(\"_CullModeForward\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Back Then Front Rendering\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_CullModeForward\",
+    1)@$                            material.DisableKeyword(\"USE_CLUSTERED_LIGHTLIST\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_CullModeForward\", 0)@$                            material.EnableKeyword(\"USE_CLUSTERED_LIGHTLIST\")@$                       
+    }$                    }$                }$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;324;160,8736;Inherit;False;1018.568;569.8586;HDRP
+    Transparent Depth Prepass;;0,0,0,1;$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_TransparentDepthPrepassEnable\"))$               
+    {$                    if (material.HasProperty(\"_TransparentDepthPrepassEnable\"))$                   
+    {$                        var control = material.GetInt(\"_TransparentDepthPrepassEnable\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Transparent Depth Prepass\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_TransparentDepthPrepassEnable\",
+    1)@$                            material.EnableKeyword(\"CUTOFF_TRANSPARENT_DEPTH_PREPASS\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_TransparentDepthPrepassEnable\", 0)@$                           
+    material.DisableKeyword(\"CUTOFF_TRANSPARENT_DEPTH_PREPASS\")@$                       
+    }$                    }$                }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;325;160,9344;Inherit;False;1017.334;547.5784;HDRP
+    Transparent Depth Postpass;;0,0,0,1;$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_TransparentDepthPostpassEnable\"))$               
+    {$                    if (material.HasProperty(\"_TransparentDepthPostpassEnable\"))$                   
+    {$                        var control = material.GetInt(\"_TransparentDepthPostpassEnable\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Transparent Depth Postpass\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_TransparentDepthPostpassEnable\",
+    1)@$                            material.EnableKeyword(\"CUTOFF_TRANSPARENT_DEPTH_POSTPASS\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_TransparentDepthPostpassEnable\", 0)@$                           
+    material.DisableKeyword(\"CUTOFF_TRANSPARENT_DEPTH_POSTPASS\")@$                       
+    }$                    }$                }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;326;160,9920;Inherit;False;1020.237;640.0833;HDRP
+    Transparent Writes Motion Vector;;0,0,0,1;$            //API 12x #pragma shader_feature_local
+    _TRANSPARENT_WRITES_MOTION_VEC$            //API 16x #pragma shader_feature_local
+    _ _TRANSPARENT_WRITES_MOTION_VEC _TRANSPARENT_REFRACTIVE_SORT$            //
+    [HideInInspector][ToggleUI] _TransparentWritingMotionVec(\"Transparent Writing
+    MotionVec\", Float) = 0$            if (material.GetTag(\"RenderPipeline\", false)
+    == \"HDRenderPipeline\")$                if (material.HasProperty(\"_TransparentWritingMotionVec\"))$               
+    {$                    if (material.HasProperty(\"_TransparentWritingMotionVec\"))$                   
+    {$                        var control = material.GetInt(\"_TransparentWritingMotionVec\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Transparent Writes Motion Vector\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_TransparentWritingMotionVec\",
+    1)@$                            material.EnableKeyword(\"WRITES_MOTION_VEC\")@$                       
+    }$                        else$                        {$                           
+    material.SetInt(\"_TransparentWritingMotionVec\", 0)@$                           
+    material.DisableKeyword(\"WRITES_MOTION_VEC\")@$                        }$                   
+    }$                }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;327;160,11520;Inherit;False;1016.058;1038.903;HDRP
+    Receive SSR Transparent;;0,0,0,1;$$            //#pragma shader_feature_local
+    _DISABLE_SSR_TRANSPARENT$            //[HideInInspector][ToggleUI] _ReceivesSSRTransparent(\"Receives
+    SSR Transparent\", Float) = 0$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_ReceivesSSRTransparent\"))$               
+    {$                    if (material.HasProperty(\"_ReceivesSSRTransparent\"))$                   
+    {$                        var control = material.GetInt(\"_ReceivesSSRTransparent\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Receive SSR Transparent\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_ReceivesSSRTransparent\",
+    1)@$                            material.EnableKeyword(\"DISABLE_SSR_TRANSPARENT\")@$$                           
+    material.SetInt(\"_StencilRef\", 0)@$                            material.SetInt(\"_StencilRefDepth\",
+    0)@$                            material.SetInt(\"_StencilRefDistortionVec\",
+    4)@$                            material.SetInt(\"_StencilRefGBuffer\", 2)@$                           
+    material.SetInt(\"_StencilRefMV\", 32)@$                            material.SetInt(\"_StencilWriteMask\",
+    6)@$                            material.SetInt(\"_StencilWriteMaskDepth\", 8)@$                           
+    material.SetInt(\"_StencilWriteMaskDistortionVec\", 4)@$                           
+    material.SetInt(\"_StencilWriteMaskGBuffer\", 14)@$                           
+    material.SetInt(\"_StencilWriteMaskMV\", 40)@$                        }$                       
+    else$                        {$                            material.SetInt(\"_ReceivesSSRTransparent\",
+    0)@$                            material.DisableKeyword(\"DISABLE_SSR_TRANSPARENT\")@$$                           
+    material.SetInt(\"_StencilRef\", 0)@$                            material.SetInt(\"_StencilRefDepth\",
+    8)@$                            material.SetInt(\"_StencilRefDistortionVec\",
+    4)@$                            material.SetInt(\"_StencilRefGBuffer\", 10)@$                           
+    material.SetInt(\"_StencilRefMV\", 40)@$                            material.SetInt(\"_StencilWriteMask\",
+    6)@$                            material.SetInt(\"_StencilWriteMaskDepth\", 8)@$                           
+    material.SetInt(\"_StencilWriteMaskDistortionVec\", 4)@$                           
+    material.SetInt(\"_StencilWriteMaskGBuffer\", 14)@$                           
+    material.SetInt(\"_StencilWriteMaskMV\", 40)@$                        }$                   
+    }$                }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;328;-1568,11456;Inherit;False;999.0986;653.2141;URP
+    Receive Shadows;;0.1958344,1,0,1;$            //(API 12x14x15x16x) #pragma shader_feature_local
+    _RECEIVE_SHADOWS_OFF$            //[HideInInspector][ToggleOff] _ReceiveShadows(\"Receive
+    Shadows\", Float) = 1.0$            if (material.HasProperty(\"_ReceiveShadows\"))$           
+    {$                if (material.HasProperty(\"_ReceiveShadows\"))$               
+    {$                    var control = material.GetInt(\"_ReceiveShadows\")@$$                   
+    bool toggle = false@$$                    if (control > 0.5f)$                   
+    {$                        toggle = true@$                    }$$                   
+    toggle = EditorGUILayout.Toggle(\"Receive Shadows\", toggle)@$$                   
+    if (toggle)$                    {$                        material.SetInt(\"_ReceiveShadows\",
+    1)@$                        material.DisableKeyword(\"_RECEIVE_SHADOWS_OFF\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_ReceiveShadows\",
+    0)@$                        material.EnableKeyword(\"_RECEIVE_SHADOWS_OFF\")@$                   
+    }$                }$            }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;329;160,10592;Inherit;False;989.2451;906.4299;HDRP
+    Receive SSR;;0,0,0,1;$            //#pragma shader_feature_local_fragment _DISABLE_SSR$           
+    //#pragma shader_feature_local_raytracing _DISABLE_SSR$            //[HideInInspector][ToggleUI]
+    _ReceivesSSR(\"Receives SSR\", Float) = 1$            if (material.GetTag(\"RenderPipeline\",
+    false) == \"HDRenderPipeline\")$                if (material.HasProperty(\"_ReceivesSSR\"))$               
+    {$                    if (material.HasProperty(\"_ReceivesSSR\"))$                   
+    {$                        var control = material.GetInt(\"_ReceivesSSR\")@$$                       
+    bool toggle = false@$$                        if (control > 0.5f)$                       
+    {$                            toggle = true@$                        }$$                       
+    toggle = EditorGUILayout.Toggle(\"Receive SSR\", toggle)@$$                       
+    if (toggle)$                        {$                            material.SetInt(\"_ReceivesSSR\",
+    1)@$                            material.EnableKeyword(\"DISABLE_SSR\")@$$                           
+    material.SetInt(\"_StencilRef\", 0)@$                            material.SetInt(\"_StencilRefDepth\",
+    0)@$                            material.SetInt(\"_StencilRefDistortionVec\",
+    4)@$                            material.SetInt(\"_StencilRefGBuffer\", 2)@$                           
+    material.SetInt(\"_StencilRefMV\", 32)@$                            material.SetInt(\"_StencilWriteMask\",
+    6)@$                            material.SetInt(\"_StencilWriteMaskDepth\", 8)@$                           
+    material.SetInt(\"_StencilWriteMaskDistortionVec\", 4)@$                           
+    material.SetInt(\"_StencilWriteMaskGBuffer\", 14)@$                           
+    material.SetInt(\"_StencilWriteMaskMV\", 40)@$                        }$                       
+    else$                        {$                            material.SetInt(\"_ReceivesSSR\",
+    0)@$                            material.DisableKeyword(\"DISABLE_SSR\")@$$                           
+    material.SetInt(\"_StencilRef\", 0)@$                            material.SetInt(\"_StencilRefDepth\",
+    8)@$                            material.SetInt(\"_StencilRefDistortionVec\",
+    4)@$                            material.SetInt(\"_StencilRefGBuffer\", 10)@$                           
+    material.SetInt(\"_StencilRefMV\", 40)@$                            material.SetInt(\"_StencilWriteMask\",
+    6)@$                            material.SetInt(\"_StencilWriteMaskDepth\", 8)@$                           
+    material.SetInt(\"_StencilWriteMaskDistortionVec\", 4)@$                           
+    material.SetInt(\"_StencilWriteMaskGBuffer\", 14)@$                           
+    material.SetInt(\"_StencilWriteMaskMV\", 40)@$                        }$                   
+    }$                }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;330;192,13840;Inherit;False;1010.291;572.0686;HDRP
+    DECAL Affects Normal;;0.4330971,1,0,1;$            //#pragma shader_feature_local_fragment
+    _MATERIAL_AFFECTS_NORMAL$            //[ToggleUI]_AffectNormal(\"Boolean\", Float)
+    = 1$            if (material.HasProperty(\"_AffectNormal\"))$            {$               
+    if (material.HasProperty(\"_AffectNormal\"))$                {$                   
+    var control = material.GetInt(\"_AffectNormal\")@$$                    bool toggle
+    = false@$$                    if (control > 0.5f)$                    {$                       
+    toggle = true@$                    }$$                    toggle = EditorGUILayout.Toggle(\"Affects
+    Normal\", toggle)@$$                    if (toggle)$                    {$                       
+    material.SetInt(\"_AffectNormal\", 1)@$                        material.DisableKeyword(\"_MATERIAL_AFFECTS_NORMAL\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_AffectNormal\",
+    0)@$                        material.EnableKeyword(\"_MATERIAL_AFFECTS_NORMAL\")@$                   
+    }$                }$            }$   ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;331;192,14448;Inherit;False;999.6067;566.0325;HDRP
+    DECAL Affects AO;;0.249918,1,0,1;$            //[ToggleUI]_AffectAO(\"Boolean\",
+    Float) = 0$            if (material.HasProperty(\"_AffectAO\"))$            {$               
+    if (material.HasProperty(\"_AffectAO\"))$                {$                   
+    var control = material.GetInt(\"_AffectAO\")@$$                    bool toggle
+    = false@$$                    if (control > 0.5f)$                    {$                       
+    toggle = true@$                    }$$                    toggle = EditorGUILayout.Toggle(\"Affects
+    AO\", toggle)@$$                    if (toggle)$                    {$                       
+    material.SetInt(\"_AffectAO\", 1)@$                        material.DisableKeyword(\"_MATERIAL_AFFECTS_NORMAL_BLEND\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_AffectAO\",
+    0)@$                        material.EnableKeyword(\"_MATERIAL_AFFECTS_NORMAL_BLEND\")@$                   
+    }$                }$            }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;332;176,13312;Inherit;False;987.3523;506.5374;HDRP
+    DECAL Affects Albedo;;0.239417,1,0,1;            //#pragma shader_feature_local_fragment
+    _MATERIAL_AFFECTS_ALBEDO$            //[ToggleUI]_AffectAlbedo(\"Boolean\", Float)
+    = 1$            if (material.HasProperty(\"_AffectAlbedo\"))$            {$               
+    if (material.HasProperty(\"_AffectAlbedo\"))$                {$                   
+    var control = material.GetInt(\"_AffectAlbedo\")@$$                    bool toggle
+    = false@$$                    if (control > 0.5f)$                    {$                       
+    toggle = true@$                    }$$                    toggle = EditorGUILayout.Toggle(\"Affects
+    Albedo\", toggle)@$$                    if (toggle)$                    {$                       
+    material.SetInt(\"_AffectAlbedo\", 1)@$                        material.DisableKeyword(\"_MATERIAL_AFFECTS_ALBEDO\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_AffectAlbedo\",
+    0)@$                        material.EnableKeyword(\"_MATERIAL_AFFECTS_ALBEDO\")@$                   
+    }$                }$            }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;333;192,15040;Inherit;False;1045.031;560.2307;URP
+    DECAL Affects Metal;;0.220665,1,0,1;$            //[ToggleUI]_AffectMetal(\"Boolean\",
+    Float) = 1$            if (material.HasProperty(\"_AffectMetal\"))$           
+    {$                if (material.HasProperty(\"_AffectMetal\"))$               
+    {$                    var control = material.GetInt(\"_AffectMetal\")@$$                   
+    bool toggle = false@$$                    if (control > 0.5f)$                   
+    {$                        toggle = true@$                    }$$                   
+    toggle = EditorGUILayout.Toggle(\"Affects Metal\", toggle)@$$                   
+    if (toggle)$                    {$                        material.SetInt(\"_AffectMetal\",
+    1)@$                        material.DisableKeyword(\"_MATERIAL_AFFECTS_MAOS\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_AffectMetal\",
+    0)@$                        material.EnableKeyword(\"_MATERIAL_AFFECTS_MAOS\")@$                   
+    }$                }$            }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;334;208,15632;Inherit;False;1008.965;554.8245;URP
+    DECAL Affects Smoothness;;0.2534986,1,0,1;            //[ToggleUI]_AffectSmoothness(\"Boolean\",
+    Float) = 1$            if (material.HasProperty(\"_AffectSmoothness\"))$           
+    {$                if (material.HasProperty(\"_AffectSmoothness\"))$               
+    {$                    var control = material.GetInt(\"_AffectSmoothness\")@$$                   
+    bool toggle = false@$$                    if (control > 0.5f)$                   
+    {$                        toggle = true@$                    }$$                   
+    toggle = EditorGUILayout.Toggle(\"Affects Smoothness\", toggle)@$$                   
+    if (toggle)$                    {$                        material.SetInt(\"_AffectSmoothness\",
+    1)@$                        material.DisableKeyword(\"_MATERIAL_AFFECTS_MAOS\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_AffectSmoothness\",
+    0)@$                        material.EnableKeyword(\"_MATERIAL_AFFECTS_MAOS\")@$                   
+    }$                }$            }$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;336;208,16208;Inherit;False;1019.3;539.7249;HDRP
+    DECAL Affects Emission;;0.3021821,1,0,1;$            //[ToggleUI]_AffectEmission(\"Boolean\",
+    Float) = 0$            if (material.HasProperty(\"_AffectEmission\"))$           
+    {$                if (material.HasProperty(\"_AffectEmission\"))$               
+    {$                    var control = material.GetInt(\"_AffectEmission\")@$$                   
+    bool toggle = false@$$                    if (control > 0.5f)$                   
+    {$                        toggle = true@$                    }$$                   
+    toggle = EditorGUILayout.Toggle(\"Affects Emission\", toggle)@$$                   
+    if (toggle)$                    {$                        material.SetInt(\"_AffectEmission\",
+    1)@$                        material.DisableKeyword(\"_MATERIAL_AFFECTS_EMISSION\")@$                   
+    }$                    else$                    {$                        material.SetInt(\"_AffectEmission\",
+    0)@$                        material.EnableKeyword(\"_MATERIAL_AFFECTS_EMISSION\")@$                   
+    }$                }$            //}$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;338;-480,3360;Inherit;False;472;179.5;LS_DrawerGradient(64,
+    true);;0,0,0,1;LS_DrawerGradient(resolution, hdr) $$Resolution = resolution of
+    gradient texture that will be created, user may set it whatever resolution wanted
+    for gradient$$HDR = true or false as needed set by user$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;340;-480,3552;Inherit;False;473.5;134.5;Credit;;0,0,0,1;please
+    visit https://github.com/fisekoo for the most up todate drawer files.$$;0;0\nNode;AmplifyShaderEditor.SamplerNode;339;-480,3152;Inherit;True;Property;_Gradient;Gradient;2;0;Create;True;0;0;0;False;1;LS_DrawerGradient(64,
+    true);False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.Vector4Node;242;-480,2720;Half;False;Property;_Strength;Strength
+    Vec4;23;0;Create;False;0;0;0;True;1;RemapSliders;False;-20,20,0,1;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.Vector2Node;289;-464,2256;Inherit;False;Constant;_StrengthVec2;Strength
+    Vec2;24;1;[RemapSliders];Create;True;0;0;0;False;0;False;0,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.FunctionOutput;0;-512,-864;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;65;2;66;0\nWireConnection;143;2;59;0\nWireConnection;34;0;33;0\nWireConnection;37;0;36;0\nWireConnection;32;0;25;0\nWireConnection;32;1;6;0\nWireConnection;33;0;25;0\nWireConnection;35;0;32;0\nWireConnection;35;3;32;0\nWireConnection;35;1;32;0\nWireConnection;35;2;31;0\nWireConnection;31;0;34;0\nWireConnection;31;1;6;0\nWireConnection;31;2;37;0\nWireConnection;74;0;75;0\nWireConnection;75;0;82;0\nWireConnection;113;0;81;0\nWireConnection;113;3;81;0\nWireConnection;113;1;81;0\nWireConnection;113;2;110;1\nWireConnection;84;0;83;0\nWireConnection;114;0;115;0\nWireConnection;115;0;84;0\nWireConnection;85;0;113;0\nWireConnection;85;1;114;0\nWireConnection;78;0;77;0\nWireConnection;77;0;79;0\nWireConnection;80;0;74;0\nWireConnection;80;1;85;0\nWireConnection;80;2;78;0\nWireConnection;73;0;82;0\nWireConnection;73;1;85;0\nWireConnection;76;0;73;0\nWireConnection;76;3;73;0\nWireConnection;76;1;73;0\nWireConnection;76;2;80;0\nWireConnection;182;0;171;0\nWireConnection;180;0;178;0\nWireConnection;180;1;182;0\nWireConnection;162;0;159;2\nWireConnection;162;1;160;0\nWireConnection;163;0;162;0\nWireConnection;163;1;161;2\nWireConnection;166;0;163;0\nWireConnection;167;0;166;0\nWireConnection;167;1;165;0\nWireConnection;168;0;167;0\nWireConnection;174;0;173;0\nWireConnection;174;1;172;0\nWireConnection;172;0;168;0\nWireConnection;171;0;169;0\nWireConnection;171;1;170;0\nWireConnection;165;0;164;0\nWireConnection;186;0;180;0\nWireConnection;187;0;186;0\nWireConnection;177;0;175;0\nWireConnection;177;1;174;0\nWireConnection;177;2;187;0\nWireConnection;191;0;192;0\nWireConnection;191;1;194;0\nWireConnection;193;0;195;0\nWireConnection;194;0;195;0\nWireConnection;196;0;191;0\nWireConnection;196;1;193;0\nWireConnection;36;0;19;0\nWireConnection;6;0;22;0\nWireConnection;6;1;5;0\nWireConnection;5;0;4;0\nWireConnection;118;1;196;0\nWireConnection;288;1;287;3\nWireConnection;288;2;287;4\nWireConnection;288;3;287;1\nWireConnection;288;4;287;2\nWireConnection;305;0;295;0\nWireConnection;296;0;308;0\nWireConnection;299;0;291;0\nWireConnection;299;1;302;0\nWireConnection;299;2;298;0\nWireConnection;299;3;303;0\nWireConnection;295;0;296;0\nWireConnection;295;1;294;0\nWireConnection;294;0;296;0\nWireConnection;294;1;299;0\nASEEND*/\n//CHKSM=61E0004D6323B35DE0CC53EB18CC0CC9B71A0C08"
+  m_functionName: 
+  m_description: 'Material Property Drawer
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7647059, g: 0.30588236, b: 0, a: 1}
+  m_customNodeCategory: LS Utility
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

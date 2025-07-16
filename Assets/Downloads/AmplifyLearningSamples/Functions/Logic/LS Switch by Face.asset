@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Switch by Face
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;79;-384,480;Inherit;False;2810.911;1177.276;Example
+    Normal Flip Mode and Face Node vs Switch by Face Node;38;143;118;71;70;69;68;61;142;141;75;115;119;153;151;152;150;149;114;144;147;146;148;145;62;130;129;131;132;120;117;116;138;85;83;82;59;164;165;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;161;-384,1664;Inherit;False;986.4392;560;Blending
+    back face and front face;7;160;157;158;155;154;156;162;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;164;2080,800;Inherit;False;225.3877;284.8665;;1;163;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;160;304,1904;Inherit;False;215.3223;294.6638;;1;159;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;30;-384,-128;Inherit;False;772.7301;519.191;Example
+    Draw front faces to green and back faces to red.;3;28;27;57;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;7;-384,-512;Inherit;False;770.9406;321.6495;Switch
+    by Face Node;2;5;56;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;5;-96,-448;Inherit;False;428.3426;129.3611;;;0.0471698,0.0471698,0.0471698,1;The
+    Switch by Face outputs relays one of its inputs according to if the rendered
+    surface is facing the camera ( Front ) or facing away from the camera ( Back
+    ).;0;0\nNode;AmplifyShaderEditor.SwitchByFaceNode;57;-64,-80;Inherit;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;1120,1232;Inherit;False;297.3748;202.6522;Custom
+    switch for vec3;;0,0,0,1;Float(Flip, 0, Mirror, 1, None, 2)]$$_DoubleSidedConstantsFlip$*Flip     
+    = (-1, -1, -1)$_DoubleSidedConstantsMirror$*Mirror  = (1, 1, -1)$_DoubleSidedConstantsNone$*None  
+    = (1, 1, 1) $$;0;0\nNode;AmplifyShaderEditor.ColorNode;27;-336,-80;Inherit;False;Constant;_OutsideColor;Outside
+    Color;1;0;Create;True;0;0;0;False;0;False;0,1,0.07363963,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;28;-336,96;Inherit;False;Constant;_InsideColor;Inside
+    Color;1;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.StickyNoteNode;82;1120,528;Inherit;False;310.8372;100;Normal
+    Mode;;0,0,0,1;_DoubleSidedNormalMode$Enum (Flip _Mirror _None)$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;83;192,544;Inherit;False;303.0698;181.5141;Face
+    Node;;0,0,0,1;The Face node outputs a positive value of 1 if the rendered surface
+    is facing the camera or a negative value of -1 if its facing away from the camera.$$Flip     
+    = (-1, -1, -1)$Mirror  = (1, 1, -1)$None   = (1, 1, 1) $$$$$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;85;1584,1264;Inherit;False;306.1018;148.0313;Switch
+    by Face Node;;0,0,0,1;The Switch by Face outputs relays one of its inputs according
+    to if the rendered surface is facing the camera ( Front ) or facing away from
+    the camera ( Back ).;0;0\nNode;AmplifyShaderEditor.SwitchByFaceNode;56;-336,-448;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;138;0,1232;Inherit;False;320.916;100;_NormalStrength;;0,0,0,1;This
+    scale the normal map perpendicular to the surface. Effectively decreasing or
+    increasing how bumpy the surface looks;0;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;116;528,752;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;117;672,848;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;120;896,752;Inherit;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;132;1760,704;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;131;1728,672;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;129;1728,672;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;130;1760,704;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwitchByFaceNode;62;1568,1040;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;145;1472,960;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;148;1312,992;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;146;1504,992;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;147;1280,960;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.UnpackScaleNormalNode;144;272,944;Inherit;True;Tangent;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionSwitchByPipeline;114;1840,848;Inherit;False;4;0;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;152;784,960;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;151;816,928;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;153;816,720;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;119;896,656;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;75;912,544;Inherit;False;Property;_DoubleSidedNormalMode;Normal
+    Mode;0;1;[Enum];Create;False;0;3;Flip;0;Mirror;1;None;2;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;141;-80,944;Inherit;True;Property;_TextureSample20;Texture
+    Sample 14;34;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;142;0,1152;Half;False;Property;_NormalStrength;Normal
+    Strength;2;0;Create;False;1;;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;61;1376,1072;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CustomExpressionNode;68;1120,1072;Inherit;False;if(m_switch
+    ==0)$\treturn m_Flip@$else if(m_switch ==1)$\treturn m_Mirror@$else if(m_switch
+    ==2)$\treturn m_None@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Flip;FLOAT3;0,0,0;In;;Inherit;False;True;m_Mirror;FLOAT3;0,0,0;In;;Inherit;False;True;m_None;FLOAT3;0,0,0;In;;Inherit;False;_NormalMode
+    float3 switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.Vector3Node;69;768,1040;Inherit;False;Constant;_DoubleSidedConstantsFlip1;_DoubleSidedConstantsFlip;4;0;Create;True;0;0;0;False;0;False;-1,-1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;70;768,1184;Inherit;False;Constant;_DoubleSidedConstantsMirror1;_DoubleSidedConstantsMirror;4;0;Create;True;0;0;0;False;0;False;1,1,-1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;71;768,1344;Inherit;False;Constant;_DoubleSidedConstantsNone1;_DoubleSidedConstantsNone;4;0;Create;True;0;0;0;False;0;False;1,1,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FaceVariableNode;118;528,672;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SwitchByFaceNode;155;-80,1808;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;159;336,1952;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;162;160,1744;Inherit;False;291.6036;132.6777;;;0,0,0,1;this
+    example can be useful for snow effects to not lay on back face such as leafy
+    metatrail;0;0\nNode;AmplifyShaderEditor.ColorNode;157;-336,1808;Inherit;False;Constant;_Color0;Color
+    0;4;0;Create;True;0;0;0;False;0;False;1,1,1,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;158;-336,1952;Inherit;False;Constant;_Color1;Color
+    0;4;0;Create;True;0;0;0;False;0;False;0,0.07924546,0.9622642,0;0,0,0,0;False;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.LerpOp;154;144,1952;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;156;-176,1712;Half;False;Property;_BackFaceBias;BackFace
+    Bias;3;0;Create;True;0;0;0;False;0;False;0.25;1;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexturePropertyNode;143;-336,944;Inherit;True;Property;_BumpMap;Normal
+    Map;1;1;[Normal];Create;False;0;0;0;False;0;False;None;None;False;bump;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.RelayNode;163;2112,848;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;149;1024,960;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;150;1056,912;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;165;2080,1104;Inherit;False;241.4838;127.9103;Note;;0,0,0,1;Use
+    of custom expression may break all downstream previews within your graph. This
+    is expected behavior ;0;0\nNode;AmplifyShaderEditor.CustomExpressionNode;115;1136,640;Inherit;False;if(m_switch
+    ==0)$\treturn m_Flip@$else if(m_switch ==1)$\treturn m_Mirror@$else if(m_switch
+    ==2)$\treturn m_None@$else$return float3(0,0,0)@;3;Create;4;True;m_switch;FLOAT;0;In;;Inherit;False;True;m_Flip;FLOAT3;0,0,0;In;;Inherit;False;True;m_Mirror;FLOAT3;0,0,0;In;;Inherit;False;True;m_None;FLOAT3;0,0,0;In;;Inherit;False;_NormalMode
+    float3 switch ;False;False;0;;False;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;4;-384,-640;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;57;0;27;0\nWireConnection;57;1;28;0\nWireConnection;116;0;144;0\nWireConnection;117;0;116;2\nWireConnection;117;1;118;0\nWireConnection;120;0;116;0\nWireConnection;120;1;116;1\nWireConnection;120;2;117;0\nWireConnection;132;0;131;0\nWireConnection;131;0;115;0\nWireConnection;129;0;115;0\nWireConnection;130;0;129;0\nWireConnection;62;0;146;0\nWireConnection;62;1;61;0\nWireConnection;145;0;144;0\nWireConnection;148;0;147;0\nWireConnection;146;0;145;0\nWireConnection;147;0;144;0\nWireConnection;144;0;141;0\nWireConnection;144;1;142;0\nWireConnection;114;0;130;0\nWireConnection;114;3;132;0\nWireConnection;114;1;62;0\nWireConnection;114;2;144;0\nWireConnection;152;0;144;0\nWireConnection;151;0;152;0\nWireConnection;153;0;151;0\nWireConnection;119;0;153;0\nWireConnection;119;1;118;0\nWireConnection;141;0;143;0\nWireConnection;141;7;143;1\nWireConnection;61;0;148;0\nWireConnection;61;1;68;0\nWireConnection;68;0;75;0\nWireConnection;68;1;69;0\nWireConnection;68;2;70;0\nWireConnection;68;3;71;0\nWireConnection;155;0;157;0\nWireConnection;155;1;158;0\nWireConnection;159;0;154;0\nWireConnection;154;0;158;0\nWireConnection;154;1;155;0\nWireConnection;154;2;156;0\nWireConnection;163;0;114;0\nWireConnection;149;0;144;0\nWireConnection;150;0;149;0\nWireConnection;115;0;75;0\nWireConnection;115;1;119;0\nWireConnection;115;2;120;0\nWireConnection;115;3;150;0\nASEEND*/\n//CHKSM=3824E5A387D6ECD4B95BE4CFD3127F9EFFA4D68B"
+  m_functionName: 
+  m_description: "Switch by Face \n\nLearning Sample\n"
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

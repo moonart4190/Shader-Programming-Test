@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Distance
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;80;257,512;Inherit;False;1445.664;511.732;Artificial
+    Internal Light Source;12;78;77;79;76;84;83;82;74;81;75;73;72;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;71;-517.0519,512;Inherit;False;679.3665;515.716;Scene
+    Depth;4;68;92;69;70;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;66;-509.553,0;Inherit;False;668.746;483.0589;Detemine
+    the distance to an Object;5;63;62;61;65;64;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;8;-512,-384;Inherit;False;830.2312;308.118;Distance
+    Node;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;45;-512,1056;Inherit;False;1087.388;1062.425;Length
+    vs Distance;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;46;-464,1120;Inherit;False;431.2215;100;;;0,0,0,1;The
+    Length node and Distance node are very similar.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;47;-320,1232;Inherit;False;197.8402;100;;;0,0,0,1;The
+    Distance node measures the distance between two points.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;51;48,1232;Inherit;False;197.8402;100;;;0,0,0,1;The
+    Length node tells us how long a vector is.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;58;192,1952;Inherit;False;301.3845;129.1745;;;0,0,0,1;Mesauring
+    the length of the View Vector or finding the distance between the camera position
+    and the world space position should give us the same result.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;-224,-320;Inherit;False;404.7825;124.3129;;;0,0,0,1;The
+    Distance node outputs the euclidean distance between two values or vectors A
+    and B which can be seen as the following operation Sqrt( Dot( B - A, B - A )).;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;64;-464,352;Inherit;False;221.6783;100;;;0,0,0,1;Player
+    position;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;65;-176,256;Inherit;False;292.2376;114.2238;;;0,0,0,1;If
+    different data types are connected to each port then a cast will always be done
+    to the port type with most channels;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;70;-176,784;Inherit;False;298.0682;118.7837;;;0,0,0,1;Here
+    we use the Distance Node to measure the distance between the Camera Position
+    and the Position of the current pixel.  This gives us scene depth.;0;0\nNode;AmplifyShaderEditor.DistanceOpNode;50;-464,1232;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;72;288,560;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TransformPositionNode;73;480,560;Inherit;False;World;Object;False;Fast;True;1;0;FLOAT3;0,0,0;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.DynamicAppendNode;75;544,720;Inherit;False;FLOAT3;4;0;FLOAT;0.63;False;1;FLOAT;0;False;2;FLOAT;-0.5;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;81;1072,640;Inherit;False;215.4061;115.2422;;;0,0,0,1;Saturating
+    and inverting the gradient gives us a mask that looks like a light source inside
+    the volume.;0;0\nNode;AmplifyShaderEditor.DistanceOpNode;74;768,560;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;82;768,656;Inherit;False;281.9999;147;;;0,0,0,1;Measuring
+    the distance between the animated point and the object space position creates
+    a gradient that's dark when the point is close to the pivot and bright when it's
+    further away.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;83;544,848;Inherit;False;271;114;;;0,0,0,1;Moving
+    point inside the object. The animated value becomes the point's X coordinate
+    - so the point is moving back and forth.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;84;304,864;Inherit;False;201;100;;;0,0,0,1;Using
+    the Sine of Time to create a cycling animated value.;0;0\nNode;AmplifyShaderEditor.SinTimeNode;76;304,720;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.OneMinusNode;79;1280,560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;85;-925,-384;Inherit;False;355;203;Reference
+    Implementation;;0,0,0,1;distance for a float3 vector could be implemented like
+    this.$$float distance(float3 pt1, float3 pt2)${$  float3 v = vt2 - pt1@$  return
+    sqrt(dot(v,v))@$};0;0\nNode;AmplifyShaderEditor.SaturateNode;77;1072,560;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;78;1440,560;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;3.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;90;-128,1840;Inherit;False;236;140;View
+    Vector;;0,0,0,1;You can create the same vector as the View Vector node by subtracting
+    the Position in World Space from the Camera Position. $;0;0\nNode;AmplifyShaderEditor.DistanceOpNode;69;-176,560;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DistanceOpNode;60;-448,-320;Inherit;True;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LengthOpNode;49;-96,1232;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DistanceOpNode;53;-128,1408;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;52;-368,1408;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;88;-128,1728;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LengthOpNode;89;192,1728;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;86;-432,1728;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;87;-368,1872;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;56;-432,1552;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;92;-464,560;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;68;-400,720;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DistanceOpNode;61;-176,48;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;62;-400,48;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.Vector3Node;63;-464,208;Inherit;False;Constant;_GlobalCustomPosition;Global
+    Custom Position;0;0;Create;True;0;0;0;False;0;False;0.66,0.06,-0.69;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;7;-512,-480;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;73;0;72;0\nWireConnection;75;0;76;4\nWireConnection;74;0;73;0\nWireConnection;74;1;75;0\nWireConnection;79;0;77;0\nWireConnection;77;0;74;0\nWireConnection;78;0;79;0\nWireConnection;69;0;92;0\nWireConnection;69;1;68;0\nWireConnection;53;0;52;0\nWireConnection;53;1;56;0\nWireConnection;88;0;86;0\nWireConnection;88;1;87;0\nWireConnection;89;0;88;0\nWireConnection;61;0;62;0\nWireConnection;61;1;63;0\nASEEND*/\n//CHKSM=611D7FCE1E4975C27AAB73056DE9898E1842516E"
+  m_functionName: 
+  m_description: 'Distance Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    8-15'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.21960784, g: 0.19607843, b: 0.44705883, a: 1}
+  m_customNodeCategory: LS Vector Operators
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

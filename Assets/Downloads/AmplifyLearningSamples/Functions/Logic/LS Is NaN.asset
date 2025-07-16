@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Is NaN
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;29;-128,-128;Inherit;False;888.7999;654.4;Example;6;27;23;41;38;39;30;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;9;-128,-512;Inherit;False;594;305;Is
+    NaN Node;2;6;22;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;6;144,-464;Inherit;False;288;168;;;0,0,0,1;The
+    Is NaN Node returns true if the input is not a number. $$This can happen if a
+    division by zero has occured somewhere in the shader - so this node can be used
+    to detect that situation.;0;0\nNode;AmplifyShaderEditor.IsNaNNode;22;-48,-464;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;30;592,-80;Inherit;False;150;100;Nan;;0,0,0,1;0/0;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;39;176,384;Inherit;False;205.47;113;;;0,0,0,1;This
+    Maximum 0.00001 (1E-05) is here to prevent a divide by zero.;0;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;38;176,160;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;1E-05;False;1;FLOAT;0\nNode;AmplifyShaderEditor.IsNaNNode;41;416,160;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.IsNaNNode;23;416,-80;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;27;-64,-80;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-128,-640;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;38;0;27;0\nWireConnection;41;0;38;0\nWireConnection;23;0;27;0\nASEEND*/\n//CHKSM=35909533F678CC1A8CE4967AAC5D36E265910457"
+  m_functionName: 
+  m_description: 'Is NaN Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0.3764706, b: 0.30980393, a: 1}
+  m_customNodeCategory: LS Logic
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

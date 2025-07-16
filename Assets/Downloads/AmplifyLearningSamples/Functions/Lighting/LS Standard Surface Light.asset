@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Standard Surface Light
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;32;-384,-1472;Inherit;False;1240.973;484.9294;Standard
+    Surface Light Node;6;40;37;38;39;35;33;;0.01886791,0.01886791,0.01886791,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;33;-349.2077,-1408;Inherit;False;510.5503;223.2408;;;0,0,0,1;The
+    Standard Surface Light node provides a way to calculate Standard Surface Light
+    results in custom lighting mode. $$Like the Standard Surface shader, an Metallic
+    or Specular workflows can be chosen by the Workflow option. $$It's only useful
+    when doing some sort of custom lighting, thus the node is only visible in the
+    available nodes menu if the Light Model is set to Custom Lighting and displays
+    a warning if it ever happens to be outside of it.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;35;384,-1408;Inherit;False;419.0276;191.3884;Workflow
+    Metallic;;0,0,0,1; A metallic value is exposed which indicates if the surface
+    is metallic or not. In case of a metallic surface the albedo color will control
+    the color of the specular reflection and most light will be reflected as specular
+    reflections.$$Dielectric/Non-metallic surfaces will have specular reflections
+    with the same color of the incoming lights and will hardly reflect when looking
+    the surface directly.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;39;384,-1200;Inherit;False;415.2451;144.1087;Workflow
+    Specular;;0,0,0,1;A specular color will be specified which will control both
+    strength and color of specular reflections on the surface making it possible
+    to specify different colors for both specular and diffuse reflectance;0;0\nNode;AmplifyShaderEditor.CustomStandardSurface;38;176,-1200;Inherit;False;Specular;Tangent;6;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,1;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;5;FLOAT;1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CustomStandardSurface;37;176,-1408;Inherit;False;Metallic;Tangent;6;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,1;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;40;-336,-1168;Inherit;False;340.0188;129.7765;Normal
+    Space;;0,0,0,1;Define on which transform space the specified normal vector is
+    on.$--- Tangent: Tangent Space$--- World: World Space;0;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-1600;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nASEEND*/\n//CHKSM=9DEF3A53A307BD14154B302E1F9CB3CE94C18FC4"
+  m_functionName: 
+  m_description: 'Standard Surface Light Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

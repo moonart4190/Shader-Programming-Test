@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Cross Product
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;82;-80,240;Inherit;False;862.9211;726.8296;Creating
+    a Normal;7;79;80;76;75;72;74;81;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;68;-80,-336;Inherit;False;1242.442;549.5483;Calculating
+    Bitangent;7;67;66;65;69;61;63;62;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;16;-80,-816;Inherit;False;1236;445.2981;Cross
+    Product Node ;4;60;71;70;14;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;14;528,-752;Inherit;False;547.6544;248.857;;;0,0,0,1;The
+    Cross node ( shortcut: X key ) calculates a cross/vector product between two
+    Vectors A and B. $$Cross product is a operation between two three dimensional/Float3
+    vectors which generates another vector.$$$If both A and B vectors are linearly
+    independent between each other then the resulting vector will be perpendicular
+    to both of them and will represent a normal vector for the plane they produce.$$;0;0\nNode;AmplifyShaderEditor.NormalVertexDataNode;62;-32,-224;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TangentVertexDataNode;63;-32,-64;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;69;224,-16;Inherit;False;314.0063;119.4973;;;0,0,0,1;Order
+    is important on this operator as AxB outputs different results than BxA ( which
+    result is similar to -AxB ).;0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;65;896,-224;Inherit;True;3;3;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TangentSignVertexDataNode;66;624,-128;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldTransformParams;67;592,-48;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;70;0,-752;Inherit;False;246.5983;100;Lhs;;0,0,0,1;First,
+    or left hand side, value of the cross product;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;71;0,-640;Inherit;False;241.7683;103.2199;Rhs;;0,0,0,1;Last,
+    or right hand side, value of the cross product;0;0\nNode;AmplifyShaderEditor.CrossProductOpNode;60;304,-752;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CrossProductOpNode;61;224,-224;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;81;224,752;Inherit;False;439.9569;151.2424;;;0,0,0,1;In
+    this example we compute the cross product of the Bitangent and Tangent Vector.$$Notice
+    that the result exactly matched the Normal Vector - because the Normal Vector
+    is perpendicular to both the Tangent and Bitangent Vectors.$$;0;0\nNode;AmplifyShaderEditor.CrossProductOpNode;74;224,528;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.VertexBinormalNode;72;-32,528;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TangentVertexDataNode;75;-32,688;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.NormalizeNode;76;464,528;Inherit;True;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.TransformDirectionNode;80;480,304;Inherit;True;Tangent;World;False;Fast;False;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.NormalVertexDataNode;79;224,304;Inherit;True;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;83;-640,-816;Inherit;False;469.0267;196.2581;Reference
+    Implementation;;0,0,0,1;cross for float3 vectors could be implemented this way:$$float3
+    cross(float3 a, float3 b)${$  return a.yzx * b.zxy - a.zxy * b.yzx@$};0;0\nNode;AmplifyShaderEditor.FunctionOutput;6;-64,-912;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;65;0;61;0\nWireConnection;65;1;66;0\nWireConnection;65;2;67;4\nWireConnection;61;0;62;0\nWireConnection;61;1;63;0\nWireConnection;74;0;72;0\nWireConnection;74;1;75;0\nWireConnection;76;0;74;0\nWireConnection;80;0;79;0\nASEEND*/\n//CHKSM=5BCEA0A820BEB7473F7A47C0BAC66DEE7E663945"
+  m_functionName: 
+  m_description: 'Cross Product Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Vector
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

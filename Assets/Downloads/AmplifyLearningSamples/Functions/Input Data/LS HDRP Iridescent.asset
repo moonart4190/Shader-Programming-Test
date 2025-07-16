@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HDRP Iridescent
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;3889;-12161.74,-851.4629;Inherit;False;2428.643;1565.989;HDRP
+    Iridescent;33;3926;3925;3924;3923;3922;3919;3917;3916;3915;3914;3913;3912;3910;3909;3908;3907;3906;3905;3904;3903;3902;3901;3900;3899;3898;3897;3896;3895;3894;3892;3891;3890;3927;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3890;-10929.74,316.5371;Inherit;False;324.4658;314.7098;Register
+    Inline and return 0;2;3921;3893;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3891;-10337.74,-643.4629;Inherit;False;146.583;128.9375;Iridescent
+    Mask;1;3918;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3892;-10337.74,-115.4629;Inherit;False;164.9658;131.7026;Iridescence
+    Thickness;1;3911;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3893;-10913.74,444.5371;Inherit;False;173;165;Return
+    0;1;3920;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3894;-12097.74,460.5371;Inherit;False;644.0332;103.0105;_IRIDESCENCE_THICKNESSMAP;;0,0,0,1;#pragma
+    shader_feature_local_fragment _IRIDESCENCE_THICKNESSMAP$#pragma shader_feature_local_fragment
+    _MATERIAL_FEATURE_IRIDESCENCE$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3895;-10113.74,-755.4629;Inherit;False;258.2281;137.6647;Iridescent
+    Mask;;0,0,0,1;_IridescenceMaskEnable$_IridescenceMaskMap$_IridescenceMask$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3896;-12097.74,-419.4629;Inherit;False;390.6724;189.5119;Iridescence
+    Mask Map;;0,0,0,1;_IridescenceMaskMap$$Assign a Texture, with values from 0 to
+    1, that controls the strength of the iridescence effect. $$A texel with a value
+    of 1 corresponds to full strength, while those with a value of 0 disables the
+    iridescence effect.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3897;-12097.74,-803.4629;Inherit;False;365.8846;155.5501;;;0,0,0,1;Applies
+    the Iridescence workflow to the Material. Iridescent surfaces appear to gradually
+    change color as the angle of view or angle of illumination changes.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3898;-12097.74,108.5371;Inherit;False;377.8353;234.587;Iridescence
+    Thickness Map;;0,0,0,1;_IridescenceThicknessMap$$Assign a Texture, with values
+    from 0 to 1, that controls the thickness of the thin iridescence layer over the
+    material. $$This modifies the color of the effect. Unit is micrometer multiplied
+    by 3. $$A value of 1 is remapped to 3 micrometers or 3000 nanometers.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3899;-11265.74,236.5371;Inherit;False;265.6862;103.7955;ENABLE
+    IRIDESCENCE THICKNESS;;0,0,0,1;_IridescenceThicknessEnable;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3900;-11249.74,108.5371;Inherit;False;253.9709;100;Iridescence
+    Thickness;;0,0,0,1;_IridescenceThickness$_IridescenceThicknessRemap;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3901;-11265.74,-371.4629;Inherit;False;256.5403;100;Iridescence
+    Mask;;0,0,0,1;_IridescenceMask;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3902;-10801.74,-371.4629;Inherit;False;252.6862;102.7955;ENABLE
+    IRIDESCENCE MASK;;0,0,0,1;_IridescenceMaskEnable;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3903;-10113.74,-227.4629;Inherit;False;259.5816;138.6652;Iridescence
+    Thickness;;0,0,0,1;_IridescenceThicknessEnable$_IridescenceThicknessMap$_IridescenceThicknessStrength$;0;0\nNode;AmplifyShaderEditor.TexturePropertyNode;3904;-11985.74,-99.46289;Inherit;True;Property;_IridescenceThicknessMap;Iridescence
+    Thickness Map;88;0;Create;False;0;0;0;False;1;LS_DrawerTextureSingleLine;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SamplerNode;3905;-11633.74,-99.46289;Inherit;True;Property;_TextureSample3;Texture
+    Sample 1;2;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3906;-10897.74,-51.46289;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;3907;-10513.74,-67.46289;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3908;-11249.74,28.53711;Half;False;Property;_IridescenceThicknessStrength;Iridescence
+    Thickness;89;0;Create;False;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;3909;-10577.74,60.53711;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StaticSwitch;3910;-12097.74,364.5371;Float;False;Property;_EMISSION;_EMISSIVE_COLOR_MAP;7;0;Fetch;False;0;0;0;False;0;False;0;0;0;False;_IRIDESCENCE_THICKNESSMAP;Toggle;2;Key0;Key1;Fetch;False;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;3911;-10321.74,-67.46289;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;3912;-11601.74,-611.4629;Inherit;True;Property;_TextureSample2;Texture
+    Sample 1;17;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.LerpOp;3913;-10513.74,-595.4629;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3914;-10801.74,-451.4629;Half;False;Property;_IridescenceMaskEnable;ENABLE
+    IRIDESCENCE MASK;84;0;Create;False;0;6;Default;0;Layer 2;1;Layer 3;2;Layer 4;3;Layer
+    5;4;Layer 6;5;0;False;1;LS_DrawerToggleLeft;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3915;-10929.74,-563.4629;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3916;-11265.74,-451.4629;Half;False;Property;_IridescenceMask;Iridescence
+    Mask;86;0;Create;False;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexturePropertyNode;3917;-11937.74,-611.4629;Inherit;True;Property;_IridescenceMaskMap;Iridescence
+    Mask Map;85;0;Create;False;0;0;0;False;1;LS_DrawerTextureSingleLine;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.RelayNode;3918;-10321.74,-595.4629;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3919;-11073.74,492.5371;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3920;-10897.74,492.5371;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3921;-10721.74,364.5371;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;3923;-10577.74,348.5371;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3922;-11281.74,364.5371;Half;False;Property;_IridescenceThicknessEnable;ENABLE
+    IRIDESCENCE THICKNESS;87;0;Create;False;1;;6;Default;0;Layer 2;1;Layer 3;2;Layer
+    4;3;Layer 5;4;Layer 6;5;0;False;2;Space(10);LS_DrawerToggleLeft;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3924;-11345.74,492.5371;Inherit;False;Property;_CATEGORY_IRIDESCENCE;CATEGORY_IRIDESCENCE;83;0;Create;True;0;0;0;False;1;LS_DrawerCategory(IRIDESCENCE,true_IridescenceThicknessEnable,0,0);False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3927;-11408,576;Inherit;False;Property;_CATEGORYSPACE_IRIDESCENCE;CATEGORYSPACE_IRIDESCENCE;90;0;Create;True;0;0;0;False;1;LS_DrawerCategorySpace(10);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;3925;-10113.74,-67.46289;Inherit;False;True;-1;Iridescence
+    Thickness;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;3926;-10113.74,-595.4629;Inherit;False;False;-1;Iridescent
+    Mask;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;3905;0;3904;0\nWireConnection;3905;7;3904;1\nWireConnection;3906;0;3905;1\nWireConnection;3906;1;3908;0\nWireConnection;3907;1;3906;0\nWireConnection;3907;2;3909;0\nWireConnection;3909;0;3923;0\nWireConnection;3911;0;3907;0\nWireConnection;3912;0;3917;0\nWireConnection;3912;7;3917;1\nWireConnection;3913;1;3915;0\nWireConnection;3913;2;3914;0\nWireConnection;3915;0;3912;1\nWireConnection;3915;1;3916;0\nWireConnection;3918;0;3913;0\nWireConnection;3919;0;3924;0\nWireConnection;3919;1;3927;0\nWireConnection;3920;0;3919;0\nWireConnection;3921;0;3922;0\nWireConnection;3921;1;3920;0\nWireConnection;3923;0;3921;0\nWireConnection;3925;0;3911;0\nWireConnection;3926;0;3918;0\nASEEND*/\n//CHKSM=A5C7ED21631F26294C28194EFFDA0688D1768053"
+  m_functionName: 
+  m_description: 'HDRP Iridescent
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4745098, g: 0.4117647, b: 0.34117648, a: 1}
+  m_customNodeCategory: LS Input Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

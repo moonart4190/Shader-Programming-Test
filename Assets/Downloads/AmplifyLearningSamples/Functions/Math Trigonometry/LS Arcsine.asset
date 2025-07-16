@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Arcsine
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;25;576,-384;Inherit;False;484.9727;314.918;Remap
+    from [-1,1] to [0,1];2;24;35;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;23;288,-384;Inherit;False;248;304;ASine
+    wave function;1;62;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;21;-320,-384;Inherit;False;578.9727;299.2188;Horizontal
+    gradient from 0 to 2PI;4;20;19;17;18;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;16;-304,-720;Inherit;False;615.2999;304;Arcsine
+    Node;2;14;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;14;-64,-656;Inherit;False;335.5349;137.7497;;;0,0,0,1;The
+    ASin node outputs the arcsine in radians of the value specified on its Input.
+    The result value will be in the range [-\u03C0/2,\u03C0/2] assuming that the
+    input value is in the [-1,1] range;0;0\nNode;AmplifyShaderEditor.PiNode;18;-112,-320;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;17;-272,-320;Inherit;False;Constant;_Two;Two;0;0;Create;True;0;0;0;False;0;False;2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;19;80,-320;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;20;-144,-240;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ScaleAndOffsetNode;24;768,-320;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;35;608,-240;Inherit;False;Constant;_Remap;Remap;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;60;-768,-720;Inherit;False;413.7993;336.5709;Reference
+    Implementation;;0,0,0,1;asin for a float scalar could be implemented like this.$$//
+    Handbook of Mathematical Functions$// M. Abramowitz and I.A. Stegun, Ed.$$float
+    asin(float x) {$  float negate = float(x < 0)@$  x = abs(x)@$  float ret = -0.0187293@$ 
+    ret *= x@$  ret += 0.0742610@$  ret *= x@$  ret -= 0.2121144@$  ret *= x@$  ret
+    += 1.5707288@$  ret = 3.14159265358979*0.5 - sqrt(1.0 - x)*ret@$  return ret
+    - 2 * negate * ret@$}$;0;0\nNode;AmplifyShaderEditor.ASinOpNode;61;-256,-656;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ASinOpNode;62;320,-320;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;6;-304,-800;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;18;0;17;0\nWireConnection;19;0;18;0\nWireConnection;19;1;20;1\nWireConnection;24;0;62;0\nWireConnection;24;1;35;0\nWireConnection;24;2;35;0\nWireConnection;62;0;19;0\nASEEND*/\n//CHKSM=C4783FEDCD785A6E9E47CA9591B0E39C92E31F23"
+  m_functionName: 
+  m_description: 'Arcsine Node
+
+    ASin
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    64-127'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Trigonometry
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

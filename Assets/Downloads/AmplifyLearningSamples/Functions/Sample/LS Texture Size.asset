@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Texture Size
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;166;-640,-640;Inherit;False;2437.594;908.1829;AmplifyShaderPack/Read
+    From Atlas Tiled;35;148;146;175;150;173;174;165;171;170;157;154;156;155;153;152;149;172;144;136;147;142;138;163;162;161;160;159;151;145;143;141;140;139;137;168;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;168;1536,-432;Inherit;False;185.801;276.5592;Base
+    Color;1;167;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;130;-640,-1264;Inherit;False;1780.686;539.947;Offset
+    image by 4 texels;10;129;123;135;132;131;125;124;128;127;126;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;121;-640,-1824;Inherit;False;1092;499;Exsample
+    used in Bicubic Precompute;5;107;110;109;120;111;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;105;-640,-2368;Inherit;False;917.9099;485.3446;Example;4;106;104;103;102;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;100;-635.1027,-3200;Inherit;False;891.4817;759.0278;Sample
+    Texture Size Node;9;176;91;99;98;97;96;95;94;93;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;93;-606,-2928;Inherit;False;510.1721;216.4854;;;0,0,0,1;The
+    Texel Size node outputs size information for a selected texture$$The Texture
+    Size node gives you the number of pixels in a texture's height and width dimensions
+    (512x512, 1024x1024 - for example), as well as the texel size height and width
+    in UV space - which is the reciprocal of the width and height.$$This information
+    is useful when you want to do something in the shader that depends on the resolution
+    of the texture being used.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;94;-48,-3152;Inherit;False;254.7104;102.0942;Output;;0,0,0,1;Vector
+    containing all available texture size information;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;95;-48,-3040;Inherit;False;254.7103;101.0471;1/Width;;0,0,0,1;Inverse
+    width of current referenced texture.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;96;-48,-2928;Inherit;False;256.8046;101.0471;1/Height;;0,0,0,1;Inverse
+    height of current referenced texture.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;97;-48,-2816;Inherit;False;254.7104;100;Width;;0,0,0,1;Width
+    value of current referenced texture.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;98;-48,-2704;Inherit;False;254.7104;100;Height;;0,0,0,1;Height
+    value of current referenced texture.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;99;-608,-3152;Inherit;False;250.1716;115.812;Tex;;0.1981132,0.1635368,0.1635368,1;Reference
+    texture to retrieve size information from.;0;0\nNode;AmplifyShaderEditor.WireNode;106;-112,-2256;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.WireNode;110;128,-1584;Inherit;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nNode;AmplifyShaderEditor.TextureCoordinatesNode;120;-352,-1776;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionNode;107;208,-1648;Inherit;False;Bicubic
+    Sample;-1;;1;ce0e14d5ad5eac645b2e5892ab3506ff;2,92,2,72,2;7;99;SAMPLER2D;0;False;91;SAMPLER2DARRAY;0;False;93;FLOAT;0;False;97;FLOAT2;0,0;False;198;FLOAT4;0,0,0,0;False;199;FLOAT2;0,0;False;94;SAMPLERSTATE;0;False;5;COLOR;86;FLOAT;84;FLOAT;85;FLOAT;82;FLOAT;83\nNode;AmplifyShaderEditor.FunctionNode;122;-96,-1520;Inherit;False;Bicubic
+    Precompute;-1;;4;818835145cc522e4da1f9915d8b8a984;0;2;5;FLOAT2;0,0;False;55;FLOAT4;0,0,0,0;False;2;FLOAT4;34;FLOAT2;54\nNode;AmplifyShaderEditor.TexturePropertyNode;109;-592,-1648;Inherit;True;Property;_Texture1;Texture
+    1;0;0;Create;True;0;0;0;False;0;False;40d039c7c47e80541b43e38546594e5d;40d039c7c47e80541b43e38546594e5d;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.TexturePropertyNode;102;-592,-2320;Inherit;True;Property;_Texture0;Texture
+    0;2;0;Create;True;0;0;0;False;0;False;40d039c7c47e80541b43e38546594e5d;40d039c7c47e80541b43e38546594e5d;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.DynamicAppendNode;137;-384,-48;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;140;-224,-112;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;141;-224,0;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector2Node;143;-400,-448;Float;False;Constant;_Vector1;Vector
+    0;4;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.SimpleDivideOpNode;145;-224,-448;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FmodOpNode;151;-32,-464;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;159;-592,-320;Inherit;False;168;102;TileSize;;0,0,0,1;Value
+    to set amount of tiling to perform.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;160;-592,-192;Inherit;False;171.5674;100;Max;;0,0,0,1;Maximum
+    pixel coordinates from section to tile.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;161;-592,96;Inherit;False;165.4053;104.6216;Min;;0,0,0,1;Minimum
+    pixel coordinates from section to tile.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;162;-48,-160;Inherit;False;161;160.5;Size;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;163;592,-576;Inherit;False;191.1242;130.1423;Atlas;;0,0,0,1;Texture
+    containing atlas/spritesheet to perform sampling of specified section. ;0;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;144;-32,-112;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.CustomExpressionNode;172;-64,-576;Float;False;frac(A/B)*B;2;Create;2;True;A;FLOAT2;0,0;In;;Float;False;True;B;FLOAT2;0,0;In;;Float;False;My
+    Custom Expression;True;False;0;;False;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;149;736,0;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;152;448,-464;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;153;736,-272;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;155;736,-304;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;156;800,-368;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;154;592,-336;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexturePropertyNode;170;800,-576;Inherit;True;Property;_Atlas;Atlas;6;0;Create;True;0;0;0;False;0;False;226671182b79a4f448d2f41951f30fb4;226671182b79a4f448d2f41951f30fb4;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1\nNode;AmplifyShaderEditor.SamplerNode;171;1072,-384;Inherit;True;Property;_TextureSample14;Texture
+    Sample 14;8;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;MipBias;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SwizzleNode;165;1376,-384;Inherit;False;FLOAT3;0;1;2;3;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;167;1552,-384;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;174;176,-592;Inherit;False;299.6366;116.3009;Improved;;0,0,0,1;Improved
+    Read From Atlas$material performs a more bit complex sampling that is less prone
+    to mip issues.;0;0\nNode;AmplifyShaderEditor.FunctionSwitch;173;176,-464;Inherit;False;Improved;True;0;2;-1;In
+    0;In 1;Object;-1;10;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;150;352,-368;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;175;336,-80;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;146;352,-112;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;148;720,32;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector2Node;138;-400,80;Float;False;Property;_Min1;Min;1;0;Create;True;0;0;0;False;0;False;257,257;257,257;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.Vector2Node;142;-400,-320;Float;False;Property;_TileSize1;TileSize;5;0;Create;True;0;0;0;False;0;False;1,1;2,2;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.RangedFloatNode;157;896,-272;Float;False;Constant;_Float0;Float
+    0;4;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector2Node;139;-416,-192;Float;False;Property;_Max1;Max;3;0;Create;True;0;0;0;False;0;False;512,512;511,511;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.TextureCoordinatesNode;147;-320,-576;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleAddOpNode;126;32,-1008;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;127;-144,-1008;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.ScaleNode;128;-304,-1008;Inherit;False;4;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;124;176,-1200;Inherit;True;Property;_TextureSample12;Texture
+    Sample 12;4;0;Create;True;0;0;0;False;0;False;-1;40d039c7c47e80541b43e38546594e5d;40d039c7c47e80541b43e38546594e5d;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;125;176,-1008;Inherit;True;Property;_TextureSample13;Texture
+    Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Instance;124;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleAddOpNode;131;512,-1200;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ScaleNode;132;624,-1200;Inherit;False;0.5;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;123;-208,-1184;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexelSizeNode;129;-560,-992;Inherit;False;124;Create;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;176;-608,-2704;Inherit;False;519.3344;209.9114;Variable
+    Mode (Default Value = Create);;0,0,0,1;Defines if the current property/global
+    variable is to be created on the current shader.$$Create: $Property and/or global
+    variable is created in the shader$$Fetch: $No variable nor property is registered
+    on shader, useful when p.e. there's need to using global variables declared over
+    a included cginc;0;0\nNode;AmplifyShaderEditor.SamplerNode;104;-48,-2320;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.TexelSizeNode;91;-352,-3152;Inherit;True;-1;Create;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexelSizeNode;103;-336,-2192;Inherit;False;-1;Create;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexelSizeNode;111;-336,-1520;Inherit;False;-1;Create;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexelSizeNode;136;-592,-80;Inherit;False;158;Create;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionNode;135;800,-1200;Inherit;True;Alpha
+    Split;-1;;5;07dab7960105b86429ac8eebd729ed6d;0;1;2;COLOR;0,0,0,0;False;2;FLOAT3;0;FLOAT;6\nNode;AmplifyShaderEditor.FunctionOutput;64;-640,-3392;Inherit;False;True;-1;Output;0;False;1;0;SAMPLERSTATE;;False;1;SAMPLERSTATE;0\nWireConnection;106;0;102;1\nWireConnection;110;0;109;1\nWireConnection;107;99;109;0\nWireConnection;107;198;122;34\nWireConnection;107;199;122;54\nWireConnection;107;94;110;0\nWireConnection;122;5;120;0\nWireConnection;122;55;111;0\nWireConnection;137;0;136;1\nWireConnection;137;1;136;2\nWireConnection;140;0;139;0\nWireConnection;140;1;137;0\nWireConnection;141;0;137;0\nWireConnection;141;1;138;0\nWireConnection;145;0;143;0\nWireConnection;145;1;142;0\nWireConnection;151;0;147;0\nWireConnection;151;1;145;0\nWireConnection;144;0;140;0\nWireConnection;144;1;141;0\nWireConnection;172;0;147;0\nWireConnection;172;1;145;0\nWireConnection;149;0;148;0\nWireConnection;152;0;173;0\nWireConnection;152;1;150;0\nWireConnection;153;0;149;0\nWireConnection;155;0;153;0\nWireConnection;156;0;155;0\nWireConnection;156;1;154;0\nWireConnection;154;0;152;0\nWireConnection;154;1;142;0\nWireConnection;171;0;170;0\nWireConnection;171;1;156;0\nWireConnection;171;2;157;0\nWireConnection;171;7;170;1\nWireConnection;165;0;171;0\nWireConnection;167;0;165;0\nWireConnection;173;0;151;0\nWireConnection;173;1;172;0\nWireConnection;150;0;146;0\nWireConnection;175;0;144;0\nWireConnection;146;0;175;0\nWireConnection;148;0;141;0\nWireConnection;126;0;123;0\nWireConnection;126;1;127;0\nWireConnection;127;0;128;0\nWireConnection;128;0;129;1\nWireConnection;124;1;123;0\nWireConnection;125;1;126;0\nWireConnection;131;0;124;0\nWireConnection;131;1;125;0\nWireConnection;132;0;131;0\nWireConnection;104;0;102;0\nWireConnection;104;7;106;0\nWireConnection;103;0;102;0\nWireConnection;111;0;109;0\nWireConnection;135;2;132;0\nASEEND*/\n//CHKSM=32C3D88252B60466E532C1240CEDD57A87887147"
+  m_functionName: 
+  m_description: 'Sample Texture Size Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.11764706, g: 0.31764707, b: 0.63529414, a: 1}
+  m_customNodeCategory: LS Sample
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Helper Anti-Aliasing
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;284;-3200,4096;Inherit;False;2301.716;648.0557;;20;285;286;270;272;269;268;266;265;264;263;262;271;280;281;279;277;275;274;261;282;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;287;-3200,3712;Inherit;False;767.6833;301.2485;SDF
+    Antialiasing;1;283;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;261;-1344,4240;Inherit;False;184.5;275;Out;1;267;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;274;-2640,4240;Inherit;False;131;130.5;Cutoff;1;276;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;277;-2640,4448;Inherit;False;131;130.5;Gradient;1;278;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;275;-2848,4176;Inherit;False;182.458;100.5503;Cutoff;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;279;-2848,4384;Inherit;False;182.458;100.5503;Gradient;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2816,3792;Inherit;False;285.948;160.8459;;;0,0,0,1;Antialiasing
+    Resolution Independent$$Creates a sharp, anti-aliased edge from an input SDF
+    or gradient regardless of the distance or angle of the camera from the surface.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;286;-1120,4160;Inherit;False;192;117.5;Out;;0.07075471,0.07075471,0.07075471,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;276;-2624,4288;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;278;-2624,4496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;281;-2496,4496;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;280;-2496,4384;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;271;-2448,4288;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LengthOpNode;262;-1968,4368;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;263;-2112,4368;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DdxOpNode;264;-2240,4368;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DdyOpNode;265;-2240,4448;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;266;-1792,4288;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;272;-2848,4496;Inherit;False;Gradient;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;270;-2848,4288;Inherit;False;Cutoff;1;1;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;268;-1664,4288;Inherit;False;2;0;FLOAT;0.5;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode;269;-1504,4288;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;282;-3136,4496;Inherit;False;LS
+    SDF Linear Gradient;-1;;1;5fb69c5d8950a3642ab32bc81d65d552;2,325,0,337,0;1;319;FLOAT2;0,0;False;2;FLOAT;327;FLOAT;328\nNode;AmplifyShaderEditor.RelayNode;267;-1328,4288;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;289;-3200,3456;Inherit;False;647.0379;160.3304;Credits;;0,0,0,0.5019608;Method
+    by:$Ben Cloward$$Tutorial Link: $https://www.youtube.com/watch?v=sZBzg-v9d04&t=761s$$;0;0\nNode;AmplifyShaderEditor.FunctionOutput;285;-1120,4288;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;276;0;270;0\nWireConnection;278;0;272;0\nWireConnection;281;0;278;0\nWireConnection;280;0;281;0\nWireConnection;271;0;276;0\nWireConnection;271;1;280;0\nWireConnection;262;0;263;0\nWireConnection;263;0;264;0\nWireConnection;263;1;265;0\nWireConnection;264;0;271;0\nWireConnection;265;0;271;0\nWireConnection;266;0;271;0\nWireConnection;266;1;262;0\nWireConnection;272;0;282;327\nWireConnection;268;1;266;0\nWireConnection;269;0;268;0\nWireConnection;267;0;269;0\nWireConnection;285;0;267;0\nASEEND*/\n//CHKSM=7D771BCCA1C6A6966764B25A8A5110C9B3A90204"
+  m_functionName: 
+  m_description: 'Anti-Aliasing
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Helper
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

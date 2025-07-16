@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Hash21Tchou
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19901\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;226;-768,-1024;Inherit;False;769.2892;263.5251;Hash21Tchou;3;230;228;227;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;231;-768,-144;Inherit;False;641.532;820.7632;Unity
+    Hashes.hlsl;3;234;233;232;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;235;224,1408;Inherit;False;967.9185;627.4983;Hash_LegacySine_2_2;2;244;243;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;236;-768,1424;Inherit;False;958.5881;627.4984;Hash_LegacyMod_2_1;2;246;245;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;237;224,768;Inherit;False;970.7581;631.3065;Hash_BetterSine_2_1;2;242;241;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;238;-768,768;Inherit;False;961.4462;629.3962;Hash_LegacySine_2_1;2;240;239;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;250;-768,-704;Inherit;False;765.5173;449.5571;Math;4;248;249;252;251;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;227;-752,-960;Inherit;False;365.4312;132.4119;Based
+    on Unity Core/ShaderLibrary /Hashes.hlsl;;0,0,0,1;Generates a random output value
+    for every unique input value.$$This one receives a Vec2 and outputs a Float.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;228;-208,-960;Inherit;False;150;100;;;0,0,0,1;Input
+    = Vec2$Output = Float;0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;232;-720,-96;Inherit;False;513.1199;284.1359;Hash21Tchou_uint;;0,0,0,1;void
+    Hash_Tchou_2_1_uint(uint2 v, out uint o)${$    // ~6 alu (2 mul)$    v.y ^= 1103515245U@$   
+    v.x += v.y@$    v.x *= v.y@$    v.x ^= v.x >> 5u@$    v.x *= 0x27d4eb2du@$   
+    o = v.x@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;233;-720,224;Inherit;False;514.2061;191.8577;Hash21Tchou_float;;0,0,0,1;void
+    Hash_Tchou_2_1_float(float2 i, out float o)${$    uint r@$    uint2 v = (uint2)
+    (int2) round(i)@$    Hash_Tchou_2_1_uint(v, r)@$    o = (r >> 8) * (1.0 / float(0x00ffffff))@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;234;-720,464;Inherit;False;514.6605;179.358;Hash21Tchou_half;;0,0,0,1;void
+    Hash_Tchou_2_1_half(half2 i, out half o)${$    uint r@$    uint2 v = (uint2)
+    (int2) round(i)@$    Hash_Tchou_2_1_uint(v, r)@$    o = (r >> 8) * (1.0 / float(0x00ffffff))@$}$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;239;-736,816;Inherit;False;894.3423;265.8848;Hash_LegacySine_2_1_float;;0,0,0,1;void
+    Hash_LegacySine_2_1_float(float2 i, out float o)${$    float angle = dot(i, float2(12.9898,
+    78.233))@$#if defined(SHADER_API_MOBILE) && (defined(SHADER_API_GLES3) || defined(SHADER_API_VULKAN)
+    || defined(SHADER_API_WEBGPU))$    // 'sin()' has bad precision on Mali GPUs
+    for inputs > 10000$    angle = fmod(angle, TWO_PI)@ // Avoid large inputs to
+    sin()$#endif$    o = frac(sin(angle)*43758.5453)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;240;-736,1104;Inherit;False;892.5466;255.0035;Hash_LegacySine_2_1_half;;0,0,0,1;void
+    Hash_LegacySine_2_1_half(half2 i, out half o)${$    half angle = dot(i, half2(12.9898,
+    78.233))@$#if defined(SHADER_API_MOBILE) && (defined(SHADER_API_GLES3) || defined(SHADER_API_VULKAN)
+    || defined(SHADER_API_WEBGPU))$    // 'sin()' has bad precision on Mali GPUs
+    for inputs > 10000$    angle = fmod(angle, TWO_PI)@ // Avoid large inputs to
+    sin()$#endif$    o = frac(sin(angle)*43758.5453)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;241;256,816;Inherit;False;895.0191;257.7597;Hash_BetterSine_2_1_float;;0,0,0,1;void
+    Hash_BetterSine_2_1_float(float2 i, out float o)${$    float angle = dot(i, float2(12.9898,
+    78.233) / 1000.0f)@$#if defined(SHADER_API_MOBILE) && (defined(SHADER_API_GLES3)
+    || defined(SHADER_API_VULKAN) || defined(SHADER_API_WEBGPU))$    // 'sin()' has
+    bad precision on Mali GPUs for inputs > 10000$    angle = fmod(angle, TWO_PI)@
+    // Avoid large inputs to sin()$#endif$    o = frac(sin(angle)*43758.5453)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;242;256,1104;Inherit;False;894.1277;253.4222;Hash_BetterSine_2_1_half;;0,0,0,1;void
+    Hash_BetterSine_2_1_half(half2 i, out half o)${$    float angle = dot(i, half2(12.9898,
+    78.233) / 1000.0f)@$#if defined(SHADER_API_MOBILE) && (defined(SHADER_API_GLES3)
+    || defined(SHADER_API_VULKAN) || defined(SHADER_API_WEBGPU))$    // 'sin()' has
+    bad precision on Mali GPUs for inputs > 10000$    angle = fmod(angle, TWO_PI)@
+    // Avoid large inputs to sin()$#endif$    o = frac(sin(angle)*43758.5453)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;243;256,1456;Inherit;False;894.3941;254.7074;Hash_LegacySine_2_2_float;;0,0,0,1;void
+    Hash_LegacySine_2_2_float(float2 i, out float2 o)${$    float2x2 m = float2x2(15.27,
+    47.63, 99.41, 89.98)@$    float2 angles = mul(i, m)@$#if defined(SHADER_API_MOBILE)
+    && (defined(SHADER_API_GLES3) || defined(SHADER_API_VULKAN) || defined(SHADER_API_WEBGPU))$   
+    // 'sin()' has bad precision on Mali GPUs for inputs > 10000$    angles = fmod(angles,
+    TWO_PI)@ // Avoid large inputs to sin()$#endif$    o = frac(sin(angles))@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;244;256,1744;Inherit;False;897.0191;256.649;Hash_LegacySine_2_2_half;;0,0,0,1;void
+    Hash_LegacySine_2_2_half(half2 i, out half2 o)${$    half2x2 m = half2x2(15.27,
+    47.63, 99.41, 89.98)@$    half2 angles = mul(i, m)@$#if defined(SHADER_API_MOBILE)
+    && (defined(SHADER_API_GLES3) || defined(SHADER_API_VULKAN) || defined(SHADER_API_WEBGPU))$   
+    // 'sin()' has bad precision on Mali GPUs for inputs > 10000$    angles = fmod(angles,
+    TWO_PI)@ // Avoid large inputs to sin()$#endif$    o = frac(sin(angles))@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;245;-736,1472;Inherit;False;895.2796;255.2906;Hash_LegacyMod_2_1_float;;0,0,0,1;void
+    Hash_LegacyMod_2_1_float(float2 i, out float o)${$    // Permutation and hashing
+    used in webgl-nosie goo.gl/pX7HtC$    i = i % 289@$    // need full precision,
+    otherwise half overflows when p > 1$    float x = float(34 * i.x + 1) * i.x %
+    289 + i.y@$    x = (34 * x + 1) * x % 289@$    x = frac(x / 41) * 2 - 1@$   
+    o = x@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null;246;-736,1760;Inherit;False;892.8028;252.4323;Hash_LegacyMod_2_1_half;;0,0,0,1;void
+    Hash_LegacyMod_2_1_half(half2 i, out half o)${$    // Permutation and hashing
+    used in webgl-nosie goo.gl/pX7HtC$    i = i % 289@$    // need full precision,
+    otherwise half overflows when p > 1$    float x = float(34 * i.x + 1) * i.x %
+    289 + i.y@$    x = (34 * x + 1) * x % 289@$    x = frac(x / 41) * 2 - 1@$   
+    o = x@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode, AmplifyShaderEditor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null;251;-736,-512;Inherit;False;354.3876;225.4534;Hash21Tchou;;0,0,0,1;uint
+    r@$uint2 v = (uint2) (int2) round(In)@$v.y ^= 1103515245U@$v.x += v.y@$v.x *=
+    v.y@                        $v.x ^= v.x >> 5u@             $v.x *= 0x27d4eb2du@    
+    $r = v.x@$Hash = r * (1.0 / float(0xffffffff))@$return Hash@;0;0\nNode;AmplifyShaderEditor.CustomExpressionNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;252;-576,-640;Inherit;False;uint
+    r@$uint2 v = (uint2) (int2) round(In)@$v.y ^= 1103515245U@$v.x += v.y@$v.x *=
+    v.y@                        $v.x ^= v.x >> 5u@             $v.x *= 0x27d4eb2du@    
+    $r = v.x@$Hash = r * (1.0 / float(0xffffffff))@$return Hash@;1;Create;2;True;Hash;FLOAT;0;Out;;Inherit;False;True;In;FLOAT2;0,0;In;;Inherit;False;Hash21Tchou;True;False;0;;False;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;2;FLOAT;0;FLOAT;1\nNode;AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;249;-736,-640;Inherit;False;In;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.CustomExpressionNode,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;230;-368,-960;Inherit;False;uint
+    r@$uint2 v = (uint2) (int2) round(In)@$v.y ^= 1103515245U@$v.x += v.y@$v.x *=
+    v.y@                        $v.x ^= v.x >> 5u@             $v.x *= 0x27d4eb2du@    
+    $r = v.x@$Hash = r * (1.0 / float(0xffffffff))@$return Hash@;1;Create;2;True;Hash;FLOAT;0;Out;;Inherit;False;True;In;FLOAT2;0,0;In;;Inherit;False;Hash21Tchou;True;False;0;;False;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;2;FLOAT;0;FLOAT;1\nNode;AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;248;-384,-640;Inherit;False;True;-1;Hash;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;252;1;249;0\nWireConnection;248;0;252;1\nASEEND*/\n//CHKSM=4D4E45BDFAC766A4BE05E584852DF9C27F299D75"
+  m_functionName: 
+  m_description: 'Hash21Tchou
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0, g: 0, b: 0, a: 1}
+  m_customNodeCategory: LS Noise
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

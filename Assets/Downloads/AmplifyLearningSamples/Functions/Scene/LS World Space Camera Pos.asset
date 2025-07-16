@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS World Space Camera Pos
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;63;-640,-1024;Inherit;False;780;395;Camera
+    position in world space;4;59;60;61;62;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;58;-640,-1408;Inherit;False;838.4305;311.6;World
+    Space Camera Pos Node;3;56;64;57;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;65;-640,-576;Inherit;False;1152.421;685.7173;Creating
+    Vectors;9;74;73;72;71;70;69;68;67;66;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;57;-608,-1344;Inherit;False;145.9305;111.6742;;;0,0,0,1;World
+    Space Camera Pos Node;0;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;59;-592,-976;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;60;-528,-816;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;61;-304,-976;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;62;-128,-976;Inherit;True;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;64;-176,-1344;Inherit;False;343;131;;;0,0,0,1;_WorldSpaceCameraPos$$Returns
+    the camera position in world space$;0;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;56;-432,-1344;Inherit;True;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.StickyNoteNode;66;-608,-528;Inherit;False;263;133;World
+    Space Camera Pos Node;;0,0,0,1;The World Space Camera Pos node outputs the current
+    camera position in world space.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;67;208,-528;Inherit;False;274.2001;146.5;;;0,0,0,1;Creates
+    a vector from the camera to the object currently being rendered $$- unique for
+    each object.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;68;208,-208;Inherit;False;291.7999;140;;;0,0,0,1;Creates
+    a vector from the camera to the pixel currently being rendered $$- unique for
+    each pixel.;0;0\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;69;-320,-528;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;70;0,-528;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.PosVertexDataNode;71;-256,-384;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;72;0,-208;Inherit;True;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;73;-256,-48;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceCameraPos;74;-320,-208;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;0;-640,-1504;Inherit;False;True;-1;Out;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;61;0;59;0\nWireConnection;61;1;60;0\nWireConnection;62;0;61;0\nWireConnection;70;0;69;0\nWireConnection;70;1;71;0\nWireConnection;72;0;74;0\nWireConnection;72;1;73;0\nASEEND*/\n//CHKSM=6F7DBD524290110721B526F682FC5CE20257FDE9"
+  m_functionName: 
+  m_description: 'World Space Camera Pos Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

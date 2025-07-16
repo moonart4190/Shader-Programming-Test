@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Gradient Linear
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;345;-3840,4224;Inherit;False;1825;736;Math;25;330;302;333;298;299;304;320;335;342;341;339;344;340;343;338;323;319;325;337;321;336;326;328;327;318;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;330;-2512,4352;Inherit;False;190.689;267.5996;U;1;329;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;302;-3392,4352;Inherit;False;132.5;128;UV;1;301;;0.0754717,0.0754717,0.0754717,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;333;-2512,4656;Inherit;False;190.689;267.5996;V;1;334;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;298;-2288,4272;Inherit;False;221;110.5;U;;0,0,0,1;Horizontal
+    Gradient;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;299;-2288,4576;Inherit;False;221;110.5;V;;0,0,0,1;Vertical
+    Gradient;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;304;-2992,4512;Inherit;False;170.8128;100.7744;Invert
+    U;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;320;-3600,4288;Inherit;False;160.4785;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;335;-3008,4800;Inherit;False;183.0628;100.5;Invert
+    V;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.RelayNode;301;-3376,4400;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;342;-3232,4464;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;341;-3232,4464;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;339;-3232,4672;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;344;-3232,4464;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;340;-3200,4704;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;343;-3232,4736;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.OneMinusNode;338;-3168,4752;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.OneMinusNode;323;-3168,4464;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RelayNode;329;-2496,4400;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;334;-2496,4704;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;319;-3568,4400;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionSwitch;325;-2992,4400;Inherit;False;Invert
+    U;True;0;2;-1;In 0;In 1;Object;-1;10;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionSwitch;337;-3008,4688;Inherit;False;Invert
+    V;True;0;2;-1;In 0;In 1;Object;-1;10;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;336;-2784,4688;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.OneMinusNode;326;-2656,4704;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;318;-3792,4400;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;346;-3840,3904;Inherit;False;706.1434;286.771;SDF
+    Gradient Linear;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;347;-3488,3968;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;Uses
+    the input UV coordinates to create a linear gradient - either horizontal from
+    the U output or vertical from the V output.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;349;-3840,3680;Inherit;False;647.0379;160.3304;Credits;;0,0,0,0.5019608;Method
+    by:$Ben Cloward$$Tutorial Link: $https://www.youtube.com/watch?v=sZBzg-v9d04&t=251s$;0;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;321;-2784,4400;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.FunctionOutput;328;-2288,4704;Inherit;False;True;-1;V;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;327;-2288,4400;Inherit;False;False;-1;U;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;301;0;319;0\nWireConnection;342;0;301;0\nWireConnection;341;0;301;0\nWireConnection;339;0;341;0\nWireConnection;344;0;301;0\nWireConnection;340;0;339;0\nWireConnection;343;0;342;0\nWireConnection;338;0;343;0\nWireConnection;323;0;344;0\nWireConnection;329;0;321;0\nWireConnection;334;0;326;0\nWireConnection;319;0;318;0\nWireConnection;325;0;301;0\nWireConnection;325;1;323;0\nWireConnection;337;0;340;0\nWireConnection;337;1;338;0\nWireConnection;336;0;337;0\nWireConnection;326;0;336;1\nWireConnection;321;0;325;0\nWireConnection;328;0;334;0\nWireConnection;327;0;329;0\nASEEND*/\n//CHKSM=92F8EDA68B15627D67B712F41761E602B0BB888E"
+  m_functionName: 
+  m_description: 'Linear Gradient
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Gradient
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Vertex Tangent
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;28;-640,-800;Inherit;False;652.5576;525.7715;Vertex
+    Tangent Node;4;62;63;27;64;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-352,-736;Inherit;False;327.2793;167.8196;ase_tangentOS.xyz;;0,0,0,1;The
+    Vertex Tangent node outputs the vertex tangent vector in object space. An interpolated
+    value is outputted if connected to ports other than Vertex Offset or Vertex Norma;0;0\nNode;AmplifyShaderEditor.TangentVertexDataNode;63;-592,-512;Inherit;True;1;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TangentVertexDataNode;62;-576,-736;Inherit;True;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;64;-352,-512;Inherit;False;327.2793;167.8196;ase_tangentOS;;0,0,0,1;The
+    Vertex Tangent node outputs the vertex tangent vector in object space. An interpolated
+    value is outputted if connected to ports other than Vertex Offset or Vertex Norma;0;0\nNode;AmplifyShaderEditor.FunctionOutput;29;-640,-896;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nASEEND*/\n//CHKSM=69BE5248D39D5A9290629EA472DB9F47B67EA153"
+  m_functionName: 
+  m_description: 'Vertex Tangent Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.627451, g: 0.05490196, b: 0.14117648, a: 1}
+  m_customNodeCategory: LS Vertex Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

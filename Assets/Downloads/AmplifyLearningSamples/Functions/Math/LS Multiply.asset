@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Multiply
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;137;-512,672;Inherit;False;897.072;731.6981;Expands
+    0-1 Range to -1 to 1 Range;10;142;141;138;139;144;133;134;136;130;131;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;123;-512,224;Inherit;False;1041.1;405;Adjusting
+    a Value Range;7;120;109;104;119;118;122;121;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;78;-512,-128;Inherit;False;1043.8;326.9;Animated
+    UV Scaling;7;101;100;99;98;97;96;72;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-512,-512;Inherit;False;1023.947;336.7244;Multiply
+    Node;2;95;19;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;124;544,-128;Inherit;False;722.9584;483.2379;Multiplying
+    two textures (Commutative);4;128;127;126;129;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;-272,-448;Inherit;False;639.9764;191.7773;;;0,0,0,1;The
+    Multiply Node is used to multiply to values together. Multiply is the most basic
+    and commonly used operation. It can be used for Floats, Vectors, and Matrices.$$If
+    both inputs are a vector type, the output type will be a vector type with the
+    same dimension as the evaluated type of those inputs. If both inputs are a matrix
+    type, the output type will be a matrix type with the same dimension as the evaluated
+    type of those inputs. If one input is a vector type and the other is a matrix
+    type, then output type will be a vector with the same dimension as the vector
+    type input.;0;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;72;-464,-80;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;95;-464,-448;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;96;-464,64;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;97;-288,64;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;98;-160,-80;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;99;0,-80;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;8,8;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FractNode;100;208,-80;Inherit;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;101;-128,32;Inherit;False;257;116;;;0,0,0,1;Multiply
+    can be used to scale UV coordinates up or down.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;121;-192,496;Inherit;False;178;100;;;0,0,0,1;The
+    original value range is -1 to 1.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;122;32,496;Inherit;False;484.3999;102;;;0,0,0,1;Multiplying
+    by 0.5 and adding 0.5 shifts the value range to 0 to 1.;0;0\nNode;AmplifyShaderEditor.DotProductOpNode;118;-192,272;Inherit;True;2;0;FLOAT3;1,1,1;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;119;32,272;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WorldNormalVector;104;-432,272;Inherit;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;109;-464,416;Inherit;False;True;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.SimpleAddOpNode;120;272,272;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;126;912,144;Inherit;False;328.9083;144.4348;;;0,0,0,1;Multiplication
+    is commutative so value's order is not important but, matrix multiplication is
+    not commutative and order is important. Keep that in mind when doing matrix multiplications;0;0\nNode;AmplifyShaderEditor.SamplerNode;127;592,-80;Inherit;True;Property;_TextureSample1;Texture
+    Sample 1;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;128;592,128;Inherit;True;Property;_TextureSample2;Texture
+    Sample 1;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;131;-224,720;Inherit;True;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;130;48,720;Inherit;True;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector2Node;136;-448,720;Inherit;False;Constant;_Vector0;Vector
+    0;2;0;Create;True;0;0;0;False;0;False;5,5;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.RangedFloatNode;134;-416,848;Inherit;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;0;False;0;False;2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;133;-176,944;Inherit;False;Constant;_Float1;Float
+    1;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector4Node;144;-448,1040;Inherit;False;Constant;_Vector1;Vector
+    1;2;0;Create;True;0;0;0;False;0;False;5,5,5,5;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;139;-208,1040;Inherit;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;138;48,1040;Inherit;True;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.RangedFloatNode;141;-160,1264;Inherit;False;Constant;_Float2;Float
+    1;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;142;-416,1232;Inherit;False;Constant;_Float3;Float
+    0;0;0;Create;True;0;0;0;False;0;False;2;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;129;928,-80;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-512,-608;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;97;0;96;0\nWireConnection;98;0;72;0\nWireConnection;98;1;97;0\nWireConnection;99;0;98;0\nWireConnection;100;0;99;0\nWireConnection;118;0;104;0\nWireConnection;118;1;109;0\nWireConnection;119;0;118;0\nWireConnection;120;0;119;0\nWireConnection;131;0;136;0\nWireConnection;131;1;134;0\nWireConnection;130;0;131;0\nWireConnection;130;1;133;0\nWireConnection;139;0;144;0\nWireConnection;139;1;142;0\nWireConnection;138;0;139;0\nWireConnection;138;1;141;0\nWireConnection;129;0;127;0\nWireConnection;129;1;128;0\nASEEND*/\n//CHKSM=9366AA5976C17F29EFBA0017B49A9EFF29306FB7"
+  m_functionName: 
+  m_description: 'Multiply Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

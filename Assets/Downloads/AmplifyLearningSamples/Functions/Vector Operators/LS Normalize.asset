@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Normalize
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;27;0,-416;Inherit;False;1109.36;569.536;Math;11;22;11;21;20;19;16;15;14;17;24;23;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;0,-768;Inherit;False;836.5756;277;Normalize
+    Node;2;8;25;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;8;288,-720;Inherit;False;512.5756;198.6996;;;0,0,0,1;The
+    Normalize Node change the length or magnitude of a vector to unit length.$$Many
+    vector operations (dot product for example) require that input vectors all be
+    the same length. $$The Normalize node can be used to ensure that this is the
+    case.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;23;48,-368;Inherit;False;267.3795;121.3415;In;;0,0,0,1;results
+    can return NaN if a vector has zero lenght. Do not use a Normalizevalue of 0,0,0.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;24;672,-64;Inherit;False;387;141.7;Performance
+    optimization:;;0,0,0,1;Normalize node can sometimes be left out. For each use
+    of the Normalize nodes in your shader, check to see if you can see a visual difference
+    with them. If the visual difference is not noticeable, leave the Normalize node
+    out to slightly improve performance.$$;0;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;17;208,-160;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;14;384,-160;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;15;384,-64;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;16;384,32;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;19;544,-160;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;20;672,-160;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SqrtOpNode;21;800,-160;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;11;48,-224;Inherit;False;In;3;0;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;22;944,-224;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-512,-768;Inherit;False;450.3;210.5;Reference
+    Implementation;;0,0,0,1;normalize for a float3 vector could be implemented like
+    this.$$float3 normalize(float3 v)${$  return rsqrt(dot(v,v))*v@$};0;0\nNode;AmplifyShaderEditor.NormalizeNode;25;48,-720;Inherit;True;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;7;0,-896;Inherit;False;True;-1;OUT;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;17;0;11;0\nWireConnection;14;0;17;0\nWireConnection;14;1;17;0\nWireConnection;15;0;17;1\nWireConnection;15;1;17;1\nWireConnection;16;0;17;2\nWireConnection;16;1;17;2\nWireConnection;19;0;14;0\nWireConnection;19;1;15;0\nWireConnection;20;0;19;0\nWireConnection;20;1;16;0\nWireConnection;21;0;20;0\nWireConnection;22;0;11;0\nWireConnection;22;1;21;0\nASEEND*/\n//CHKSM=BFEF7986AE164BEE4B3AF61E64C794D0D7EA8615"
+  m_functionName: 
+  m_description: 'Normalize Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    32-63'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.21960784, g: 0.19607843, b: 0.44705883, a: 1}
+  m_customNodeCategory: LS Vector Operators
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

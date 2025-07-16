@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Background 80s Sunset
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;125;-2306,-1252;Inherit;False;2433.04;873.7314;Simple
+    Button;20;0;128;130;153;140;139;157;164;161;159;141;156;155;129;158;137;138;154;120;11;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;11;-320,-864;Inherit;False;178.5;266.5;BaseColor;1;10;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;120;-96,-960;Inherit;False;192.7798;122.5191;BaseColor;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;126;-2304,-1568;Inherit;False;706.1434;286.771;Procedural
+    Animated 80s Sunset;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;127;-1952,-1504;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;;0;0\nNode;AmplifyShaderEditor.LerpOp;154;-640,-816;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionNode;138;-1264,-1104;Inherit;False;LS
+    UI Helper Anti-Aliasing;-1;;116;ffacdb73fd748ca4f854ddd9ef6a6e47;0;2;272;FLOAT;0;False;270;FLOAT;0;False;1;FLOAT;285\nNode;AmplifyShaderEditor.FunctionNode;137;-1584,-1152;Inherit;True;LS
+    UI Pattern Square Tiles;-1;;118;27c21e3e650658041a2d3714035b0196;0;5;431;FLOAT2;0,0;False;428;FLOAT2;4,32;False;427;FLOAT2;0.93,0.93;False;433;FLOAT;0.1;False;480;FLOAT;0;False;5;FLOAT;491;FLOAT;487;FLOAT;493;FLOAT;484;FLOAT2;512\nNode;AmplifyShaderEditor.WireNode;158;-704,-800;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;10;-304,-816;Inherit;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionNode;129;-1856,-1152;Inherit;False;LS
+    UI UV Move;-1;;127;91744ba6a18f4a342a6d317c105fa510;0;3;255;FLOAT2;0,0;False;263;FLOAT;0;False;284;FLOAT;0;False;2;FLOAT2;281;FLOAT2;267\nNode;AmplifyShaderEditor.WireNode;155;-960,-1056;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;156;-960,-960;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;141;-896,-1120;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;159;-704,-1056;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;161;-480,-816;Inherit;False;True;2;0;COLOR;0,0,0,0;False;1;FLOAT;2.2;False;1;COLOR;0\nNode;AmplifyShaderEditor.StickyNoteNode;162;-2304,-1792;Inherit;False;647.0379;160.3304;Credits;;0,0,0,0.5019608;Method
+    by:$Ben Cloward$$Tutorial Link: $https://www.youtube.com/watch?v=rSn7lUWUN0E$;0;0\nNode;AmplifyShaderEditor.FunctionNode;164;-912,-816;Inherit;True;LS
+    UI Gradient;-1;;61509;a9a7274f07de2ef409c3d5ba4ca1b0b1;1,444,6;1;361;FLOAT;0;False;1;COLOR;327\nNode;AmplifyShaderEditor.ColorNode;157;-944,-592;Inherit;False;Constant;_Color0;Color
+    0;0;1;[HDR];Create;True;0;0;0;False;0;False;0.7413898,0.007799992,0.78,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionNode;139;-1232,-960;Inherit;False;LS
+    UI Pattern Bars;-1;;61512;e8dd124e32d992e4db000539752fdb1a;0;2;431;FLOAT2;0,0;False;433;FLOAT;2;False;2;FLOAT;452;FLOAT;485\nNode;AmplifyShaderEditor.FunctionNode;140;-1584,-848;Inherit;False;LS
+    UI Gradient Linear;-1;;61513;5fb69c5d8950a3642ab32bc81d65d552;2,325,0,337,0;1;319;FLOAT2;0,0;False;2;FLOAT;327;FLOAT;328\nNode;AmplifyShaderEditor.OneMinusNode;153;-1088,-816;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;130;-2112,-976;Inherit;False;LS
+    UI Time Linear;-1;;61514;77fa64ff7b338574b9d2881f22ab2a7a;0;2;301;FLOAT;0;False;255;FLOAT;0.1;False;3;FLOAT;281;FLOAT;294;FLOAT;307\nNode;AmplifyShaderEditor.FunctionNode;128;-2144,-1152;Inherit;False;LS
+    UI UV Perspective;-1;;61515;ba8998edafb985641ab73236913f7fcb;0;5;425;FLOAT2;0,0;False;428;FLOAT;-90;False;444;FLOAT;0.9;False;468;FLOAT;0;False;472;FLOAT;0.2;False;2;FLOAT2;421;FLOAT;454\nNode;AmplifyShaderEditor.FunctionOutput;0;-96,-816;Inherit;False;True;-1;BaseColor;0;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nWireConnection;154;0;164;327\nWireConnection;154;1;157;0\nWireConnection;154;2;158;0\nWireConnection;138;272;137;493\nWireConnection;137;431;129;281\nWireConnection;158;0;159;0\nWireConnection;10;0;161;0\nWireConnection;129;255;128;421\nWireConnection;129;284;130;281\nWireConnection;155;0;156;0\nWireConnection;156;0;139;485\nWireConnection;141;0;155;0\nWireConnection;141;1;138;285\nWireConnection;159;0;141;0\nWireConnection;161;0;154;0\nWireConnection;164;361;153;0\nWireConnection;139;431;140;328\nWireConnection;153;0;140;328\nWireConnection;0;0;10;0\nASEEND*/\n//CHKSM=2AE23BDB1A20047FA7E0F62B43044CE48420396B"
+  m_functionName: 
+  m_description: 'Procedural Animated 80s Sunset
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Example
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

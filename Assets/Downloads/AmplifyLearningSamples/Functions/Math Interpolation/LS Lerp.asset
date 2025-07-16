@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Lerp
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;37;-896,-448;Inherit;False;1669.333;687.5906;Math;19;40;66;65;46;42;64;41;62;48;44;60;45;59;58;57;20;56;68;69;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;68;544,-320;Inherit;False;190;277.5;Out;1;67;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;56;-128,-320;Inherit;False;130.4764;134.8022;A;1;55;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;36;160,288;Inherit;False;657.7581;584.756;Toggle
+    between two values ;5;35;34;32;31;30;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;29;-896,896;Inherit;False;1024.198;640.9387;Example
+    Masking ;7;26;23;21;51;50;22;28;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;17;-896,288;Inherit;False;1025.761;583.7468;Example
+    Range;6;27;14;13;12;15;16;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;10;-896,-1152;Inherit;False;771.4171;642.0618;Lerp
+    Node - (shortcut: L key );6;11;54;53;52;18;8;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;60;-128,-128;Inherit;False;130.4764;134.8022;B;1;61;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;62;-128,64;Inherit;False;130.4764;134.8022;Alpha;1;63;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;8;-848,-1104;Inherit;False;450.3675;201.8054;;;0,0,0,1;The
+    Lerp Node performs linear interpolation or linear blending between the input
+    values A and B. $$The point on the line between A and B is defined by input Alpha
+    where a Alpha value of 0 will give only input A, a Alpha value of 1 will give
+    only input B, and a Alpha value of 0.5 will give a blend result that's half way
+    between A and B$;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;16;-480,592;Inherit;False;495.0222;151.0063;;;0,0,0,1;In
+    this example, passing in Alpha value of zero would result in Red. Passing in
+    Alpha value of 1 would result in Green. $$Passing in a Alpha value of 0.5 (shown
+    here) results in the 50/50 blend between Red and Green.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;18;-352,-880;Inherit;False;182.9615;108.4408;Out;;0.01886791,0.01886791,0.01886791,1;Results
+    for Interpolator values;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;20;-880,-384;Inherit;False;391.8179;170.3356;Reference
+    Implementation;;0,0,0,1;lerp for float3 vectors for a and b and a float w could
+    be implemented like this:$$float3 lerp(float3 a, float3 b, float w)${$  return
+    a + w*(b-a)@$};0;0\nNode;AmplifyShaderEditor.StickyNoteNode;27;-720,736;Inherit;False;213.0234;114;Interpolator;;0,0,0,1;Usually,
+    it works best if the Alpha value is between zero and one. ;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-480,1168;Inherit;False;275.6931;118.3303;;;0,0,0,1;in
+    this example we see alpha or other channel from a texture used as a mask to define
+    between A and B input values ;0;0\nNode;AmplifyShaderEditor.ColorNode;22;-784,944;Inherit;False;Constant;_Color2;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.StickyNoteNode;30;496,544;Inherit;False;275.6931;118.3303;;;0,0,0,1;Creating
+    a toggle with float were 0 value returns Red and 1 value returns Green;0;0\nNode;AmplifyShaderEditor.ColorNode;31;208,336;Inherit;False;Constant;_Color4;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.LerpOp;34;496,336;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.LerpOp;15;-480,368;Inherit;True;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode;13;-752,512;Inherit;False;Constant;_Color1;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0.2949545,1,0,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;12;-752,368;Inherit;False;Constant;_Color0;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0.0611949,0;0,0,0,0;True;False;0;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;14;-720,656;Inherit;False;Constant;_interpolator;interpolator;0;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;50;-528,1440;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;51;-528,1072;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;21;-480,944;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.StickyNoteNode;52;-848,-880;Inherit;False;190.1061;100;A;;0,0,0,1;First
+    value of the interpolator operation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;53;-848,-752;Inherit;False;194.3051;100;B;;0,0,0,1;Last
+    value of the interpolator operation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;54;-848,-624;Inherit;False;210.196;100;Alpha;;0,0,0,1;Interpolator
+    value$expected range is [0-1];0;0\nNode;AmplifyShaderEditor.LerpOp;11;-592,-880;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;57;-416,-384;Inherit;False;190.1061;100;A;;0,0,0,1;A
+    is the input for the first value of the interpolator operation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;58;-416,-192;Inherit;False;194.3051;100;B;;0,0,0,1;B
+    is the input for the last value of the interpolator operation;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;59;-421.0869,0;Inherit;False;193.7375;107.0349;Alpha;;0,0,0,1;Alpha
+    is the input for Interpolator value$expected range is [0-1];0;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;41;224,-80;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;64;16,16;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;42;416,-272;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.OneMinusNode;46;48,112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;65;192,112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;66;192,-176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;40;240,-272;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;69;544,-32;Inherit;False;182.9615;108.4408;Out;;0.01886791,0.01886791,0.01886791,1;Results
+    for Interpolator values for Lerp;0;0\nNode;AmplifyShaderEditor.ColorNode;32;208,528;Inherit;False;Constant;_Color5;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0.1717489,1,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.RangedFloatNode;35;272,720;Inherit;False;Constant;_MyToggle;My
+    Toggle;1;1;[Toggle];Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.ColorNode;23;-784,1136;Inherit;False;Constant;_Color3;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0.1717489,1,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SamplerNode;26;-848,1328;Inherit;True;Property;_MainTex;BaseColor
+    Map;0;0;Create;False;0;0;0;False;0;False;-1;eb52bc23fc32b054eb23bb72751d2ff5;eb52bc23fc32b054eb23bb72751d2ff5;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionInput;48;-352,112;Inherit;False;Alpha;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;63;-112,112;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;45;-352,-272;Inherit;False;A;3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;55;-112,-272;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;44;-352,-80;Inherit;False;B;3;2;False;1;0;FLOAT3;1,1,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;61;-112,-80;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;67;560,-272;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;49;-896,-1280;Inherit;False;True;-1;Out;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;34;0;31;0\nWireConnection;34;1;32;0\nWireConnection;34;2;35;0\nWireConnection;15;0;12;0\nWireConnection;15;1;13;0\nWireConnection;15;2;14;0\nWireConnection;50;0;26;4\nWireConnection;51;0;50;0\nWireConnection;21;0;22;0\nWireConnection;21;1;23;0\nWireConnection;21;2;51;0\nWireConnection;41;0;61;0\nWireConnection;41;1;64;0\nWireConnection;64;0;63;0\nWireConnection;42;0;40;0\nWireConnection;42;1;41;0\nWireConnection;46;0;63;0\nWireConnection;65;0;46;0\nWireConnection;66;0;65;0\nWireConnection;40;0;55;0\nWireConnection;40;1;66;0\nWireConnection;63;0;48;0\nWireConnection;55;0;45;0\nWireConnection;61;0;44;0\nWireConnection;67;0;42;0\nASEEND*/\n//CHKSM=D9B262785CBA25BECA04D2D4491920BABEF4C897"
+  m_functionName: 
+  m_description: 'Lerp Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    4-7'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Interpolation
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

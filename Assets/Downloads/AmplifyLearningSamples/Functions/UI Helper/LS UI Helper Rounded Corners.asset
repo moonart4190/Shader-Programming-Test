@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Helper Rounded Corners
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;259;-2944,2688;Inherit;False;2331.08;647.0178;Math;23;260;250;262;263;214;215;144;145;150;146;261;255;143;149;138;139;141;142;258;251;236;253;256;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;256;-2528,2848;Inherit;False;129.9832;127.791;UV;1;254;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;253;-2096,3072;Inherit;False;131;130.5;Corner
+    Radii;1;252;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;236;-1072,2832;Inherit;False;185.3303;276.875;Corners;1;235;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;251;-864,2736;Inherit;False;205.5;120.5;Corners;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;258;-2320,3008;Inherit;False;182.458;100.5503;Corner
+    Radii;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.SaturateNode;142;-1888,2896;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.CeilOpNode;141;-2016,2896;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;139;-2176,2896;Inherit;False;2;0;FLOAT2;0,0;False;1;FLOAT2;1,1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;138;-2336,2896;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;2,2;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.LerpOp;149;-1232,2880;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;143;-1712,2896;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RelayNode;254;-2512,2896;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;255;-2688,2896;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;261;-2704,2784;Inherit;False;150;100;UV;;0,0,0,1;input
+    UV coordinates;0;0\nNode;AmplifyShaderEditor.LerpOp;146;-1552,3120;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;150;-1392,3120;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.DynamicAppendNode;145;-1744,3216;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;144;-1744,3120;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;215;-1920,3120;Inherit;False;FLOAT4;1;0;FLOAT4;0,0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.RelayNode;252;-2080,3120;Inherit;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.WireNode;263;-1600,3136;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;262;-1600,2976;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;260;-2912,2896;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;264;-2944,2336;Inherit;False;706.1434;286.771;Rounded
+    Corners;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;265;-2592,2400;Inherit;False;256.5;159;;;0.0235849,0.0235849,0.0235849,1;Generates
+    the rounded corners for SDF shapes.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;266;-2944,2144;Inherit;False;647.0379;160.3304;Credits;;0,0,0,0.5019608;Method
+    by:$Ben Cloward$$Tutorial Link: $https://www.youtube.com/watch?v=fDjEq30dwNM&t=1254s$;0;0\nNode;AmplifyShaderEditor.RelayNode;235;-1056,2880;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;214;-2304,3120;Inherit;False;Corner
+    Radii;4;1;False;1;0;FLOAT4;0.2,0.1,0.3,0.5;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;250;-864,2880;Inherit;False;True;-1;Corners;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;142;0;141;0\nWireConnection;141;0;139;0\nWireConnection;139;0;138;0\nWireConnection;138;0;254;0\nWireConnection;149;0;150;0\nWireConnection;149;1;150;1\nWireConnection;149;2;143;1\nWireConnection;143;0;142;0\nWireConnection;254;0;255;0\nWireConnection;255;0;260;0\nWireConnection;146;0;144;0\nWireConnection;146;1;145;0\nWireConnection;146;2;263;0\nWireConnection;150;0;146;0\nWireConnection;145;0;215;2\nWireConnection;145;1;215;3\nWireConnection;144;0;215;0\nWireConnection;144;1;215;1\nWireConnection;215;0;252;0\nWireConnection;252;0;214;0\nWireConnection;263;0;262;0\nWireConnection;262;0;143;0\nWireConnection;235;0;149;0\nWireConnection;250;0;235;0\nASEEND*/\n//CHKSM=90CA5654D42B362219FFFA6E85769B4CB3B6A6AE"
+  m_functionName: 
+  m_description: 'Rounded Corners
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Helper
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

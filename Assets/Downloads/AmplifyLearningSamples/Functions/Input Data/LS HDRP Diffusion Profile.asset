@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS HDRP Diffusion Profile
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;3928;-12191.7,-930.998;Inherit;False;1360.824;644.0593;HDRP
+    Diffusion Profile;9;3941;3940;3938;3936;3934;3933;3932;3930;3929;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3929;-11679.7,-610.998;Inherit;False;346.478;290.0705;Register
+    Inline and return 0;2;3939;3931;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3930;-11311.7,-626.998;Inherit;False;132.3525;126.7893;Diffusion
+    Profile;1;3935;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;3931;-11663.7,-498.998;Inherit;False;183.15;161.65;Return
+    0;1;3937;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3932;-11935.7,-706.998;Inherit;False;222.7021;100;Diffusion
+    Profile;;0,0,0,1;_DiffusionProfileHash;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;3933;-11423.7,-866.998;Inherit;False;499.4506;218.191;Diffusion
+    Profile;;0.0471698,0.0471698,0.0471698,1;Assign a Diffusion Profile to drive
+    the behavior of subsurface scattering. To quickly view the currently selected
+    Diffusion Profile\u2019s Inspector, double click the Diffusion Profile Asset
+    in the assign field. If you do not assign a Diffusion Profile, HDRP does not
+    process the subsurface scattering.$$$This property only appears when you select
+    Subsurface Scattering or Translucent from the Material Type drop-down.;0;0\nNode;AmplifyShaderEditor.RelayNode;3935;-11295.7,-578.998;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3936;-11791.7,-466.998;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3937;-11615.7,-466.998;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3938;-12111.7,-466.998;Inherit;False;Property;_CATEGORY_DIFFUSIONPROFILE;CATEGORY_DIFFUSIONPROFILE;0;0;Create;True;0;0;0;False;1;LS_DrawerCategory(DIFFUSION
+    PROFILE,true,_DiffusionProfileHash,0,0);False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3939;-11439.7,-578.998;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;3940;-12111.7,-386.998;Inherit;False;Property;_CATEGORYSPACE_DIFFUSIONPROFILE;CATEGORYSPACE_DIFFUSIONPROFILE;2;0;Create;True;0;0;0;False;1;LS_DrawerCategorySpace(10);False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.DiffusionProfileNode;3934;-11968,-576;Float;False;Property;_DiffusionProfileHash;Diffusion
+    Profile;1;0;Create;False;1;;0;0;False;0;False;0;0;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;3941;-11151.7,-578.998;Inherit;False;True;-1;Diffusion
+    Profile;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;3935;0;3939;0\nWireConnection;3936;0;3938;0\nWireConnection;3936;1;3940;0\nWireConnection;3937;0;3936;0\nWireConnection;3939;0;3934;0\nWireConnection;3939;1;3937;0\nWireConnection;3941;0;3935;0\nASEEND*/\n//CHKSM=CA833DAF5961BA61B0A58F687D96B9B1E0755816"
+  m_functionName: 
+  m_description: 'HDRP Diffusion Profile
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.4745098, g: 0.4117647, b: 0.34117648, a: 1}
+  m_customNodeCategory: LS Input Data
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Object To World Matrix
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;53;-640,-384;Inherit;False;516;259;;2;51;52;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;19;-1024,-800;Inherit;False;1020.5;371.4024;Object
+    To World Matrix Node;4;50;44;36;7;;0.03773582,0.03773582,0.03773582,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-1008,-736;Inherit;False;446.328;124.5;;;0,0,0,1;The
+    Object To World Matrix node outputs the current Model Matrix which can be used
+    to transform either a position or direction vector from object/local space to
+    world space.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;-336,-736;Inherit;False;324.2838;100;Out;;0,0,0,1;unity_ObjectToWorld$Returns
+    current model matrix value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;44;-1008,-592;Inherit;False;446.328;127;NOTE;;0,0,0,1;The
+    Object To World Matrix node outputs the current Model Matrix which can be used
+    to transform either a position or direction vector from object/local space to
+    world space.;0;0\nNode;AmplifyShaderEditor.ObjectToWorldMatrixNode;51;-592,-336;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.PosFromTransformMatrix;52;-368,-336;Inherit;False;1;0;FLOAT4x4;1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ObjectToWorldMatrixNode;50;-544,-736;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1024,-912;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;52;0;51;0\nASEEND*/\n//CHKSM=1880C70B7D7931FA610B348E35445C402C47594B"
+  m_functionName: 
+  m_description: 'Object To World Matrix Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.3529412, g: 0.7019608, b: 0.15686275, a: 1}
+  m_customNodeCategory: LS Matrix Transform
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

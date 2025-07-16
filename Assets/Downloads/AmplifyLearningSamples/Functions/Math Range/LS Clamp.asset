@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Clamp
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;51;-384,480;Inherit;False;967.599;471.6661;Clamped
+    UV;6;90;85;87;86;84;89;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;45;-384,-144;Inherit;False;955.5006;589.6371;Constrain
+    the range of the output between Min and Max;6;82;81;79;83;80;76;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-384,-640;Inherit;False;956.298;460.8828;Clamp
+    Node;5;93;92;91;78;19;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;19;208,-592;Inherit;False;311.507;137.2563;;;0,0,0,1;The
+    Clamp node outputs its Input value or individual components of vectors clamped
+    between the [ Min , Max ] range;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;76;-16,160;Inherit;False;448.8453;116.2594;;;0,0,0,1;In
+    this example the output of the texture is limited to a range between 0.4 (the
+    Min) and 0.6 (the Max). No values outside that range are output from the Clamp
+    node.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;83;-16,288;Inherit;False;445;106;;;0,0,0,1;This
+    is a bit like placing a ceiling and a floor to limit how high and how low the
+    input can go.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;89;-64,672;Inherit;False;233;143;Clamped
+    UV;;0,0,0,1;If each input port have different channel amounts a cast is done
+    to match the one with the most amount of channels.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;91;-336,-592;Inherit;False;278.9142;113.9366;Input;;0,0,0,1;Value
+    to be clamped between the [ Min , Max ] range. Fully outputted when Alpha = 0;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;92;-336,-464;Inherit;False;278.9142;113.9366;Min;;0,0,0,1;Minimum
+    value of the clamp operation, if value is less than Min than this is the returned
+    value.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;93;-336,-336;Inherit;False;278.9142;113.9366;Max;;0,0,0,1;Maximum
+    value of the clamp operation, if value is greater than Max than this is the returned
+    value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;94;-896,-640;Inherit;False;414;197;Reference
+    Implementation;;0,0,0,1;clamp for float scalars could be implemented like this.$$float
+    clamp(float x, float a, float b)${$  return max(a, min(b, x))@$};0;0\nNode;AmplifyShaderEditor.ClampOpNode;78;-16,-592;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;80;-336,-48;Inherit;True;Property;_TextureSample0;Texture
+    Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ClampOpNode;79;0,-48;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.RangedFloatNode;81;-208,144;Inherit;False;Constant;_Float1;Float
+    1;1;0;Create;True;0;0;0;False;0;False;0.4;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;82;-208,224;Inherit;False;Constant;_Float2;Float
+    2;1;0;Create;True;0;0;0;False;0;False;0.6;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;84;-320,544;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.Vector2Node;86;-288,672;Inherit;False;Constant;_Min;Min;1;0;Create;True;0;0;0;False;0;False;0,0.69;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.Vector2Node;87;-272,784;Inherit;False;Constant;_Max;Max;1;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.ClampOpNode;85;-48,544;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT2;1,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SamplerNode;90;192,528;Inherit;True;Property;_TextureSample1;Texture
+    Sample 1;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionOutput;0;-384,-768;Inherit;False;True;-1;Out;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;79;0;80;0\nWireConnection;79;1;81;0\nWireConnection;79;2;82;0\nWireConnection;85;0;84;0\nWireConnection;85;1;86;0\nWireConnection;85;2;87;0\nWireConnection;90;1;85;0\nASEEND*/\n//CHKSM=4108D68C3C2E4FC64595165DB277E94BB79AAC70"
+  m_functionName: 
+  m_description: 'Power Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    8-15'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Range
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

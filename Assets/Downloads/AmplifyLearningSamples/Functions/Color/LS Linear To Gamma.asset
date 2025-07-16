@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Linear To Gamma
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;97;-1280,208;Inherit;False;938.6063;401.9936;;5;92;91;90;95;94;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;94;-1232,320;Inherit;False;126;134.5;RGB;1;93;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;67;-1280,-800;Inherit;False;1385.596;576.685;Linear
+    To Gamma Node;11;81;80;79;78;66;77;72;71;70;69;68;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;83;-1280,-160;Inherit;False;288.7413;282.4602;Fast
+    Linear to sRGB;2;86;84;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;87;-960,-160;Inherit;False;296.2544;281.2081;Exact
+    Linear to sRGB;2;89;88;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;95;-512,320;Inherit;False;126;134.5;RGB;1;96;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;68;-1248,-752;Inherit;False;219.3132;141.1295;;;0,0,0,1;The
+    Linear to Gamma node converts a color value in Linear space to sRGB(Gamma) space
+    space;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;69;-976,-528;Inherit;False;231.9684;114.2371;Fast
+    Linear to sRGB;;0,0,0,1;Fast approximation from Linear to sRGB;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;70;-720,-528;Inherit;False;231.9684;114.2371;Exact
+    Linear to sRGB;;0,0,0,1;A more expensive but exact calculation from Linear to
+    sRGB;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;71;-464,-528;Inherit;False;247.4904;114.2371;Linear
+    to Gamma 2.0 (SRP Only);;0,0,0,1;Crude approximation from Linear to Gamma using
+    a power of 1/2.0 gamma value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;72;-192,-528;Inherit;False;244.3859;114.2371;Linear
+    to Gamma 2.2 (SRP Only);;0,0,0,1;An approximation from Linear to Gamma using
+    a power of 1/2.2 gamma value;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;78;-976,-400;Inherit;False;231.9684;114.2371;;;0,0,0,1;LinearToGammaSpace;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;79;-720,-400;Inherit;False;231.9684;114.2371;;;0,0,0,1;LinearToGammaSpaceExact;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;80;-464,-400;Inherit;False;231.9684;114.2371;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;81;-192,-400;Inherit;False;231.9684;114.2371;;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;84;-1232,-16;Inherit;False;212.0482;104.8456;magic
+    number;;0,0,0,1;2.2;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;88;-912,-16;Inherit;False;212.0482;104.8456;magic
+    number;;0,0,0,1;2.233333;0;0\nNode;AmplifyShaderEditor.PowerNode;89;-912,-112;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;2.233333;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode;86;-1232,-112;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;2.2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LinearToGammaNode;66;-960,-752;Inherit;True;0;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.LinearToGammaNode;77;-704,-752;Inherit;True;1;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StickyNoteNode;90;-832,464;Inherit;False;284;100;UNITY_COLORSPACE_GAMMA;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.LinearToGammaNode;91;-1072,432;Inherit;False;0;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;93;-1216,368;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;96;-496,368;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.StaticSwitch;92;-832,368;Inherit;False;Property;_Keyword0;Keyword
+    0;0;0;Create;True;0;0;0;False;0;False;0;0;0;False;UNITY_COLORSPACE_GAMMA;Toggle;2;Key0;Key1;Fetch;False;True;All;9;1;FLOAT3;0,0,0;False;0;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1280,-896;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;91;0;93;0\nWireConnection;96;0;92;0\nWireConnection;92;1;93;0\nWireConnection;92;0;91;0\nASEEND*/\n//CHKSM=9249EF69F7559995024D77D7849CAB45A1FDA021"
+  m_functionName: 
+  m_description: 'Linear To Gamma Node
+
+
+    Learning Sample'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.30588236, g: 0.5176471, b: 0.16078432, a: 1}
+  m_customNodeCategory: LS Color
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Linear Depth
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;84;-1024,0;Inherit;False;924.3525;406.0808;Linear
+    Depth Node ;5;85;83;82;68;67;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;91;-1024,496;Inherit;False;1170.774;644.1179;Coverts
+    depth Value to Linear space;8;86;104;99;95;93;94;97;105;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;67;-496,48;Inherit;False;380.4605;167.6016;;;0,0,0,1;The
+    Linear Depth node calculates a linear value, usually given from a depth texture.$$Values
+    read from a read texture range between 0 and 1, with a non-linear/logarithmic
+    distribution and must be converted to a linear space to be properly used;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;68;-992,272;Inherit;False;217.8199;108.2254;Eye
+    Space;;0,0,0,1;Returns linear depth on a range between camera's near and far
+    plane;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;82;-720,272;Inherit;False;223.7647;110.2253;0-1
+    Space;;0,0,0,1;Returns linear depth on a range between 0 and 1;0;0\nNode;AmplifyShaderEditor.LinearDepthNode;83;-992,48;Inherit;True;0;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LinearDepthNode;85;-720,48;Inherit;True;1;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;97;-560,560;Inherit;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;94;-720,560;Inherit;False;3;3;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;2;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.ScreenPosInputsNode;93;-944,560;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.ScreenParams;95;-944,736;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TexelSizeNode;99;-944,912;Inherit;False;75;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.LinearDepthNode;86;-64,560;Inherit;True;1;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;105;-720,688;Inherit;False;172.0786;104.7311;;;0.05660379,0.05660379,0.05660379,1;Transform
+    Screen Postion to Tile Image;0;0\nNode;AmplifyShaderEditor.SamplerNode;104;-400,560;Inherit;True;Property;_ScreenTexture;Screen
+    Texture;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionOutput;0;-1024,-96;Inherit;False;True;-1;Out;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nWireConnection;97;0;94;0\nWireConnection;94;0;93;0\nWireConnection;94;1;95;0\nWireConnection;94;2;99;0\nWireConnection;86;0;104;1\nWireConnection;104;1;97;0\nASEEND*/\n//CHKSM=0E8AEF56EE396A759C395EC900EE2AB8C8C96337"
+  m_functionName: 
+  m_description: 'Linear Depth Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.5882353, g: 0.078431375, b: 0.23921569, a: 1}
+  m_customNodeCategory: LS Scene
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS BlinnPhong Half Vector
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;29;-768,-384;Inherit;False;899.7667;446.8666;Math;5;2;1;4;3;38;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;38;-144,-336;Inherit;False;211.4913;273.8101;XYZ;1;37;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;36;-766.5741,128;Inherit;False;1151.843;314.3985;Example;4;33;35;32;34;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-768,-672;Inherit;False;644.3232;258.6967;BlinnPhong
+    Half Vector Node;2;30;23;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;23;-480,-608;Inherit;False;274.134;122.4791;;;0,0,0,1;Calculates
+    the halfway vector between view direction and light direction in world space;0;0\nNode;AmplifyShaderEditor.RangedFloatNode;34;-736,256;Half;False;Property;_NormalStrength;Normal
+    Strength;1;0;Create;True;1;;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;37;-112,-288;Inherit;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3;-432,-288;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;4;-304,-288;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;1;-704,-144;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;2;-672,-288;Float;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionNode;30;-736,-608;Inherit;True;Blinn-Phong
+    Half Vector;-1;;43583;91a149ac9d615be429126c95e20753ce;0;0;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;32;96,176;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;35;-176,256;Inherit;False;Blinn-Phong
+    Half Vector;-1;;43584;91a149ac9d615be429126c95e20753ce;0;0;1;FLOAT3;0\nNode;AmplifyShaderEditor.SamplerNode;33;-496,176;Inherit;True;Property;_BumpMap;Normal
+    Map;0;1;[Normal];Create;False;0;0;0;False;0;False;-1;4acb82e6eb294c04880e2b085274d756;4acb82e6eb294c04880e2b085274d756;True;0;False;white;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.FunctionOutput;5;-768,-768;Inherit;False;True;-1;Out;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;37;0;4;0\nWireConnection;3;0;2;0\nWireConnection;3;1;1;0\nWireConnection;4;0;3;0\nWireConnection;32;0;33;0\nWireConnection;32;1;35;0\nWireConnection;33;5;34;0\nASEEND*/\n//CHKSM=66A0BC8CA27C32201B1D5AE44F2064FC379A5CF8"
+  m_functionName: 
+  m_description: 'BlinnPhong Half Vector Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.7529412, g: 0.6784314, b: 0, a: 1}
+  m_customNodeCategory: LS Lighting Algorithm
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

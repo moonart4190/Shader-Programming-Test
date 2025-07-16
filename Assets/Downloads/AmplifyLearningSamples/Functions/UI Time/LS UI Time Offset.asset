@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS UI Time Offset
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8.1\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19801\nNode;AmplifyShaderEditor.CommentaryNode;259;-2816,2688;Inherit;False;1507.852;773.1332;Math;16;281;255;251;236;256;300;301;303;304;306;307;309;310;311;312;313;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;256;-2256,2864;Inherit;False;129.9832;127.791;In;1;254;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;236;-1728,2864;Inherit;False;185.3303;276.875;Out;1;235;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;304;-2256,3056;Inherit;False;129.9832;127.791;Offset;1;305;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;307;-2080,3200;Inherit;False;129.9832;127.791;Mask;1;308;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;251;-1504,2768;Inherit;False;170.1047;100;Out;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;282;-2816,2336;Inherit;False;706.1434;286.771;Time
+    Offset;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;283;-2464,2400;Inherit;False;315.8291;156.1089;;;0.0235849,0.0235849,0.0235849,1;This
+    node offsets time depending on the value of the input Mask. $$A mask value of
+    1 receives the entire Offset amount and a value of 0 receives no offset.;0;0\nNode;AmplifyShaderEditor.RelayNode;235;-1712,2912;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;300;-1888,2912;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;301;-2080,2992;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;305;-2240,3104;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;254;-2240,2912;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;308;-2064,3248;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;309;-2240,3248;Inherit;False;Mask;1;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RoundOpNode;310;-2400,3248;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;311;-2608,3248;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionNode;303;-2640,2912;Inherit;False;LS
+    UI Time Linear;-1;;2;77fa64ff7b338574b9d2881f22ab2a7a;0;2;301;FLOAT;0;False;255;FLOAT;0.3;False;3;FLOAT;281;FLOAT;294;FLOAT;307\nNode;AmplifyShaderEditor.StickyNoteNode;312;-2435,2784;Inherit;False;141.1047;100;In;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;313;-2432,2992;Inherit;False;141.1047;100;Offset;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionInput;306;-2416,3104;Inherit;False;Offset;1;1;False;1;0;FLOAT;0.2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;255;-2416,2912;Inherit;False;In;1;0;False;1;0;FLOAT;0.2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;281;-1504,2912;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;235;0;300;0\nWireConnection;300;0;254;0\nWireConnection;300;1;301;0\nWireConnection;300;2;308;0\nWireConnection;301;0;254;0\nWireConnection;301;1;305;0\nWireConnection;305;0;306;0\nWireConnection;254;0;255;0\nWireConnection;308;0;309;0\nWireConnection;309;0;310;0\nWireConnection;310;0;311;1\nWireConnection;255;0;303;281\nWireConnection;281;0;235;0\nASEEND*/\n//CHKSM=CE79C179011313A29DCB0BD4111DD37C4779A32A"
+  m_functionName: 
+  m_description: 'Time Offset
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS UI Time
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Inverse Projection Matrix
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;19;-1022.734,-800;Inherit;False;932.186;513.8629;Inverse
+    Projection Matrix Node;5;42;41;40;36;7;;0.03773582,0.03773582,0.03773582,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;7;-992,-736;Inherit;False;327.1324;129.0869;;;0,0,0,1;The
+    Inverse Projection Matrix node returns the inverse projection matrix which can
+    be used to transform a position or direction from Clip to View space.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;36;-992,-592;Inherit;False;326.8848;117.6695;NOTE:;;0,0,0,1;This
+    node is only available on URP/HDRP shader types as only there this matrix is
+    made available over its libraries;0;0\nNode;AmplifyShaderEditor.InverseProjectionMatrixNode;40;-640,-736;Inherit;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.StickyNoteNode;41;-992,-464;Inherit;False;328.4935;139.7563;NOTE:;;0,0,0,1;We
+    advise using either the Transform Position or Transform Direction as they are
+    easier to use and you wont need to do an explicit multiplication between matrix
+    and position/direction value.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;42;-416,-736;Inherit;False;292.3799;100;Out;;0,0,0,1;UNITY_MATRIX_I_P$Current
+    inverse projection matrix;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;43;-608,-944;Inherit;False;480.9907;117.7374;SG
+    Transformation Matrix Node;;0,0.2535498,1,1;InverseProjection$float4x4 _TransformationMatrix_Out
+    = UNITY_MATRIX_I_P@;0;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1024,-896;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nASEEND*/\n//CHKSM=5BB26EF65C7DCE35CC1F45E3D776290BE56EE542"
+  m_functionName: 
+  m_description: 'Inverse Projection Matrix Node
+
+
+    Learning Sample
+
+
+    GPU
+    Cycles:
+
+    0-3'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.3529412, g: 0.7019608, b: 0.15686275, a: 1}
+  m_customNodeCategory: LS Matrix Transform
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Shape Dots
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;38;-1024,-528;Inherit;False;2430.769;722.3748;Math;19;36;6;7;9;4;29;8;10;2;33;30;17;3;26;27;41;42;43;46;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;41;1072,-224;Inherit;False;203;278.6667;Fill;1;40;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;35;-1024,-880;Inherit;False;734.9583;306.3211;Dots
+    Node;2;39;28;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;27;-185,-112;Inherit;False;698.649;255.1058;Create
+    alternating Y axis UV tiles;7;45;19;20;18;16;11;32;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;26;-186,-480;Inherit;False;698.7112;305.1587;Create
+    alternating X axis UV tiles;6;44;15;13;1;31;12;;0.009433985,0.009433985,0.009433985,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;28;-720,-832;Inherit;False;360.2888;163.1789;;;0,0,0,1;Creates
+    a repeated dots pattern with alternating offsetted lines or columns of dots.;0;0\nNode;AmplifyShaderEditor.SimpleRemainderNode;12;-128,-320;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FractNode;3;720,-176;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DynamicAppendNode;17;560,-176;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;30;-208,-192;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;32;336,-64;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;31;320,-208;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;33;336,-176;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;2;-320,-256;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;10;-720,-256;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;8;-976,-256;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StepOpNode;13;48,-336;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;15;192,-352;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;14;384,-256;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;11;400,-64;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;16;192,-48;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StepOpNode;20;64,16;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleRemainderNode;19;-112,32;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;29;-208,32;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;36;864,-176;Inherit;False;Ellipse;-1;;54;3ba94b7b3cfd5f447befde8107c04d52;0;3;2;FLOAT2;0,0;False;7;FLOAT;0.5;False;9;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;42;-960,-48;Inherit;False;179.7091;107.1301;Tiling;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionInput;9;-912,-128;Inherit;False;Tiling;2;1;False;1;0;FLOAT2;8,8;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StickyNoteNode;43;-544,-144;Inherit;False;179.7091;107.1301;Custom
+    UVs;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionSwitch;6;-544,-256;Inherit;False;Custom
+    UVs;True;0;2;0;In 0;In 1;Object;-1;10;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;9;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionNode;39;-976,-832;Inherit;True;Dots
+    Pattern;-1;;55;7d8d5e315fd9002418fb41741d3a59cb;1,22,0;5;21;FLOAT2;0,0;False;3;FLOAT2;8,8;False;2;FLOAT;0.9;False;4;FLOAT;0.5;False;5;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;44;-176,-432;Inherit;False;160.7091;100;Offset
+    X;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;45;-160,-64;Inherit;False;160.7091;100;Offset
+    Y;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionInput;18;32,-64;Inherit;False;Offset
+    Y;1;4;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;1;16,-416;Inherit;False;Offset
+    X;1;3;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;46;688,0;Inherit;False;160.7091;100;Size;;0,0,0,1;;0;0\nNode;AmplifyShaderEditor.FunctionInput;4;688,-80;Inherit;False;Size;1;2;False;1;0;FLOAT;0.9;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RelayNode;40;1104,-176;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;7;-720,-144;Inherit;False;UV;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-1024,-1024;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;12;0;2;1\nWireConnection;3;0;17;0\nWireConnection;17;0;14;0\nWireConnection;17;1;11;0\nWireConnection;30;0;2;0\nWireConnection;32;0;33;0\nWireConnection;31;0;2;1\nWireConnection;33;0;31;0\nWireConnection;2;0;6;0\nWireConnection;10;0;8;0\nWireConnection;10;1;9;0\nWireConnection;13;1;12;0\nWireConnection;15;0;1;0\nWireConnection;15;1;13;0\nWireConnection;14;0;2;0\nWireConnection;14;1;15;0\nWireConnection;11;0;32;0\nWireConnection;11;1;16;0\nWireConnection;16;0;18;0\nWireConnection;16;1;20;0\nWireConnection;20;1;19;0\nWireConnection;19;0;29;0\nWireConnection;29;0;30;0\nWireConnection;36;2;3;0\nWireConnection;36;7;4;0\nWireConnection;36;9;4;0\nWireConnection;6;0;10;0\nWireConnection;6;1;7;0\nWireConnection;40;0;36;0\nWireConnection;7;0;8;0\nASEEND*/\n//CHKSM=B44F3B987544BCD442B2020C23D4003EFE9C847C"
+  m_functionName: 
+  m_description: 'Dots Node
+
+
+    Learning Sample
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.6901961, g: 0.17254902, b: 0.023529412, a: 1}
+  m_customNodeCategory: LS Shape
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

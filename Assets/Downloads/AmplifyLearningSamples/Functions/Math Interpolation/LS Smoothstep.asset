@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LS Smoothstep
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.8\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19800\nNode;AmplifyShaderEditor.CommentaryNode;28;-770,1056;Inherit;False;569.0652;463.3379;Adding
+    Smooth Slow-in and Slow Out;3;29;27;26;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;17;-774.1309,304;Inherit;False;1119.243;700.0617;Smooth
+    Range;9;25;13;12;15;23;22;24;21;16;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;10;-768,-176;Inherit;False;997.1191;435.133;Smoothstep
+    Node;2;20;8;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;30;-144,1056;Inherit;False;569.0652;463.3379;Controlling
+    the Positioning of the Blend;3;33;32;31;;0,0,0,1;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;8;-368,-96;Inherit;False;552.4368;172.6427;;;0,0,0,1;The
+    Smoothstep node calculates a smooth Hermite interpolation value between 0 and
+    1, if its Input value is in the range [ Min , Max ] range.$$Assuming that Max
+    value is greater than Min, a value of 0 is returned if Alpha is less than Min.
+    If on the other way Alpha is greater than Max than a value of 1 is returned.;0;0\nNode;AmplifyShaderEditor.StickyNoteNode;16;-192,736;Inherit;False;503.5461;192.5745;Smooth
+    interpolation;;0,0,0,1;NOTE 1: $Smoothstep between multi-channel data types are
+    done per-channel. If Min and Max have different channel amounts a cast is done
+    to match the one with the most amount of channels.$$NOTE 2: $Avoid setting an
+    equal value to both Min and Max as it will throw a division by 0 warning.;0;0\nNode;AmplifyShaderEditor.SmoothstepOpNode;20;-608,-96;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;24;-480,560;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.RangedFloatNode;22;-416,688;Inherit;False;Constant;_Min;Min;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;23;-416,768;Inherit;False;Constant;_Max;Max;0;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp;15;16,352;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ColorNode;12;-720,352;Inherit;False;Constant;_Color0;Color
+    0;0;0;Create;True;0;0;0;False;0;False;1,0,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode;13;-720,528;Inherit;False;Constant;_Color1;Color
+    0;0;0;Create;True;0;0;0;False;0;False;0.1717489,1,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.WireNode;25;-464,448;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.SmoothstepOpNode;21;-192,608;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;29;-594,1328;Inherit;False;335.8943;124.3433;;;0,0,0,1;UV
+    coordinates create a linear gradient.  The Smoothstep node smooths out the beginning
+    and the end of the linear gradient so there is a slow ramp in and a slow ramp
+    out.;0;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;26;-722,1104;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SmoothstepOpNode;27;-466,1104;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TexCoordVertexDataNode;31;-96,1104;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.StickyNoteNode;33;32,1328;Inherit;False;359.4821;128.6319;;;0,0,0,1;Using
+    the Edge1 and Edge2 values, I can control where the blend happens.  Here's I've
+    narrowed my range so that the smooth blending is happening where the original
+    values are between 0.4 and 0.5.;0;0\nNode;AmplifyShaderEditor.SmoothstepOpNode;32;160,1104;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.4;False;2;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.StickyNoteNode;34;-1248,-176;Inherit;False;448.9412;189.4641;Reference
+    Implementation;;0,0,0,1;smoothstep for float scalars could be implemented this
+    way:$$float smoothstep(float a, float b, float x)${$    float t = saturate((x
+    - a)/(b - a))@$    return t*t*(3.0 - (2.0*t))@$};0;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-768,-272;Inherit;False;True;-1;Out;0;True;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;15;0;12;0\nWireConnection;15;1;25;0\nWireConnection;15;2;21;0\nWireConnection;25;0;13;0\nWireConnection;21;0;24;2\nWireConnection;21;1;22;0\nWireConnection;21;2;23;0\nWireConnection;27;0;26;1\nWireConnection;32;0;31;1\nASEEND*/\n//CHKSM=431DD85AAE6D9BD061F95743BD724B494C143B74"
+  m_functionName: 
+  m_description: 'Smoothstep Node
+
+
+    Learning Sample
+
+
+    GPU Cycles:
+
+    16-31'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_headerStyle: 2
+  m_headerColor: {r: 0.19215687, g: 0.25882354, b: 0.3254902, a: 1}
+  m_customNodeCategory: LS Math Interpolation
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

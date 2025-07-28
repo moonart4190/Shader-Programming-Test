@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f7caa019b8743459b7b0ab1fdc3bae, type: 3}
+  m_Name: LS Lit Impostor Baking Preset
+  m_EditorClassIdentifier: 
+  BakeShader: {fileID: 4800000, guid: 1e01b19894894604f8a336db7ec05810, type: 3}
+  RuntimeShader: {fileID: 4800000, guid: 63cc503512b0f5f4fb134ed5a07ad218, type: 3}
+  AlphaIndex: 0
+  Output:
+  - Index: -1
+    OverrideMask: 0
+    Active: 1
+    Name: _AlbedoAlpha
+    Scale: 1
+    SRGB: 1
+    Channels: 0
+    Compression: 2
+    ImageFormat: 1
+  - Index: -1
+    OverrideMask: 0
+    Active: 1
+    Name: _NormalDepth
+    Scale: 1
+    SRGB: 0
+    Channels: 0
+    Compression: 2
+    ImageFormat: 1
+  - Index: -1
+    OverrideMask: 0
+    Active: 1
+    Name: _SpecularSmoothness
+    Scale: 1
+    SRGB: 1
+    Channels: 0
+    Compression: 2
+    ImageFormat: 1
+  - Index: -1
+    OverrideMask: 0
+    Active: 1
+    Name: _Occlusion
+    Scale: 1
+    SRGB: 1
+    Channels: 1
+    Compression: 1
+    ImageFormat: 1
+  - Index: -1
+    OverrideMask: 0
+    Active: 1
+    Name: _Emission
+    Scale: 1
+    SRGB: 0
+    Channels: 1
+    Compression: 2
+    ImageFormat: 2
+  - Index: -1
+    OverrideMask: 0
+    Active: 1
+    Name: _Position
+    Scale: 4
+    SRGB: 0
+    Channels: 1
+    Compression: 0
+    ImageFormat: 1

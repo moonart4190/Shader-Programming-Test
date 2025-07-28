@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LS Weather Decal Rain Drops
+  m_Shader: {fileID: 4800000, guid: 60aa2319e7f3be145882177aa852a370, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: _WaterReflectionCubemap
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseColorMap:
+        m_Texture: {fileID: 2800000, guid: ab0184cc28fa1f646bf95583e40d8cca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 4d7b0899d22ab6d4484a32900e42ea0f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: ab0184cc28fa1f646bf95583e40d8cca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainDrip:
+        m_Texture: {fileID: 2800000, guid: a0a26263222a25040a5f26ba5732fc83, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainDripMask:
+        m_Texture: {fileID: 2800000, guid: 515b3e4b09347494692077f23605505a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainDrop:
+        m_Texture: {fileID: 2800000, guid: f294c3fdefbc3de4d9fda072a638e6a5, type: 3}
+        m_Scale: {x: 4, y: 4}
+        m_Offset: {x: 0, y: 0}
+    - _RainPuddleMask:
+        m_Texture: {fileID: 2800000, guid: 56c56f6b0c7a9db4fb2719ccff749a01, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainPuddleNormal:
+        m_Texture: {fileID: 2800000, guid: 8b612575ac12ef64eb8092faa8b643ce, type: 3}
+        m_Scale: {x: 3, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _RainPuddleRipple:
+        m_Texture: {fileID: 2800000, guid: 01ff1ab55f5be69488acd0c95f99aa71, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _WaterMask:
+        m_Texture: {fileID: 2800000, guid: 731dc6f98bb3534429e64d3e6926d637, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterReflectionCubemap:
+        m_Texture: {fileID: 8900000, guid: 2ad045d943ffaf345a2c108b0d5a6d06, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AO: 0
+    - _AlphaCutoff: 0.5
+    - _BaseColorMapChannel: 0
+    - _CATEGORYSPACE_PUDDLE: 0
+    - _CATEGORYSPACE_RAIN: 0
+    - _CATEGORYSPACE_RAINDROPS: 0
+    - _CATEGORY_COLOR: 1
+    - _CATEGORY_DECAL: 1
+    - _CATEGORY_DECALMAP: 1
+    - _CATEGORY_OPACITY: 1
+    - _CATEGORY_PARALLAX: 1
+    - _CATEGORY_PUDDLE: 1
+    - _CATEGORY_RAIN: 1
+    - _CATEGORY_RAINDROPS: 1
+    - _CATEGORY_REFLECTION: 1
+    - _DecalAngleFadeSupported: 1
+    - _DecalColorSpaceDouble: 1
+    - _DecalEdgeMask: 1
+    - _DecalMainLightInfluence: 0
+    - _DecalMeshBiasType: 0
+    - _DecalMeshDepthBias: 0
+    - _DecalMeshViewBias: 0
+    - _DecalOpacityGlobal: 0.85
+    - _DecalOpacityMOASChannel: 0
+    - _DecalOpacityNormalChannel: 0
+    - _DecalReflectionBumpScale: 0
+    - _DecalReflectionCloud: 0
+    - _DecalReflectionEnable: 1
+    - _DecalReflectionEnableFresnel: 0
+    - _DecalReflectionFresnelBias: 1
+    - _DecalReflectionFresnelScale: 0.15
+    - _DecalReflectionFresnelStrength: 0.727
+    - _DecalReflectionSmoothness: 0
+    - _DecalReflectionWobble: 0.0128
+    - _DrawOrder: 0
+    - _ENABLE: 1
+    - _ENABLEDRIPS: 1
+    - _ENABLEDROPS: 0
+    - _ENABLEPUDDLE: 1
+    - _ENABLERAIN: 1
+    - _ENABLERAINDROPS: 1
+    - _EdgeMaskSharpness: 10000
+    - _EmissionFlags: 0
+    - _GlobalRainIntensity: 2
+    - _GlobalRainWetness: 1
+    - _GlobalRainWindDirection: 0
+    - _GradientContrast: 0.203
+    - _GradientEnable: 1
+    - _GradientInverted: 0
+    - _GradientRamp: 0.502
+    - _MainMaskType: 0
+    - _Metallic: 0.191
+    - _MetallicStrength: 0.65
+    - _NormalStrength: 2
+    - _OcclusionStrengthAO: 0
+    - _OpacityBaseColor: 0.217
+    - _OpacityNormal: 0.606
+    - _OpacitySmoothness: 1
+    - _ParallaxHeightScale: 0
+    - _PuddleAmbientOcclusion: 0.424
+    - _PuddleHeight: 0.201
+    - _PuddleIntensity: 1
+    - _PuddleMaskChannel: 0
+    - _PuddleNormalSpeed: 0.15
+    - _PuddleNormalStrength: 1
+    - _PuddleNormalStrengthBase: -1
+    - _PuddleRippleSpeed: 1
+    - _PuddleRippleStrength: 2
+    - _PuddleSize: 1
+    - _PuddleSmoothness: 1
+    - _PuddleWetnessMask: -0
+    - _RainDripIntensity: 1
+    - _RainDripNormalScale: 1
+    - _RainDripSmoothness: 1
+    - _RainDripSpeed: 1
+    - _RainDropNormalScale: 1
+    - _RainDropSmoothness: 1
+    - _RainDropSpeed: 0.7
+    - _RainDropStaticScale: 0.6
+    - _Rotation: 0
+    - _SPACE_COLOR: 0
+    - _SPACE_DECAL: 0
+    - _SPACE_DECALMAP: 0
+    - _SPACE_OPACITY: 0
+    - _SPACE_PARALLAX: 0
+    - _SPACE_REFLECTION: 0
+    - _Smoothness1: 1
+    - _SmoothnessStrength: 1
+    - _SmoothnessStrength1: 1
+    - _UVRotation: 0
+    - _Unity_Identify_HDRP_Decal: 1
+    - _WaterLevel: 0.436
+    - _WaterMaskChannel: 2
+    - _WaterReflectionBumpClamp: 0.1
+    m_Colors:
+    - _BaseColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
+    - _Color: {r: 0.7102172, g: 0.7169812, b: 0.71469873, a: 0}
+    - _DecalColor: {r: 0.03773582, g: 0.02518688, b: 0.01263794, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GradientColor: {r: 0.9622642, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

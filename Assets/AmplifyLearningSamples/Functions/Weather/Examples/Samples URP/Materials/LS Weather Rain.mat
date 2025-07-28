@@ -1,0 +1,280 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-137891664053663739
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LS Weather Rain
+  m_Shader: {fileID: 4800000, guid: 52727efed45f2434a86b17f0be5bb06f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _SMOOTHEDGES_ON
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2450
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: c239d3f4bdbb239439534b34a1f262f4, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 178eab19cb0ca674f96465d00ced4309, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ClearCoatMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: 28b093c029c1d9246b2d99e69310ff5c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainDrip:
+        m_Texture: {fileID: 2800000, guid: a0a26263222a25040a5f26ba5732fc83, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _RainDripMask:
+        m_Texture: {fileID: 2800000, guid: 515b3e4b09347494692077f23605505a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainDrop:
+        m_Texture: {fileID: 2800000, guid: f294c3fdefbc3de4d9fda072a638e6a5, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _RainPuddleMask:
+        m_Texture: {fileID: 2800000, guid: 56c56f6b0c7a9db4fb2719ccff749a01, type: 3}
+        m_Scale: {x: 0.05, y: 0.05}
+        m_Offset: {x: 0, y: 0}
+    - _RainPuddleNormal:
+        m_Texture: {fileID: 2800000, guid: 8b612575ac12ef64eb8092faa8b643ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainPuddleRipple:
+        m_Texture: {fileID: 2800000, guid: 01ff1ab55f5be69488acd0c95f99aa71, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ThicknessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TransmissionMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ASETranslucencyAmbient: 0.8339342
+    - _ASETranslucencyDirect: 0
+    - _ASETranslucencyNormalDistortion: 0.2735869
+    - _ASETranslucencyScattering: 2
+    - _ASETranslucencyShadow: 0.5
+    - _ASETranslucencyStrength: 1
+    - _ASETransmissionShadow: 0.5
+    - _AlphaClip: 0
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffShadow: 0.01
+    - _AlphaToMask: 0
+    - _AnchorX: 0.5
+    - _AnchorXMax: 1
+    - _AnchorY: 0.5
+    - _AnchorYMax: 1
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _Brightness: 1
+    - _BumpScale: 1
+    - _CATEGORYSPACE_ALPHA: 0
+    - _CATEGORYSPACE_COATMASK: 0
+    - _CATEGORYSPACE_COLOR: 0
+    - _CATEGORYSPACE_DETAIL: 0
+    - _CATEGORYSPACE_EMISSION: 0
+    - _CATEGORYSPACE_RAIN: 0
+    - _CATEGORYSPACE_SPECULAR: 0
+    - _CATEGORYSPACE_SURFACEINPUTS: 0
+    - _CATEGORYSPACE_TRANSLUCENCY: 0
+    - _CATEGORYSPACE_TRANSMISSION: 0
+    - _CATEGORY_ALPHA: 1
+    - _CATEGORY_COATMASK: 0
+    - _CATEGORY_COLOR: 1
+    - _CATEGORY_DETAIL: 0
+    - _CATEGORY_EMISSION: 0
+    - _CATEGORY_RAIN: 1
+    - _CATEGORY_SPECULAR: 1
+    - _CATEGORY_SURFACEINPUTS: 1
+    - _CATEGORY_SURFACESETTINGS: 1
+    - _CATEGORY_TRANSLUCENCY: 1
+    - _CATEGORY_TRANSLUCENCYASE: 0
+    - _CATEGORY_TRANSMISSION: 1
+    - _ClearCoat: 0
+    - _ClearCoatMask: 0.357
+    - _ClearCoatSmoothness: 0.585
+    - _ClearCoatUVMapping: 0
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DETAIL_MULX2: 0
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DoubleSidedNormalMode: 0
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
+    - _EMISSION: 0
+    - _ENABLEDRIPS: 1
+    - _ENABLEDROPS: 1
+    - _ENABLEPUDDLE: 1
+    - _ENABLERAIN: 1
+    - _ENABLESTATICDROPS: 1
+    - _EdgeSharpness: 4
+    - _EmissionFlags: 0
+    - _EmissiveIntensity: 1
+    - _EnableClipGlancingAngle: 0
+    - _EnableEmission: 0
+    - _EnvironmentReflections: 1
+    - _Float1: 0.85
+    - _GlobalRainIntensity: 1
+    - _GlobalRainWetness: 1.15
+    - _GlobalRainWetnessBaseColor: 0.9
+    - _GlobalRainWindDirection: 0
+    - _GlossMapScale: 0.558
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0.058
+    - _OcclusionStrength: 0
+    - _Parallax: 0.005
+    - _Pow: 4
+    - _PuddleAmbientOcclusion: 1
+    - _PuddleHeight: 1
+    - _PuddleIntensity: 1
+    - _PuddleMaskChannel: 0
+    - _PuddleNormalScale: 1
+    - _PuddleNormalSpeed: 0.5
+    - _PuddleNormalStrength: 0.396
+    - _PuddleNormalStrengthBase: -0.1
+    - _PuddleRippleSpeed: 1
+    - _PuddleRippleStrength: 1
+    - _PuddleSize: 1
+    - _PuddleSmoothness: 0.614
+    - _PuddleWetnessMask: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RainDripIntensity: 1
+    - _RainDripNormalScale: 2
+    - _RainDripSmoothEdge: 0.1
+    - _RainDripSmoothness: 1
+    - _RainDripSpeed: 0.75
+    - _RainDripStrength: 1
+    - _RainDropNormalScale: 1.8
+    - _RainDropSmoothness: 1
+    - _RainDropSpeed: 1
+    - _RainDropSpeed1: 1
+    - _RainDropStaticScale: 0.75
+    - _RainDropStrength: 1
+    - _RainIntensity: 1
+    - _RainPuddleNormalScale: 1
+    - _RainWetness: 1
+    - _ReceiveShadows: 1
+    - _SPACE_SURFACESETTINGS: 0
+    - _SPACE_TRANSLUCENCYASE: 0
+    - _SmoothEdges: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _Smoothnesstexturechannel: 1
+    - _Smoothnesstexturechannel1: 0
+    - _SmoothnesstexturechannelM: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
+    - _Surface: 0
+    - _ThicknessFeather: 1
+    - _ThicknessStrength: 1.466198
+    - _TranslucencyEnable: 0
+    - _TranslucencySource: 1
+    - _TranslucencyStrength: 1
+    - _TransmissionEnable: 0
+    - _TransmissionMaskFeather: 1
+    - _TransmissionMaskStrength: 1.466198
+    - _TransmissionSource: 1
+    - _TransmissionStrength: 1
+    - _UVBase: 0
+    - _UVDetail: 0
+    - _UVEmissive: 0
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    - _xxxxxxxxxxxxxxxxxx: 1
+    m_Colors:
+    - _AnchorCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _BaseColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GlobalRainWetness: {r: 0.9658635, g: 1, b: 0, a: 0}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TranslucencyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _TransmissionColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _Vector6: {r: 4, g: 4, b: 4, a: 0}
+  m_BuildTextureStacks: []

@@ -29,14 +29,21 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				true:SetPropertyOnPass:DecalGBufferProjector:ColorMask2,true,true,true,false
 				true:SetPropertyOnPass:DBufferMesh:ColorMask1,true,true,true,true
 				true:SetPropertyOnPass:DecalGBufferMesh:ColorMask2,true,true,true,false
+				true:ShowPort:DecalScreenSpaceProjector:Normal
+				true:ShowOption:  Blend
 				false:RemoveDefine:_MATERIAL_AFFECTS_NORMAL 1
 				false:SetPropertyOnPass:DBufferProjector:ColorMask1,false,false,false,false
 				false:SetPropertyOnPass:DecalGBufferProjector:ColorMask2,false,false,false,false
 				false:SetPropertyOnPass:DBufferMesh:ColorMask1,false,false,false,false
 				false:SetPropertyOnPass:DecalGBufferMesh:ColorMask2,false,false,false,false
-			Option:Blend:false,true:true
+				false:HidePort:DecalScreenSpaceProjector:Normal
+				false:HideOption:  Blend
+				false:SetOption:  Blend,0
+			Option:  Blend:false,true:true
 				true:SetDefine:_MATERIAL_AFFECTS_NORMAL_BLEND 1
+				true:ShowPort:DecalScreenSpaceProjector:Normal Alpha
 				false:RemoveDefine:_MATERIAL_AFFECTS_NORMAL_BLEND 1
+				false:HidePort:DecalScreenSpaceProjector:Normal Alpha
 			Option:Affect MAOS:false,true:false
 				true:SetDefine: _MATERIAL_AFFECTS_MAOS 1
 				true:ShowPort:DecalScreenSpaceProjector:Metallic
@@ -84,7 +91,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				false:RemoveDefine:DecalScreenSpaceProjector:DECAL_ANGLE_FADE 1
 				false:RemoveDefine:DecalProjectorForwardEmissive:DECAL_ANGLE_FADE 1
 				false:RemoveDefine:DecalGBufferProjector:DECAL_ANGLE_FADE 1
-				false:RemoveDefine:DBufferProjector:DECAL_ANGLE_FADE 1	
+				false:RemoveDefine:DBufferProjector:DECAL_ANGLE_FADE 1
 				true:SetShaderProperty:_DecalAngleFadeSupported,[HideInInspector] _DecalAngleFadeSupported("Decal Angle Fade Supported", Float) = 1
 				false:SetShaderProperty:_DecalAngleFadeSupported,//[HideInInspector] _DecalAngleFadeSupported("Decal Angle Fade Supported", Float) = 1
 		*/
@@ -174,14 +181,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
@@ -267,10 +274,40 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
 
-                #if defined(_MATERIAL_AFFECTS_NORMAL)
-                    surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
-                #else
-                    surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+                #if (SHADERPASS == SHADERPASS_DBUFFER_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_PROJECTOR)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz));
+						/*ase_unity_cond_end*/
+
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(normalToWorld[2].xyz);
+						/*ase_unity_cond_end*/
+                    #endif
+                #elif (SHADERPASS == SHADERPASS_DBUFFER_MESH) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_MESH) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_MESH)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+                        float sgn = input.tangentWS.w;
+                        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+                        half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                        surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(half3(input.normalWS));
+						/*ase_unity_cond_end*/
+                    #endif
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
@@ -375,12 +412,21 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				clip((surfaceRenderingLayer & projectorRenderingLayer) - 0.1);
             #endif
 
-
-				#if UNITY_REVERSED_Z
-					float depth = LoadSceneDepth(packedInput.positionCS.xy);
-				#else
-					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
-				#endif
+			#if defined(DECAL_PROJECTOR)
+			#if UNITY_REVERSED_Z
+			#if _RENDER_PASS_ENABLED
+				float depth = LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy).x;
+			#else
+				float depth = LoadSceneDepth(packedInput.positionCS.xy);
+			#endif
+			#else
+			#if _RENDER_PASS_ENABLED
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy));
+			#else
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
+			#endif
+			#endif
+			#endif
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
@@ -394,12 +440,30 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				/*ase_local_var:wp*/float3 positionWS = ComputeWorldSpacePosition(positionSS, depth, UNITY_MATRIX_I_VP);
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
+				float4 positionCS = ComputeClipSpacePosition( positionSS, depth );
+				float4 hpositionVS = mul( UNITY_MATRIX_I_P, positionCS );
 
-				float3 positionDS = TransformWorldToObject(positionWS);
+				/*ase_local_var:spn*/float4 ScreenPosNorm = float4( positionSS, positionCS.zw );
+				/*ase_local_var:sp*/float4 ClipPos = positionCS * packedInput.positionCS.w;
+				/*ase_local_var:spu*/float4 ScreenPos = ComputeScreenPos( ClipPos );
+				/*ase_local_var:rwp*/float3 PositionRWS = mul( ( float3x3 )UNITY_MATRIX_I_V, hpositionVS.xyz / hpositionVS.w );
+				/*ase_local_var:wp*/float3 PositionWS = PositionRWS + _WorldSpaceCameraPos;
+				/*ase_local_var:op*/float3 PositionOS = TransformWorldToObject( PositionWS );
+				/*ase_local_var:vp*/float3 PositionVS = TransformWorldToView( PositionWS );
+
+				float3 positionDS = TransformWorldToObject(PositionWS);
 				positionDS = positionDS * float3(1.0, -1.0, 1.0);
 
 				float clipValue = 0.5 - Max3(abs(positionDS).x, abs(positionDS).y, abs(positionDS).z);
@@ -454,9 +518,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				GetSurfaceData(surfaceDescription, angleFadeFactor, surfaceData);
 				ENCODE_INTO_DBUFFER(surfaceData, outDBuffer);
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
 
 			}
             ENDHLSL
@@ -517,14 +586,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
@@ -699,11 +768,21 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				clip((surfaceRenderingLayer & projectorRenderingLayer) - 0.1);
             #endif
 
-				#if UNITY_REVERSED_Z
-					float depth = LoadSceneDepth(packedInput.positionCS.xy);
-				#else
-					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
-				#endif
+			#if defined(DECAL_PROJECTOR)
+			#if UNITY_REVERSED_Z
+			#if _RENDER_PASS_ENABLED
+				float depth = LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy).x;
+			#else
+				float depth = LoadSceneDepth(packedInput.positionCS.xy);
+			#endif
+			#else
+			#if _RENDER_PASS_ENABLED
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy));
+			#else
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
+			#endif
+			#endif
+			#endif
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
@@ -717,11 +796,30 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				/*ase_local_var:wp*/float3 positionWS = ComputeWorldSpacePosition(positionSS, depth, UNITY_MATRIX_I_VP);
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				float3 positionDS = TransformWorldToObject(positionWS);
+				float4 positionCS = ComputeClipSpacePosition( positionSS, depth );
+				float4 hpositionVS = mul( UNITY_MATRIX_I_P, positionCS );
+
+				/*ase_local_var:spn*/float4 ScreenPosNorm = float4( positionSS, positionCS.zw );
+				/*ase_local_var:sp*/float4 ClipPos = positionCS * packedInput.positionCS.w;
+				/*ase_local_var:spu*/float4 ScreenPos = ComputeScreenPos( ClipPos );
+				/*ase_local_var:rwp*/float3 PositionRWS = mul( ( float3x3 )UNITY_MATRIX_I_V, hpositionVS.xyz / hpositionVS.w );
+				/*ase_local_var:wp*/float3 PositionWS = PositionRWS + _WorldSpaceCameraPos;
+				/*ase_local_var:op*/float3 PositionOS = TransformWorldToObject( PositionWS );
+				/*ase_local_var:vp*/float3 PositionVS = TransformWorldToView( PositionWS );
+
+				float3 positionDS = TransformWorldToObject(PositionWS);
 				positionDS = positionDS * float3(1.0, -1.0, 1.0);
 
 				float clipValue = 0.5 - Max3(abs(positionDS).x, abs(positionDS).y, abs(positionDS).z);
@@ -772,9 +870,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				outEmissive.rgb = surfaceData.emissive;
 				outEmissive.a = surfaceData.baseColor.a;
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
+
 			}
             ENDHLSL
         }
@@ -811,10 +915,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             /*ase_srp_cond_end*/
 
 			/*ase_srp_cond_begin:>=140009*/
-			#pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
             /*ase_srp_cond_end*/
 
 			#pragma multi_compile _ _FORWARD_PLUS
+
+			/*ase_unity_cond_begin:>=20220325*/
+			#pragma multi_compile_fragment _ _LIGHT_COOKIES
+			/*ase_unity_cond_end*/
 
 			/*ase_srp_cond_begin:<140010*/
             #pragma multi_compile_fragment _ _FOVEATED_RENDERING_NON_UNIFORM_RASTER
@@ -865,14 +973,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
@@ -912,11 +1020,10 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float4 positionCS : SV_POSITION;
 				float3 normalWS : TEXCOORD0;
 				float3 viewDirectionWS : TEXCOORD1;
-				float2 staticLightmapUV : TEXCOORD2;
-				float2 dynamicLightmapUV : TEXCOORD3;
-				float3 sh : TEXCOORD4;
-				float4 fogFactorAndVertexLight : TEXCOORD5;
-				/*ase_interp(6,):sp=sp;wn=tc0;wvd=tc1*/
+				float4 lightmapUVs : TEXCOORD2; // @diogo: packs both static (xy) and dynamic (zw)
+				float3 sh : TEXCOORD3;
+				float4 fogFactorAndVertexLight : TEXCOORD4;
+				/*ase_interp(5,):sp=sp;wn=tc0;wvd=tc1*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -968,10 +1075,40 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
 
-                #if defined(_MATERIAL_AFFECTS_NORMAL)
-                    surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
-                #else
-                    surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+                #if (SHADERPASS == SHADERPASS_DBUFFER_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_PROJECTOR)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz));
+						/*ase_unity_cond_end*/
+
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(normalToWorld[2].xyz);
+						/*ase_unity_cond_end*/
+                    #endif
+                #elif (SHADERPASS == SHADERPASS_DBUFFER_MESH) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_MESH) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_MESH)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+                        float sgn = input.tangentWS.w;
+                        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+                        half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                        surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(half3(input.normalWS));
+						/*ase_unity_cond_end*/
+                    #endif
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
@@ -1043,25 +1180,27 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.viewDirectionWS = viewDirectionWS;
 				inputData.shadowCoord = float4(0, 0, 0, 0);
 
-				inputData.fogCoord = half(input.fogFactorAndVertexLight.x);
-				inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);
+				#ifdef VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
+					inputData.fogCoord = InitializeInputDataFog(float4(positionWS, 1.0), input.fogFactorAndVertexLight.x);
+					inputData.vertexLighting = input.fogFactorAndVertexLight.yzw;
+				#endif
 
 				#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV.xy, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, input.lightmapUVs.zw, input.sh, normalWS);
 				#elif defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, half3(input.sh), normalWS);
 				#endif
 
 				#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.shadowMask = SAMPLE_SHADOWMASK(input.staticLightmapUV);
+					inputData.shadowMask = SAMPLE_SHADOWMASK(input.lightmapUVs.xy);
 				#endif
 
 				#if defined(DEBUG_DISPLAY)
 					#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-						inputData.dynamicLightmapUV = input.dynamicLightmapUV.xy;
+						inputData.dynamicLightmapUV = input.lightmapUVs.zw;
 					#endif
-					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV && LIGHTMAP_ON)
-						inputData.staticLightmapUV = input.staticLightmapUV;
+					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV) && defined(LIGHTMAP_ON)
+						inputData.staticLightmapUV = input.lightmapUVs.xy;
 					#elif defined(VARYINGS_NEED_SH)
 						inputData.vertexSH = input.sh;
 					#endif
@@ -1115,11 +1254,11 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				packedOutput.viewDirectionWS.xyz =  GetWorldSpaceViewDir(positionWS);
 
 				#if defined(LIGHTMAP_ON)
-					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.staticLightmapUV);
+					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.lightmapUVs.xy);
 				#endif
 
 				#if defined(DYNAMICLIGHTMAP_ON)
-					packedOutput.dynamicLightmapUV.xy = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
+					packedOutput.lightmapUVs.zw = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 				#endif
 
 				#if !defined(LIGHTMAP_ON)
@@ -1149,11 +1288,21 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				clip((surfaceRenderingLayer & projectorRenderingLayer) - 0.1);
             #endif
 
-				#if UNITY_REVERSED_Z
-					float depth = LoadSceneDepth(packedInput.positionCS.xy);
-				#else
-					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
-				#endif
+			#if defined(DECAL_PROJECTOR)
+			#if UNITY_REVERSED_Z
+			#if _RENDER_PASS_ENABLED
+				float depth = LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy).x;
+			#else
+				float depth = LoadSceneDepth(packedInput.positionCS.xy);
+			#endif
+			#else
+			#if _RENDER_PASS_ENABLED
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy));
+			#else
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
+			#endif
+			#endif
+			#endif
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
@@ -1167,11 +1316,30 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				/*ase_local_var:wp*/float3 positionWS = ComputeWorldSpacePosition(positionSS, depth, UNITY_MATRIX_I_VP);
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				float3 positionDS = TransformWorldToObject(positionWS);
+				float4 positionCS = ComputeClipSpacePosition( positionSS, depth );
+				float4 hpositionVS = mul( UNITY_MATRIX_I_P, positionCS );
+
+				/*ase_local_var:spn*/float4 ScreenPosNorm = float4( positionSS, positionCS.zw );
+				/*ase_local_var:sp*/float4 ClipPos = positionCS * packedInput.positionCS.w;
+				/*ase_local_var:spu*/float4 ScreenPos = ComputeScreenPos( ClipPos );
+				/*ase_local_var:rwp*/float3 PositionRWS = mul( ( float3x3 )UNITY_MATRIX_I_V, hpositionVS.xyz / hpositionVS.w );
+				/*ase_local_var:wp*/float3 PositionWS = PositionRWS + _WorldSpaceCameraPos;
+				/*ase_local_var:op*/float3 PositionOS = TransformWorldToObject( PositionWS );
+				/*ase_local_var:vp*/float3 PositionVS = TransformWorldToView( PositionWS );
+
+				float3 positionDS = TransformWorldToObject(PositionWS);
 				positionDS = positionDS * float3(1.0, -1.0, 1.0);
 
 				float clipValue = 0.5 - Max3(abs(positionDS).x, abs(positionDS).y, abs(positionDS).z);
@@ -1234,7 +1402,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#endif
 
 				InputData inputData;
-				InitializeInputData( packedInput, positionWS, surfaceData.normalWS.xyz, viewDirectionWS, inputData);
+				InitializeInputData( packedInput, PositionWS, surfaceData.normalWS.xyz, viewDirectionWS, inputData);
 
 				SurfaceData surface = (SurfaceData)0;
 				GetSurface(surfaceData, surface);
@@ -1243,9 +1411,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				color.rgb = MixFog(color.rgb, inputData.fogCoord);
 				outColor = color;
 
-               #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-               positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
-               #endif
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
+                #endif
+				/*ase_unity_cond_end*/
 
 			}
 			ENDHLSL
@@ -1288,7 +1461,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             /*ase_srp_cond_end*/
 
 			/*ase_srp_cond_begin:>=140009*/
-			#pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
             /*ase_srp_cond_end*/
 
 			#pragma multi_compile _DECAL_NORMAL_BLEND_LOW _DECAL_NORMAL_BLEND_MEDIUM _DECAL_NORMAL_BLEND_HIGH
@@ -1337,14 +1510,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
@@ -1385,10 +1558,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float4 positionCS : SV_POSITION;
 				float3 normalWS : TEXCOORD0;
 				float3 viewDirectionWS : TEXCOORD1;
-				float2 staticLightmapUV : TEXCOORD2;
-				float2 dynamicLightmapUV : TEXCOORD3;
-				float3 sh : TEXCOORD4;
-				/*ase_interp(5,):sp=sp;wn=tc0;wvd=tc1*/
+				float4 lightmapUVs : TEXCOORD2; // @diogo: packs both static (xy) and dynamic (zw)
+				float3 sh : TEXCOORD3;
+				/*ase_interp(4,):sp=sp;wn=tc0;wvd=tc1*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -1440,10 +1612,40 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
 
-                #if defined(_MATERIAL_AFFECTS_NORMAL)
-                    surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
-                #else
-                    surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+                #if (SHADERPASS == SHADERPASS_DBUFFER_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_PROJECTOR)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz));
+						/*ase_unity_cond_end*/
+
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(normalToWorld[2].xyz);
+						/*ase_unity_cond_end*/
+                    #endif
+                #elif (SHADERPASS == SHADERPASS_DBUFFER_MESH) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_MESH) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_MESH)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+                        float sgn = input.tangentWS.w;
+                        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+                        half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                        surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(half3(input.normalWS));
+						/*ase_unity_cond_end*/
+                    #endif
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
@@ -1513,30 +1715,29 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.positionWS = positionWS;
 				inputData.normalWS = normalWS;
 				inputData.viewDirectionWS = viewDirectionWS;
-
 				inputData.shadowCoord = float4(0, 0, 0, 0);
 
 				#ifdef VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
-					inputData.fogCoord = float4(input.fogFactorAndVertexLight.x);
-					inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);
+					inputData.fogCoord = InitializeInputDataFog(float4(positionWS, 1.0), input.fogFactorAndVertexLight.x);
+					inputData.vertexLighting = input.fogFactorAndVertexLight.yzw;
 				#endif
 
 				#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV.xy, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, input.lightmapUVs.zw, input.sh, normalWS);
 				#elif defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, half3(input.sh), normalWS);
 				#endif
 
 				#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.shadowMask = SAMPLE_SHADOWMASK(input.staticLightmapUV);
+					inputData.shadowMask = SAMPLE_SHADOWMASK(input.lightmapUVs.xy);
 				#endif
 
 				#if defined(DEBUG_DISPLAY)
 					#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-						inputData.dynamicLightmapUV = input.dynamicLightmapUV.xy;
+						inputData.dynamicLightmapUV = input.lightmapUVs.zw;
 					#endif
-					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV && LIGHTMAP_ON)
-						inputData.staticLightmapUV = input.staticLightmapUV;
+					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV) && defined(LIGHTMAP_ON)
+						inputData.staticLightmapUV = input.lightmapUVs.xy;
 					#elif defined(VARYINGS_NEED_SH)
 						inputData.vertexSH = input.sh;
 					#endif
@@ -1580,11 +1781,11 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				packedOutput.viewDirectionWS.xyz =  GetWorldSpaceViewDir(positionWS);
 
 				#if defined(LIGHTMAP_ON)
-					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.staticLightmapUV);
+					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.lightmapUVs.xy);
 				#endif
 
 				#if defined(DYNAMICLIGHTMAP_ON)
-					packedOutput.dynamicLightmapUV.xy = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
+					packedOutput.lightmapUVs.zw = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 				#endif
 
 				#if !defined(LIGHTMAP_ON)
@@ -1614,11 +1815,21 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				clip((surfaceRenderingLayer & projectorRenderingLayer) - 0.1);
             #endif
 
-				#if UNITY_REVERSED_Z
-					float depth = LoadSceneDepth(packedInput.positionCS.xy);
-				#else
-					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
-				#endif
+			#if defined(DECAL_PROJECTOR)
+			#if UNITY_REVERSED_Z
+			#if _RENDER_PASS_ENABLED
+				float depth = LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy).x;
+			#else
+				float depth = LoadSceneDepth(packedInput.positionCS.xy);
+			#endif
+			#else
+			#if _RENDER_PASS_ENABLED
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LOAD_FRAMEBUFFER_INPUT(GBUFFER3, packedInput.positionCS.xy));
+			#else
+				float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
+			#endif
+			#endif
+			#endif
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
@@ -1632,11 +1843,30 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				/*ase_local_var:wp*/float3 positionWS = ComputeWorldSpacePosition(positionSS, depth, UNITY_MATRIX_I_VP);
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
 
-				float3 positionDS = TransformWorldToObject(positionWS);
+				float4 positionCS = ComputeClipSpacePosition( positionSS, depth );
+				float4 hpositionVS = mul( UNITY_MATRIX_I_P, positionCS );
+
+				/*ase_local_var:spn*/float4 ScreenPosNorm = float4( positionSS, positionCS.zw );
+				/*ase_local_var:sp*/float4 ClipPos = positionCS * packedInput.positionCS.w;
+				/*ase_local_var:spu*/float4 ScreenPos = ComputeScreenPos( ClipPos );
+				/*ase_local_var:rwp*/float3 PositionRWS = mul( ( float3x3 )UNITY_MATRIX_I_V, hpositionVS.xyz / hpositionVS.w );
+				/*ase_local_var:wp*/float3 PositionWS = PositionRWS + _WorldSpaceCameraPos;
+				/*ase_local_var:op*/float3 PositionOS = TransformWorldToObject( PositionWS );
+				/*ase_local_var:vp*/float3 PositionVS = TransformWorldToView( PositionWS );
+
+				float3 positionDS = TransformWorldToObject(PositionWS);
 				positionDS = positionDS * float3(1.0, -1.0, 1.0);
 
 				float clipValue = 0.5 - Max3(abs(positionDS).x, abs(positionDS).y, abs(positionDS).z);
@@ -1694,42 +1924,47 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				GetSurfaceData(surfaceDescription, angleFadeFactor, surfaceData);
 
-				InputData inputData;
-				InitializeInputData(packedInput, positionWS, surfaceData.normalWS.xyz, viewDirectionWS, inputData);
+				half3 normalToPack = surfaceData.normalWS.xyz;
+				#ifdef DECAL_RECONSTRUCT_NORMAL
+					surfaceData.normalWS.xyz = normalize(lerp(normalWS.xyz, surfaceData.normalWS.xyz, surfaceData.normalWS.w));
+				#endif
 
-				SurfaceData surface = (SurfaceData)0;
-				GetSurface(surfaceData, surface);
+					InputData inputData;
+					InitializeInputData(packedInput, PositionWS, surfaceData.normalWS.xyz, viewDirectionWS, inputData);
 
-				BRDFData brdfData;
-				InitializeBRDFData(surface.albedo, surface.metallic, 0, surface.smoothness, surface.alpha, brdfData);
+					SurfaceData surface = (SurfaceData)0;
+					GetSurface(surfaceData, surface);
+
+					BRDFData brdfData;
+					InitializeBRDFData(surface.albedo, surface.metallic, 0, surface.smoothness, surface.alpha, brdfData);
 
 				#ifdef _MATERIAL_AFFECTS_ALBEDO
-					#ifdef DECAL_RECONSTRUCT_NORMAL
-						half3 normalGI = normalize(lerp(normalWS.xyz, surfaceData.normalWS.xyz, surfaceData.normalWS.w));
-					#else
-						half3 normalGI = surfaceData.normalWS.xyz;
-					#endif
-
 					Light mainLight = GetMainLight(inputData.shadowCoord, inputData.positionWS, inputData.shadowMask);
-					MixRealtimeAndBakedGI(mainLight, normalGI, inputData.bakedGI, inputData.shadowMask);
-					half3 color = GlobalIllumination(brdfData, inputData.bakedGI, surface.occlusion, normalGI, inputData.viewDirectionWS);
+					MixRealtimeAndBakedGI(mainLight, surfaceData.normalWS.xyz, inputData.bakedGI, inputData.shadowMask);
+					half3 color = GlobalIllumination(brdfData, inputData.bakedGI, surface.occlusion, surfaceData.normalWS.xyz, inputData.viewDirectionWS);
 				#else
 					half3 color = 0;
 				#endif
 
-				half3 packedNormalWS = PackNormal(surfaceData.normalWS.xyz);
+				#pragma warning (disable : 3578) // The output value isn't completely initialized.
+				half3 packedNormalWS = PackNormal(normalToPack);
 				fragmentOutput.GBuffer0 = half4(surfaceData.baseColor.rgb, surfaceData.baseColor.a);
 				fragmentOutput.GBuffer1 = 0;
 				fragmentOutput.GBuffer2 = half4(packedNormalWS, surfaceData.normalWS.a);
 				fragmentOutput.GBuffer3 = half4(surfaceData.emissive + color, surfaceData.baseColor.a);
-
 				#if OUTPUT_SHADOWMASK
 					fragmentOutput.GBuffer4 = inputData.shadowMask;
 				#endif
+				#pragma warning (default : 3578) // Restore output value isn't completely initialized.
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
 
 			}
             ENDHLSL
@@ -1806,14 +2041,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
@@ -1907,14 +2142,40 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
 
-                #if defined(_MATERIAL_AFFECTS_NORMAL)
-                    float sgn = input.tangentWS.w;
-                    float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
-                    half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                #if (SHADERPASS == SHADERPASS_DBUFFER_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_PROJECTOR)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
+						/*ase_unity_cond_end*/
 
-                    surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
-                #else
-                    surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz));
+						/*ase_unity_cond_end*/
+
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(normalToWorld[2].xyz);
+						/*ase_unity_cond_end*/
+                    #endif
+                #elif (SHADERPASS == SHADERPASS_DBUFFER_MESH) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_MESH) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_MESH)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+                        float sgn = input.tangentWS.w;
+                        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+                        half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                        surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(half3(input.normalWS));
+						/*ase_unity_cond_end*/
+                    #endif
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
@@ -2059,7 +2320,18 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
 				float3 positionWS = packedInput.positionWS.xyz;
 				half3 viewDirectionWS = half3(1.0, 1.0, 1.0);
 
@@ -2083,9 +2355,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				GetSurfaceData(packedInput, surfaceDescription, surfaceData);
 				ENCODE_INTO_DBUFFER(surfaceData, outDBuffer);
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
+
 			}
 
             ENDHLSL
@@ -2155,14 +2433,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
@@ -2403,7 +2681,18 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
 				float3 positionWS = packedInput.positionWS.xyz;
 				half3 viewDirectionWS = half3(1.0, 1.0, 1.0);
 
@@ -2433,9 +2722,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				outEmissive.rgb = surfaceData.emissive;
 				outEmissive.a = surfaceData.baseColor.a;
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
 
 			}
             ENDHLSL
@@ -2475,7 +2769,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             /*ase_srp_cond_end*/
 
 			/*ase_srp_cond_begin:>=140009*/
-			#pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
             /*ase_srp_cond_end*/
 
 			#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
@@ -2531,14 +2825,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
@@ -2584,11 +2878,10 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float4 tangentWS : TEXCOORD2;
 				float4 texCoord0 : TEXCOORD3;
 				float3 viewDirectionWS : TEXCOORD4;
-				float2 staticLightmapUV : TEXCOORD5;
-				float2 dynamicLightmapUV : TEXCOORD6;
-				float3 sh : TEXCOORD7;
-				float4 fogFactorAndVertexLight : TEXCOORD8;
-				/*ase_interp(9,):sp=sp;wp=tc0;wn=tc1;wt=tc2;uv0=tc3;wvd=tc4*/
+				float4 lightmapUVs : TEXCOORD5; // @diogo: packs both static (xy) and dynamic (zw)
+				float3 sh : TEXCOORD6;
+				float4 fogFactorAndVertexLight : TEXCOORD7;
+				/*ase_interp(8,):sp=sp;wp=tc0;wn=tc1;wt=tc2;uv0=tc3;wvd=tc4*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -2641,14 +2934,40 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
 
-                #if defined(_MATERIAL_AFFECTS_NORMAL)
-                    float sgn = input.tangentWS.w;
-                    float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
-                    half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                #if (SHADERPASS == SHADERPASS_DBUFFER_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_PROJECTOR)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
+						/*ase_unity_cond_end*/
 
-                    surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
-                #else
-                    surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz));
+						/*ase_unity_cond_end*/
+
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(normalToWorld[2].xyz);
+						/*ase_unity_cond_end*/
+                    #endif
+                #elif (SHADERPASS == SHADERPASS_DBUFFER_MESH) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_MESH) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_MESH)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+                        float sgn = input.tangentWS.w;
+                        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+                        half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                        surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(half3(input.normalWS));
+						/*ase_unity_cond_end*/
+                    #endif
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
@@ -2728,30 +3047,29 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.positionWS = positionWS;
 				inputData.normalWS = normalWS;
 				inputData.viewDirectionWS = viewDirectionWS;
-
 				inputData.shadowCoord = float4(0, 0, 0, 0);
 
 				#ifdef VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
-					inputData.fogCoord = half(input.fogFactorAndVertexLight.x);
-					inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);
+					inputData.fogCoord = InitializeInputDataFog(float4(positionWS, 1.0), input.fogFactorAndVertexLight.x);
+					inputData.vertexLighting = input.fogFactorAndVertexLight.yzw;
 				#endif
 
 				#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV.xy, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, input.lightmapUVs.zw, input.sh, normalWS);
 				#elif defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, half3(input.sh), normalWS);
 				#endif
 
 				#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.shadowMask = SAMPLE_SHADOWMASK(input.staticLightmapUV);
+					inputData.shadowMask = SAMPLE_SHADOWMASK(input.lightmapUVs.xy);
 				#endif
 
 				#if defined(DEBUG_DISPLAY)
 					#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-						inputData.dynamicLightmapUV = input.dynamicLightmapUV.xy;
+						inputData.dynamicLightmapUV = input.lightmapUVs.zw;
 					#endif
-					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV && LIGHTMAP_ON)
-						inputData.staticLightmapUV = input.staticLightmapUV;
+					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV) && defined(LIGHTMAP_ON)
+						inputData.staticLightmapUV = input.lightmapUVs.xy;
 					#elif defined(VARYINGS_NEED_SH)
 						inputData.vertexSH = input.sh;
 					#endif
@@ -2820,11 +3138,11 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				packedOutput.viewDirectionWS.xyz =  GetWorldSpaceViewDir(positionWS);
 
 				#if defined(LIGHTMAP_ON)
-					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.staticLightmapUV);
+					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.lightmapUVs.xy);
 				#endif
 
 				#if defined(DYNAMICLIGHTMAP_ON)
-					packedOutput.dynamicLightmapUV.xy = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
+					packedOutput.lightmapUVs.zw = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 				#endif
 
 				#if !defined(LIGHTMAP_ON)
@@ -2866,7 +3184,18 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 				#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
 				float3 positionWS = packedInput.positionWS.xyz;
 				half3 viewDirectionWS = half3(packedInput.viewDirectionWS);
 
@@ -2907,9 +3236,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				color.rgb = MixFog(color.rgb, inputData.fogCoord);
 				outColor = color;
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
 
 			}
             ENDHLSL
@@ -2953,7 +3287,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             /*ase_srp_cond_end*/
 
 			/*ase_srp_cond_begin:>=140009*/
-			#pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
             /*ase_srp_cond_end*/
 
 			#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
@@ -3010,14 +3344,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
@@ -3064,11 +3398,10 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float4 tangentWS : TEXCOORD2;
 				float4 texCoord0 : TEXCOORD3;
 				float3 viewDirectionWS : TEXCOORD4;
-				float2 staticLightmapUV : TEXCOORD5;
-				float2 dynamicLightmapUV : TEXCOORD6;
-				float3 sh : TEXCOORD7;
-				float4 fogFactorAndVertexLight : TEXCOORD8;
-				/*ase_interp(9,):sp=sp;wp=tc0;wn=tc1;wt=tc2;uv0=tc3;wvd=tc4*/
+				float4 lightmapUVs : TEXCOORD5; // @diogo: packs both static (xy) and dynamic (zw)
+				float3 sh : TEXCOORD6;
+				float4 fogFactorAndVertexLight : TEXCOORD7;
+				/*ase_interp(8,):sp=sp;wp=tc0;wn=tc1;wt=tc2;uv0=tc3;wvd=tc4*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -3121,14 +3454,40 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
 
-                #if defined(_MATERIAL_AFFECTS_NORMAL)
-                    float sgn = input.tangentWS.w;
-                    float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
-                    half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                #if (SHADERPASS == SHADERPASS_DBUFFER_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_PROJECTOR)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
+						/*ase_unity_cond_end*/
 
-                    surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
-                #else
-                    surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz));
+						/*ase_unity_cond_end*/
+
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = normalToWorld[2].xyz;
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(normalToWorld[2].xyz);
+						/*ase_unity_cond_end*/
+                    #endif
+                #elif (SHADERPASS == SHADERPASS_DBUFFER_MESH) || (SHADERPASS == SHADERPASS_DECAL_SCREEN_SPACE_MESH) || (SHADERPASS == SHADERPASS_DECAL_GBUFFER_MESH)
+                    #if defined(_MATERIAL_AFFECTS_NORMAL)
+                        float sgn = input.tangentWS.w;
+                        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
+                        half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
+                        surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
+                    #else
+					    /*ase_unity_cond_begin:<20220310*/
+                        surfaceData.normalWS.xyz = half3(input.normalWS);
+						/*ase_unity_cond_end*/
+
+						/*ase_unity_cond_begin:>=20220310*/
+						surfaceData.normalWS.xyz = normalize(half3(input.normalWS));
+						/*ase_unity_cond_end*/
+                    #endif
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
@@ -3207,28 +3566,29 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.positionWS = positionWS;
 				inputData.normalWS = normalWS;
 				inputData.viewDirectionWS = viewDirectionWS;
-
 				inputData.shadowCoord = float4(0, 0, 0, 0);
 
-				inputData.fogCoord = half(input.fogFactorAndVertexLight.x);
-				inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);
+				#ifdef VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
+					inputData.fogCoord = InitializeInputDataFog(float4(positionWS, 1.0), input.fogFactorAndVertexLight.x);
+					inputData.vertexLighting = input.fogFactorAndVertexLight.yzw;
+				#endif
 
 				#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV.xy, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, input.lightmapUVs.zw, input.sh, normalWS);
 				#elif defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, half3(input.sh), normalWS);
+					inputData.bakedGI = SAMPLE_GI(input.lightmapUVs.xy, half3(input.sh), normalWS);
 				#endif
 
 				#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV)
-					inputData.shadowMask = SAMPLE_SHADOWMASK(input.staticLightmapUV);
+					inputData.shadowMask = SAMPLE_SHADOWMASK(input.lightmapUVs.xy);
 				#endif
 
 				#if defined(DEBUG_DISPLAY)
 					#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
-						inputData.dynamicLightmapUV = input.dynamicLightmapUV.xy;
+						inputData.dynamicLightmapUV = input.lightmapUVs.zw;
 					#endif
-					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV && LIGHTMAP_ON)
-						inputData.staticLightmapUV = input.staticLightmapUV;
+					#if defined(VARYINGS_NEED_STATIC_LIGHTMAP_UV) && defined(LIGHTMAP_ON)
+						inputData.staticLightmapUV = input.lightmapUVs.xy;
 					#elif defined(VARYINGS_NEED_SH)
 						inputData.vertexSH = input.sh;
 					#endif
@@ -3290,11 +3650,11 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				packedOutput.viewDirectionWS.xyz =  GetWorldSpaceViewDir(positionWS);
 
 				#if defined(LIGHTMAP_ON)
-					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.staticLightmapUV);
+					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.lightmapUVs.xy);
 				#endif
 
 				#if defined(DYNAMICLIGHTMAP_ON)
-					packedOutput.dynamicLightmapUV.xy = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
+					packedOutput.lightmapUVs.zw = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 				#endif
 
 				#if !defined(LIGHTMAP_ON)
@@ -3344,7 +3704,18 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				half3 normalWS = half3(LoadSceneNormals(packedInput.positionCS.xy));
 			#endif
 
-				float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+				#if ASE_SRP_VERSION <=140011
+					float2 positionSS = packedInput.positionCS.xy * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
+				/*ase_unity_cond_begin:>=20220352*/
+				#if ASE_SRP_VERSION >=140011
+					float2 positionSS = FoveatedRemapNonUniformToLinearCS(packedInput.positionCS.xy) * _ScreenSize.zw;
+				#endif
+				/*ase_unity_cond_end*/
+
 				float3 positionWS = packedInput.positionWS.xyz;
 				half3 viewDirectionWS = half3(packedInput.viewDirectionWS);
 
@@ -3371,42 +3742,47 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				GetSurfaceData(packedInput, surfaceDescription, surfaceData);
 
-				InputData inputData;
-				InitializeInputData(packedInput, positionWS, surfaceData.normalWS.xyz, viewDirectionWS, inputData);
+				half3 normalToPack = surfaceData.normalWS.xyz;
+				#ifdef DECAL_RECONSTRUCT_NORMAL
+					surfaceData.normalWS.xyz = normalize(lerp(normalWS.xyz, surfaceData.normalWS.xyz, surfaceData.normalWS.w));
+				#endif
 
-				SurfaceData surface = (SurfaceData)0;
-				GetSurface(surfaceData, surface);
+					InputData inputData;
+					InitializeInputData(packedInput, positionWS, surfaceData.normalWS.xyz, viewDirectionWS, inputData);
 
-				BRDFData brdfData;
-				InitializeBRDFData(surface.albedo, surface.metallic, 0, surface.smoothness, surface.alpha, brdfData);
+					SurfaceData surface = (SurfaceData)0;
+					GetSurface(surfaceData, surface);
+
+					BRDFData brdfData;
+					InitializeBRDFData(surface.albedo, surface.metallic, 0, surface.smoothness, surface.alpha, brdfData);
 
 				#ifdef _MATERIAL_AFFECTS_ALBEDO
-					#ifdef DECAL_RECONSTRUCT_NORMAL
-						half3 normalGI = normalize(lerp(normalWS.xyz, surfaceData.normalWS.xyz, surfaceData.normalWS.w));
-					#else
-						half3 normalGI = surfaceData.normalWS.xyz;
-					#endif
-
 					Light mainLight = GetMainLight(inputData.shadowCoord, inputData.positionWS, inputData.shadowMask);
-					MixRealtimeAndBakedGI(mainLight, normalGI, inputData.bakedGI, inputData.shadowMask);
-					half3 color = GlobalIllumination(brdfData, inputData.bakedGI, surface.occlusion, normalGI, inputData.viewDirectionWS);
+					MixRealtimeAndBakedGI(mainLight, surfaceData.normalWS.xyz, inputData.bakedGI, inputData.shadowMask);
+					half3 color = GlobalIllumination(brdfData, inputData.bakedGI, surface.occlusion, surfaceData.normalWS.xyz, inputData.viewDirectionWS);
 				#else
 					half3 color = 0;
 				#endif
 
-				half3 packedNormalWS = PackNormal(surfaceData.normalWS.xyz);
+				#pragma warning (disable : 3578) // The output value isn't completely initialized.
+				half3 packedNormalWS = PackNormal(normalToPack);
 				fragmentOutput.GBuffer0 = half4(surfaceData.baseColor.rgb, surfaceData.baseColor.a);
 				fragmentOutput.GBuffer1 = 0;
 				fragmentOutput.GBuffer2 = half4(packedNormalWS, surfaceData.normalWS.a);
 				fragmentOutput.GBuffer3 = half4(surfaceData.emissive + color, surfaceData.baseColor.a);
-
 				#if OUTPUT_SHADOWMASK
 					fragmentOutput.GBuffer4 = inputData.shadowMask;
 				#endif
+				#pragma warning (default : 3578) // Restore output value isn't completely initialized.
 
-                #if defined(_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
-                positionSS = RemapFoveatedRenderingDistortCS(packedInput.positionCS.xy, true) * _ScreenSize.zw;
+				/*ase_unity_cond_begin:<20220352*/
+                #if defined(SUPPORTS_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					UNITY_BRANCH if (_FOVEATED_RENDERING_NON_UNIFORM_RASTER)
+					{
+					   positionSS = RemapFoveatedRenderingNonUniformToLinearCS(input.positionCS.xy, true) * _ScreenSize.zw;
+					}
                 #endif
+				/*ase_unity_cond_end*/
 
 			}
 
@@ -3455,14 +3831,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 
 			/*ase_unity_cond_begin:>=20220316*/
-            #if ASE_SRP_VERSION >=140009
-			#include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
-			#endif
-			/*ase_unity_cond_end*/
-
-			/*ase_unity_cond_begin:>=20220316*/
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRendering.hlsl"
             /*ase_unity_cond_end*/
+
+			/*ase_unity_cond_begin:>=20220316*/
+            #if ASE_SRP_VERSION >=140009
+            #include_with_pragmas "Packages/com.unity.render-pipelines.core/ShaderLibrary/FoveatedRenderingKeywords.hlsl"
+			#endif
+			/*ase_unity_cond_end*/
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"

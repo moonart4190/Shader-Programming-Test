@@ -42,6 +42,9 @@ namespace AmplifyShaderEditor
 		private const string AutoGammaToLinearStr = "Auto Gamma To Linear";
 		private const string ShowAlphaStr = "Use Alpha";
 
+		private Rect m_frameDrawPos0;
+		private Rect m_frameDrawPos1;
+
 		public ColorNode() : base() { }
 		public ColorNode( int uniqueId, float x, float y, float width, float height ) : base( uniqueId, x, y, width, height ) { }
 
@@ -93,10 +96,10 @@ namespace AmplifyShaderEditor
 		{
 			m_textLabelWidth = ( m_currentParameterType == PropertyType.Constant ) ? 152 : 105;
 
-			m_defaultValue = EditorGUILayoutColorField( Constants.DefaultValueLabelContent, m_defaultValue, false, m_useAlpha, m_isHDR );
-			if( m_currentParameterType == PropertyType.Constant )
+			m_defaultValue = EditorGUILayoutColorField( Constants.DefaultValueLabelContent, m_defaultValue, false, m_useAlpha, m_isHDR, GUILayout.Height( 20 ) );
+
+			if ( m_currentParameterType == PropertyType.Constant )
 			{
-				
 				m_autoGammaToLinearConversion = EditorGUILayoutToggle( AutoGammaToLinearStr, m_autoGammaToLinearConversion );
 			}
 
@@ -176,9 +179,9 @@ namespace AmplifyShaderEditor
 				m_requireMaterialUpdate = true;
 		}
 
-		public override void OnNodeLayout( DrawInfo drawInfo )
+		public override void OnNodeLayout( DrawInfo drawInfo, NodeUpdateCache cache )
 		{
-			base.OnNodeLayout( drawInfo );
+			base.OnNodeLayout( drawInfo, cache );
 
 			int maxWidth = 80;
 
@@ -187,6 +190,9 @@ namespace AmplifyShaderEditor
 			m_propertyDrawPos.y = m_remainingBox.y;
 			m_propertyDrawPos.width = maxWidth * drawInfo.InvertedZoom;
 			m_propertyDrawPos.height = Mathf.Min( m_remainingBox.height, ( ( maxWidth + ( m_useAlpha ? 20 : 0 ) ) * drawInfo.InvertedZoom ) );
+
+			m_frameDrawPos0 = new Rect( m_propertyDrawPos.x, m_propertyDrawPos.y - 1, m_propertyDrawPos.width + 1, m_propertyDrawPos.height + 1 );
+			m_frameDrawPos1 = new Rect( m_propertyDrawPos.x, m_propertyDrawPos.y + m_propertyDrawPos.height - 1, m_propertyDrawPos.width, 1 );
 		}
 
 		public override void DrawGUIControls( DrawInfo drawInfo )
@@ -217,8 +223,8 @@ namespace AmplifyShaderEditor
 
 			if( !m_isVisible )
 				return;
-
-			if( m_isEditingFields && m_currentParameterType != PropertyType.Global )
+			
+			if ( m_isEditingFields && m_currentParameterType != PropertyType.Global )
 			{
 				if( m_materialMode && m_currentParameterType != PropertyType.Constant )
 				{
@@ -247,13 +253,13 @@ namespace AmplifyShaderEditor
 			}
 			else if( drawInfo.CurrentEventType == EventType.Repaint )
 			{
-				if( m_materialMode && m_currentParameterType != PropertyType.Constant )
-					UIUtils.DrawColorSwatch( m_propertyDrawPos, m_materialValue, m_useAlpha, m_isHDR );
-				else
-					UIUtils.DrawColorSwatch( m_propertyDrawPos, m_defaultValue, m_useAlpha, m_isHDR );
-
-				GUI.Label( m_propertyDrawPos, string.Empty, UIUtils.GetCustomStyle( CustomStyle.SamplerFrame ) );
+				var value = ( m_materialMode && m_currentParameterType != PropertyType.Constant ) ? m_materialValue : m_defaultValue;
+				UIUtils.DrawColorSwatch( m_propertyDrawPos, value, m_useAlpha, m_isHDR );
 			}
+			
+			GUI.Label( m_frameDrawPos0, string.Empty, UIUtils.GetCustomStyle( CustomStyle.SamplerFrame ) );
+			// @diogo: to prevent gaps in frame; thanks, Unity!...
+			EditorGUI.DrawRect( m_frameDrawPos1, Color.black );
 		}
 
 		public override void ConfigureLocalVariable( ref MasterNodeDataCollector dataCollector )
@@ -298,13 +304,14 @@ namespace AmplifyShaderEditor
 				if( m_outputPorts[ 0 ].IsLocalValue( dataCollector.PortCategory ) )
 					return GetOutputColorItem( 0, outputId, m_outputPorts[ 0 ].LocalValue(dataCollector.PortCategory) );
 				
+
 				Color linear = m_defaultValue.linear;
 
-				string colorGamma = m_precisionString + "(" + m_defaultValue.r + "," + m_defaultValue.g + "," + m_defaultValue.b + 
-					( m_useAlpha ? "," + m_defaultValue.a : string.Empty ) + ")";
+				string colorGamma = m_precisionString + "( " + m_defaultValue.r + ", " + m_defaultValue.g + ", " + m_defaultValue.b +
+					( m_useAlpha ? ", " + m_defaultValue.a : string.Empty ) + " )";
 
-				string colorLinear = m_precisionString + "(" + linear.r + "," + linear.g + "," + linear.b + 
-					( m_useAlpha ? "," + m_defaultValue.a : string.Empty ) + ")";
+				string colorLinear = m_precisionString + "( " + linear.r + ", " + linear.g + ", " + linear.b +
+					( m_useAlpha ? ", " + m_defaultValue.a : string.Empty ) + " )";
 
 				string result = string.Format( AutoGammaToLinearConversion, colorGamma, colorLinear );
 				RegisterLocalVariable( 0, result, ref dataCollector, "color" + OutputId );
@@ -331,7 +338,7 @@ namespace AmplifyShaderEditor
 				{
 					case 0:
 					{
-						result = m_precisionString + "(" + color.r + "," + color.g + "," + color.b + ( m_useAlpha ? "," + color.a : string.Empty ) + ")";
+						result = m_precisionString + "( " + color.r + ", " + color.g + ", " + color.b + ( m_useAlpha ? ", " + color.a : string.Empty ) + " )";
 					}
 					break;
 
@@ -419,8 +426,8 @@ namespace AmplifyShaderEditor
 			string g = UIUtils.PropertyFloatToString( m_defaultValue.g );
 			string b = UIUtils.PropertyFloatToString( m_defaultValue.b );
 			string a = UIUtils.PropertyFloatToString( m_defaultValue.a );
-			return PropertyAttributes + m_propertyName + "(\"" + m_propertyInspectorName + "\", Color) = (" + r + "," + g + "," + b + 
-				( m_useAlpha ? "," + a : string.Empty ) + ")";
+			return PropertyAttributes + PropertyAttributesSeparator + m_propertyName + "( \"" + m_propertyInspectorName +
+				"\", Color ) = ( " + r + ", " + g + ", " + b + ( m_useAlpha ? ", " + a : string.Empty ) + " )";
 		}
 
 		public override void UpdateMaterial( Material mat )

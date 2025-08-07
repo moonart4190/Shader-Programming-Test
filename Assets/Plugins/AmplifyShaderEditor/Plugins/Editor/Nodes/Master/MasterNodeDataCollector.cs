@@ -152,10 +152,14 @@ namespace AmplifyShaderEditor
 		private Dictionary<string, int> m_virtualCoordinatesDict;
 		private Dictionary<string, string> m_virtualVariablesDict;
 		private Dictionary<string, PropertyDataCollector> m_localVariablesDict;
+		private Dictionary<string, PropertyDataCollector> m_localVariablesByNameDict;
 		private Dictionary<string, PropertyDataCollector> m_vertexLocalVariablesDict;
+		private Dictionary<string, PropertyDataCollector> m_vertexLocalVariablesByNameDict;
 		private Dictionary<string, PropertyDataCollector> m_specialLocalVariablesDict;
+		private Dictionary<string, PropertyDataCollector> m_specialLocalVariablesByNameDict;
 		private Dictionary<string, PropertyDataCollector> m_vertexDataDict;
 		private Dictionary<string, PropertyDataCollector> m_customOutputDict;
+		private Dictionary<string, PropertyDataCollector> m_customOutputByNameDict;
 		private Dictionary<string, string> m_localFunctions;
 		private Dictionary<string, string> m_grabPassDict;
 		private Dictionary<string, string> m_usePassesDict;
@@ -250,6 +254,28 @@ namespace AmplifyShaderEditor
 		private List<string> m_vertexInterpDeclList;
 		private Dictionary<string, string> m_vertexInterpDeclDict;
 		private TemplateDataCollector m_templateDataCollector;
+		private Dictionary<MasterNodePortCategory, System.Collections.Generic.HashSet<ParentNode>> m_propagateNodeCache;
+
+		public bool Touch( MasterNodePortCategory category, ParentNode node )
+		{
+			if ( !m_propagateNodeCache.TryGetValue( category, out System.Collections.Generic.HashSet<ParentNode> propagateSet ) )
+			{
+				propagateSet = new System.Collections.Generic.HashSet<ParentNode>();
+				m_propagateNodeCache.Add( category, propagateSet );
+			}
+
+			if ( !propagateSet.Contains( node ) )
+			{
+				// @diogo: not touched yet; cache miss
+				propagateSet.Add( node );
+				return false;
+			}
+			else
+			{
+				// @diogo: already touched; cache hit
+				return true;
+			}
+		}
 
 		public MasterNodeDataCollector( MasterNode masterNode ) : this()
 		{
@@ -317,12 +343,16 @@ namespace AmplifyShaderEditor
 			m_definesDict = new Dictionary<string, PropertyDataCollector>();
 			m_virtualCoordinatesDict = new Dictionary<string, int>();
 			m_localVariablesDict = new Dictionary<string, PropertyDataCollector>();
+			m_localVariablesByNameDict = new Dictionary<string, PropertyDataCollector>();
 			m_virtualVariablesDict = new Dictionary<string, string>();
 			m_specialLocalVariablesDict = new Dictionary<string, PropertyDataCollector>();
+			m_specialLocalVariablesByNameDict = new Dictionary<string, PropertyDataCollector>();
 			m_vertexLocalVariablesDict = new Dictionary<string, PropertyDataCollector>();
+			m_vertexLocalVariablesByNameDict = new Dictionary<string, PropertyDataCollector>();
 			m_localFunctions = new Dictionary<string, string>();
 			m_vertexDataDict = new Dictionary<string, PropertyDataCollector>();
 			m_customOutputDict = new Dictionary<string, PropertyDataCollector>();
+			m_customOutputByNameDict = new Dictionary<string, PropertyDataCollector>();
 			m_grabPassDict = new Dictionary<string, string>();
 			m_usePassesDict = new Dictionary<string, string>();
 
@@ -360,6 +390,8 @@ namespace AmplifyShaderEditor
 			m_vertexInterpDeclDict = new Dictionary<string, string>();
 
 			m_templateDataCollector = new TemplateDataCollector();
+
+			m_propagateNodeCache = new Dictionary<MasterNodePortCategory, System.Collections.Generic.HashSet<ParentNode>>();
 		}
 
 		public void CopyTextureChannelSizeFrom( ref MasterNodeDataCollector dataCollector )
@@ -568,7 +600,7 @@ namespace AmplifyShaderEditor
 		{
 			if( string.IsNullOrEmpty( value ) )
 				return;
-					
+
 			if( !m_inputDict.ContainsKey( value ) )
 			{
 				m_inputDict.Add( value, new PropertyDataCollector( nodeId, value ,-1, !addSemiColon) );
@@ -628,6 +660,7 @@ namespace AmplifyShaderEditor
 				case WirePortDataType.FLOAT3: return -3;
 				case WirePortDataType.COLOR:
 				case WirePortDataType.FLOAT4: return -4;
+				case WirePortDataType.FLOAT2x2: return -8;
 				case WirePortDataType.FLOAT3x3: return -9;
 				case WirePortDataType.FLOAT4x4: return -16;
 				default:
@@ -968,7 +1001,7 @@ namespace AmplifyShaderEditor
 
 			//Debug.Log( UsingMacrosMask );
 			AddToDirectives( Constants.CustomASEStandarSamplingMacrosHelper[ 0 ], 1 );
-			
+
 			if( ( Using2DMacrosMask & MacrosMask.AUTO ) == MacrosMask.AUTO )
 				AddToDirectives( Constants.CustomASEStandarSamplingMacrosRecent[ 0 ], 1 );
 			if( ( Using2DMacrosMask & MacrosMask.LOD ) == MacrosMask.LOD )
@@ -1206,7 +1239,7 @@ namespace AmplifyShaderEditor
 			if( !m_virtualCoordinatesDict.ContainsKey( coord ) )
 			{
 				m_virtualCoordinatesDict.Add( coord, nodeId );
-				AddLocalVariable( nodeId, "VirtualCoord " + Constants.VirtualCoordNameStr + nodeId + " = VTComputeVirtualCoord" + lodBias + "(" + coord + ");" );
+				AddLocalVariable( nodeId, "VirtualCoord " + Constants.VirtualCoordNameStr + nodeId + " = VTComputeVirtualCoord" + lodBias + "( " + coord + " );" );
 				return nodeId;
 			}
 			else
@@ -1223,7 +1256,7 @@ namespace AmplifyShaderEditor
 				return false;
 
 			string value = UIUtils.PrecisionWirePortToCgType( precisionType, type ) + " " + varName + " = " + varValue + ";";
-			return AddToLocalVariables( category, nodeId, value );
+			return AddToLocalVariables( category, nodeId, value, varName: varName );
 		}
 
 		public bool AddToLocalVariables( int nodeId, PrecisionType precisionType, WirePortDataType type, string varName, string varValue )
@@ -1232,10 +1265,10 @@ namespace AmplifyShaderEditor
 				return false;
 
 			string value = UIUtils.PrecisionWirePortToCgType( precisionType, type ) + " " + varName + " = " + varValue + ";";
-			return AddToFragmentLocalVariables( nodeId, value );
+			return AddToFragmentLocalVariables( nodeId, value, varName: varName );
 		}
 
-		public bool AddToLocalVariables( MasterNodePortCategory category, int nodeId, string value, bool ignoreDuplicates = false )
+		public bool AddToLocalVariables( MasterNodePortCategory category, int nodeId, string value, bool ignoreDuplicates = false, string varName = "" )
 		{
 			if( string.IsNullOrEmpty( value ) )
 				return false;
@@ -1245,12 +1278,12 @@ namespace AmplifyShaderEditor
 				case MasterNodePortCategory.Vertex:
 				case MasterNodePortCategory.Tessellation:
 				{
-					return AddToVertexLocalVariables( nodeId, value, ignoreDuplicates );
+					return AddToVertexLocalVariables( nodeId, value, ignoreDuplicates, varName );
 				}
 				case MasterNodePortCategory.Fragment:
 				case MasterNodePortCategory.Debug:
 				{
-					return AddToFragmentLocalVariables( nodeId, value, ignoreDuplicates );
+					return AddToFragmentLocalVariables( nodeId, value, ignoreDuplicates, varName );
 				}
 			}
 
@@ -1263,43 +1296,7 @@ namespace AmplifyShaderEditor
 				return false;
 
 			string value = customType + " " + varName + " = " + varValue + ";";
-			return AddLocalVariable( nodeId, value );
-		}
-
-		private bool UsedLocalVariable( string value )
-		{
-			switch( m_portCategory )
-			{
-				case MasterNodePortCategory.Vertex:
-				case MasterNodePortCategory.Tessellation:
-				{
-					if( m_vertexLocalVariablesDict.ContainsKey( value ) )
-					{
-						return true;
-					}
-				}
-				break;
-				case MasterNodePortCategory.Fragment:
-				case MasterNodePortCategory.Debug:
-				{
-					if( m_usingCustomOutput )
-					{
-						if( m_customOutputDict.ContainsKey( value ) )
-						{
-							return true;
-						}
-					}
-					else
-					{
-						if( m_localVariablesDict.ContainsKey( value ) )
-						{
-							return true;
-						}
-					}
-				}
-				break;
-			}
-			return false;
+			return AddLocalVariable( nodeId, value, varName: varName );
 		}
 
 		private bool ValidadeLocalVariable( PrecisionType precisionType, WirePortDataType type, string varName, string varValue, ref string result )
@@ -1308,7 +1305,7 @@ namespace AmplifyShaderEditor
 			foreach( PrecisionType currPrecision in enumValues)
 			{
 				string value = UIUtils.PrecisionWirePortToTypeValue( currPrecision, type, varName ) + " = " + varValue + ";";
-				if( UsedLocalVariable( value ) )
+				if( HasLocalVariable( value ) )
 					return false;
 
 				if( precisionType == currPrecision )
@@ -1320,39 +1317,43 @@ namespace AmplifyShaderEditor
 
 		public bool AddLocalVariable( int nodeId, PrecisionType precisionType, WirePortDataType type, string varName, string varValue )
 		{
-			if( string.IsNullOrEmpty( varName ) || string.IsNullOrEmpty( varValue ) )
+			if ( string.IsNullOrEmpty( varName ) || string.IsNullOrEmpty( varValue ) )
+			{
 				return false;
+			}
 
-			//string value = UIUtils.PrecisionWirePortToTypeValue( precisionType, type, varName ) + " = " + varValue + ";";
 			string value = string.Empty;
-			if( ValidadeLocalVariable(  precisionType, type, varName, varValue, ref value))
-				return AddLocalVariable( nodeId, value );
-
+			if ( ValidadeLocalVariable( precisionType, type, varName, varValue, ref value ) )
+			{
+				return AddLocalVariable( nodeId, value, varName: varName );
+			}
 			return false;
 		}
 
-		public bool AddLocalVariable( int nodeId, string name, string value, bool ignoreDuplicates = false , bool addSemiColon = false )
+		public bool AddLocalVariable( int nodeId, string varName, string varValue, bool ignoreDuplicates = false, bool addSemiColon = false )
 		{
-			string finalValue = addSemiColon ? name + " = " + value + ";" : name + " = " + value;
-			return AddLocalVariable( nodeId, finalValue, ignoreDuplicates );
+			string finalValue = addSemiColon ? varName + " = " + varValue + ";" : varName + " = " + varValue;
+			return AddLocalVariable( nodeId, finalValue, ignoreDuplicates, varName: varName );
 		}
 
-		public bool AddLocalVariable( int nodeId, string value, bool ignoreDuplicates = false )
+		public bool AddLocalVariable( int nodeId, string value, bool ignoreDuplicates = false, string varName = "" )
 		{
-			if( string.IsNullOrEmpty( value ) )
+			if ( string.IsNullOrEmpty( value ) )
+			{
 				return false;
+			}
 
-			switch( m_portCategory )
+			switch ( m_portCategory )
 			{
 				case MasterNodePortCategory.Vertex:
 				case MasterNodePortCategory.Tessellation:
 				{
-					return AddToVertexLocalVariables( nodeId, value, ignoreDuplicates );
+					return AddToVertexLocalVariables( nodeId, value, ignoreDuplicates, varName );
 				}
 				case MasterNodePortCategory.Fragment:
 				case MasterNodePortCategory.Debug:
 				{
-					return AddToFragmentLocalVariables( nodeId, value, ignoreDuplicates );
+					return AddToFragmentLocalVariables( nodeId, value, ignoreDuplicates, varName );
 				}
 			}
 
@@ -1366,16 +1367,6 @@ namespace AmplifyShaderEditor
 
 			string result = string.Empty;
 
-			//switch ( m_portCategory )
-			//{
-			//case MasterNodePortCategory.Vertex:
-			//case MasterNodePortCategory.Tessellation:
-			//{
-			//}
-			//break;
-			//case MasterNodePortCategory.Fragment:
-			//case MasterNodePortCategory.Debug:
-			//{
 			if( !m_virtualVariablesDict.ContainsKey( value ) )
 			{
 				m_virtualVariablesDict.Add( value, variable );
@@ -1385,10 +1376,6 @@ namespace AmplifyShaderEditor
 			{
 				m_virtualVariablesDict.TryGetValue( value, out result );
 			}
-			//}
-			//break;
-			//}
-
 			return result;
 		}
 
@@ -1406,7 +1393,12 @@ namespace AmplifyShaderEditor
 
 		public bool HasLocalVariable( string value )
 		{
-			switch( m_portCategory )
+			return HasLocalVariable( value, m_portCategory );
+		}
+
+		public bool HasLocalVariable( string value, MasterNodePortCategory category )
+		{
+			switch( category )
 			{
 				case MasterNodePortCategory.Vertex:
 				case MasterNodePortCategory.Tessellation:
@@ -1429,17 +1421,57 @@ namespace AmplifyShaderEditor
 			return false;
 		}
 
-		public bool AddToFragmentLocalVariables( int nodeId, string value, bool ignoreDuplicates = false )
+		public bool HasLocalVariableByName( string varName )
 		{
-			if( string.IsNullOrEmpty( value ) )
-				return false;
+			return HasLocalVariableByName( varName, m_portCategory );
+		}
 
-			if( m_usingCustomOutput )
+		public bool HasLocalVariableByName( string varName, MasterNodePortCategory category )
+		{
+			switch ( category )
 			{
-				if( !m_customOutputDict.ContainsKey( value ) || ignoreDuplicates )
+				case MasterNodePortCategory.Vertex:
+				case MasterNodePortCategory.Tessellation:
 				{
-					if( !m_customOutputDict.ContainsKey( value ) )
-						m_customOutputDict.Add( value, new PropertyDataCollector( nodeId, value ) );
+					return m_vertexLocalVariablesByNameDict.ContainsKey( varName );
+				}
+				case MasterNodePortCategory.Fragment:
+				case MasterNodePortCategory.Debug:
+				{
+					if ( m_usingCustomOutput )
+					{
+						return m_customOutputByNameDict.ContainsKey( varName );
+					}
+					else
+					{
+						return m_localVariablesByNameDict.ContainsKey( varName );
+					}
+				}
+			}
+			return false;
+		}
+
+		public bool AddToFragmentLocalVariables( int nodeId, string value, bool ignoreDuplicates = false, string varName = "" )
+		{
+			if ( string.IsNullOrEmpty( value ) )
+			{
+				return false;
+			}
+
+			if ( m_usingCustomOutput )
+			{
+				if ( !m_customOutputDict.ContainsKey( value ) || ignoreDuplicates )
+				{
+					if ( !m_customOutputDict.TryGetValue( value, out PropertyDataCollector property ) )
+					{
+						property = new PropertyDataCollector( nodeId, value );
+						m_customOutputDict.Add( value, property );
+					}
+
+					if ( !string.IsNullOrEmpty( varName ) && !m_customOutputByNameDict.ContainsKey( varName ) )
+					{
+						m_customOutputByNameDict.Add( varName, property );
+					}
 
 					m_customOutputList.Add( m_customOutputDict[ value ] );
 					m_customOutput += "\t\t\t" + value + '\n';
@@ -1447,15 +1479,23 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					if( m_showDebugMessages ) UIUtils.ShowMessage( "AddToLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
+					if ( m_showDebugMessages ) UIUtils.ShowMessage( "AddToLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
 				}
 			}
 			else
 			{
-				if( !m_localVariablesDict.ContainsKey( value ) || ignoreDuplicates )
+				if ( !m_localVariablesDict.ContainsKey( value ) || ignoreDuplicates )
 				{
-					if( !m_localVariablesDict.ContainsKey( value ) )
-						m_localVariablesDict.Add( value, new PropertyDataCollector( nodeId, value ) );
+					if ( !m_localVariablesDict.TryGetValue( value, out PropertyDataCollector property ) )
+					{
+						property = new PropertyDataCollector( nodeId, value );
+						m_localVariablesDict.Add( value, property );
+					}
+
+					if ( !string.IsNullOrEmpty( varName ) && !m_localVariablesByNameDict.ContainsKey( varName ) )
+					{
+						m_localVariablesByNameDict.Add( varName, property );
+					}
 
 					m_localVariablesList.Add( m_localVariablesDict[ value ] );
 					AddToSpecialLocalVariables( nodeId, value, ignoreDuplicates );
@@ -1463,23 +1503,31 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					if( m_showDebugMessages ) UIUtils.ShowMessage( "AddToLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
+					if ( m_showDebugMessages ) UIUtils.ShowMessage( "AddToLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
 				}
 			}
 			return false;
 		}
 
-		public void AddToSpecialLocalVariables( int nodeId, string value, bool ignoreDuplicates = false )
+		public void AddToSpecialLocalVariables( int nodeId, string value, bool ignoreDuplicates = false, string varName = "" )
 		{
-			if( string.IsNullOrEmpty( value ) )
+			if ( string.IsNullOrEmpty( value ) )
 				return;
 
-			if( m_usingCustomOutput )
+			if ( m_usingCustomOutput )
 			{
-				if( !m_customOutputDict.ContainsKey( value ) || ignoreDuplicates )
+				if ( !m_customOutputDict.ContainsKey( value ) || ignoreDuplicates )
 				{
-					if( !m_customOutputDict.ContainsKey( value ) )
-						m_customOutputDict.Add( value, new PropertyDataCollector( nodeId, value ) );
+					if ( !m_customOutputDict.TryGetValue( value, out PropertyDataCollector property ) )
+					{
+						property = new PropertyDataCollector( nodeId, value );
+						m_customOutputDict.Add( value, property );
+					}
+
+					if ( !string.IsNullOrEmpty( varName ) && !m_customOutputByNameDict.ContainsKey( varName ) )
+					{
+						m_customOutputByNameDict.Add( varName, property );
+					}
 
 					m_customOutputList.Add( m_customOutputDict[ value ] );
 					m_customOutput += "\t\t\t" + value + '\n';
@@ -1487,15 +1535,23 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					if( m_showDebugMessages ) UIUtils.ShowMessage( "AddToSpecialLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
+					if ( m_showDebugMessages ) UIUtils.ShowMessage( "AddToSpecialLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
 				}
 			}
 			else
 			{
-				if( !m_specialLocalVariablesDict.ContainsKey( value ) || ignoreDuplicates )
+				if ( !m_specialLocalVariablesDict.ContainsKey( value ) || ignoreDuplicates )
 				{
-					if( !m_specialLocalVariablesDict.ContainsKey( value ) )
-						m_specialLocalVariablesDict.Add( value, new PropertyDataCollector( nodeId, value ) );
+					if ( !m_specialLocalVariablesDict.TryGetValue( value, out PropertyDataCollector property ) )
+					{
+						property = new PropertyDataCollector( nodeId, value );
+						m_specialLocalVariablesDict.Add( value, property );
+					}
+
+					if ( !string.IsNullOrEmpty( varName ) && !m_specialLocalVariablesByNameDict.ContainsKey( varName ) )
+					{
+						m_specialLocalVariablesByNameDict.Add( value, property );
+					}
 
 					m_specialLocalVariablesList.Add( m_specialLocalVariablesDict[ value ] );
 					m_specialLocalVariables += "\t\t\t" + value + '\n';
@@ -1503,7 +1559,7 @@ namespace AmplifyShaderEditor
 				}
 				else
 				{
-					if( m_showDebugMessages ) UIUtils.ShowMessage( "AddToSpecialLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
+					if ( m_showDebugMessages ) UIUtils.ShowMessage( "AddToSpecialLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
 				}
 			}
 		}
@@ -1517,31 +1573,39 @@ namespace AmplifyShaderEditor
 
 		public bool AddToVertexLocalVariables( int nodeId, string varName, string varValue )
 		{
-			if( string.IsNullOrEmpty( varName ) || string.IsNullOrEmpty( varValue ) )
+			if ( string.IsNullOrEmpty( varName ) || string.IsNullOrEmpty( varValue ) )
 				return false;
 
 			string value = varName + " = " + varValue + ";";
-			return AddToVertexLocalVariables( nodeId, value );
+			return AddToVertexLocalVariables( nodeId, value, varName: varName );
 		}
 
 		public bool AddToVertexLocalVariables( int nodeId, PrecisionType precisionType, WirePortDataType type, string varName, string varValue )
 		{
-			if( string.IsNullOrEmpty( varName ) || string.IsNullOrEmpty( varValue ) )
+			if ( string.IsNullOrEmpty( varName ) || string.IsNullOrEmpty( varValue ) )
 				return false;
 
 			string value = UIUtils.PrecisionWirePortToCgType( precisionType, type ) + " " + varName + " = " + varValue + ";";
-			return AddToVertexLocalVariables( nodeId, value );
+			return AddToVertexLocalVariables( nodeId, value, varName: varName );
 		}
 
-		public bool AddToVertexLocalVariables( int nodeId, string value, bool ignoreDuplicates = false )
+		public bool AddToVertexLocalVariables( int nodeId, string value, bool ignoreDuplicates = false, string varName = "" )
 		{
-			if( string.IsNullOrEmpty( value ) )
+			if ( string.IsNullOrEmpty( value ) )
 				return false;
 
-			if( !m_vertexLocalVariablesDict.ContainsKey( value ) || ignoreDuplicates )
+			if ( !m_vertexLocalVariablesDict.ContainsKey( value ) || ignoreDuplicates )
 			{
-				if( !m_vertexLocalVariablesDict.ContainsKey( value ) )
-					m_vertexLocalVariablesDict.Add( value, new PropertyDataCollector( nodeId, value ) );
+				if ( !m_vertexLocalVariablesDict.TryGetValue( value, out PropertyDataCollector property ) )
+				{
+					property = new PropertyDataCollector( nodeId, value );
+					m_vertexLocalVariablesDict.Add( value, property  );
+				}
+
+				if ( !string.IsNullOrEmpty( varName ) && !m_vertexLocalVariablesByNameDict.ContainsKey( value ) )
+				{
+					m_vertexLocalVariablesByNameDict.Add( value, property );
+				}
 
 				m_vertexLocalVariablesList.Add( m_vertexLocalVariablesDict[ value ] );
 				m_vertexLocalVariables += "\t\t\t" + value + '\n';
@@ -1550,7 +1614,7 @@ namespace AmplifyShaderEditor
 			}
 			else
 			{
-				if( m_showDebugMessages ) UIUtils.ShowMessage( "AddToVertexLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
+				if ( m_showDebugMessages ) UIUtils.ShowMessage( "AddToVertexLocalVariables:Attempting to add duplicate " + value, MessageSeverity.Warning );
 			}
 
 			return false;
@@ -1928,11 +1992,20 @@ namespace AmplifyShaderEditor
 			m_localVariablesDict.Clear();
 			m_localVariablesDict = null;
 
+			m_localVariablesByNameDict.Clear();
+			m_localVariablesByNameDict = null;
+
 			m_specialLocalVariablesDict.Clear();
 			m_specialLocalVariablesDict = null;
 
+			m_specialLocalVariablesByNameDict.Clear();
+			m_specialLocalVariablesByNameDict = null;
+
 			m_vertexLocalVariablesDict.Clear();
 			m_vertexLocalVariablesDict = null;
+
+			m_vertexLocalVariablesByNameDict.Clear();
+			m_vertexLocalVariablesByNameDict = null;
 
 			m_localFunctions.Clear();
 			m_localFunctions = null;
@@ -1942,6 +2015,9 @@ namespace AmplifyShaderEditor
 
 			m_customOutputDict.Clear();
 			m_customOutputDict = null;
+
+			m_customOutputByNameDict.Clear();
+			m_customOutputByNameDict = null;
 
 			//templates
 			m_vertexInputList.Clear();
@@ -2060,6 +2136,8 @@ namespace AmplifyShaderEditor
 		public bool IsTemplate { get { return m_masterNodeCategory == AvailableShaderTypes.Template; } }
 
 		public bool IsSRP { get { return ( TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.URP || TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP ); } }
+		public bool IsURP { get { return ( TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.URP ); } }
+		public bool IsHDRP { get { return ( TemplateDataCollectorInstance.CurrentSRPType == TemplateSRPType.HDRP ); } }
 
 		public AvailableShaderTypes MasterNodeCategory
 		{
@@ -2068,8 +2146,8 @@ namespace AmplifyShaderEditor
 		}
 
 		public string CurrentPassName
-		{ 
-			get 
+		{
+			get
 			{
 				var multiPassMasterNode = m_masterNode as TemplateMultiPassMasterNode;
 				return ( multiPassMasterNode != null ) ? multiPassMasterNode.PassName : string.Empty;

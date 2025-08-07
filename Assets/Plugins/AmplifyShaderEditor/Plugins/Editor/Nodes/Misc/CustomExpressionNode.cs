@@ -90,36 +90,41 @@ namespace AmplifyShaderEditor
 		private const string AutoRegisterStr = "Auto-Register";
 		private const string DependenciesStr = "Dependencies";
 
+		private const string DefaultSamplerStateStr = "_Linear_Repeat";
+
 		private const string VarRegexReplacer = @"\b{0}\b";
 		private readonly string[] PrecisionLabelsExtraLocal = { "Float" , "Half" , "Inherit Local" };
 
 		private readonly string[] AvailableWireTypesStr =
 		{
-		"int",
-		"float",
-		"float2",
-		"float3",
-		"float4",
-		"float3x3",
-		"float4x4",
-		"sampler1D",
-		"sampler2D",
-		"sampler3D",
-		"samplerCUBE",
-		"sampler2Darray",
-		"samplerState",
-		"custom"};
+			"int",
+			"float",
+			"float2",
+			"float3",
+			"float4",
+			"float2x2",
+			"float3x3",
+			"float4x4",
+			"sampler1D",
+			"sampler2D",
+			"sampler3D",
+			"samplerCUBE",
+			"sampler2Darray",
+			"samplerState",
+			"custom"
+		};
 
 		private readonly string[] AvailableOutputWireTypesStr =
 		{
-		"int",
-		"float",
-		"float2",
-		"float3",
-		"float4",
-		"float3x3",
-		"float4x4",
-		"void",
+			"int",
+			"float",
+			"float2",
+			"float3",
+			"float4",
+			"float2x2",
+			"float3x3",
+			"float4x4",
+			"void",
 		};
 
 		private readonly string[] QualifiersStr =
@@ -136,6 +141,7 @@ namespace AmplifyShaderEditor
 			WirePortDataType.FLOAT2,
 			WirePortDataType.FLOAT3,
 			WirePortDataType.FLOAT4,
+			WirePortDataType.FLOAT2x2,
 			WirePortDataType.FLOAT3x3,
 			WirePortDataType.FLOAT4x4,
 			WirePortDataType.SAMPLER1D,
@@ -154,28 +160,30 @@ namespace AmplifyShaderEditor
 			WirePortDataType.FLOAT2,
 			WirePortDataType.FLOAT3,
 			WirePortDataType.FLOAT4,
+			WirePortDataType.FLOAT2x2,
 			WirePortDataType.FLOAT3x3,
 			WirePortDataType.FLOAT4x4,
 			WirePortDataType.OBJECT,
 		};
 
 
-		private readonly Dictionary<WirePortDataType , int> WireToIdx = new Dictionary<WirePortDataType , int>
+		private readonly Dictionary<WirePortDataType, int> WireToIdx = new Dictionary<WirePortDataType, int>
 		{
-			{ WirePortDataType.INT,         0},
-			{ WirePortDataType.FLOAT,       1},
-			{ WirePortDataType.FLOAT2,      2},
-			{ WirePortDataType.FLOAT3,      3},
-			{ WirePortDataType.FLOAT4,      4},
-			{ WirePortDataType.FLOAT3x3,    5},
-			{ WirePortDataType.FLOAT4x4,    6},
-			{ WirePortDataType.SAMPLER1D,   7},
-			{ WirePortDataType.SAMPLER2D,   8},
-			{ WirePortDataType.SAMPLER3D,   9},
-			{ WirePortDataType.SAMPLERCUBE, 10},
-			{ WirePortDataType.SAMPLER2DARRAY, 11},
-			{ WirePortDataType.SAMPLERSTATE, 12},
-			{ WirePortDataType.OBJECT,      13}
+			{ WirePortDataType.INT,             0 },
+			{ WirePortDataType.FLOAT,           1 },
+			{ WirePortDataType.FLOAT2,          2 },
+			{ WirePortDataType.FLOAT3,          3 },
+			{ WirePortDataType.FLOAT4,          4 },
+			{ WirePortDataType.FLOAT2x2,        5 },
+			{ WirePortDataType.FLOAT3x3,        6 },
+			{ WirePortDataType.FLOAT4x4,        7 },
+			{ WirePortDataType.SAMPLER1D,       8 },
+			{ WirePortDataType.SAMPLER2D,       9 },
+			{ WirePortDataType.SAMPLER3D,      10 },
+			{ WirePortDataType.SAMPLERCUBE,    11 },
+			{ WirePortDataType.SAMPLER2DARRAY, 12 },
+			{ WirePortDataType.SAMPLERSTATE,   13 },
+			{ WirePortDataType.OBJECT,         14 }
 		};
 
 		[SerializeField]
@@ -407,9 +415,9 @@ namespace AmplifyShaderEditor
 			}
 		}
 
-		public override void OnNodeLayout( DrawInfo drawInfo )
+		public override void OnNodeLayout( DrawInfo drawInfo, NodeUpdateCache cache )
 		{
-			base.OnNodeLayout( drawInfo );
+			base.OnNodeLayout( drawInfo, cache );
 			m_titleClickArea = m_titlePos;
 			m_titleClickArea.height = Constants.NODE_HEADER_HEIGHT;
 		}
@@ -1356,6 +1364,10 @@ namespace AmplifyShaderEditor
 						if( m_inputPorts[ i ].DataType != WirePortDataType.OBJECT )
 						{
 							string result = m_inputPorts[ i ].GeneratePortInstructions( ref dataCollector );
+							if ( !m_inputPorts[ i ].IsConnected && m_inputPorts[ i ].DataType == WirePortDataType.SAMPLERSTATE )
+							{
+								result = GeneratorUtils.GenerateSamplerState( ref dataCollector, UniqueId, DefaultSamplerStateStr, VariableMode.Create );
+							}
 							dataCollector.AddLocalVariable( UniqueId , CurrentPrecisionType , m_inputPorts[ i ].DataType , inputPortLocalVar , result );
 						}
 						else
@@ -1428,7 +1440,12 @@ namespace AmplifyShaderEditor
 									}
 									else
 									{
-										dataCollector.AddLocalVariable( UniqueId , CurrentPrecisionType , m_inputPorts[ i ].DataType , inputPortLocalVar , m_inputPorts[ i ].WrappedInternalData );
+										string result = m_inputPorts[ i ].WrappedInternalData;
+										if ( m_inputPorts[ i ].DataType == WirePortDataType.SAMPLERSTATE )
+										{
+											result = GeneratorUtils.GenerateSamplerState( ref dataCollector, UniqueId, DefaultSamplerStateStr, VariableMode.Create );
+										}
+										dataCollector.AddLocalVariable( UniqueId, CurrentPrecisionType, m_inputPorts[ i ].DataType, inputPortLocalVar, result );
 									}
 								}
 
@@ -1545,6 +1562,12 @@ namespace AmplifyShaderEditor
 			}
 		}
 
+		public static int UpgradeTypeIdx( int typeIdx )
+		{
+			// 19901 => adds float2x2
+			return typeIdx + ( ( UIUtils.CurrentShaderVersion() <= 19900 && typeIdx > 4 ) ? 1 : 0 );
+		}
+
 		public override void ReadFromString( ref string[] nodeParams )
 		{
 			// This node is, by default, created with one input port 
@@ -1552,7 +1575,8 @@ namespace AmplifyShaderEditor
 			m_code = GetCurrentParam( ref nodeParams );
 			m_code = m_code.Replace( Constants.LineFeedSeparator , '\n' );
 			m_code = m_code.Replace( Constants.SemiColonSeparator , ';' );
-			m_outputTypeIdx = Convert.ToInt32( GetCurrentParam( ref nodeParams ) );
+			m_outputTypeIdx = UpgradeTypeIdx( Convert.ToInt32( GetCurrentParam( ref nodeParams ) ) );
+
 			if( m_outputTypeIdx >= AvailableWireTypes.Length )
 			{
 				UIUtils.ShowMessage( UniqueId , "Sampler types were removed as a valid output custom expression type" );

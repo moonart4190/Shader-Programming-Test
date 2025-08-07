@@ -10,6 +10,7 @@ namespace AmplifyShaderEditor
 	public sealed class TexelSizeNode : ParentNode
 	{
 		private readonly string[] Dummy = { string.Empty };
+
 		[SerializeField]
 		private int m_referenceSamplerId = -1;
 
@@ -25,6 +26,9 @@ namespace AmplifyShaderEditor
 
 		[SerializeField]
 		private string m_previousTexture = string.Empty;
+
+		[SerializeField]
+		private VariableMode m_variableMode = VariableMode.Create;
 
 		private int m_cachedSamplerId = -1;
 		private int m_cachedSamplerIdArray = -1;
@@ -133,6 +137,8 @@ namespace AmplifyShaderEditor
 				}
 				UpdateTitle();
 			}
+
+			m_variableMode = ( VariableMode )EditorGUILayoutEnumPopup( "Variable Mode", m_variableMode );
 		}
 
 		public override string GenerateShaderForOutput( int outputId, ref MasterNodeDataCollector dataCollector, bool ignoreLocalvar )
@@ -155,7 +161,10 @@ namespace AmplifyShaderEditor
 				UIUtils.ShowMessage( UniqueId, "Please specify a texture sample on the Texel Size node", MessageSeverity.Warning );
 			}
 
-			dataCollector.AddToUniforms( UniqueId, "float4 " + texelName + ";", dataCollector.IsSRP );
+			if ( m_variableMode == VariableMode.Create )
+			{
+				dataCollector.AddToUniforms( UniqueId, "float4 " + texelName + ";", dataCollector.IsSRP );
+			}
 
 			switch( outputId )
 			{
@@ -295,6 +304,17 @@ namespace AmplifyShaderEditor
 			UpdateTitle();
 		}
 
+		public override void ReconnectClipboardReferences( Clipboard clipboard )
+		{
+			// validate node first
+			int newId = clipboard.GeNewNodeId( m_referenceNodeId );
+			if ( ContainerGraph.GetNode( newId ) != null )
+			{
+				m_referenceNodeId = newId;
+			}
+			RefreshExternalReferences();
+		}
+
 		public override void ReadFromString( ref string[] nodeParams )
 		{
 			base.ReadFromString( ref nodeParams );
@@ -306,12 +326,18 @@ namespace AmplifyShaderEditor
 			{
 				m_referenceSamplerId = Convert.ToInt32( GetCurrentParam( ref nodeParams ) );
 			}
+
+			if ( UIUtils.CurrentShaderVersion() >= 19801 )
+			{
+				m_variableMode = ( VariableMode )Enum.Parse( typeof( VariableMode ), GetCurrentParam( ref nodeParams ) );
+			}
 		}
 
 		public override void WriteToString( ref string nodeInfo, ref string connectionsInfo )
 		{
 			base.WriteToString( ref nodeInfo, ref connectionsInfo );
 			IOUtils.AddFieldValueToString( ref nodeInfo, m_referenceNodeId );
+			IOUtils.AddFieldValueToString( ref nodeInfo, m_variableMode );
 		}
 
 		public override void Destroy()

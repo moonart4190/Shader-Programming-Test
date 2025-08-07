@@ -62,7 +62,7 @@ namespace AmplifyShaderEditor
 
 		//private string LWFetchOpaqueTexture = "SAMPLE_TEXTURE2D( _CameraOpaqueTexture, sampler_CameraOpaqueTexture, {0})";
 
-		private string LWFetchOpaqueTexture = "float4( SHADERGRAPH_SAMPLE_SCENE_COLOR( {0} ), 1.0 )";
+		private string LWFetchOpaqueTexture = "float4( SHADERGRAPH_SAMPLE_SCENE_COLOR( {0}.xy ), 1.0 )";
 
 #if UNITY_2021_1_OR_NEWER
 		private const string URP2DHelpBox = "For the Grab Screen Color to properly work a proper setup is required:" +
@@ -71,7 +71,7 @@ namespace AmplifyShaderEditor
 
 		private readonly string[] URP2DDeclaration = {  "TEXTURE2D_X( _CameraSortingLayerTexture );",
 														"SAMPLER( sampler_CameraSortingLayerTexture );" };
-		private readonly string URP2DFunctionHeader = "float4( ASESample2DSortingLayer({0}), 1.0 )";
+		private readonly string URP2DFunctionHeader = "float4( ASESample2DSortingLayer({0}.xy), 1.0 )";
 		private readonly string[] URP2DFunctionBody =
 		{
 			"float3 ASESample2DSortingLayer( float2 uv )\n" +
@@ -81,7 +81,7 @@ namespace AmplifyShaderEditor
 		};
 #endif
 
-		private const string HDSampleSceneColorHeader5 = "ASEHDSampleSceneColor({0}, {1}, {2})";
+		private const string HDSampleSceneColorHeader5 = "ASEHDSampleSceneColor({0}.xy, {1}, {2})";
 		private readonly string[] HDSampleSceneColorFunc5 =
 		{
 			"float4 ASEHDSampleSceneColor(float2 uv, float lod, float exposureMultiplier)\n",
@@ -93,7 +93,7 @@ namespace AmplifyShaderEditor
 			"}\n",
 		};
 
-		private const string HDSampleSceneColorHeader4 = "ASEHDSampleSceneColor({0})";
+		private const string HDSampleSceneColorHeader4 = "ASEHDSampleSceneColor({0}.xy)";
 		private readonly string[] HDSampleSceneColorFunc4 =
 		{
 			"float4 ASEHDSampleSceneColor( float2 uv )\n",
@@ -337,7 +337,7 @@ namespace AmplifyShaderEditor
 			}
 
 #if UNITY_2021_1_OR_NEWER
-			if( ( ContainerGraph.IsLWRP || ContainerGraph.ParentWindow.IsShaderFunctionWindow ) && ASEPackageManagerHelper.CurrentHDRPBaseline >= ASESRPBaseline.ASE_SRP_11 )
+			if( ( ContainerGraph.IsLWRP || ContainerGraph.ParentWindow.IsShaderFunctionWindow ) && ASEPackageManagerHelper.CurrentHDRPBaseline >= ASESRPBaseline.ASE_SRP_11_0 )
 			{
 				m_isURP2D = EditorGUILayoutToggle( "2D Renderer" , m_isURP2D);
 				if( m_isURP2D )
@@ -421,7 +421,7 @@ namespace AmplifyShaderEditor
 					string lod = m_inputPorts[ 1 ].GeneratePortInstructions( ref dataCollector );
 					dataCollector.AddFunction( HDSampleSceneColorFunc5[ 0 ], HDSampleSceneColorFunc5, false );
 					string exposureValue = m_exposure ? "1.0" : "GetInverseCurrentExposureMultiplier()";
-					dataCollector.AddLocalVariable( UniqueId, m_currentPrecisionType, WirePortDataType.FLOAT4, valueName, string.Format( HDSampleSceneColorHeader5, uvCoords, lod, exposureValue ) );					
+					dataCollector.AddLocalVariable( UniqueId, m_currentPrecisionType, WirePortDataType.FLOAT4, valueName, string.Format( HDSampleSceneColorHeader5, uvCoords, lod, exposureValue ) );
 				}
 			}
 			else
@@ -487,7 +487,7 @@ namespace AmplifyShaderEditor
 				string customScreenPos = null;
 
 				if( dataCollector.IsTemplate )
-					customScreenPos = dataCollector.TemplateDataCollectorInstance.GetScreenPos( CurrentPrecisionType );
+					customScreenPos = dataCollector.TemplateDataCollectorInstance.GetScreenPosRaw( CurrentPrecisionType );
 
 				if( isProjecting )
 					result = GeneratorUtils.GenerateGrabScreenPosition( ref dataCollector, UniqueId, CurrentPrecisionType, !dataCollector.UsingCustomScreenPos, customScreenPos );
@@ -649,6 +649,17 @@ namespace AmplifyShaderEditor
 				else
 					m_normalize = false;
 			}
+		}
+
+		public override void ReconnectClipboardReferences( Clipboard clipboard )
+		{
+			// validate node first
+			int newId = clipboard.GeNewNodeId( m_referenceNodeId );
+			if ( ContainerGraph.GetNode( newId ) != null )
+			{
+				m_referenceNodeId = newId;
+			}
+			RefreshExternalReferences();
 		}
 
 		public override string PropertyName

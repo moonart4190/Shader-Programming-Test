@@ -394,61 +394,64 @@ namespace AmplifyShaderEditor
 				Debug.LogWarningFormat( "Action not allowed. Attempting to load the native {0} shader into Amplify Shader Editor", shader.name );
 				return;
 			}
-			if( OpenOnSeparateWindow )
+			if ( IOUtils.IsASEShader( shader ) )
 			{
-				AmplifyShaderEditorWindow currentWindow = CreateTab( shader.name , UIUtils.ShaderIcon );
-				UIUtils.CurrentWindow = currentWindow;
-				currentWindow.Show();
-			}
-			else
-			{
-				string guid = AssetDatabase.AssetPathToGUID( AssetDatabase.GetAssetPath( shader ) );
-				if( IOUtils.AllOpenedWindows.Count > 0 )
+				if ( OpenOnSeparateWindow )
 				{
-					AmplifyShaderEditorWindow openedTab = null;
-					for( int i = 0 ; i < IOUtils.AllOpenedWindows.Count ; i++ )
-					{
-						//if( AssetDatabase.GetAssetPath( shader ).Equals( IOUtils.AllOpenedWindows[ i ].LastOpenedLocation ) )
-						if( guid.Equals( IOUtils.AllOpenedWindows[ i ].GUID ) )
-						{
-							openedTab = IOUtils.AllOpenedWindows[ i ];
-							break;
-						}
-					}
-
-					if( openedTab != null )
-					{
-						openedTab.wantsMouseMove = true;
-						openedTab.ShowTab();
-						UIUtils.CurrentWindow = openedTab;
-					}
-					else
-					{
-						EditorWindow openedWindow = AmplifyShaderEditorWindow.GetWindow<AmplifyShaderEditorWindow>();
-						AmplifyShaderEditorWindow currentWindow = CreateTab();
-						WindowHelper.AddTab( openedWindow , currentWindow );
-						UIUtils.CurrentWindow = currentWindow;
-					}
+					AmplifyShaderEditorWindow currentWindow = CreateTab( shader.name , UIUtils.ShaderIcon );
+					UIUtils.CurrentWindow = currentWindow;
+					currentWindow.Show();
 				}
 				else
 				{
-					AmplifyShaderEditorWindow currentWindow = OpenWindow( shader.name , UIUtils.ShaderIcon );
-					UIUtils.CurrentWindow = currentWindow;
+					string guid = AssetDatabase.AssetPathToGUID( AssetDatabase.GetAssetPath( shader ) );
+					if( IOUtils.AllOpenedWindows.Count > 0 )
+					{
+						AmplifyShaderEditorWindow openedTab = null;
+						for( int i = 0 ; i < IOUtils.AllOpenedWindows.Count ; i++ )
+						{
+							//if( AssetDatabase.GetAssetPath( shader ).Equals( IOUtils.AllOpenedWindows[ i ].LastOpenedLocation ) )
+							if( guid.Equals( IOUtils.AllOpenedWindows[ i ].GUID ) )
+							{
+								openedTab = IOUtils.AllOpenedWindows[ i ];
+								break;
+							}
+						}
+
+						if( openedTab != null )
+						{
+							openedTab.wantsMouseMove = true;
+							openedTab.ShowTab();
+							UIUtils.CurrentWindow = openedTab;
+						}
+						else
+						{
+							EditorWindow openedWindow = AmplifyShaderEditorWindow.GetWindow<AmplifyShaderEditorWindow>();
+							AmplifyShaderEditorWindow currentWindow = CreateTab();
+							WindowHelper.AddTab( openedWindow , currentWindow );
+							UIUtils.CurrentWindow = currentWindow;
+						}
+					}
+					else
+					{
+						AmplifyShaderEditorWindow currentWindow = OpenWindow( shader.name , UIUtils.ShaderIcon );
+						UIUtils.CurrentWindow = currentWindow;
+					}
 				}
-			}
-			if( IOUtils.IsASEShader( shader ) )
-			{
+			
 				UIUtils.CurrentWindow.LoadProjectSelected( shader );
 			}
 			else
 			{
-				UIUtils.CreateEmptyFromInvalid( shader );
-				UIUtils.ShowMessage( "Trying to open shader not created on ASE! BEWARE, old data will be lost if saving it here!", MessageSeverity.Warning );
-				if( UIUtils.CurrentWindow.LiveShaderEditing )
-				{
-					UIUtils.ShowMessage( "Disabling Live Shader Editing. Must manually re-enable it.", MessageSeverity.Warning );
-					UIUtils.CurrentWindow.LiveShaderEditing = false;
-				}
+				Debug.LogWarning( "[AmplifyShaderEditor] Can't open shader " + shader.name + " because it was not created in ASE." );
+				
+				//UIUtils.CreateEmptyFromInvalid( shader );
+				//UIUtils.ShowMessage( "Trying to open shader not created on ASE! BEWARE, old data will be lost if saving it here!", MessageSeverity.Warning );
+				//if( UIUtils.CurrentWindow.LiveShaderEditing )
+				//{
+				//	UIUtils.ShowMessage( "Disabling Live Shader Editing. Must manually re-enable it.", MessageSeverity.Warning );
+				//	UIUtils.CurrentWindow.LiveShaderEditing = false;
+				//}
 			}
 		}
 
@@ -1591,6 +1594,9 @@ namespace AmplifyShaderEditor
 			Debug.Log( "[AmplifyShaderEditor] Finished compiling" + name + " in " + compileTimeInSeconds.ToString( "0.00" ) + " seconds." );
 		}
 
+		public static bool s_isSavingToDisk = false;
+		public static bool IsSavingToDisk { get { return s_isSavingToDisk; } }
+
 		public bool SaveToDisk( bool checkTimestamp )
 		{
 			if( checkTimestamp )
@@ -1609,6 +1615,8 @@ namespace AmplifyShaderEditor
 
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
+
+			s_isSavingToDisk = true;
 
 			m_customGraph = null;
 			m_cacheSaveOp = false;
@@ -1727,6 +1735,8 @@ namespace AmplifyShaderEditor
 				succeeded = true;
 			}
 
+			s_isSavingToDisk = false;
+
 			timer.Stop();
 			if ( Preferences.User.LogShaderCompile )
 			{
@@ -1769,11 +1779,6 @@ namespace AmplifyShaderEditor
 						m_consoleLogWindow.ClearMessages();
 					}
 					SaveToDisk( false );
-					
-					if ( Preferences.User.ClearLog )
-					{
-						m_consoleLogWindow.ClearMessages();
-					}					
 				}
 				break;
 				case ToolButtonType.Live:
@@ -3281,13 +3286,22 @@ namespace AmplifyShaderEditor
 				return;
 
 			UIUtils.ClearUndoHelper();
-			ParentNode[] selectedNodes = new ParentNode[ m_mainGraphInstance.SelectedNodes.Count ];
-			for( int i = 0; i < selectedNodes.Length; i++ )
+			List<ParentNode> selectedNodeList = new List<ParentNode>( m_mainGraphInstance.SelectedNodes.Count );
+			foreach( var node in m_mainGraphInstance.SelectedNodes )
 			{
-				selectedNodes[ i ] = m_mainGraphInstance.SelectedNodes[ i ];
-				selectedNodes[ i ].Rewire();
-				UIUtils.CheckUndoNode( selectedNodes[ i ] );
+				// @diogo: needs work... can't delete single wire nodes
+				//if ( node.GetType() == typeof( WireNode ) )
+				//{
+				//	// @diogo: these seem to be marked for deletion and processed on a late-stage sweep via ParentGraph.UndoableDeleteSelectedNodes()
+				//	continue;
+				//}
+
+				node.Rewire();
+				UIUtils.CheckUndoNode( node );
+				selectedNodeList.Add( node );
 			}
+
+			var selectedNodes = selectedNodeList.ToArray();
 
 			//Check nodes connected to deleted nodes to preserve connections on undo
 			List<ParentNode> extraNodes = new List<ParentNode>();
@@ -3655,9 +3669,9 @@ namespace AmplifyShaderEditor
 				return null;
 
 			ParentNode newNode = (ParentNode)ScriptableObject.CreateInstance( nodeType );
-			newNode.IsNodeBeingCopied = true;
 			if( newNode != null )
 			{
+				newNode.IsNodeBeingCopied = true;
 				newNode.ContainerGraph = m_mainGraphInstance;
 				newNode.ClipboardFullReadFromString( ref parameters );
 				m_mainGraphInstance.AddNode( newNode, true, true, true, false );
@@ -3802,6 +3816,16 @@ namespace AmplifyShaderEditor
 			}
 		}
 
+		void ReconnectClipboardReferences( List<ParentNode> createdNodes )
+		{
+			// @diogo: Restore reference connections (e.g. Switch node) lost due to new UniqueIDs
+			foreach ( ParentNode node in createdNodes )
+			{
+				node.ReconnectClipboardReferences( m_clipboard );
+			}
+
+		}
+
 		void PasteFromClipboard( bool copyConnections )
 		{
 			string result = EditorGUIUtility.systemCopyBuffer.Replace( "http://", "https://" );
@@ -3866,6 +3890,8 @@ namespace AmplifyShaderEditor
 				{
 					CreateConnectionsFromClipboardData( i );
 				}
+
+				ReconnectClipboardReferences( createdNodes );
 			}
 
 			// Refresh external references must always be called after all nodes are created
@@ -4613,12 +4639,12 @@ namespace AmplifyShaderEditor
 					}
 					catch ( Exception )
 					{
-						FocusZoom( true, false, false, 3 );
+						FocusZoom( true, false, false );
 					}
 				}
 				else
 				{
-					FocusZoom( true, false, false, 3 );
+					FocusZoom( true, false, false );
 				}
 			}
 
@@ -5526,6 +5552,8 @@ namespace AmplifyShaderEditor
 			return node;
 		}
 
+		private double m_previewUpdateLimiterTime = 0;
+
 		public void UpdateNodePreviewListAndTime()
 		{
 			if( UIUtils.CurrentWindow != this )
@@ -5534,7 +5562,7 @@ namespace AmplifyShaderEditor
 			double deltaTime = Time.realtimeSinceStartup - m_time;
 			m_time = Time.realtimeSinceStartup;
 
-			if( DebugConsoleWindow.DeveloperMode )
+			if ( DebugConsoleWindow.DeveloperMode )
 			{
 				m_frameCounter++;
 				if( m_frameCounter >= 60 )
@@ -5604,9 +5632,18 @@ namespace AmplifyShaderEditor
 			}
 			Shader.SetGlobalFloat( "_EditorTime", (float)m_time );
 			Shader.SetGlobalFloat( "_EditorDeltaTime", (float)deltaTime );
-			
+
+			// @diogo: limit preview update frequency to keep the CPU usage under control
+			m_previewUpdateLimiterTime += deltaTime;
+			if ( m_previewUpdateLimiterTime < 1.0 / Preferences.User.PreviewUpdateFrequency )
+			{
+				return;
+			}
+			m_previewUpdateLimiterTime = 0;
+
 			/////////// UPDATE PREVIEWS //////////////
 			UIUtils.CheckNullMaterials();
+			UIUtils.SetPreviewShaderConstants();
 			//CurrentGraph.AllNodes.Sort( ( x, y ) => { return x.Depth.CompareTo( y.Depth ); } );
 			int nodeCount = CurrentGraph.AllNodes.Count;
 			for( int i = nodeCount - 1; i >= 0; i-- )

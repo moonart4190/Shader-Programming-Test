@@ -266,6 +266,7 @@ namespace AmplifyShaderEditor
 						}
 					}
 					break;
+					case WirePortDataType.FLOAT2x2:
 					case WirePortDataType.FLOAT3x3:
 					case WirePortDataType.FLOAT4x4:
 					{
@@ -275,15 +276,18 @@ namespace AmplifyShaderEditor
 						}
 						else
 						{
-							int count = Mathf.Min( data.Length, 16 );
+							int size = 4;
+							size = ( m_dataType == WirePortDataType.FLOAT3x3 ) ? 3 : size;
+							size = ( m_dataType == WirePortDataType.FLOAT2x2 ) ? 2 : size;
+
 							int overallIdx = 0;
 							for( int i = 0; i < 4; i++ )
 							{
 								for( int j = 0; j < 4; j++ )
 								{
-									if( overallIdx < count )
+									if ( i < size && j < size )
 									{
-										m_previewInternalMatrix4x4[ i, j ] = Convert.ToSingle( data[ overallIdx ] );
+										m_previewInternalMatrix4x4[ i, j ] = Convert.ToSingle( data[ i * size + j ] );
 									}
 									else
 									{
@@ -359,14 +363,23 @@ namespace AmplifyShaderEditor
 					m_internalDataWrapper = "float4( {0} )";
 				}
 				break;
+				case WirePortDataType.FLOAT2x2:
+				{
+					m_internalData = m_previewInternalMatrix4x4[ 0, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 0, 1 ].ToString() + IOUtils.VECTOR_SEPARATOR +
+									 m_previewInternalMatrix4x4[ 1, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 1, 1 ].ToString();
+
+					m_internalDataWrapper = "float2x2( {0} )";
+
+				}
+				break;
 				case WirePortDataType.FLOAT3x3:
 				{
 					m_internalData = m_previewInternalMatrix4x4[ 0, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 0, 1 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 0, 2 ].ToString() + IOUtils.VECTOR_SEPARATOR +
 									 m_previewInternalMatrix4x4[ 1, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 1, 1 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 1, 2 ].ToString() + IOUtils.VECTOR_SEPARATOR +
 									 m_previewInternalMatrix4x4[ 2, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 2, 1 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 2, 2 ].ToString();
 
-						m_internalDataWrapper = "float3x3( {0} )";
-	
+					m_internalDataWrapper = "float3x3( {0} )";
+
 				}
 				break;
 				case WirePortDataType.FLOAT4x4:
@@ -376,9 +389,35 @@ namespace AmplifyShaderEditor
 									 m_previewInternalMatrix4x4[ 2, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 2, 1 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 2, 2 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 2, 3 ].ToString() + IOUtils.VECTOR_SEPARATOR +
 									 m_previewInternalMatrix4x4[ 3, 0 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 3, 1 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 3, 2 ].ToString() + IOUtils.VECTOR_SEPARATOR + m_previewInternalMatrix4x4[ 3, 3 ].ToString();
 
-						m_internalDataWrapper = "float4x4( {0} )";
+					m_internalDataWrapper = "float4x4( {0} )";
 				}
 				break;
+			}
+		}
+
+		//This gets the 2x2 matrix inside of the 4x4
+		private string Matrix2x2WrappedData()
+		{
+			string tempInternal = string.Empty;
+
+			string[] data = String.IsNullOrEmpty( m_internalData ) ? null : m_internalData.Split( IOUtils.VECTOR_SEPARATOR );
+			if ( data.Length == 16 )
+			{
+				int o = 0;
+				for ( int i = 0; i < 3; i++ )
+				{
+					if ( i == 2 || i == 4 )
+						o += 2;
+					tempInternal += data[ i + o ] + IOUtils.VECTOR_SEPARATOR;
+				}
+
+				tempInternal += data[ 5 ];
+
+				return String.Format( m_internalDataWrapper, tempInternal );
+			}
+			else
+			{
+				return String.Format( m_internalDataWrapper, m_internalData );
 			}
 		}
 
@@ -433,13 +472,15 @@ namespace AmplifyShaderEditor
 				result = UIUtils.GetNode( m_externalReferences[ 0 ].NodeId ).GenerateShaderForOutput( m_externalReferences[ 0 ].PortId, ref dataCollector, false );
 				if( m_externalReferences[ 0 ].DataType != m_dataType )
 				{
-					result = UIUtils.CastPortType( ref dataCollector, UIUtils.GetNode( m_nodeId ).CurrentPrecisionType, new NodeCastInfo( m_externalReferences[ 0 ].NodeId, m_externalReferences[ 0 ].PortId ), null, m_externalReferences[ 0 ].DataType, m_dataType, result );
+					result = UIUtils.CastPortType( ref dataCollector, UIUtils.GetNode( m_nodeId ).CurrentPrecisionType, null, m_externalReferences[ 0 ].DataType, m_dataType, result );
 				}
 			}
 			else
 			{
 				UpdateInternalDataFromVariables( true );
-				if( DataType == WirePortDataType.FLOAT3x3 )
+				if ( DataType == WirePortDataType.FLOAT2x2 )
+					result = Matrix2x2WrappedData();
+				else if ( DataType == WirePortDataType.FLOAT3x3 )
 					result = Matrix3x3WrappedData();
 				else if( DataType == WirePortDataType.SAMPLER2D )
 					result = SamplerWrappedData( ref dataCollector );
@@ -467,7 +508,9 @@ namespace AmplifyShaderEditor
 				UpdateInternalDataFromVariables( true );
 				if( !String.IsNullOrEmpty( m_internalDataWrapper ) )
 				{
-					if( DataType == WirePortDataType.FLOAT3x3 )
+					if ( DataType == WirePortDataType.FLOAT2x2 )
+						result = Matrix2x2WrappedData();
+					else if ( DataType == WirePortDataType.FLOAT3x3 )
 						result = Matrix3x3WrappedData();
 					else
 						result = String.Format( m_internalDataWrapper, m_internalData );
@@ -494,7 +537,7 @@ namespace AmplifyShaderEditor
 				result = UIUtils.GetNode( m_externalReferences[ 0 ].NodeId ).GenerateShaderForOutput( m_externalReferences[ 0 ].PortId, ref dataCollector, ignoreLocalVar );
 				if( autoCast && m_externalReferences[ 0 ].DataType != inputPortType )
 				{
-					result = UIUtils.CastPortType( ref dataCollector, UIUtils.GetNode( m_nodeId ).CurrentPrecisionType, new NodeCastInfo( m_externalReferences[ 0 ].NodeId, m_externalReferences[ 0 ].PortId ), null, m_externalReferences[ 0 ].DataType, inputPortType, result );
+					result = UIUtils.CastPortType( ref dataCollector, UIUtils.GetNode( m_nodeId ).CurrentPrecisionType, null, m_externalReferences[ 0 ].DataType, inputPortType, result );
 				}
 			}
 			else
@@ -502,7 +545,9 @@ namespace AmplifyShaderEditor
 				UpdateInternalDataFromVariables( true );
 				if( !String.IsNullOrEmpty( m_internalDataWrapper ) )
 				{
-					if( DataType == WirePortDataType.FLOAT3x3 )
+					if ( DataType == WirePortDataType.FLOAT2x2 )
+						result = Matrix2x2WrappedData();
+					else if ( DataType == WirePortDataType.FLOAT3x3 )
 						result = Matrix3x3WrappedData();
 					else
 						result = String.Format( m_internalDataWrapper, m_internalData );
@@ -599,6 +644,26 @@ namespace AmplifyShaderEditor
 					Vector4InternalData = owner.EditorGUIVector4Field( rect, label, Vector4InternalData );
 				}
 				break;
+				case WirePortDataType.FLOAT2x2:
+				{
+					Matrix4x4 matrix = Matrix4x4InternalData;
+					Vector2 currVec2 = Vector2.zero;
+					for ( int i = 0; i < 2; i++ )
+					{
+						Vector4 currVec = matrix.GetRow( i );
+						currVec2.Set( currVec.x, currVec.y );
+						EditorGUI.BeginChangeCheck();
+						currVec2 = owner.EditorGUIVector2Field( rect, label + "[ " + i + " ]", currVec2 );
+						rect.y += 2 * EditorGUIUtility.singleLineHeight;
+						if ( EditorGUI.EndChangeCheck() )
+						{
+							currVec.Set( currVec2.x, currVec2.y, currVec.z, currVec.w );
+							matrix.SetRow( i, currVec );
+						}
+					}
+					Matrix4x4InternalData = matrix;
+				}
+				break;
 				case WirePortDataType.FLOAT3x3:
 				{
 					Matrix4x4 matrix = Matrix4x4InternalData;
@@ -675,6 +740,25 @@ namespace AmplifyShaderEditor
 					Vector4InternalData = owner.EditorGUILayoutVector4Field( label, Vector4InternalData );
 				}
 				break;
+				case WirePortDataType.FLOAT2x2:
+				{
+					Matrix4x4 matrix = Matrix4x4InternalData;
+					Vector2 currVec2 = Vector2.zero;
+					for ( int i = 0; i < 2; i++ )
+					{
+						Vector4 currVec = matrix.GetRow( i );
+						currVec2.Set( currVec.x, currVec.y );
+						EditorGUI.BeginChangeCheck();
+						currVec2 = owner.EditorGUILayoutVector2Field( label + "[ " + i + " ]", currVec2 );
+						if ( EditorGUI.EndChangeCheck() )
+						{
+							currVec.Set( currVec2.x, currVec2.y, currVec.z, currVec.w );
+							matrix.SetRow( i, currVec );
+						}
+					}
+					Matrix4x4InternalData = matrix;
+				}
+				break;
 				case WirePortDataType.FLOAT3x3:
 				{
 					Matrix4x4 matrix = Matrix4x4InternalData;
@@ -733,7 +817,7 @@ namespace AmplifyShaderEditor
 					case WirePortDataType.UINT:
 					case WirePortDataType.INT: return m_previewInternalInt == 0;
 					case WirePortDataType.FLOAT2:
-					return (Mathf.Abs( m_previewInternalVec2.x ) < 0.001f && 
+					return (Mathf.Abs( m_previewInternalVec2.x ) < 0.001f &&
 							Mathf.Abs( m_previewInternalVec2.y ) < 0.001f);
 					case WirePortDataType.FLOAT3:
 					return (Mathf.Abs( m_previewInternalVec3.x ) < 0.001f &&
@@ -863,13 +947,18 @@ namespace AmplifyShaderEditor
 							case WirePortDataType.FLOAT2: m_previewInternalVec2.x = m_previewInternalFloat; break;
 							case WirePortDataType.FLOAT3: m_previewInternalVec3.x = m_previewInternalFloat; break;
 							case WirePortDataType.FLOAT4: m_previewInternalVec4.x = m_previewInternalFloat; break;
+							case WirePortDataType.FLOAT2x2:
 							case WirePortDataType.FLOAT3x3:
-							case WirePortDataType.FLOAT4x4: m_previewInternalMatrix4x4[ 0 ] = m_previewInternalFloat; break;
+							case WirePortDataType.FLOAT4x4:
+							{
+								// @diogo: not applicable
+								break;
+							}
 							case WirePortDataType.COLOR: m_previewInternalColor.r = m_previewInternalFloat; break;
 							case WirePortDataType.INT: m_previewInternalInt = (int)m_previewInternalFloat; break;
 						}
+						break;
 					}
-					break;
 					case WirePortDataType.FLOAT2:
 					{
 						switch( value )
@@ -879,31 +968,31 @@ namespace AmplifyShaderEditor
 							{
 								m_previewInternalVec3.x = m_previewInternalVec2.x;
 								m_previewInternalVec3.y = m_previewInternalVec2.y;
+								break;
 							}
-							break;
 							case WirePortDataType.FLOAT4:
 							{
 								m_previewInternalVec4.x = m_previewInternalVec2.x;
 								m_previewInternalVec4.y = m_previewInternalVec2.y;
+								break;
 							}
-							break;
+							case WirePortDataType.FLOAT2x2:
 							case WirePortDataType.FLOAT3x3:
 							case WirePortDataType.FLOAT4x4:
 							{
-								m_previewInternalMatrix4x4[ 0 ] = m_previewInternalVec2.x;
-								m_previewInternalMatrix4x4[ 1 ] = m_previewInternalVec2.y;
+								// @diogo: not applicable
+								break;
 							}
-							break;
 							case WirePortDataType.COLOR:
 							{
 								m_previewInternalColor.r = m_previewInternalVec2.x;
 								m_previewInternalColor.g = m_previewInternalVec2.y;
+								break;
 							}
-							break;
 							case WirePortDataType.INT: m_previewInternalInt = (int)m_previewInternalVec2.x; break;
 						}
+						break;
 					}
-					break;
 					case WirePortDataType.FLOAT3:
 					{
 						switch( value )
@@ -913,34 +1002,33 @@ namespace AmplifyShaderEditor
 							{
 								m_previewInternalVec2.x = m_previewInternalVec3.x;
 								m_previewInternalVec2.y = m_previewInternalVec3.y;
+								break;
 							}
-							break;
 							case WirePortDataType.FLOAT4:
 							{
 								m_previewInternalVec4.x = m_previewInternalVec3.x;
 								m_previewInternalVec4.y = m_previewInternalVec3.y;
 								m_previewInternalVec4.z = m_previewInternalVec3.z;
+								break;
 							}
-							break;
+							case WirePortDataType.FLOAT2x2:
 							case WirePortDataType.FLOAT3x3:
 							case WirePortDataType.FLOAT4x4:
 							{
-								m_previewInternalMatrix4x4[ 0 ] = m_previewInternalVec3.x;
-								m_previewInternalMatrix4x4[ 1 ] = m_previewInternalVec3.y;
-								m_previewInternalMatrix4x4[ 2 ] = m_previewInternalVec3.z;
+								// @diogo: not applicable
+								break;
 							}
-							break;
 							case WirePortDataType.COLOR:
 							{
 								m_previewInternalColor.r = m_previewInternalVec3.x;
 								m_previewInternalColor.g = m_previewInternalVec3.y;
 								m_previewInternalColor.b = m_previewInternalVec3.z;
+								break;
 							}
-							break;
 							case WirePortDataType.INT: m_previewInternalInt = (int)m_previewInternalVec3.x; break;
 						}
+						break;
 					}
-					break;
 					case WirePortDataType.FLOAT4:
 					{
 						switch( value )
@@ -950,75 +1038,41 @@ namespace AmplifyShaderEditor
 							{
 								m_previewInternalVec2.x = m_previewInternalVec4.x;
 								m_previewInternalVec2.y = m_previewInternalVec4.y;
+								break;
 							}
-							break;
 							case WirePortDataType.FLOAT3:
 							{
 								m_previewInternalVec3.x = m_previewInternalVec4.x;
 								m_previewInternalVec3.y = m_previewInternalVec4.y;
 								m_previewInternalVec3.z = m_previewInternalVec4.z;
+								break;
 							}
-							break;
+							case WirePortDataType.FLOAT2x2:
 							case WirePortDataType.FLOAT3x3:
 							case WirePortDataType.FLOAT4x4:
 							{
-								m_previewInternalMatrix4x4[ 0 ] = m_previewInternalVec4.x;
-								m_previewInternalMatrix4x4[ 1 ] = m_previewInternalVec4.y;
-								m_previewInternalMatrix4x4[ 2 ] = m_previewInternalVec4.z;
-								m_previewInternalMatrix4x4[ 3 ] = m_previewInternalVec4.w;
+								// @diogo: not applicable
+								break;
 							}
-							break;
 							case WirePortDataType.COLOR:
 							{
 								m_previewInternalColor.r = m_previewInternalVec4.x;
 								m_previewInternalColor.g = m_previewInternalVec4.y;
 								m_previewInternalColor.b = m_previewInternalVec4.z;
 								m_previewInternalColor.a = m_previewInternalVec4.w;
+								break;
 							}
-							break;
 							case WirePortDataType.INT: m_previewInternalInt = (int)m_previewInternalVec4.x; break;
 						}
+						break;
 					}
-					break;
+					case WirePortDataType.FLOAT2x2:
 					case WirePortDataType.FLOAT3x3:
 					case WirePortDataType.FLOAT4x4:
 					{
-						switch( value )
-						{
-							case WirePortDataType.FLOAT: m_previewInternalFloat = m_previewInternalMatrix4x4[ 0 ]; break;
-							case WirePortDataType.FLOAT2:
-							{
-								m_previewInternalVec2.x = m_previewInternalMatrix4x4[ 0 ];
-								m_previewInternalVec2.y = m_previewInternalMatrix4x4[ 1 ];
-							}
-							break;
-							case WirePortDataType.FLOAT3:
-							{
-								m_previewInternalVec3.x = m_previewInternalMatrix4x4[ 0 ];
-								m_previewInternalVec3.y = m_previewInternalMatrix4x4[ 1 ];
-								m_previewInternalVec3.z = m_previewInternalMatrix4x4[ 2 ];
-							}
-							break;
-							case WirePortDataType.FLOAT4:
-							{
-								m_previewInternalVec4.x = m_previewInternalMatrix4x4[ 0 ];
-								m_previewInternalVec4.y = m_previewInternalMatrix4x4[ 1 ];
-								m_previewInternalVec4.z = m_previewInternalMatrix4x4[ 2 ];
-								m_previewInternalVec4.w = m_previewInternalMatrix4x4[ 3 ];
-							}
-							break;
-							case WirePortDataType.COLOR:
-							{
-								m_previewInternalColor.r = m_previewInternalMatrix4x4[ 0 ];
-								m_previewInternalColor.g = m_previewInternalMatrix4x4[ 1 ];
-								m_previewInternalColor.b = m_previewInternalMatrix4x4[ 2 ];
-								m_previewInternalColor.a = m_previewInternalMatrix4x4[ 3 ];
-							}
-							break;
-							case WirePortDataType.INT: m_previewInternalInt = (int)m_previewInternalMatrix4x4[ 0 ]; break;
-						}
+						// @diogo: not applicable
+						break;
 					}
-					break;
 					case WirePortDataType.COLOR:
 					{
 						switch( value )
@@ -1028,36 +1082,34 @@ namespace AmplifyShaderEditor
 							{
 								m_previewInternalVec2.x = m_previewInternalColor.r;
 								m_previewInternalVec2.y = m_previewInternalColor.g;
+								break;
 							}
-							break;
 							case WirePortDataType.FLOAT3:
 							{
 								m_previewInternalVec3.x = m_previewInternalColor.r;
 								m_previewInternalVec3.y = m_previewInternalColor.g;
 								m_previewInternalVec3.z = m_previewInternalColor.b;
+								break;
 							}
-							break;
 							case WirePortDataType.FLOAT4:
 							{
 								m_previewInternalVec4.x = m_previewInternalColor.r;
 								m_previewInternalVec4.y = m_previewInternalColor.g;
 								m_previewInternalVec4.z = m_previewInternalColor.b;
 								m_previewInternalVec4.w = m_previewInternalColor.a;
+								break;
 							}
-							break;
+							case WirePortDataType.FLOAT2x2:
 							case WirePortDataType.FLOAT3x3:
 							case WirePortDataType.FLOAT4x4:
 							{
-								m_previewInternalMatrix4x4[ 0 ] = m_previewInternalColor.r;
-								m_previewInternalMatrix4x4[ 1 ] = m_previewInternalColor.g;
-								m_previewInternalMatrix4x4[ 2 ] = m_previewInternalColor.b;
-								m_previewInternalMatrix4x4[ 3 ] = m_previewInternalColor.a;
+								// @diogo: not applicable
+								break;
 							}
-							break;
 							case WirePortDataType.INT: m_previewInternalInt = (int)m_previewInternalColor.r; break;
 						}
+						break;
 					}
-					break;
 					case WirePortDataType.INT:
 					{
 						switch( value )
@@ -1066,12 +1118,17 @@ namespace AmplifyShaderEditor
 							case WirePortDataType.FLOAT2: m_previewInternalVec2.x = m_previewInternalInt; break;
 							case WirePortDataType.FLOAT3: m_previewInternalVec3.x = m_previewInternalInt; break;
 							case WirePortDataType.FLOAT4: m_previewInternalVec4.x = m_previewInternalInt; break;
+							case WirePortDataType.FLOAT2x2:
 							case WirePortDataType.FLOAT3x3:
-							case WirePortDataType.FLOAT4x4: m_previewInternalMatrix4x4[ 0 ] = m_previewInternalInt; break;
+							case WirePortDataType.FLOAT4x4:
+							{
+								// @diogo: not applicable
+								break;
+							}
 							case WirePortDataType.COLOR: m_previewInternalColor.r = m_previewInternalInt; break;
 						}
+						break;
 					}
-					break;
 				}
 				base.DataType = value;
 			}
@@ -1262,6 +1319,7 @@ namespace AmplifyShaderEditor
 					InputPreviewMaterial.SetColor( CachedColorPropertyID, m_previewInternalColor );
 				}
 				break;
+				case WirePortDataType.FLOAT2x2:
 				case WirePortDataType.FLOAT3x3:
 				case WirePortDataType.FLOAT4x4:
 				{
@@ -1428,6 +1486,7 @@ namespace AmplifyShaderEditor
 					case WirePortDataType.FLOAT2:
 					case WirePortDataType.FLOAT3:
 					case WirePortDataType.FLOAT4:
+					case WirePortDataType.FLOAT2x2:
 					case WirePortDataType.FLOAT3x3:
 					case WirePortDataType.FLOAT4x4:
 					case WirePortDataType.COLOR:

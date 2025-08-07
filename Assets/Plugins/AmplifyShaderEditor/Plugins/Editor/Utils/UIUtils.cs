@@ -28,8 +28,8 @@ namespace AmplifyShaderEditor
 		WORLD_POS,
 		WORLD_REFL,
 		WORLD_NORMAL,
-		FRONT_FACING,
-		FRONT_FACING_VFACE,
+		FRONT_FACE,
+		FRONT_FACE_VFACE,
 		INTERNALDATA
 	}
 
@@ -624,6 +624,7 @@ namespace AmplifyShaderEditor
 			{ WirePortDataType.FLOAT2,      new Color(1f,1f,0f,1f)},
 			{ WirePortDataType.FLOAT3,      new Color(0.5f,0.5f,1f,1f)},
 			{ WirePortDataType.FLOAT4,      new Color(1f,0,1f,1f)},
+			{ WirePortDataType.FLOAT2x2,    new Color(0.5f,1f,0.5f,1f)},
 			{ WirePortDataType.FLOAT3x3,    new Color(0.5f,1f,0.5f,1f)},
 			{ WirePortDataType.FLOAT4x4,    new Color(0.5f,1f,0.5f,1f)},
 			{ WirePortDataType.COLOR,       new Color(1f,0,1f,1f)},
@@ -642,6 +643,7 @@ namespace AmplifyShaderEditor
 			{ WirePortDataType.FLOAT2,      "Vector2"},
 			{ WirePortDataType.FLOAT3,      "Vector3"},
 			{ WirePortDataType.FLOAT4,      "Vector4"},
+			{ WirePortDataType.FLOAT2x2,    "2x2 Matrix"},
 			{ WirePortDataType.FLOAT3x3,    "3x3 Matrix"},
 			{ WirePortDataType.FLOAT4x4,    "4x4 Matrix"},
 			{ WirePortDataType.COLOR,       "Color"},
@@ -665,8 +667,8 @@ namespace AmplifyShaderEditor
 			{ SurfaceInputs.WORLD_POS, "{0}3 worldPos"},
 			{ SurfaceInputs.WORLD_REFL, "{0}3 worldRefl"},
 			{ SurfaceInputs.WORLD_NORMAL,"{0}3 worldNormal"},
-			{ SurfaceInputs.FRONT_FACING, Constants.IsFrontFacingInput},
-			{ SurfaceInputs.FRONT_FACING_VFACE, Constants.IsFrontFacingInputVFACE},
+			{ SurfaceInputs.FRONT_FACE, Constants.IsFrontFaceInput},
+			{ SurfaceInputs.FRONT_FACE_VFACE, Constants.IsFrontFaceInputVFACE},
 			{ SurfaceInputs.INTERNALDATA, Constants.InternalData}
 		};
 
@@ -681,7 +683,7 @@ namespace AmplifyShaderEditor
 			{ SurfaceInputs.WORLD_POS, "worldPos"},
 			{ SurfaceInputs.WORLD_REFL, "worldRefl"},
 			{ SurfaceInputs.WORLD_NORMAL, "worldNormal"},
-			{ SurfaceInputs.FRONT_FACING, Constants.IsFrontFacingVariable},
+			{ SurfaceInputs.FRONT_FACE, Constants.IsFrontFaceVariable},
 		};
 
 		private static Dictionary<PrecisionType , string> m_precisionTypeToCg = new Dictionary<PrecisionType , string>()
@@ -704,6 +706,7 @@ namespace AmplifyShaderEditor
 			{WirePortDataType.FLOAT2,       "{0}2"},
 			{WirePortDataType.FLOAT3,       "{0}3"},
 			{WirePortDataType.FLOAT4,       "{0}4"},
+			{WirePortDataType.FLOAT2x2,     "{0}2x2"},
 			{WirePortDataType.FLOAT3x3,     "{0}3x3"},
 			{WirePortDataType.FLOAT4x4,     "{0}4x4"},
 			{WirePortDataType.COLOR,        "{0}4"},
@@ -722,6 +725,7 @@ namespace AmplifyShaderEditor
 			{WirePortDataType.FLOAT2,       "{0}2"},
 			{WirePortDataType.FLOAT3,       "{0}3"},
 			{WirePortDataType.FLOAT4,       "{0}4"},
+			{WirePortDataType.FLOAT2x2,     "{0}2x2"},
 			{WirePortDataType.FLOAT3x3,     "{0}3x3"},
 			{WirePortDataType.FLOAT4x4,     "{0}4x4"},
 			{WirePortDataType.COLOR,        "{0}4"},
@@ -740,6 +744,7 @@ namespace AmplifyShaderEditor
 			{WirePortDataType.FLOAT2,       "{0}2"},
 			{WirePortDataType.FLOAT3,       "{0}3"},
 			{WirePortDataType.FLOAT4,       "{0}4"},
+			{WirePortDataType.FLOAT2x2,     "{0}2x2"},
 			{WirePortDataType.FLOAT3x3,     "{0}3x3"},
 			{WirePortDataType.FLOAT4x4,     "{0}4x4"},
 			{WirePortDataType.COLOR,        "{0}4"},
@@ -758,6 +763,7 @@ namespace AmplifyShaderEditor
 			{WirePortDataType.FLOAT2,       "float2"},
 			{WirePortDataType.FLOAT3,       "float3"},
 			{WirePortDataType.FLOAT4,       "float4"},
+			{WirePortDataType.FLOAT2x2,     "float2x2"},
 			{WirePortDataType.FLOAT3x3,     "float3x3"},
 			{WirePortDataType.FLOAT4x4,     "float4x4"},
 			{WirePortDataType.COLOR,        "float4"},
@@ -816,15 +822,16 @@ namespace AmplifyShaderEditor
 			{WirePortDataType.SAMPLER3D,        0},
 			{WirePortDataType.SAMPLERCUBE,      0},
 			{WirePortDataType.SAMPLER2DARRAY,   0},
-			{WirePortDataType.FLOAT3x3,         1},
-			{WirePortDataType.FLOAT4x4,         2},
-			{WirePortDataType.INT,              3},
-			{WirePortDataType.UINT,             3},
-			{WirePortDataType.FLOAT,            4},
-			{WirePortDataType.FLOAT2,           5},
-			{WirePortDataType.FLOAT3,           6},
-			{WirePortDataType.FLOAT4,           7},
-			{WirePortDataType.COLOR,            7}
+			{WirePortDataType.FLOAT2x2,         1},
+			{WirePortDataType.FLOAT3x3,         2},
+			{WirePortDataType.FLOAT4x4,         3},
+			{WirePortDataType.INT,              4},
+			{WirePortDataType.UINT,             4},
+			{WirePortDataType.FLOAT,            5},
+			{WirePortDataType.FLOAT2,           6},
+			{WirePortDataType.FLOAT3,           7},
+			{WirePortDataType.FLOAT4,           8},
+			{WirePortDataType.COLOR,            8}
 		};
 
 		private static readonly string IncorrectInputConnectionErrorMsg = "Input Port {0} from node {1} has type {2}\nwhich is incompatible with connection of type {3} from port {4} on node {5}";
@@ -986,7 +993,7 @@ namespace AmplifyShaderEditor
 				m_undoHelper.Clear();
 				m_undoHelper = null;
 			}
-			ASEMaterialInspector.Instance = null;
+			MaterialInspector.Instance = null;
 		}
 
 		public static void ResetMainSkin()
@@ -1192,6 +1199,29 @@ namespace AmplifyShaderEditor
 				MaskingShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( "9c34f18ebe2be3e48b201b748c73dec0" ) ); //masking shader
 			if( Texture2DShader == null )
 				Texture2DShader = AssetDatabase.LoadAssetAtPath<Shader>( AssetDatabase.GUIDToAssetPath( "13bd295c44d04e1419f20f792d331e33" ) ); //texture2d shader
+		}
+
+		public static void SetPreviewShaderConstants()
+		{
+			var worldCameraPos = new Vector3( 0, 0, -5 );
+			var objectToWorldMatrix = Matrix4x4.identity;
+			var worldToObjectMatrix = Matrix4x4.identity;
+			var viewMatrix = new Matrix4x4(
+				new Vector4( 1, 0, 0, 0 ),
+				new Vector4( 0, 1, 0, 0 ),
+				new Vector4( 0, 0,-1,-1 ),
+				new Vector4( 0, 0, 0, 1 ) );
+			var viewMatrixInv = new Matrix4x4(
+				new Vector4( 1, 0, 0, 0 ),
+				new Vector4( 0, 1, 0, 0 ),
+				new Vector4( 0, 0,-1, 0 ),
+				new Vector4( 0, 0,-1, 1 ) );
+
+			Shader.SetGlobalVector( "preview_WorldSpaceCameraPos", worldCameraPos ); ;
+			Shader.SetGlobalMatrix( "preview_WorldToObject", worldToObjectMatrix );
+			Shader.SetGlobalMatrix( "preview_ObjectToWorld", objectToWorldMatrix );
+			Shader.SetGlobalMatrix( "preview_MatrixV", viewMatrix );
+			Shader.SetGlobalMatrix( "preview_MatrixInvV", viewMatrixInv );
 		}
 
 		private static void FetchMenuItemStyles()
@@ -1410,6 +1440,7 @@ namespace AmplifyShaderEditor
 				case WirePortDataType.FLOAT2:
 				case WirePortDataType.FLOAT3:
 				case WirePortDataType.FLOAT4:
+				case WirePortDataType.FLOAT2x2:
 				case WirePortDataType.FLOAT3x3:
 				case WirePortDataType.FLOAT4x4:
 				case WirePortDataType.COLOR:
@@ -1472,6 +1503,7 @@ namespace AmplifyShaderEditor
 				case WirePortDataType.FLOAT2:
 				case WirePortDataType.FLOAT3:
 				case WirePortDataType.FLOAT4:
+				case WirePortDataType.FLOAT2x2:
 				case WirePortDataType.FLOAT3x3:
 				case WirePortDataType.FLOAT4x4:
 				case WirePortDataType.COLOR:
@@ -1496,7 +1528,7 @@ namespace AmplifyShaderEditor
 		public static string GetInputValueFromType( SurfaceInputs inputType ) { return m_inputTypeName[ inputType ]; }
 		private static string CreateLocalValueName( PrecisionType precision , WirePortDataType dataType , string localOutputValue , string value ) { return string.Format( Constants.LocalValueDecWithoutIdent , PrecisionWirePortToCgType( precision , dataType ) , localOutputValue , value ); }
 
-		public static string CastPortType( ref MasterNodeDataCollector dataCollector , PrecisionType nodePrecision , NodeCastInfo castInfo , object value , WirePortDataType oldType , WirePortDataType newType , string parameterName = null )
+		public static string CastPortType( ref MasterNodeDataCollector dataCollector , PrecisionType nodePrecision , object value , WirePortDataType oldType , WirePortDataType newType , string parameterName = null )
 		{
 			if( oldType == newType || newType == WirePortDataType.OBJECT )
 			{
@@ -1508,7 +1540,7 @@ namespace AmplifyShaderEditor
 			string newTypeStr = m_wirePortToCgType[ newType ];
 			newTypeStr = m_textInfo.ToTitleCase( newTypeStr );
 			int castId = ( dataCollector.PortCategory == MasterNodePortCategory.Vertex || dataCollector.PortCategory == MasterNodePortCategory.Tessellation ) ? dataCollector.AvailableVertexTempId : dataCollector.AvailableFragTempId;
-			string localVarName = "temp_cast_" + castId;//m_wirePortToCgType[ oldType ] + "To" + newTypeStr + "_" + castInfo.ToString();
+			string localVarName = "temp_cast_" + castId;
 			string result = string.Empty;
 			bool useRealValue = ( parameterName == null );
 
@@ -1547,17 +1579,12 @@ namespace AmplifyShaderEditor
 							result = localVarName;
 						}
 						break;
+						case WirePortDataType.FLOAT2x2:
 						case WirePortDataType.FLOAT3x3:
-						{
-							string localVal = CreateLocalValueName( currentPrecision , newType , localVarName , ( ( useRealValue ) ? value.ToString() : parameterName ) );
-							dataCollector.AddToLocalVariables( dataCollector.PortCategory , -1 , localVal );
-							result = localVarName;
-						}
-						break;
 						case WirePortDataType.FLOAT4x4:
 						{
-							string localVal = CreateLocalValueName( currentPrecision , newType , localVarName , ( ( useRealValue ) ? value.ToString() : parameterName ) );
-							dataCollector.AddToLocalVariables( dataCollector.PortCategory , -1 , localVal );
+							string localVal = CreateLocalValueName( currentPrecision, newType, localVarName, ( ( useRealValue ) ? value.ToString() : parameterName ) );
+							dataCollector.AddToLocalVariables( dataCollector.PortCategory, -1, localVal );
 							result = localVarName;
 						}
 						break;
@@ -1711,22 +1738,8 @@ namespace AmplifyShaderEditor
 					}
 				}
 				break;
+				case WirePortDataType.FLOAT2x2:
 				case WirePortDataType.FLOAT3x3:
-				{
-					//Matrix4x4 matrixVal = useRealValue ? ( Matrix4x4 ) value : Matrix4x4.identity;
-					//switch ( newType )
-					//{
-					//	case WirePortDataType.OBJECT:
-					//	case WirePortDataType.FLOAT4x4:
-					//	{
-					//		result = ( useRealValue ) ? precisionStr + "4x4(" + matrixVal.m00 + " , " + matrixVal.m01 + " , " + matrixVal.m02 + " , " + matrixVal.m03 + " , " +
-					//													matrixVal.m10 + " , " + matrixVal.m11 + " , " + matrixVal.m12 + " , " + matrixVal.m10 + " , " +
-					//													matrixVal.m20 + " , " + matrixVal.m21 + " , " + matrixVal.m22 + " , " + matrixVal.m20 + " , " +
-					//													matrixVal.m30 + " , " + matrixVal.m31 + " , " + matrixVal.m32 + " , " + matrixVal.m30 + " )" : precisionStr + "4x4(" + parameterName + ")";
-					//	}
-					//	break;
-					//}
-				}
 				break;
 				case WirePortDataType.FLOAT4x4:
 				{
@@ -1809,13 +1822,8 @@ namespace AmplifyShaderEditor
 							result = localVarName;
 						}
 						break;
+						case WirePortDataType.FLOAT2x2:
 						case WirePortDataType.FLOAT3x3:
-						{
-							string localVal = CreateLocalValueName( currentPrecision , oldType , localVarName , ( ( useRealValue ) ? value.ToString() : parameterName ) );
-							dataCollector.AddToLocalVariables( dataCollector.PortCategory , -1 , localVal );
-							result = localVarName;
-						}
-						break;
 						case WirePortDataType.FLOAT4x4:
 						{
 							string localVal = CreateLocalValueName( currentPrecision , oldType , localVarName , ( ( useRealValue ) ? value.ToString() : parameterName ) );
@@ -1851,13 +1859,8 @@ namespace AmplifyShaderEditor
 							result = localVarName;
 						}
 						break;
+						case WirePortDataType.FLOAT2x2:
 						case WirePortDataType.FLOAT3x3:
-						{
-							string localVal = CreateLocalValueName( currentPrecision , oldType , localVarName , ( ( useRealValue ) ? value.ToString() : parameterName ) );
-							dataCollector.AddToLocalVariables( dataCollector.PortCategory , -1 , localVal );
-							result = localVarName;
-						}
-						break;
 						case WirePortDataType.FLOAT4x4:
 						{
 							string localVal = CreateLocalValueName( currentPrecision , oldType , localVarName , ( ( useRealValue ) ? value.ToString() : parameterName ) );
@@ -1924,15 +1927,24 @@ namespace AmplifyShaderEditor
 						return true;
 				}
 				break;
+				case WirePortDataType.FLOAT2x2:
+				{
+					if( to == WirePortDataType.FLOAT3x3 ||
+						to == WirePortDataType.FLOAT4x4 )
+						return true;
+				}
+				break;
 				case WirePortDataType.FLOAT3x3:
 				{
-					if( to == WirePortDataType.FLOAT4x4 )
+					if( to == WirePortDataType.FLOAT2x2 ||
+						to == WirePortDataType.FLOAT4x4 )
 						return true;
 				}
 				break;
 				case WirePortDataType.FLOAT4x4:
 				{
-					if( to == WirePortDataType.FLOAT3x3 )
+					if( to == WirePortDataType.FLOAT2x2 ||
+						to == WirePortDataType.FLOAT3x3 )
 						return true;
 				}
 				break;
@@ -3171,7 +3183,7 @@ namespace AmplifyShaderEditor
 					}
 				}
 			}
-			
+
 			if ( drawColorSwatchMI != null )
 			{
 				drawColorSwatchMI.Invoke( obj, new object[] { position, color, showAlpha, hdr } );

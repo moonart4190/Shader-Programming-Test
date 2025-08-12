@@ -24,12 +24,20 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColorBase:
-        m_Texture: {fileID: 2800000, guid: 1276f800abbc9ef42a5e05b1c6937aac, type: 3}
+        m_Texture: {fileID: 2800000, guid: f1197de550a5ad64c9d4d6070269a7f8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColorG:
+        m_Texture: {fileID: 2800000, guid: be6841c06cadbc949ae4af8e65f7281b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorR:
-        m_Texture: {fileID: 2800000, guid: 6f829e2bf9a4e1f4b80f213a281a007f, type: 3}
-        m_Scale: {x: 1, y: 2}
+        m_Texture: {fileID: 2800000, guid: 1276f800abbc9ef42a5e05b1c6937aac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColorR1:
+        m_Texture: {fileID: 2800000, guid: f1197de550a5ad64c9d4d6070269a7f8, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: ad9e1253ff5e4e84499f8d627603f7da, type: 3}
@@ -55,8 +63,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightBase:
+        m_Texture: {fileID: 2800000, guid: bfb1167a635443f4b843d6a48ff36503, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightG:
+        m_Texture: {fileID: 2800000, guid: 27f53a8b1771ff14ea8ac6580927f20d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _HeightR:
-        m_Texture: {fileID: 2800000, guid: ee9de84d13279914c9a25fd62effc9f3, type: 3}
+        m_Texture: {fileID: 2800000, guid: fd665857096a83e498161748cc6c4080, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightR1:
+        m_Texture: {fileID: 2800000, guid: bfb1167a635443f4b843d6a48ff36503, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -76,7 +96,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalBase:
-        m_Texture: {fileID: 2800000, guid: a2c8ec3301169e144a787f90060b963f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3f8266012057ff24e97ef4537b63ab1e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalG:
+        m_Texture: {fileID: 2800000, guid: 32f7e6f790405ee4988c1931d8ea969d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -84,8 +108,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalR:
-        m_Texture: {fileID: 2800000, guid: d4d26a5d124996249afe7550f1f786c8, type: 3}
-        m_Scale: {x: 1, y: 2}
+        m_Texture: {fileID: 2800000, guid: a2c8ec3301169e144a787f90060b963f, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Occlusion:
         m_Texture: {fileID: 0}
@@ -128,12 +152,14 @@ Material:
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaToMask: 0
+    - _BContrast: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendingStrengthR: 5
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Contrast: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -141,11 +167,14 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Float0: 1
     - _Float6: 0
+    - _GContrast: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _IndirectSpecular: 1
+    - _MeshHeight: 0.409
     - _Metallic: 0
     - _MetallicStrength: 0
     - _NormalScale: 1
@@ -153,8 +182,9 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RContrast: 0.847
     - _ReceiveShadows: 1
-    - _Smoothness: 0.46
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -165,7 +195,9 @@ Material:
     - _TessMaxDisp: 25
     - _TessMin: 10
     - _TessPhongStrength: 0.5
-    - _TessValue: 16
+    - _TessValue: 26
+    - _Tessellation: 1
+    - _Value: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

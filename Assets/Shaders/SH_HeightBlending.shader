@@ -4,16 +4,23 @@ Shader "SH_HeightBlending"
 {
 	Properties
 	{
-		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		_HeightR( "Height R", 2D ) = "bump" {}
-		_BaseColorR( "BaseColor R", 2D ) = "white" {}
-		_NormalR( "Normal R", 2D ) = "bump" {}
+		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		_BaseColorBase( "BaseColor Base", 2D ) = "white" {}
 		_NormalBase( "Normal Base", 2D ) = "bump" {}
+		_HeightBase( "Height Base", 2D ) = "white" {}
+		_BaseColorR( "BaseColor R", 2D ) = "white" {}
+		_HeightR( "Height R", 2D ) = "white" {}
+		_NormalR( "Normal R", 2D ) = "bump" {}
+		_BaseColorG( "BaseColor G", 2D ) = "white" {}
+		_NormalG( "Normal G", 2D ) = "bump" {}
+		_HeightG( "Height G", 2D ) = "white" {}
 		_Smoothness( "Smoothness", Range( 0, 1 ) ) = 0
 		_Metallic( "Metallic", Range( 0, 1 ) ) = 0
-		_BlendingStrengthR( "Blending Strength R", Float ) = 1
+		_RContrast( "R Contrast", Range( 0, 1 ) ) = 0
+		_GContrast( "G Contrast", Range( 0, 1 ) ) = 0
+		_BContrast( "B Contrast", Range( 0, 1 ) ) = 0
+		_MeshHeight( "Mesh Height", Range( 0, 1 ) ) = 0
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 
@@ -26,9 +33,9 @@ Shader "SH_HeightBlending"
 		//_TransShadow( "Trans Shadow", Range( 0, 1 ) ) = 0.5
 
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
-		//_TessValue( "Tess Max Tessellation", Range( 1, 32 ) ) = 16
-		//_TessMin( "Tess Min Distance", Float ) = 10
-		//_TessMax( "Tess Max Distance", Float ) = 25
+		_TessValue( "Max Tessellation", Range( 1, 32 ) ) = 16
+		_TessMin( "Tess Min Distance", Float ) = 10
+		_TessMax( "Tess Max Distance", Float ) = 25
 		//_TessEdgeLength ( "Tess Edge length", Range( 2, 50 ) ) = 16
 		//_TessMaxDisp( "Tess Max Displacement", Float ) = 25
 
@@ -180,7 +187,7 @@ Shader "SH_HeightBlending"
 		{
 			
 			Name "Forward"
-			Tags { "LightMode"="UniversalForward" }
+			Tags { "LightMode"="UniversalForwardOnly" }
 
 			Blend One Zero, One Zero
 			ZWrite On
@@ -207,6 +214,11 @@ Shader "SH_HeightBlending"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -296,6 +308,8 @@ Shader "SH_HeightBlending"
 			#endif
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_TEXTURE_COORDINATES0
 			#define ASE_NEEDS_FRAG_COLOR
 
@@ -344,12 +358,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -382,14 +403,23 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			sampler2D _BaseColorR;
-			sampler2D _BaseColorBase;
 			sampler2D _HeightR;
-			sampler2D _NormalR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
+			sampler2D _BaseColorBase;
+			sampler2D _BaseColorR;
+			sampler2D _BaseColorG;
 			sampler2D _NormalBase;
+			sampler2D _NormalR;
+			sampler2D _NormalG;
 
 
-			
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -397,6 +427,36 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
+				
 				output.ase_texcoord6.xy = input.texcoord.xy;
 				output.ase_color = input.ase_color;
 				
@@ -409,7 +469,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -607,22 +667,69 @@ Shader "SH_HeightBlending"
 					BitangentWS = cross(NormalWS, -TangentWS);
 				#endif
 
-				float2 uv_BaseColorR = input.ase_texcoord6.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_BaseColorBase = input.ase_texcoord6.xy * _BaseColorBase_ST.xy + _BaseColorBase_ST.zw;
+				float2 uv_BaseColorR = input.ase_texcoord6.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_HeightR = input.ase_texcoord6.xy * _HeightR_ST.xy + _HeightR_ST.zw;
-				float4 appendResult25_g23 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g23 = saturate( appendResult25_g23 );
-				float3 lerpResult1_g23 = lerp( tex2D( _BaseColorR, uv_BaseColorR ).rgb , tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , Vertex_Height23_g23.x);
+				float4 tex2DNode94 = tex2D( _HeightR, uv_HeightR );
+				float temp_output_6_0_g101 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord6.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2D( _HeightBase, uv_HeightBase );
+				float temp_output_1_0_g101 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g101 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g101 - temp_output_1_0_g101 ) + (Vertex_Colors53_g101).r )).xxxx;
+				float temp_output_30_0_g101 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float3 lerpResult28_g101 = lerp( tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , tex2D( _BaseColorR, uv_BaseColorR ).rgb , temp_output_30_0_g101);
+				float2 uv_BaseColorG = input.ase_texcoord6.xy * _BaseColorG_ST.xy + _BaseColorG_ST.zw;
+				float lerpResult73_g101 = lerp( temp_output_6_0_g101 , temp_output_1_0_g101 , temp_output_30_0_g101);
+				float Blending_BR64_g101 = lerpResult73_g101;
+				float2 uv_HeightG = input.ase_texcoord6.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2D( _HeightG, uv_HeightG );
+				float temp_output_58_0_g101 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g101 - temp_output_58_0_g101 ) + (Vertex_Colors53_g101).g )).xxxx;
+				float temp_output_63_0_g101 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float3 lerpResult51_g101 = lerp( lerpResult28_g101 , tex2D( _BaseColorG, uv_BaseColorG ).rgb , temp_output_63_0_g101);
+				float lerpResult74_g101 = lerp( Blending_BR64_g101 , temp_output_58_0_g101 , temp_output_63_0_g101);
+				float Blending_BRG66_g101 = lerpResult74_g101;
+				float temp_output_82_0_g101 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g101 - temp_output_82_0_g101 ) + (Vertex_Colors53_g101).b )).xxxx;
+				float temp_output_81_0_g101 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float3 lerpResult91_g101 = lerp( lerpResult51_g101 , float3( 0,0,0 ) , temp_output_81_0_g101);
 				
-				float2 uv_NormalR = input.ase_texcoord6.xy * _NormalR_ST.xy + _NormalR_ST.zw;
 				float2 uv_NormalBase = input.ase_texcoord6.xy * _NormalBase_ST.xy + _NormalBase_ST.zw;
-				float4 appendResult25_g24 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g24 = saturate( appendResult25_g24 );
-				float3 lerpResult14_g24 = lerp( UnpackNormalScale( tex2D( _NormalR, uv_NormalR ), 1.0f ) , UnpackNormalScale( tex2D( _NormalBase, uv_NormalBase ), 1.0f ) , Vertex_Height23_g24.x);
+				float2 uv_NormalR = input.ase_texcoord6.xy * _NormalR_ST.xy + _NormalR_ST.zw;
+				float temp_output_6_0_g102 = tex2DNode94.r;
+				float temp_output_1_0_g102 = tex2DNode92.r;
+				float4 temp_cast_7 = (_Vector0.x).xxxx;
+				float4 temp_cast_8 = (_Vector0.y).xxxx;
+				float4 temp_cast_9 = (_Vector1.x).xxxx;
+				float4 temp_cast_10 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g102 =  (temp_cast_9 + ( input.ase_color - temp_cast_7 ) * ( temp_cast_10 - temp_cast_9 ) / ( temp_cast_8 - temp_cast_7 ) );
+				float4 temp_cast_11 = (( ( temp_output_6_0_g102 - temp_output_1_0_g102 ) + (Vertex_Colors53_g102).r )).xxxx;
+				float temp_output_30_0_g102 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_11)).r );
+				float3 lerpResult28_g102 = lerp( UnpackNormalScale( tex2D( _NormalBase, uv_NormalBase ), 1.0f ) , UnpackNormalScale( tex2D( _NormalR, uv_NormalR ), 1.0f ) , temp_output_30_0_g102);
+				float2 uv_NormalG = input.ase_texcoord6.xy * _NormalG_ST.xy + _NormalG_ST.zw;
+				float lerpResult73_g102 = lerp( temp_output_6_0_g102 , temp_output_1_0_g102 , temp_output_30_0_g102);
+				float Blending_BR64_g102 = lerpResult73_g102;
+				float temp_output_58_0_g102 = tex2DNode132.r;
+				float4 temp_cast_12 = (( ( Blending_BR64_g102 - temp_output_58_0_g102 ) + (Vertex_Colors53_g102).g )).xxxx;
+				float temp_output_63_0_g102 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_12)).r );
+				float3 lerpResult51_g102 = lerp( lerpResult28_g102 , UnpackNormalScale( tex2D( _NormalG, uv_NormalG ), 1.0f ) , temp_output_63_0_g102);
+				float lerpResult74_g102 = lerp( Blending_BR64_g102 , temp_output_58_0_g102 , temp_output_63_0_g102);
+				float Blending_BRG66_g102 = lerpResult74_g102;
+				float temp_output_82_0_g102 = 0.5;
+				float4 temp_cast_13 = (( ( Blending_BRG66_g102 - temp_output_82_0_g102 ) + (Vertex_Colors53_g102).b )).xxxx;
+				float temp_output_81_0_g102 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_13)).r );
+				float3 lerpResult91_g102 = lerp( lerpResult51_g102 , float3( 0,0,0 ) , temp_output_81_0_g102);
 				
 
-				float3 BaseColor = lerpResult1_g23;
-				float3 Normal = lerpResult14_g24;
+				float3 BaseColor = lerpResult91_g101;
+				float3 Normal = lerpResult91_g102;
 				float3 Specular = 0.5;
 				float Metallic = _Metallic;
 				float Smoothness = _Smoothness;
@@ -886,6 +993,11 @@ Shader "SH_HeightBlending"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -934,7 +1046,10 @@ Shader "SH_HeightBlending"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
 				#define ASE_SV_DEPTH SV_DepthLessEqual
@@ -949,7 +1064,8 @@ Shader "SH_HeightBlending"
 				float4 positionOS : POSITION;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -963,12 +1079,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -1001,12 +1124,20 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
+
 
 			float3 _LightDirection;
 			float3 _LightPosition;
 
-			
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input )
 			{
 				PackedVaryings output;
@@ -1014,6 +1145,35 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( output );
 
+				float2 uv_HeightR = input.ase_texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.ase_texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -1022,7 +1182,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
 				#else
@@ -1060,7 +1220,9 @@ Shader "SH_HeightBlending"
 				float4 positionOS : INTERNALTESSPOS;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1078,7 +1240,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				
+				output.ase_texcoord = input.ase_texcoord;
+				output.ase_color = input.ase_color;
 				return output;
 			}
 
@@ -1118,7 +1281,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = patch[0].positionOS * bary.x + patch[1].positionOS * bary.y + patch[2].positionOS * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				
+				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				output.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1211,6 +1375,11 @@ Shader "SH_HeightBlending"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -1257,7 +1426,10 @@ Shader "SH_HeightBlending"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
 				#define ASE_SV_DEPTH SV_DepthLessEqual
@@ -1272,7 +1444,8 @@ Shader "SH_HeightBlending"
 				float4 positionOS : POSITION;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1286,12 +1459,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -1324,9 +1504,17 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
 
-			
+
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1334,6 +1522,35 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.ase_texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.ase_texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -1342,7 +1559,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -1366,7 +1583,9 @@ Shader "SH_HeightBlending"
 				float4 positionOS : INTERNALTESSPOS;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1384,7 +1603,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				
+				output.ase_texcoord = input.ase_texcoord;
+				output.ase_color = input.ase_color;
 				return output;
 			}
 
@@ -1424,7 +1644,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = patch[0].positionOS * bary.x + patch[1].positionOS * bary.y + patch[2].positionOS * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				
+				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				output.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1505,6 +1726,11 @@ Shader "SH_HeightBlending"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -1542,6 +1768,8 @@ Shader "SH_HeightBlending"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_TEXTURE_COORDINATES0
 
 
@@ -1572,12 +1800,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -1610,12 +1845,20 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			sampler2D _BaseColorR;
-			sampler2D _BaseColorBase;
 			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
+			sampler2D _BaseColorBase;
+			sampler2D _BaseColorR;
+			sampler2D _BaseColorG;
 
 
-			
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1623,6 +1866,36 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.texcoord0.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.texcoord0.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.texcoord0.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
+				
 				output.ase_texcoord3.xy = input.texcoord0.xy;
 				output.ase_color = input.ase_color;
 				
@@ -1635,7 +1908,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -1757,15 +2030,42 @@ Shader "SH_HeightBlending"
 				float3 PositionRWS = GetCameraRelativePositionWS( input.positionWS );
 				float4 ShadowCoord = shadowCoord;
 
-				float2 uv_BaseColorR = input.ase_texcoord3.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_BaseColorBase = input.ase_texcoord3.xy * _BaseColorBase_ST.xy + _BaseColorBase_ST.zw;
+				float2 uv_BaseColorR = input.ase_texcoord3.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_HeightR = input.ase_texcoord3.xy * _HeightR_ST.xy + _HeightR_ST.zw;
-				float4 appendResult25_g23 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g23 = saturate( appendResult25_g23 );
-				float3 lerpResult1_g23 = lerp( tex2D( _BaseColorR, uv_BaseColorR ).rgb , tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , Vertex_Height23_g23.x);
+				float4 tex2DNode94 = tex2D( _HeightR, uv_HeightR );
+				float temp_output_6_0_g101 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord3.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2D( _HeightBase, uv_HeightBase );
+				float temp_output_1_0_g101 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g101 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g101 - temp_output_1_0_g101 ) + (Vertex_Colors53_g101).r )).xxxx;
+				float temp_output_30_0_g101 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float3 lerpResult28_g101 = lerp( tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , tex2D( _BaseColorR, uv_BaseColorR ).rgb , temp_output_30_0_g101);
+				float2 uv_BaseColorG = input.ase_texcoord3.xy * _BaseColorG_ST.xy + _BaseColorG_ST.zw;
+				float lerpResult73_g101 = lerp( temp_output_6_0_g101 , temp_output_1_0_g101 , temp_output_30_0_g101);
+				float Blending_BR64_g101 = lerpResult73_g101;
+				float2 uv_HeightG = input.ase_texcoord3.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2D( _HeightG, uv_HeightG );
+				float temp_output_58_0_g101 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g101 - temp_output_58_0_g101 ) + (Vertex_Colors53_g101).g )).xxxx;
+				float temp_output_63_0_g101 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float3 lerpResult51_g101 = lerp( lerpResult28_g101 , tex2D( _BaseColorG, uv_BaseColorG ).rgb , temp_output_63_0_g101);
+				float lerpResult74_g101 = lerp( Blending_BR64_g101 , temp_output_58_0_g101 , temp_output_63_0_g101);
+				float Blending_BRG66_g101 = lerpResult74_g101;
+				float temp_output_82_0_g101 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g101 - temp_output_82_0_g101 ) + (Vertex_Colors53_g101).b )).xxxx;
+				float temp_output_81_0_g101 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float3 lerpResult91_g101 = lerp( lerpResult51_g101 , float3( 0,0,0 ) , temp_output_81_0_g101);
 				
 
-				float3 BaseColor = lerpResult1_g23;
+				float3 BaseColor = lerpResult91_g101;
 				float3 Emission = 0;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
@@ -1807,6 +2107,11 @@ Shader "SH_HeightBlending"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -1842,6 +2147,8 @@ Shader "SH_HeightBlending"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_TEXTURE_COORDINATES0
 
 
@@ -1866,12 +2173,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -1904,12 +2218,20 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			sampler2D _BaseColorR;
-			sampler2D _BaseColorBase;
 			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
+			sampler2D _BaseColorBase;
+			sampler2D _BaseColorR;
+			sampler2D _BaseColorG;
 
 
-			
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1917,6 +2239,36 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID( input, output );
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( output );
 
+				float2 uv_HeightR = input.ase_texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.ase_texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
+				
 				output.ase_texcoord1.xy = input.ase_texcoord.xy;
 				output.ase_color = input.ase_color;
 				
@@ -1929,7 +2281,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -2048,15 +2400,42 @@ Shader "SH_HeightBlending"
 				float3 PositionRWS = GetCameraRelativePositionWS( input.positionWS );
 				float4 ShadowCoord = shadowCoord;
 
-				float2 uv_BaseColorR = input.ase_texcoord1.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_BaseColorBase = input.ase_texcoord1.xy * _BaseColorBase_ST.xy + _BaseColorBase_ST.zw;
+				float2 uv_BaseColorR = input.ase_texcoord1.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_HeightR = input.ase_texcoord1.xy * _HeightR_ST.xy + _HeightR_ST.zw;
-				float4 appendResult25_g23 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g23 = saturate( appendResult25_g23 );
-				float3 lerpResult1_g23 = lerp( tex2D( _BaseColorR, uv_BaseColorR ).rgb , tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , Vertex_Height23_g23.x);
+				float4 tex2DNode94 = tex2D( _HeightR, uv_HeightR );
+				float temp_output_6_0_g101 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord1.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2D( _HeightBase, uv_HeightBase );
+				float temp_output_1_0_g101 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g101 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g101 - temp_output_1_0_g101 ) + (Vertex_Colors53_g101).r )).xxxx;
+				float temp_output_30_0_g101 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float3 lerpResult28_g101 = lerp( tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , tex2D( _BaseColorR, uv_BaseColorR ).rgb , temp_output_30_0_g101);
+				float2 uv_BaseColorG = input.ase_texcoord1.xy * _BaseColorG_ST.xy + _BaseColorG_ST.zw;
+				float lerpResult73_g101 = lerp( temp_output_6_0_g101 , temp_output_1_0_g101 , temp_output_30_0_g101);
+				float Blending_BR64_g101 = lerpResult73_g101;
+				float2 uv_HeightG = input.ase_texcoord1.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2D( _HeightG, uv_HeightG );
+				float temp_output_58_0_g101 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g101 - temp_output_58_0_g101 ) + (Vertex_Colors53_g101).g )).xxxx;
+				float temp_output_63_0_g101 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float3 lerpResult51_g101 = lerp( lerpResult28_g101 , tex2D( _BaseColorG, uv_BaseColorG ).rgb , temp_output_63_0_g101);
+				float lerpResult74_g101 = lerp( Blending_BR64_g101 , temp_output_58_0_g101 , temp_output_63_0_g101);
+				float Blending_BRG66_g101 = lerpResult74_g101;
+				float temp_output_82_0_g101 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g101 - temp_output_82_0_g101 ) + (Vertex_Colors53_g101).b )).xxxx;
+				float temp_output_81_0_g101 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float3 lerpResult91_g101 = lerp( lerpResult51_g101 , float3( 0,0,0 ) , temp_output_81_0_g101);
 				
 
-				float3 BaseColor = lerpResult1_g23;
+				float3 BaseColor = lerpResult91_g101;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2076,7 +2455,7 @@ Shader "SH_HeightBlending"
 		{
 			
 			Name "DepthNormals"
-			Tags { "LightMode"="DepthNormals" }
+			Tags { "LightMode"="DepthNormalsOnly" }
 
 			ZWrite On
 			Blend One Zero
@@ -2096,6 +2475,11 @@ Shader "SH_HeightBlending"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -2156,6 +2540,8 @@ Shader "SH_HeightBlending"
 			#endif
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_TEXTURE_COORDINATES0
 
 
@@ -2190,12 +2576,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -2228,12 +2621,20 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			sampler2D _NormalR;
-			sampler2D _NormalBase;
 			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
+			sampler2D _NormalBase;
+			sampler2D _NormalR;
+			sampler2D _NormalG;
 
 
-			
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -2241,6 +2642,36 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
+				
 				output.ase_texcoord3.xy = input.texcoord.xy;
 				output.ase_color = input.ase_color;
 				
@@ -2252,7 +2683,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -2403,15 +2834,42 @@ Shader "SH_HeightBlending"
 					BitangentWS = cross(NormalWS, -TangentWS);
 				#endif
 
-				float2 uv_NormalR = input.ase_texcoord3.xy * _NormalR_ST.xy + _NormalR_ST.zw;
 				float2 uv_NormalBase = input.ase_texcoord3.xy * _NormalBase_ST.xy + _NormalBase_ST.zw;
+				float2 uv_NormalR = input.ase_texcoord3.xy * _NormalR_ST.xy + _NormalR_ST.zw;
 				float2 uv_HeightR = input.ase_texcoord3.xy * _HeightR_ST.xy + _HeightR_ST.zw;
-				float4 appendResult25_g24 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g24 = saturate( appendResult25_g24 );
-				float3 lerpResult14_g24 = lerp( UnpackNormalScale( tex2D( _NormalR, uv_NormalR ), 1.0f ) , UnpackNormalScale( tex2D( _NormalBase, uv_NormalBase ), 1.0f ) , Vertex_Height23_g24.x);
+				float4 tex2DNode94 = tex2D( _HeightR, uv_HeightR );
+				float temp_output_6_0_g102 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord3.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2D( _HeightBase, uv_HeightBase );
+				float temp_output_1_0_g102 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g102 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g102 - temp_output_1_0_g102 ) + (Vertex_Colors53_g102).r )).xxxx;
+				float temp_output_30_0_g102 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float3 lerpResult28_g102 = lerp( UnpackNormalScale( tex2D( _NormalBase, uv_NormalBase ), 1.0f ) , UnpackNormalScale( tex2D( _NormalR, uv_NormalR ), 1.0f ) , temp_output_30_0_g102);
+				float2 uv_NormalG = input.ase_texcoord3.xy * _NormalG_ST.xy + _NormalG_ST.zw;
+				float lerpResult73_g102 = lerp( temp_output_6_0_g102 , temp_output_1_0_g102 , temp_output_30_0_g102);
+				float Blending_BR64_g102 = lerpResult73_g102;
+				float2 uv_HeightG = input.ase_texcoord3.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2D( _HeightG, uv_HeightG );
+				float temp_output_58_0_g102 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g102 - temp_output_58_0_g102 ) + (Vertex_Colors53_g102).g )).xxxx;
+				float temp_output_63_0_g102 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float3 lerpResult51_g102 = lerp( lerpResult28_g102 , UnpackNormalScale( tex2D( _NormalG, uv_NormalG ), 1.0f ) , temp_output_63_0_g102);
+				float lerpResult74_g102 = lerp( Blending_BR64_g102 , temp_output_58_0_g102 , temp_output_63_0_g102);
+				float Blending_BRG66_g102 = lerpResult74_g102;
+				float temp_output_82_0_g102 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g102 - temp_output_82_0_g102 ) + (Vertex_Colors53_g102).b )).xxxx;
+				float temp_output_81_0_g102 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float3 lerpResult91_g102 = lerp( lerpResult51_g102 , float3( 0,0,0 ) , temp_output_81_0_g102);
 				
 
-				float3 Normal = lerpResult14_g24;
+				float3 Normal = lerpResult91_g102;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2489,6 +2947,11 @@ Shader "SH_HeightBlending"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -2571,6 +3034,8 @@ Shader "SH_HeightBlending"
 			#endif
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
 			#define ASE_NEEDS_FRAG_TEXTURE_COORDINATES0
 			#define ASE_NEEDS_FRAG_COLOR
 
@@ -2619,12 +3084,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -2657,16 +3129,25 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			sampler2D _BaseColorR;
-			sampler2D _BaseColorBase;
 			sampler2D _HeightR;
-			sampler2D _NormalR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
+			sampler2D _BaseColorBase;
+			sampler2D _BaseColorR;
+			sampler2D _BaseColorG;
 			sampler2D _NormalBase;
+			sampler2D _NormalR;
+			sampler2D _NormalG;
 
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
 
-			
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -2674,6 +3155,36 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
+				
 				output.ase_texcoord6.xy = input.texcoord.xy;
 				output.ase_color = input.ase_color;
 				
@@ -2685,7 +3196,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -2875,22 +3386,69 @@ Shader "SH_HeightBlending"
 					BitangentWS = cross(NormalWS, -TangentWS);
 				#endif
 
-				float2 uv_BaseColorR = input.ase_texcoord6.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_BaseColorBase = input.ase_texcoord6.xy * _BaseColorBase_ST.xy + _BaseColorBase_ST.zw;
+				float2 uv_BaseColorR = input.ase_texcoord6.xy * _BaseColorR_ST.xy + _BaseColorR_ST.zw;
 				float2 uv_HeightR = input.ase_texcoord6.xy * _HeightR_ST.xy + _HeightR_ST.zw;
-				float4 appendResult25_g23 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g23 = saturate( appendResult25_g23 );
-				float3 lerpResult1_g23 = lerp( tex2D( _BaseColorR, uv_BaseColorR ).rgb , tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , Vertex_Height23_g23.x);
+				float4 tex2DNode94 = tex2D( _HeightR, uv_HeightR );
+				float temp_output_6_0_g101 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord6.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2D( _HeightBase, uv_HeightBase );
+				float temp_output_1_0_g101 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g101 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g101 - temp_output_1_0_g101 ) + (Vertex_Colors53_g101).r )).xxxx;
+				float temp_output_30_0_g101 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float3 lerpResult28_g101 = lerp( tex2D( _BaseColorBase, uv_BaseColorBase ).rgb , tex2D( _BaseColorR, uv_BaseColorR ).rgb , temp_output_30_0_g101);
+				float2 uv_BaseColorG = input.ase_texcoord6.xy * _BaseColorG_ST.xy + _BaseColorG_ST.zw;
+				float lerpResult73_g101 = lerp( temp_output_6_0_g101 , temp_output_1_0_g101 , temp_output_30_0_g101);
+				float Blending_BR64_g101 = lerpResult73_g101;
+				float2 uv_HeightG = input.ase_texcoord6.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2D( _HeightG, uv_HeightG );
+				float temp_output_58_0_g101 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g101 - temp_output_58_0_g101 ) + (Vertex_Colors53_g101).g )).xxxx;
+				float temp_output_63_0_g101 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float3 lerpResult51_g101 = lerp( lerpResult28_g101 , tex2D( _BaseColorG, uv_BaseColorG ).rgb , temp_output_63_0_g101);
+				float lerpResult74_g101 = lerp( Blending_BR64_g101 , temp_output_58_0_g101 , temp_output_63_0_g101);
+				float Blending_BRG66_g101 = lerpResult74_g101;
+				float temp_output_82_0_g101 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g101 - temp_output_82_0_g101 ) + (Vertex_Colors53_g101).b )).xxxx;
+				float temp_output_81_0_g101 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float3 lerpResult91_g101 = lerp( lerpResult51_g101 , float3( 0,0,0 ) , temp_output_81_0_g101);
 				
-				float2 uv_NormalR = input.ase_texcoord6.xy * _NormalR_ST.xy + _NormalR_ST.zw;
 				float2 uv_NormalBase = input.ase_texcoord6.xy * _NormalBase_ST.xy + _NormalBase_ST.zw;
-				float4 appendResult25_g24 = (float4(( tex2D( _HeightR, uv_HeightR ).r * input.ase_color.r * _BlendingStrengthR ) , 0.0 , 0.0 , 0.0));
-				float4 Vertex_Height23_g24 = saturate( appendResult25_g24 );
-				float3 lerpResult14_g24 = lerp( UnpackNormalScale( tex2D( _NormalR, uv_NormalR ), 1.0f ) , UnpackNormalScale( tex2D( _NormalBase, uv_NormalBase ), 1.0f ) , Vertex_Height23_g24.x);
+				float2 uv_NormalR = input.ase_texcoord6.xy * _NormalR_ST.xy + _NormalR_ST.zw;
+				float temp_output_6_0_g102 = tex2DNode94.r;
+				float temp_output_1_0_g102 = tex2DNode92.r;
+				float4 temp_cast_7 = (_Vector0.x).xxxx;
+				float4 temp_cast_8 = (_Vector0.y).xxxx;
+				float4 temp_cast_9 = (_Vector1.x).xxxx;
+				float4 temp_cast_10 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g102 =  (temp_cast_9 + ( input.ase_color - temp_cast_7 ) * ( temp_cast_10 - temp_cast_9 ) / ( temp_cast_8 - temp_cast_7 ) );
+				float4 temp_cast_11 = (( ( temp_output_6_0_g102 - temp_output_1_0_g102 ) + (Vertex_Colors53_g102).r )).xxxx;
+				float temp_output_30_0_g102 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_11)).r );
+				float3 lerpResult28_g102 = lerp( UnpackNormalScale( tex2D( _NormalBase, uv_NormalBase ), 1.0f ) , UnpackNormalScale( tex2D( _NormalR, uv_NormalR ), 1.0f ) , temp_output_30_0_g102);
+				float2 uv_NormalG = input.ase_texcoord6.xy * _NormalG_ST.xy + _NormalG_ST.zw;
+				float lerpResult73_g102 = lerp( temp_output_6_0_g102 , temp_output_1_0_g102 , temp_output_30_0_g102);
+				float Blending_BR64_g102 = lerpResult73_g102;
+				float temp_output_58_0_g102 = tex2DNode132.r;
+				float4 temp_cast_12 = (( ( Blending_BR64_g102 - temp_output_58_0_g102 ) + (Vertex_Colors53_g102).g )).xxxx;
+				float temp_output_63_0_g102 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_12)).r );
+				float3 lerpResult51_g102 = lerp( lerpResult28_g102 , UnpackNormalScale( tex2D( _NormalG, uv_NormalG ), 1.0f ) , temp_output_63_0_g102);
+				float lerpResult74_g102 = lerp( Blending_BR64_g102 , temp_output_58_0_g102 , temp_output_63_0_g102);
+				float Blending_BRG66_g102 = lerpResult74_g102;
+				float temp_output_82_0_g102 = 0.5;
+				float4 temp_cast_13 = (( ( Blending_BRG66_g102 - temp_output_82_0_g102 ) + (Vertex_Colors53_g102).b )).xxxx;
+				float temp_output_81_0_g102 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_13)).r );
+				float3 lerpResult91_g102 = lerp( lerpResult51_g102 , float3( 0,0,0 ) , temp_output_81_0_g102);
 				
 
-				float3 BaseColor = lerpResult1_g23;
-				float3 Normal = lerpResult14_g24;
+				float3 BaseColor = lerpResult91_g101;
+				float3 Normal = lerpResult91_g102;
 				float3 Specular = 0.5;
 				float Metallic = _Metallic;
 				float Smoothness = _Smoothness;
@@ -3025,6 +3583,11 @@ Shader "SH_HeightBlending"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -3072,7 +3635,10 @@ Shader "SH_HeightBlending"
 
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
 				#define ASE_SV_DEPTH SV_DepthLessEqual
@@ -3087,7 +3653,8 @@ Shader "SH_HeightBlending"
 				float4 positionOS : POSITION;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -3101,12 +3668,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -3139,9 +3713,17 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
 
-			
+
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -3157,6 +3739,35 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.ase_texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.ase_texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -3165,7 +3776,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -3188,7 +3799,9 @@ Shader "SH_HeightBlending"
 				float4 positionOS : INTERNALTESSPOS;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -3206,7 +3819,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				
+				output.ase_texcoord = input.ase_texcoord;
+				output.ase_color = input.ase_color;
 				return output;
 			}
 
@@ -3246,7 +3860,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = patch[0].positionOS * bary.x + patch[1].positionOS * bary.y + patch[2].positionOS * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				
+				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				output.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -3321,6 +3936,11 @@ Shader "SH_HeightBlending"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+			#define ASE_TESSELLATION 1
+			#pragma require tessellation tessHW
+			#pragma hull HullFunction
+			#pragma domain DomainFunction
+			#define ASE_DISTANCE_TESSELLATION
 			#define _NORMALMAP 1
 			#define ASE_VERSION 19902
 			#define ASE_SRP_VERSION 140011
@@ -3368,7 +3988,10 @@ Shader "SH_HeightBlending"
 
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_TEXTURE_COORDINATES0
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
 				#define ASE_SV_DEPTH SV_DepthLessEqual
@@ -3383,7 +4006,8 @@ Shader "SH_HeightBlending"
 				float4 positionOS : POSITION;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -3397,12 +4021,19 @@ Shader "SH_HeightBlending"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _BaseColorR_ST;
-			float4 _BaseColorBase_ST;
 			float4 _HeightR_ST;
-			float4 _NormalR_ST;
+			float4 _HeightBase_ST;
+			float4 _HeightG_ST;
+			float4 _BaseColorBase_ST;
+			float4 _BaseColorR_ST;
+			float4 _BaseColorG_ST;
 			float4 _NormalBase_ST;
-			float _BlendingStrengthR;
+			float4 _NormalR_ST;
+			float4 _NormalG_ST;
+			float _RContrast;
+			float _GContrast;
+			float _BContrast;
+			float _MeshHeight;
 			float _Metallic;
 			float _Smoothness;
 			#ifdef ASE_TRANSMISSION
@@ -3435,9 +4066,17 @@ Shader "SH_HeightBlending"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _HeightR;
+			sampler2D _HeightBase;
+			sampler2D _HeightG;
 
-			
+
+			float4 CalculateContrast( float contrastValue, float4 colorTarget )
+			{
+				float t = 0.5 * ( 1.0 - contrastValue );
+				return mul( float4x4( contrastValue,0,0,t, 0,contrastValue,0,t, 0,0,contrastValue,t, 0,0,0,1 ), colorTarget );
+			}
+
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -3453,6 +4092,35 @@ Shader "SH_HeightBlending"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				float2 uv_HeightR = input.ase_texcoord.xy * _HeightR_ST.xy + _HeightR_ST.zw;
+				float4 tex2DNode94 = tex2Dlod( _HeightR, float4( uv_HeightR, 0, 0.0) );
+				float temp_output_6_0_g100 = tex2DNode94.r;
+				float2 uv_HeightBase = input.ase_texcoord.xy * _HeightBase_ST.xy + _HeightBase_ST.zw;
+				float4 tex2DNode92 = tex2Dlod( _HeightBase, float4( uv_HeightBase, 0, 0.0) );
+				float temp_output_1_0_g100 = tex2DNode92.r;
+				float2 _Vector0 = float2(0,1);
+				float4 temp_cast_0 = (_Vector0.x).xxxx;
+				float4 temp_cast_1 = (_Vector0.y).xxxx;
+				float2 _Vector1 = float2(-1,1);
+				float4 temp_cast_2 = (_Vector1.x).xxxx;
+				float4 temp_cast_3 = (_Vector1.y).xxxx;
+				float4 Vertex_Colors53_g100 =  (temp_cast_2 + ( input.ase_color - temp_cast_0 ) * ( temp_cast_3 - temp_cast_2 ) / ( temp_cast_1 - temp_cast_0 ) );
+				float4 temp_cast_4 = (( ( temp_output_6_0_g100 - temp_output_1_0_g100 ) + (Vertex_Colors53_g100).r )).xxxx;
+				float temp_output_30_0_g100 = saturate( (CalculateContrast(( _RContrast * 10 ),temp_cast_4)).r );
+				float lerpResult73_g100 = lerp( temp_output_6_0_g100 , temp_output_1_0_g100 , temp_output_30_0_g100);
+				float Blending_BR64_g100 = lerpResult73_g100;
+				float2 uv_HeightG = input.ase_texcoord.xy * _HeightG_ST.xy + _HeightG_ST.zw;
+				float4 tex2DNode132 = tex2Dlod( _HeightG, float4( uv_HeightG, 0, 0.0) );
+				float temp_output_58_0_g100 = tex2DNode132.r;
+				float4 temp_cast_5 = (( ( Blending_BR64_g100 - temp_output_58_0_g100 ) + (Vertex_Colors53_g100).g )).xxxx;
+				float temp_output_63_0_g100 = saturate( (CalculateContrast(( _GContrast * 10 ),temp_cast_5)).r );
+				float lerpResult74_g100 = lerp( Blending_BR64_g100 , temp_output_58_0_g100 , temp_output_63_0_g100);
+				float Blending_BRG66_g100 = lerpResult74_g100;
+				float temp_output_82_0_g100 = 0.5;
+				float4 temp_cast_6 = (( ( Blending_BRG66_g100 - temp_output_82_0_g100 ) + (Vertex_Colors53_g100).b )).xxxx;
+				float temp_output_81_0_g100 = saturate( (CalculateContrast(( _BContrast * 10 ),temp_cast_6)).r );
+				float lerpResult89_g100 = lerp( Blending_BRG66_g100 , temp_output_82_0_g100 , temp_output_81_0_g100);
+				float Blending_BRGB90_g100 = lerpResult89_g100;
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -3461,7 +4129,7 @@ Shader "SH_HeightBlending"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = ( ( ( Blending_BRGB90_g100 * input.normalOS ) + float3( 0,0,0 ) ) * _MeshHeight );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					input.positionOS.xyz = vertexValue;
@@ -3484,7 +4152,9 @@ Shader "SH_HeightBlending"
 				float4 positionOS : INTERNALTESSPOS;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -3502,7 +4172,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				
+				output.ase_texcoord = input.ase_texcoord;
+				output.ase_color = input.ase_color;
 				return output;
 			}
 
@@ -3542,7 +4213,8 @@ Shader "SH_HeightBlending"
 				output.positionOS = patch[0].positionOS * bary.x + patch[1].positionOS * bary.y + patch[2].positionOS * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				
+				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				output.ase_color = patch[0].ase_color * bary.x + patch[1].ase_color * bary.y + patch[2].ase_color * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -3609,38 +4281,64 @@ Shader "SH_HeightBlending"
 
 /*ASEBEGIN
 Version=19902
-Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;21;-1232,-312;Inherit;True;Property;_BaseColorR;BaseColor R;1;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;22;-1232,-504;Inherit;True;Property;_BaseColorBase;BaseColor Base;3;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;28;-1232,32;Inherit;True;Property;_NormalBase;Normal Base;4;0;Create;True;0;0;0;False;0;False;None;None;False;bump;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;24;-320,128;Inherit;False;Property;_Metallic;Metallic;6;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;23;-320,192;Inherit;False;Property;_Smoothness;Smoothness;5;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;27;-1232,224;Inherit;True;Property;_NormalR;Normal R;2;0;Create;True;0;0;0;False;0;False;None;None;False;bump;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;40;-1568,96;Inherit;True;Property;_HeightR;Height R;0;0;Create;True;0;0;0;False;0;False;None;None;False;bump;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;47;-1216,432;Inherit;False;Property;_BlendingStrengthR;Blending Strength R;7;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;52;-1008,-384;Inherit;False;Height Blending;-1;;23;70b3c6f1fc612134580871870a7d42cf;1,10,0;5;6;SAMPLER2D;;False;8;SAMPLER2D;;False;18;SAMPLER2D;;False;17;SAMPLER2D;;False;37;FLOAT;0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;53;-992,32;Inherit;False;Height Blending;-1;;24;70b3c6f1fc612134580871870a7d42cf;1,10,1;5;6;SAMPLER2D;;False;8;SAMPLER2D;;False;18;SAMPLER2D;;False;17;SAMPLER2D;;False;37;FLOAT;0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;61;-2016,-64;Inherit;True;Property;_HeightBase;Height Base;2;0;Create;True;0;0;0;False;0;False;None;bfb1167a635443f4b843d6a48ff36503;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;40;-2016,144;Inherit;True;Property;_HeightR;Height R;4;0;Create;True;0;0;0;False;0;False;None;fd665857096a83e498161748cc6c4080;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;133;-2016,368;Inherit;True;Property;_HeightG;Height G;8;0;Create;True;0;0;0;False;0;False;None;27f53a8b1771ff14ea8ac6580927f20d;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;92;-1680,-64;Inherit;True;Property;_TextureSample0;Texture Sample 0;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;94;-1680,144;Inherit;True;Property;_TextureSample1;Texture Sample 1;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;132;-1680,368;Inherit;True;Property;_TextureSample4;Texture Sample 4;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;95;-1200,-816;Inherit;True;Property;_TextureSample2;Texture Sample 2;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;96;-1200,-608;Inherit;True;Property;_TextureSample3;Texture Sample 3;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;21;-1504,-608;Inherit;True;Property;_BaseColorR;BaseColor R;3;0;Create;True;0;0;0;False;0;False;None;1276f800abbc9ef42a5e05b1c6937aac;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;134;-1200,-400;Inherit;True;Property;_TextureSample5;Texture Sample 5;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;bump;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;135;-1504,-400;Inherit;True;Property;_BaseColorG;BaseColor G;6;0;Create;True;0;0;0;False;0;False;None;be6841c06cadbc949ae4af8e65f7281b;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;22;-1504,-816;Inherit;True;Property;_BaseColorBase;BaseColor Base;0;0;Create;True;0;0;0;False;0;False;None;f1197de550a5ad64c9d4d6070269a7f8;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;24;-304,288;Inherit;False;Property;_Metallic;Metallic;10;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;23;-304,352;Inherit;False;Property;_Smoothness;Smoothness;9;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;170;-752,-608;Inherit;False;RedditHeightBlending;11;;101;27d4b967f3beadd4599e3286fbe3aed7;7,67,0,24,0,33,0,94,0,113,0,95,2,117,2;19;37;FLOAT3;0,0,0;False;34;FLOAT3;0,0,0;False;6;FLOAT;0;False;38;FLOAT3;0,0,0;False;35;FLOAT3;0,0,0;False;1;FLOAT;0;False;13;FLOAT;0;False;68;FLOAT3;0,0,0;False;69;FLOAT3;0,0,0;False;58;FLOAT;0;False;71;FLOAT;0;False;93;FLOAT3;0,0,0;False;92;FLOAT3;0,0,0;False;82;FLOAT;0;False;86;FLOAT;0;False;115;FLOAT3;0,0,0;False;114;FLOAT3;0,0,0;False;108;FLOAT;0;False;109;FLOAT;0;False;3;FLOAT3;0;FLOAT;116;FLOAT3;132
+Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;169;-576,736;Inherit;False;RedditHeightBlending;11;;100;27d4b967f3beadd4599e3286fbe3aed7;7,67,0,24,0,33,0,94,0,113,0,95,2,117,2;19;37;FLOAT3;0,0,0;False;34;FLOAT3;0,0,0;False;6;FLOAT;0;False;38;FLOAT3;0,0,0;False;35;FLOAT3;0,0,0;False;1;FLOAT;0;False;13;FLOAT;0;False;68;FLOAT3;0,0,0;False;69;FLOAT3;0,0,0;False;58;FLOAT;0;False;71;FLOAT;0;False;93;FLOAT3;0,0,0;False;92;FLOAT3;0,0,0;False;82;FLOAT;0;False;86;FLOAT;0;False;115;FLOAT3;0,0,0;False;114;FLOAT3;0,0,0;False;108;FLOAT;0;False;109;FLOAT;0;False;3;FLOAT3;0;FLOAT;116;FLOAT3;132
+Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;171;-848,160;Inherit;False;RedditHeightBlending;11;;102;27d4b967f3beadd4599e3286fbe3aed7;7,67,1,24,1,33,1,94,1,113,1,95,2,117,2;19;37;FLOAT3;0,0,0;False;34;FLOAT3;0,0,0;False;6;FLOAT;0;False;38;FLOAT3;0,0,0;False;35;FLOAT3;0,0,0;False;1;FLOAT;0;False;13;FLOAT;0;False;68;FLOAT3;0,0,0;False;69;FLOAT3;0,0,0;False;58;FLOAT;0;False;71;FLOAT;0;False;93;FLOAT3;0,0,0;False;92;FLOAT3;0,0,0;False;82;FLOAT;0;False;86;FLOAT;0;False;115;FLOAT3;0,0,0;False;114;FLOAT3;0,0,0;False;108;FLOAT;0;False;109;FLOAT;0;False;3;FLOAT3;0;FLOAT;116;FLOAT3;132
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;89;-1184,160;Inherit;True;Property;_NormalBase;Normal Base;1;0;Create;True;0;0;0;False;0;False;-1;None;3f8266012057ff24e97ef4537b63ab1e;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;88;-1184,368;Inherit;True;Property;_NormalR;Normal R;5;0;Create;True;0;0;0;False;0;False;-1;None;a2c8ec3301169e144a787f90060b963f;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;128;-1184,576;Inherit;True;Property;_NormalG;Normal G;7;0;Create;True;0;0;0;False;0;False;-1;None;32f7e6f790405ee4988c1931d8ea969d;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;10;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;6;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;11;0,0;Float;False;True;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;SH_HeightBlending;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;21;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;47;Category;0;0;  Instanced Terrain Normals;1;0;Lighting Model;0;0;Workflow;1;0;Surface;0;0;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Alpha Clipping;1;0;  Use Shadow Threshold;0;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;Receive Shadows;2;0;Specular Highlights;2;0;Environment Reflections;2;0;Receive SSAO;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;1;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;12;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;13;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;14;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;15;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;16;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormals;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;16;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;17;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;18;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;SceneSelectionPass;0;8;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;19;0,0;Float;False;False;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ScenePickingPass;0;9;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
-WireConnection;52;6;22;0
-WireConnection;52;8;21;0
-WireConnection;52;17;40;0
-WireConnection;52;37;47;0
-WireConnection;53;6;28;0
-WireConnection;53;8;27;0
-WireConnection;53;18;40;0
-WireConnection;53;17;40;0
-WireConnection;53;37;47;0
-WireConnection;11;0;52;0
-WireConnection;11;1;53;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;11;32,80;Float;False;True;-1;3;UnityEditor.ShaderGraphLitGUI;0;12;SH_HeightBlending;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;21;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;47;Category;0;0;  Instanced Terrain Normals;1;0;Lighting Model;0;0;Workflow;1;0;Surface;0;0;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Alpha Clipping;1;0;  Use Shadow Threshold;0;638905886289910171;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;1;638905886308707696;Transmission;0;638905886384509217;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;Receive Shadows;2;0;Specular Highlights;2;0;Environment Reflections;2;0;Receive SSAO;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;Tessellation;1;638905917944907401;  Phong;0;638905893740825006;  Strength;0.5,False,;0;  Type;1;638905900998993613;  Tess;32,False,;638905901202248323;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;1;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
+WireConnection;92;0;61;0
+WireConnection;94;0;40;0
+WireConnection;132;0;133;0
+WireConnection;95;0;22;0
+WireConnection;96;0;21;0
+WireConnection;134;0;135;0
+WireConnection;170;37;95;5
+WireConnection;170;6;94;1
+WireConnection;170;38;96;5
+WireConnection;170;1;92;1
+WireConnection;170;68;134;5
+WireConnection;170;58;132;1
+WireConnection;169;37;92;1
+WireConnection;169;6;94;1
+WireConnection;169;38;94;1
+WireConnection;169;1;92;1
+WireConnection;169;68;132;1
+WireConnection;169;58;132;1
+WireConnection;171;34;89;0
+WireConnection;171;6;94;1
+WireConnection;171;35;88;0
+WireConnection;171;1;92;1
+WireConnection;171;69;128;0
+WireConnection;171;58;132;1
+WireConnection;11;0;170;0
+WireConnection;11;1;171;0
 WireConnection;11;3;24;0
 WireConnection;11;4;23;0
+WireConnection;11;8;169;132
 ASEEND*/
-//CHKSM=E291C4FDD34DB6BF554DAFEB54F2684B9D353612
+//CHKSM=7B81F703E05EB1669807F6E834842275377A3CA9

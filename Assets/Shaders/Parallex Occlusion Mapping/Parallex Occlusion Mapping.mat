@@ -40,6 +40,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 61b10b9a6b9062a4bb19837c81df4153, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BaseMap2:
+        m_Texture: {fileID: 2800000, guid: 1276f800abbc9ef42a5e05b1c6937aac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -64,6 +68,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 3cfe1d3004ac9ef41983f0705cb12da8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap2:
+        m_Texture: {fileID: 2800000, guid: fd665857096a83e498161748cc6c4080, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -76,8 +84,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: 28b345ec76a07f6438b78787ff0292b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicSmoothness2:
+        m_Texture: {fileID: 2800000, guid: 28b345ec76a07f6438b78787ff0292b3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 165b6cc6c8551994f9e631d21853e74c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap2:
+        m_Texture: {fileID: 2800000, guid: a2c8ec3301169e144a787f90060b963f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -113,9 +129,9 @@ Material:
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaToMask: 0
-    - _BPInterations: 8.85
-    - _BPRefPlane: 0
-    - _BPScale: 0.005
+    - _BPInterations: 0
+    - _BPRefPlane: 0.1
+    - _BPScale: 0.1
     - _BidirectionalParallaxMapping: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -136,12 +152,13 @@ Material:
     - _OcclusionStrength: 1
     - _PMScale: 0.069
     - _POMRefPlane: 0
-    - _POMScale: 0.241
+    - _POMScale: 0.149
     - _POMSidewallSteps: 2
     - _Parallax: 0.005
     - _ParallexMapping: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RContrast: 1
     - _ReceiveShadows: 1
     - _RefPlane: 0
     - _Scale: 0.083
